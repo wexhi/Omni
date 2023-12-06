@@ -1,0 +1,142 @@
+[2023-11-21 21:00:41]	[done]
+	build successfully !
+
+[2023-11-21 21:14:53]	[done]
+	build successfully !
+
+[2023-11-21 21:16:23]	[done]
+	build successfully !
+
+[2023-11-22 00:03:40]	[done]
+	build successfully !
+
+[2023-11-22 00:04:31]	[done]
+	build successfully !
+
+[2023-11-22 00:05:05]	[done]
+	build successfully !
+
+[2023-11-22 16:41:39]	[done]
+	build successfully !
+
+[2023-11-22 16:47:56]	[done]
+	build successfully !
+
+[2023-11-23 22:44:38]	[done]
+	build successfully !
+
+[2023-11-24 18:38:59]	[done]
+	build successfully !
+
+[2023-11-24 22:08:36]	[done]
+	build successfully !
+
+[2023-11-27 19:33:08]	[done]
+	build successfully !
+
+[2023-11-27 21:00:37]	[done]
+	build successfully !
+
+[2023-11-27 21:01:06]	[done]
+	build successfully !
+
+[2023-11-27 21:01:35]	[done]
+	build successfully !
+
+[2023-11-27 21:01:52]	[done]
+	build successfully !
+
+[2023-11-27 21:02:21]	[done]
+	build successfully !
+
+[2023-11-27 21:02:52]	[done]
+	build successfully !
+
+[2023-11-27 21:03:26]	[done]
+	build successfully !
+
+[2023-11-27 22:25:10]	[done]
+	build successfully !
+
+[2023-11-27 22:28:16]	[done]
+	build successfully !
+
+[2023-11-27 22:42:34]	[done]
+	build successfully !
+
+[2023-12-01 23:40:43]	[done]
+	build successfully !
+
+[2023-12-01 23:51:31]	[done]
+	build successfully !
+
+[2023-12-01 23:53:18]	[done]
+	build successfully !
+
+[2023-12-02 22:54:42]	[done]
+	build successfully !
+
+[2023-12-02 22:56:50]	[done]
+	build successfully !
+
+[2023-12-02 23:00:01]	[done]
+	build successfully !
+
+[2023-12-02 23:00:28]	[done]
+	build successfully !
+
+[2023-12-02 23:03:02]	[done]
+	build successfully !
+
+[2023-12-02 23:04:46]	[done]
+	build successfully !
+
+[2023-12-02 23:07:25]	[done]
+	build successfully !
+
+[2023-12-02 23:10:18]	[done]
+	build successfully !
+
+[2023-12-06 21:05:51]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol Gimbal_task (referred from freertos.o).
+Error: L6218E: Undefined symbol Shoot_task (referred from freertos.o).
+Error: L6218E: Undefined symbol UI_Task (referred from freertos.o).
+Error: L6218E: Undefined symbol gimbal_Pitch (referred from drv_can.o).
+Error: L6218E: Undefined symbol gimbal_Yaw (referred from drv_can.o).
+Error: L6218E: Undefined symbol shooter (referred from drv_can.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 6 error messages.
+
+
+[2023-12-06 21:06:27]	[done]
+	build successfully !
+
+[2023-12-06 21:33:35]	[done]
+	build successfully !
+
+[2023-12-06 21:45:54]	[done]
+	build successfully !
+
+[2023-12-06 21:47:30]	[done]
+	build successfully !
+
+[2023-12-06 21:48:38]	[done]
+	build successfully !
+
+[2023-12-06 21:50:28]	[done]
+	build successfully !
+
+[2023-12-06 21:52:25]	[done]
+	build successfully !
+
+[2023-12-06 21:59:15]	[done]
+	build successfully !
+
+[2023-12-06 22:17:43]	[done]
+	build successfully !
+
+[2023-12-06 22:18:24]	[done]
+	build successfully !
+

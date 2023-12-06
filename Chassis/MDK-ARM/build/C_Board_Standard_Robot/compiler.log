@@ -1,0 +1,16 @@
+>>> cc
+
+".\..\User\Task\Shoot_task.c", line 69: Warning:  #177-D: function "dial_control" was declared but never referenced
+  static void dial_control(void)
+              ^
+".\..\User\Task\Shoot_task.c", line 83: Warning:  #177-D: function "friction_control" was declared but never referenced
+  static void friction_control(void)
+              ^
+".\..\User\Task\Shoot_task.c", line 90: Warning:  #177-D: function "bay_control" was declared but never referenced
+  static void bay_control(void)
+              ^
+.\..\User\Task\Shoot_task.c: 3 warnings, 0 errors
+
+>>> ld
+
+Program Size: Code=47700 RO-data=3744 RW-data=720 ZI-data=48400  

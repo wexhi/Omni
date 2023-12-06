@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "cwd": "${workspaceRoot}",
+            "type": "cortex-debug",
+            "request": "launch",
+            "name": "openocd",
+            "servertype": "openocd",
+            "executable": "build\\C_Board_Standard_Robot\\C_Board_Standard_Robot.elf",
+            "runToEntryPoint": "main",
+            "configFiles": [
+                "interface/stlink-v2.cfg",
+                "target/stm32f4x.cfg"
+            ]
+        }
+    ]
+}
