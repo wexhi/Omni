@@ -3,13 +3,12 @@
 #include "INS_task.h"
 #include "exchange.h"
 #include "drv_can.h"
+#include "arm_math.h"
 
 #define RC_MAX 660
 #define RC_MIN -660
-// #define motor_max 900
-// #define motor_min -900
-#define motor_max 7200
-#define motor_min -7200
+#define motor_max 900
+#define motor_min -900
 #define angle_valve 5
 #define angle_weight 55
 
@@ -130,10 +129,10 @@ static void chassis_motol_speed_calculate()
 {
 
   // 根据分解的速度调整电机速度目标
-  chassis.speed_target[CHAS_LF] = -chassis.Wz - chassis.Vx; // 1
-  chassis.speed_target[CHAS_RF] = -chassis.Wz - chassis.Vy; // 2
-  chassis.speed_target[CHAS_RB] = -chassis.Wz + chassis.Vx; // 3
-  chassis.speed_target[CHAS_LB] = -chassis.Wz + chassis.Vy; // 4
+  chassis.speed_target[CHAS_LF] = -chassis.Wz + sinf(PI/4) * chassis.Vx - sinf(PI/4) * chassis.Vy; // 1
+  chassis.speed_target[CHAS_RF] = -chassis.Wz - sinf(PI/4) * chassis.Vx - sinf(PI/4) * chassis.Vy; // 2
+  chassis.speed_target[CHAS_RB] = -chassis.Wz - sinf(PI/4) * chassis.Vx + sinf(PI/4) * chassis.Vy; // 3
+  chassis.speed_target[CHAS_LB] = -chassis.Wz + sinf(PI/4) * chassis.Vx + sinf(PI/4) * chassis.Vy; // 4
 }
 // 运动解算
 // 速度限制函数
