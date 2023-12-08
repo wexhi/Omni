@@ -129,10 +129,10 @@ static void chassis_motol_speed_calculate()
 {
 
   // 根据分解的速度调整电机速度目标
-  chassis.speed_target[CHAS_LF] = -chassis.Wz + sinf(PI/4) * chassis.Vx - sinf(PI/4) * chassis.Vy; // 1
-  chassis.speed_target[CHAS_RF] = -chassis.Wz - sinf(PI/4) * chassis.Vx - sinf(PI/4) * chassis.Vy; // 2
-  chassis.speed_target[CHAS_RB] = -chassis.Wz - sinf(PI/4) * chassis.Vx + sinf(PI/4) * chassis.Vy; // 3
-  chassis.speed_target[CHAS_LB] = -chassis.Wz + sinf(PI/4) * chassis.Vx + sinf(PI/4) * chassis.Vy; // 4
+  chassis.speed_target[CHAS_LF] = -chassis.Wz + sinf(PI / 4) * chassis.Vx - sinf(PI / 4) * chassis.Vy; // 1
+  chassis.speed_target[CHAS_RF] = -chassis.Wz - sinf(PI / 4) * chassis.Vx - sinf(PI / 4) * chassis.Vy; // 2
+  chassis.speed_target[CHAS_RB] = -chassis.Wz - sinf(PI / 4) * chassis.Vx + sinf(PI / 4) * chassis.Vy; // 3
+  chassis.speed_target[CHAS_LB] = -chassis.Wz + sinf(PI / 4) * chassis.Vx + sinf(PI / 4) * chassis.Vy; // 4
 }
 // 运动解算
 // 速度限制函数
