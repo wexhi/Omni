@@ -173,3 +173,91 @@ Finished: 1 information, 0 warning and 6 error messages.
 [2023-12-08 11:56:04]	[done]
 	build successfully !
 
+[2023-12-09 20:31:44]	[done]
+	build successfully !
+
+[2023-12-09 20:35:57]	[done]
+	build successfully !
+
+[2023-12-09 20:41:23]	[done]
+	build successfully !
+
+[2023-12-09 20:47:19]	[done]
+	build successfully !
+
+[2023-12-09 20:48:56]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\Task\Chassis_task.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\Chassis_task.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\Chassis_task.d .\..\User\Task\Chassis_task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\Chassis_task.c", line 177: Warning:  #69-D: integer conversion resulted in truncation
+    set_curruent(
+OTOR_3508_0, &hcan1, chassis.motor_info[0].set_current, chassis.motor_info[1].set_current, chassis.motor_info[2].set_current, chassis.motor_info[3].set_current);
+                 ^
+".\..\User\Task\Chassis_task.c", line 177: Error:  #167: argument of type "CAN_HandleTypeDef *" is incompatible with parameter of type "CAN_HandleTypeDef"
+    set_curruent(
+OTOR_3508_0, &hcan1, chassis.motor_info[0].set_current, chassis.motor_info[1].set_current, chassis.motor_info[2].set_current, chassis.motor_info[3].set_current);
+                               ^
+".\..\User\Task\Chassis_task.c", line 206: Warning:  #177-D: function "gyroscope" was declared but never referenced
+  static void gyroscope(void)
+              ^
+".\..\User\Task\Chassis_task.c", line 139: Warning:  #177-D: function "Motor_Speed_limiting" was declared but never referenced
+  static void Motor_Speed_limiting(volatile int16_t *motor_speed, int16_t limit_speed)
+              ^
+.\..\User\Task\Chassis_task.c: 3 warnings, 1 error
+
+[2023-12-09 20:49:59]	[done]
+	build successfully !
+
+[2023-12-09 20:50:08]	[done]
+	build successfully !
+
+[2023-12-09 20:50:58]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 247: Error:  #147-D: declaration is incompatible with "void set_curruent(uint8_t, CAN_HandleTypeDef, int16_t, int16_t, int16_t, int16_t)" (declared at line 24 of ".\..\User\DriverLayer\drv_can.h")
+  void set_curruent(uint32_t motor_range, CAN_HandleTypeDef can_id, int16_t v1, int16_t v2, int16_t v3, int16_t v4)
+       ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 1 error
+
+[2023-12-09 20:51:13]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 247: Error:  #147-D: declaration is incompatible with "void set_curruent(uint8_t, CAN_HandleTypeDef, int16_t, int16_t, int16_t, int16_t)" (declared at line 24 of ".\..\User\DriverLayer\drv_can.h")
+  void set_curruent(uint32_t motor_range, CAN_HandleTypeDef can_id, int16_t v1, int16_t v2, int16_t v3, int16_t v4)
+       ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 1 error
+
+[2023-12-09 20:51:34]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\Src\freertos.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\freertos.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\freertos.d .\..\Src\freertos.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+"../User/DriverLayer/drv_can.h", line 24: Error:  #20: identifier "uint32L_t" is undefined
+  void set_curruent(uint32L_t motor_range, CAN_HandleTypeDef can_id, int16_t v1, int16_t v2, int16_t v3, int16_t v4);
+                    ^
+.\..\Src\stm32f4xx_it.c: 0 warnings, 1 error
+".\..\User\DriverLayer\drv_can.h", line 24: Error:  #20: identifier "uint32L_t" is undefined
+  void set_curruent(uint32L_t motor_range, CAN_HandleTypeDef can_id, int16_t v1, int16_t v2, int16_t v3, int16_t v4);
+                    ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 1 error
+"../User/DriverLayer/drv_can.h", line 24: Error:  #20: identifier "uint32L_t" is undefined
+  void set_curruent(uint32L_t motor_range, CAN_HandleTypeDef can_id, int16_t v1, int16_t v2, int16_t v3, int16_t v4);
+                    ^
+.\..\Src\main.c: 0 warnings, 1 error
+"../User/DriverLayer/drv_can.h", line 24: Error:  #20: identifier "uint32L_t" is undefined
+  void set_curruent(uint32L_t motor_range, CAN_HandleTypeDef can_id, int16_t v1, int16_t v2, int16_t v3, int16_t v4);
+                    ^
+.\..\Src\freertos.c: 0 warnings, 1 error
+
+[2023-12-09 20:51:39]	[done]
+	build successfully !
+
+[2023-12-09 20:52:19]	[done]
+	build successfully !
+
