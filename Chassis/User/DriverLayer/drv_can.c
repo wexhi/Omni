@@ -244,6 +244,7 @@ void set_motor_current_shoot(uint8_t id_range, int16_t v1, int16_t v2, int16_t v
   HAL_CAN_AddTxMessage(&hcan2, &tx_header, tx_data, (uint32_t *)CAN_TX_MAILBOX0);
 }
 
+// 试运行代码，一步解决所有电机控制
 void set_curruent(uint32_t motor_range, CAN_HandleTypeDef can_id, int16_t v1, int16_t v2, int16_t v3, int16_t v4)
 {
   CAN_TxHeaderTypeDef tx_header;
