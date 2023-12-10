@@ -1622,7 +1622,7 @@ Section Cross References
     drv_can.o(i.HAL_CAN_RxFifo0MsgPendingCallback) refers to Shoot_task.o(.bss) for shooter
     drv_can.o(i.HAL_CAN_RxFifo0MsgPendingCallback) refers to drv_can.o(.bss) for .bss
     drv_can.o(i.can_remote) refers to stm32f4xx_hal_can.o(i.HAL_CAN_AddTxMessage) for HAL_CAN_AddTxMessage
-    drv_can.o(i.can_remote) refers to can.o(.bss) for hcan1
+    drv_can.o(i.can_remote) refers to can.o(.bss) for hcan2
     drv_can.o(i.set_curruent) refers to stm32f4xx_hal_can.o(i.HAL_CAN_AddTxMessage) for HAL_CAN_AddTxMessage
     drv_usart.o(i.DMAEx_MultiBufferStart_NoIT) refers to drv_usart.o(i.dma_m0_rxcplt_callback) for dma_m0_rxcplt_callback
     drv_usart.o(i.DMAEx_MultiBufferStart_NoIT) refers to drv_usart.o(i.dma_m1_rxcplt_callback) for dma_m1_rxcplt_callback

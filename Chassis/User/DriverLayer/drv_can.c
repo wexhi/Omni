@@ -130,7 +130,7 @@ void can_remote(RC_ctrl_t rc_ctrl) // 调用can来发送遥控器数据
   tx_data[5] = rc_ctrl.rc.ch[2];
   tx_data[6] = rc_ctrl.rc.ch[3] >> 8;
   tx_data[7] = rc_ctrl.rc.ch[3];
-  HAL_CAN_AddTxMessage(&hcan1, &tx_header, tx_data, (uint32_t *)CAN_TX_MAILBOX0);
+  HAL_CAN_AddTxMessage(&hcan2, &tx_header, tx_data, (uint32_t *)CAN_TX_MAILBOX0);
 
   tx_header.StdId = RC_ID_1;
   tx_header.IDE = CAN_ID_STD;
@@ -144,7 +144,7 @@ void can_remote(RC_ctrl_t rc_ctrl) // 调用can来发送遥控器数据
   tx_data[5] = rc_ctrl.key.v;
   tx_data[6] = rc_ctrl.mouse.x >> 8;
   tx_data[7] = rc_ctrl.mouse.x;
-  HAL_CAN_AddTxMessage(&hcan1, &tx_header, tx_data, (uint32_t *)CAN_TX_MAILBOX0);
+  HAL_CAN_AddTxMessage(&hcan2, &tx_header, tx_data, (uint32_t *)CAN_TX_MAILBOX0);
 }
 
 // 一步解决所有电机控制

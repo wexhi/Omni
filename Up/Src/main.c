@@ -66,9 +66,8 @@ void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN 0 */
 // 全局变量
 uint16_t can_cnt_2;
-float target_speed[7] = {0};                 // 实测最大空载转速320rpm
-float target_speed_can_2[7] = {0};           // 实测最大空载转速320rpm
-
+float target_speed[7] = {0};       // 实测最大空载转速320rpm
+float target_speed_can_2[7] = {0}; // 实测最大空载转速320rpm
 
 uint8_t can_flag = 0;
 double step = 9158 / 660;

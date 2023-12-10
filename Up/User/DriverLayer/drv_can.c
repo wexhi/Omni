@@ -1,4 +1,4 @@
-#include "drv_ can.h"
+#include "drv_can.h"
 #define GIMBAL_YAW_ID 0x20b
 #define CHASSIS_ID_START 0x201
 #define CHASSIS_ID_END 0x204
@@ -139,7 +139,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
 
 void can_receive(RC_ctrl_t *rc_ctrl, CAN_RxHeaderTypeDef rxHeader, uint8_t *rx_data) // 调用can来接收遥控器数据
 {
-  if (rxHeader.StdId == 0x300 && rc_flag == 0)
+  if (rxHeader.StdId == 0x300)
   {
     rc_tmp[0] = (rx_data[0] << 8) | rx_data[1];
     rc_tmp[1] = (rx_data[2] << 8) | rx_data[3];
@@ -147,7 +147,7 @@ void can_receive(RC_ctrl_t *rc_ctrl, CAN_RxHeaderTypeDef rxHeader, uint8_t *rx_d
     rc_tmp[3] = (rx_data[6] << 8) | rx_data[7];
     rc_flag = 1;
   }
-  else if (rxHeader.StdId == 0x301 && rc_flag == 1)
+  else if (rxHeader.StdId == 0x301)
   {
     rc_ctrl->rc.ch[0] = rc_tmp[0];
     rc_ctrl->rc.ch[1] = rc_tmp[1];
