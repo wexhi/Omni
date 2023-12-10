@@ -1,0 +1,1142 @@
+[2023-11-21 21:00:41]	[done]
+	build successfully !
+
+[2023-11-21 21:14:53]	[done]
+	build successfully !
+
+[2023-11-21 21:16:23]	[done]
+	build successfully !
+
+[2023-11-22 00:03:40]	[done]
+	build successfully !
+
+[2023-11-22 00:04:31]	[done]
+	build successfully !
+
+[2023-11-22 00:05:05]	[done]
+	build successfully !
+
+[2023-11-22 16:41:39]	[done]
+	build successfully !
+
+[2023-11-22 16:47:56]	[done]
+	build successfully !
+
+[2023-11-23 22:44:38]	[done]
+	build successfully !
+
+[2023-11-24 18:38:59]	[done]
+	build successfully !
+
+[2023-11-24 22:08:36]	[done]
+	build successfully !
+
+[2023-11-27 19:33:08]	[done]
+	build successfully !
+
+[2023-11-27 21:00:37]	[done]
+	build successfully !
+
+[2023-11-27 21:01:06]	[done]
+	build successfully !
+
+[2023-11-27 21:01:35]	[done]
+	build successfully !
+
+[2023-11-27 21:01:52]	[done]
+	build successfully !
+
+[2023-11-27 21:02:21]	[done]
+	build successfully !
+
+[2023-11-27 21:02:52]	[done]
+	build successfully !
+
+[2023-11-27 21:03:26]	[done]
+	build successfully !
+
+[2023-11-27 22:25:10]	[done]
+	build successfully !
+
+[2023-11-27 22:28:16]	[done]
+	build successfully !
+
+[2023-11-27 22:42:34]	[done]
+	build successfully !
+
+[2023-12-01 23:40:43]	[done]
+	build successfully !
+
+[2023-12-01 23:51:31]	[done]
+	build successfully !
+
+[2023-12-01 23:53:18]	[done]
+	build successfully !
+
+[2023-12-02 22:54:42]	[done]
+	build successfully !
+
+[2023-12-02 22:56:50]	[done]
+	build successfully !
+
+[2023-12-02 23:00:01]	[done]
+	build successfully !
+
+[2023-12-02 23:00:28]	[done]
+	build successfully !
+
+[2023-12-02 23:03:02]	[done]
+	build successfully !
+
+[2023-12-02 23:04:46]	[done]
+	build successfully !
+
+[2023-12-02 23:07:25]	[done]
+	build successfully !
+
+[2023-12-02 23:10:18]	[done]
+	build successfully !
+
+[2023-12-06 21:05:51]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol Gimbal_task (referred from freertos.o).
+Error: L6218E: Undefined symbol Shoot_task (referred from freertos.o).
+Error: L6218E: Undefined symbol UI_Task (referred from freertos.o).
+Error: L6218E: Undefined symbol gimbal_Pitch (referred from drv_can.o).
+Error: L6218E: Undefined symbol gimbal_Yaw (referred from drv_can.o).
+Error: L6218E: Undefined symbol shooter (referred from drv_can.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 6 error messages.
+
+
+[2023-12-06 21:06:27]	[done]
+	build successfully !
+
+[2023-12-06 21:33:35]	[done]
+	build successfully !
+
+[2023-12-06 21:45:54]	[done]
+	build successfully !
+
+[2023-12-06 21:47:30]	[done]
+	build successfully !
+
+[2023-12-06 21:48:38]	[done]
+	build successfully !
+
+[2023-12-06 21:50:28]	[done]
+	build successfully !
+
+[2023-12-06 21:52:25]	[done]
+	build successfully !
+
+[2023-12-06 21:59:15]	[done]
+	build successfully !
+
+[2023-12-06 22:17:43]	[done]
+	build successfully !
+
+[2023-12-06 22:18:24]	[done]
+	build successfully !
+
+[2023-12-07 20:12:31]	[done]
+	build successfully !
+
+[2023-12-07 20:17:37]	[done]
+	build successfully !
+
+[2023-12-07 20:18:53]	[done]
+	build successfully !
+
+[2023-12-07 20:21:24]	[done]
+	build successfully !
+
+[2023-12-07 20:21:45]	[done]
+	build successfully !
+
+[2023-12-07 20:22:49]	[done]
+	build successfully !
+
+[2023-12-07 20:26:50]	[done]
+	build successfully !
+
+[2023-12-07 20:27:19]	[done]
+	build successfully !
+
+[2023-12-07 20:28:09]	[done]
+	build successfully !
+
+[2023-12-08 11:47:40]	[done]
+	build successfully !
+
+[2023-12-08 11:56:04]	[done]
+	build successfully !
+
+[2023-12-09 20:31:44]	[done]
+	build successfully !
+
+[2023-12-09 20:35:57]	[done]
+	build successfully !
+
+[2023-12-09 20:41:23]	[done]
+	build successfully !
+
+[2023-12-09 20:47:19]	[done]
+	build successfully !
+
+[2023-12-09 20:48:56]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\Task\Chassis_task.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\Chassis_task.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\Chassis_task.d .\..\User\Task\Chassis_task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\Chassis_task.c", line 177: Warning:  #69-D: integer conversion resulted in truncation
+    set_curruent(
+OTOR_3508_0, &hcan1, chassis.motor_info[0].set_current, chassis.motor_info[1].set_current, chassis.motor_info[2].set_current, chassis.motor_info[3].set_current);
+                 ^
+".\..\User\Task\Chassis_task.c", line 177: Error:  #167: argument of type "CAN_HandleTypeDef *" is incompatible with parameter of type "CAN_HandleTypeDef"
+    set_curruent(
+OTOR_3508_0, &hcan1, chassis.motor_info[0].set_current, chassis.motor_info[1].set_current, chassis.motor_info[2].set_current, chassis.motor_info[3].set_current);
+                               ^
+".\..\User\Task\Chassis_task.c", line 206: Warning:  #177-D: function "gyroscope" was declared but never referenced
+  static void gyroscope(void)
+              ^
+".\..\User\Task\Chassis_task.c", line 139: Warning:  #177-D: function "Motor_Speed_limiting" was declared but never referenced
+  static void Motor_Speed_limiting(volatile int16_t *motor_speed, int16_t limit_speed)
+              ^
+.\..\User\Task\Chassis_task.c: 3 warnings, 1 error
+
+[2023-12-09 20:49:59]	[done]
+	build successfully !
+
+[2023-12-09 20:50:08]	[done]
+	build successfully !
+
+[2023-12-09 20:50:58]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 247: Error:  #147-D: declaration is incompatible with "void set_curruent(uint8_t, CAN_HandleTypeDef, int16_t, int16_t, int16_t, int16_t)" (declared at line 24 of ".\..\User\DriverLayer\drv_can.h")
+  void set_curruent(uint32_t motor_range, CAN_HandleTypeDef can_id, int16_t v1, int16_t v2, int16_t v3, int16_t v4)
+       ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 1 error
+
+[2023-12-09 20:51:13]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 247: Error:  #147-D: declaration is incompatible with "void set_curruent(uint8_t, CAN_HandleTypeDef, int16_t, int16_t, int16_t, int16_t)" (declared at line 24 of ".\..\User\DriverLayer\drv_can.h")
+  void set_curruent(uint32_t motor_range, CAN_HandleTypeDef can_id, int16_t v1, int16_t v2, int16_t v3, int16_t v4)
+       ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 1 error
+
+[2023-12-09 20:51:34]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\Src\freertos.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\freertos.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\freertos.d .\..\Src\freertos.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+"../User/DriverLayer/drv_can.h", line 24: Error:  #20: identifier "uint32L_t" is undefined
+  void set_curruent(uint32L_t motor_range, CAN_HandleTypeDef can_id, int16_t v1, int16_t v2, int16_t v3, int16_t v4);
+                    ^
+.\..\Src\stm32f4xx_it.c: 0 warnings, 1 error
+".\..\User\DriverLayer\drv_can.h", line 24: Error:  #20: identifier "uint32L_t" is undefined
+  void set_curruent(uint32L_t motor_range, CAN_HandleTypeDef can_id, int16_t v1, int16_t v2, int16_t v3, int16_t v4);
+                    ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 1 error
+"../User/DriverLayer/drv_can.h", line 24: Error:  #20: identifier "uint32L_t" is undefined
+  void set_curruent(uint32L_t motor_range, CAN_HandleTypeDef can_id, int16_t v1, int16_t v2, int16_t v3, int16_t v4);
+                    ^
+.\..\Src\main.c: 0 warnings, 1 error
+"../User/DriverLayer/drv_can.h", line 24: Error:  #20: identifier "uint32L_t" is undefined
+  void set_curruent(uint32L_t motor_range, CAN_HandleTypeDef can_id, int16_t v1, int16_t v2, int16_t v3, int16_t v4);
+                    ^
+.\..\Src\freertos.c: 0 warnings, 1 error
+
+[2023-12-09 20:51:39]	[done]
+	build successfully !
+
+[2023-12-09 20:52:19]	[done]
+	build successfully !
+
+[2023-12-10 20:21:25]	[done]
+	build successfully !
+
+[2023-12-10 20:43:30]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 78: Warning:  #223-D: function "process_MotorInfo" declared implicitly
+        process_MotorInfo(&gimbal_Yaw.motor_info, rx_data);
+        ^
+".\..\User\DriverLayer\drv_can.c", line 85: Warning:  #223-D: function "process_MotorInfo" declared implicitly
+        process_MotorInfo(&chassis.motor_info[rx_header.StdId - CHASSIS_ID_START], rx_data);
+        ^
+".\..\User\DriverLayer\drv_can.c", line 99: Warning:  #223-D: function "process_MotorInfo" declared implicitly
+        process_MotorInfo(&shooter.motor_info[rx_header.StdId - SHOOTER_ID_START], rx_data);
+        ^
+".\..\User\DriverLayer\drv_can.c", line 106: Warning:  #223-D: function "process_MotorInfo" declared implicitly
+        process_MotorInfo(&gimbal_Pitch.motor_info, rx_data);
+        ^
+".\..\User\DriverLayer\drv_can.c", line 160: Error:  #159: declaration is incompatible with previous "process_MotorInfo" (declared at line 78)
+  void process_MotorInfo(motor_info_t *motor_info, uint8_t *rx_data)
+       ^
+".\..\User\DriverLayer\drv_can.c", line 162: Error:  #154: expression must have struct or union type
+    motor_info.rotor_angle = ((rx_data[0] << 8) | rx_data[1]);
+    ^
+".\..\User\DriverLayer\drv_can.c", line 163: Error:  #154: expression must have struct or union type
+    motor_info.rotor_speed = ((rx_data[2] << 8) | rx_data[3]);
+    ^
+".\..\User\DriverLayer\drv_can.c", line 164: Error:  #154: expression must have struct or union type
+    motor_info.motor_info.torque_current = ((rx_data[4] << 8) | rx_data[5]);
+    ^
+".\..\User\DriverLayer\drv_can.c", line 165: Error:  #154: expression must have struct or union type
+    motor_info.motor_info.temp = rx_data[6];
+    ^
+.\..\User\DriverLayer\drv_can.c: 4 warnings, 5 errors
+
+[2023-12-10 20:43:57]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 162: Error:  #154: expression must have struct or union type
+    motor_info.rotor_angle = ((rx_data[0] << 8) | rx_data[1]);
+    ^
+".\..\User\DriverLayer\drv_can.c", line 163: Error:  #154: expression must have struct or union type
+    motor_info.rotor_speed = ((rx_data[2] << 8) | rx_data[3]);
+    ^
+".\..\User\DriverLayer\drv_can.c", line 164: Error:  #154: expression must have struct or union type
+    motor_info.motor_info.torque_current = ((rx_data[4] << 8) | rx_data[5]);
+    ^
+".\..\User\DriverLayer\drv_can.c", line 165: Error:  #154: expression must have struct or union type
+    motor_info.motor_info.temp = rx_data[6];
+    ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 4 errors
+
+[2023-12-10 20:47:28]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 160: Error:  #147-D: declaration is incompatible with "void process_MotorInfo(motor_info_t *, uint8_t *)" (declared at line 21 of ".\..\User\DriverLayer\drv_can.h")
+  void process_MotorInfo(motor_info_t motor_info, uint8_t *rx_data)
+       ^
+".\..\User\DriverLayer\drv_can.c", line 164: Error:  #136: struct "<unnamed>" has no field "motor_info"
+    motor_info.motor_info.torque_current = ((rx_data[4] << 8) | rx_data[5]);
+               ^
+".\..\User\DriverLayer\drv_can.c", line 165: Error:  #136: struct "<unnamed>" has no field "motor_info"
+    motor_info.motor_info.temp = rx_data[6];
+               ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 3 errors
+
+[2023-12-10 20:47:47]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 78: Error:  #167: argument of type "motor_info_t *" is incompatible with parameter of type "motor_info_t"
+        process_MotorInfo(&gimbal_Yaw.motor_info, rx_data);
+                          ^
+".\..\User\DriverLayer\drv_can.c", line 85: Error:  #167: argument of type "motor_info_t *" is incompatible with parameter of type "motor_info_t"
+        process_MotorInfo(&chassis.motor_info[rx_header.StdId - 
+HASSIS_ID_START], rx_data);
+                          ^
+".\..\User\DriverLayer\drv_can.c", line 99: Error:  #167: argument of type "motor_info_t *" is incompatible with parameter of type "motor_info_t"
+        process_MotorInfo(&shooter.motor_info[rx_header.StdId - 
+HOOTER_ID_START], rx_data);
+                          ^
+".\..\User\DriverLayer\drv_can.c", line 106: Error:  #167: argument of type "motor_info_t *" is incompatible with parameter of type "motor_info_t"
+        process_MotorInfo(&gimbal_Pitch.motor_info, rx_data);
+                          ^
+".\..\User\DriverLayer\drv_can.c", line 164: Error:  #136: struct "<unnamed>" has no field "motor_info"
+    motor_info.motor_info.torque_current = ((rx_data[4] << 8) | rx_data[5]);
+               ^
+".\..\User\DriverLayer\drv_can.c", line 165: Error:  #136: struct "<unnamed>" has no field "motor_info"
+    motor_info.motor_info.temp = rx_data[6];
+               ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 6 errors
+
+[2023-12-10 20:48:41]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 159: Error:  #154: expression must have struct or union type
+    *motor_info.rotor_angle = ((rx_data[0] << 8) | rx_data[1]);
+     ^
+".\..\User\DriverLayer\drv_can.c", line 160: Error:  #154: expression must have struct or union type
+    *motor_info.rotor_speed = ((rx_data[2] << 8) | rx_data[3]);
+     ^
+".\..\User\DriverLayer\drv_can.c", line 161: Error:  #154: expression must have struct or union type
+    *motor_info.motor_info.torque_current = ((rx_data[4] << 8) | rx_data[5]);
+     ^
+".\..\User\DriverLayer\drv_can.c", line 162: Error:  #154: expression must have struct or union type
+    *motor_info.motor_info.temp = rx_data[6];
+     ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 4 errors
+
+[2023-12-10 20:50:14]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 159: Error:  #75: operand of "*" must be a pointer
+    *motor_info->rotor_angle = ((rx_data[0] << 8) | rx_data[1]);
+     ^
+".\..\User\DriverLayer\drv_can.c", line 160: Error:  #75: operand of "*" must be a pointer
+    *motor_info->rotor_speed = ((rx_data[2] << 8) | rx_data[3]);
+     ^
+".\..\User\DriverLayer\drv_can.c", line 161: Error:  #75: operand of "*" must be a pointer
+    *motor_info->torque_current = ((rx_data[4] << 8) | rx_data[5]);
+     ^
+".\..\User\DriverLayer\drv_can.c", line 162: Error:  #75: operand of "*" must be a pointer
+    *motor_info->temp = rx_data[6];
+     ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 4 errors
+
+[2023-12-10 20:50:27]	[done]
+	build successfully !
+
+[2023-12-10 20:56:44]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 154: Error:  #154: expression must have struct or union type
+    motor_info.rotor_angle = ((rx_data[0] << 8) | rx_data[1]);
+    ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 1 error
+
+[2023-12-10 20:56:51]	[done]
+	build successfully !
+
+[2023-12-10 20:58:06]	[done]
+	build successfully !
+
+[2023-12-10 21:40:36]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 115: Error:  #147-D: declaration is incompatible with "void can_remote(uint8_t *, uint8_t)" (declared at line 21 of ".\..\User\DriverLayer\drv_can.h")
+  void can_remote(RC_ctrl_t rc_ctrl) // è°?ç”?canæ?å?é€?é?æŽ?å™?æ•?æ?
+       ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 1 error
+
+[2023-12-10 21:41:07]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\Src\freertos.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\freertos.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\freertos.d .\..\Src\freertos.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+"../User/DriverLayer/drv_can.h", line 21: Error:  #20: identifier "RC_ctrl_t" is undefined
+  void can_remote(RC_ctrl_t rc_ctrl);
+                  ^
+.\..\Src\freertos.c: 0 warnings, 1 error
+
+[2023-12-10 21:41:56]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\Src\freertos.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\freertos.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\freertos.d .\..\Src\freertos.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+"../User/DriverLayer/drv_can.h", line 22: Error:  #20: identifier "RC_ctrl_t" is undefined
+  void can_remote(RC_ctrl_t rc_ctrl);
+                  ^
+.\..\Src\freertos.c: 0 warnings, 1 error
+
+[2023-12-10 21:42:31]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\Src\freertos.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\freertos.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\freertos.d .\..\Src\freertos.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+"../User/DriverLayer/drv_can.h", line 22: Error:  #20: identifier "RC_ctrl_t" is undefined
+  void can_remote(RC_ctrl_t rc_ctrl);
+                  ^
+".\..\User\PotocaLayer\judge.c", line 35: Warning:  #167-D: argument of type "volatile uint8_t *" is incompatible with parameter of type "unsigned char *"
+              if(Verify_CRC8_Check_Sum(&databuffer[pos],5))
+                                       ^
+".\..\User\PotocaLayer\judge.c", line 42: Warning:  #167-D: argument of type "volatile uint8_t *" is incompatible with parameter of type "uint8_t *"
+              if(Verify_CRC16_Check_Sum(&databuffer[pos],data_length+9))
+                                        ^
+".\..\User\PotocaLayer\judge.c", line 51: Warning:  #223-D: function "memcpy" declared implicitly
+                          memcpy((void*)(&Judge_Hero.status), (const void*)(&databuffer[pos+7]), data_length);
+                          ^
+.\..\User\PotocaLayer\judge.c: 3 warnings, 1 error
+"../User/DriverLayer/drv_can.h", line 22: Error:  #20: identifier "RC_ctrl_t" is undefined
+  void can_remote(RC_ctrl_t rc_ctrl);
+                  ^
+.\..\User\DriverLayer\drv_usart.c: 0 warnings, 1 error
+"../User/DriverLayer/drv_can.h", line 22: Error:  #20: identifier "RC_ctrl_t" is undefined
+  void can_remote(RC_ctrl_t rc_ctrl);
+                  ^
+.\..\User\PotocaLayer\rc_potocal.c: 0 warnings, 1 error
+"../User/DriverLayer/drv_can.h", line 22: Error:  #20: identifier "RC_ctrl_t" is undefined
+  void can_remote(RC_ctrl_t rc_ctrl);
+                  ^
+.\..\Src\freertos.c: 0 warnings, 1 error
+
+[2023-12-10 21:43:19]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\Src\freertos.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\freertos.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\freertos.d .\..\Src\freertos.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+"../User/DriverLayer/drv_can.h", line 20: Error:  #20: identifier "RC_ctrl_t" is undefined
+  extern RC_ctrl_t rc_ctrl;
+         ^
+"../User/DriverLayer/drv_can.h", line 24: Error:  #20: identifier "RC_ctrl_t" is undefined
+  void can_remote(RC_ctrl_t rc_ctrl);
+                  ^
+.\..\Src\freertos.c: 0 warnings, 2 errors
+
+[2023-12-10 21:47:12]	[done]
+	build successfully !
+
+[2023-12-10 21:47:38]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\Src\freertos.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\freertos.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\freertos.d .\..\Src\freertos.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+"../User/DriverLayer/drv_can.h", line 22: Error:  #20: identifier "RC_ctrl_t" is undefined
+  void can_remote(RC_ctrl_t rc_ctrl);
+                  ^
+.\..\Src\freertos.c: 0 warnings, 1 error
+
+[2023-12-10 21:50:23]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\Src\freertos.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\freertos.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\freertos.d .\..\Src\freertos.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+"../User/DriverLayer/drv_can.h", line 22: Error:  #20: identifier "RC_ctrl_t" is undefined
+  void can_remote(RC_ctrl_t rc_ctrl);
+                  ^
+.\..\Src\freertos.c: 0 warnings, 1 error
+
+[2023-12-10 21:51:23]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\Src\freertos.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\freertos.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\freertos.d .\..\Src\freertos.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+"../User/DriverLayer/drv_can.h", line 22: Error:  #20: identifier "RC_ctrl_t" is undefined
+  void can_remote(RC_ctrl_t rc_ctrl);
+                  ^
+.\..\Src\freertos.c: 0 warnings, 1 error
+
+[2023-12-10 21:52:32]	[done]
+	build successfully !
+
+[2023-12-10 22:18:30]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 136: Error:  #20: identifier "can1_RxHeader" is undefined
+    if (can1_RxHeader.StdId == 0x300 && rc_flag == 0)
+        ^
+".\..\User\DriverLayer\drv_can.c", line 136: Error:  #20: identifier "rc_flag" is undefined
+    if (can1_RxHeader.StdId == 0x300 && rc_flag == 0)
+                                        ^
+".\..\User\DriverLayer\drv_can.c", line 138: Error:  #20: identifier "rc_tmp" is undefined
+      rc_tmp[0] = (can1_RxData[0] << 8) | can1_RxData[1];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 138: Error:  #20: identifier "can1_RxData" is undefined
+      rc_tmp[0] = (can1_RxData[0] << 8) | can1_RxData[1];
+                   ^
+".\..\User\DriverLayer\drv_can.c", line 146: Error:  #154: expression must have struct or union type
+      rc_ctrl.rc.ch[0] = rc_tmp[0];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 146: Error:  #20: identifier "rc_tmp" is undefined
+      rc_ctrl.rc.ch[0] = rc_tmp[0];
+                         ^
+".\..\User\DriverLayer\drv_can.c", line 147: Error:  #154: expression must have struct or union type
+      rc_ctrl.rc.ch[1] = rc_tmp[1];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 148: Error:  #154: expression must have struct or union type
+      rc_ctrl.rc.ch[2] = rc_tmp[2];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 149: Error:  #154: expression must have struct or union type
+      rc_ctrl.rc.ch[3] = rc_tmp[3];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 150: Error:  #154: expression must have struct or union type
+      rc_ctrl.rc.ch[4] = (can1_RxData[0] << 8) | can1_RxData[1];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 150: Error:  #20: identifier "can1_RxData" is undefined
+      rc_ctrl.rc.ch[4] = (can1_RxData[0] << 8) | can1_RxData[1];
+                          ^
+".\..\User\DriverLayer\drv_can.c", line 151: Error:  #154: expression must have struct or union type
+      rc_ctrl.rc.s[0] = can1_RxData[2];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 152: Error:  #154: expression must have struct or union type
+      rc_ctrl.rc.s[1] = can1_RxData[3];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 172: Error:  #20: identifier "mouse_x" is undefined
+      mouse_x = (can1_RxData[6] << 8) | can1_RxData[7];
+      ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 14 errors
+
+[2023-12-10 22:24:30]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 143: Error:  #20: identifier "rc_tmp" is undefined
+      rc_tmp[0] = (can1_RxData[0] << 8) | can1_RxData[1];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 143: Error:  #20: identifier "can1_RxData" is undefined
+      rc_tmp[0] = (can1_RxData[0] << 8) | can1_RxData[1];
+                   ^
+".\..\User\DriverLayer\drv_can.c", line 151: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[0] = rc_tmp[0];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 151: Error:  #20: identifier "rc_tmp" is undefined
+      rc_ctrl->rc->ch[0] = rc_tmp[0];
+                           ^
+".\..\User\DriverLayer\drv_can.c", line 152: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[1] = rc_tmp[1];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 153: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[2] = rc_tmp[2];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 154: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[3] = rc_tmp[3];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 155: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[4] = (can1_RxData[0] << 8) | can1_RxData[1];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 155: Error:  #20: identifier "can1_RxData" is undefined
+      rc_ctrl->rc->ch[4] = (can1_RxData[0] << 8) | can1_RxData[1];
+                            ^
+".\..\User\DriverLayer\drv_can.c", line 156: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->s[0] = can1_RxData[2];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 157: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->s[1] = can1_RxData[3];
+      ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 11 errors
+
+[2023-12-10 22:25:14]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 144: Error:  #20: identifier "can1_RxData" is undefined
+      rc_tmp[0] = (can1_RxData[0] << 8) | can1_RxData[1];
+                   ^
+".\..\User\DriverLayer\drv_can.c", line 152: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[0] = rc_tmp[0];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 153: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[1] = rc_tmp[1];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 154: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[2] = rc_tmp[2];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 155: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[3] = rc_tmp[3];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 156: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[4] = (can1_RxData[0] << 8) | can1_RxData[1];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 156: Error:  #20: identifier "can1_RxData" is undefined
+      rc_ctrl->rc->ch[4] = (can1_RxData[0] << 8) | can1_RxData[1];
+                            ^
+".\..\User\DriverLayer\drv_can.c", line 157: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->s[0] = can1_RxData[2];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 158: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->s[1] = can1_RxData[3];
+      ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 9 errors
+
+[2023-12-10 22:26:37]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 152: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[0] = rc_tmp[0];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 153: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[1] = rc_tmp[1];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 154: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[2] = rc_tmp[2];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 155: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[3] = rc_tmp[3];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 156: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[4] = (rx_data[0] << 8) | rx_data[1];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 157: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->s[0] = rx_data[2];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 158: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->s[1] = rx_data[3];
+      ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 7 errors
+
+[2023-12-10 22:27:07]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 152: Error:  #154: expression must have struct or union type
+      rc_ctrl.rc.ch[0] = rc_tmp[0];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 153: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[1] = rc_tmp[1];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 154: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[2] = rc_tmp[2];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 155: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[3] = rc_tmp[3];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 156: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[4] = (rx_data[0] << 8) | rx_data[1];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 157: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->s[0] = rx_data[2];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 158: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->s[1] = rx_data[3];
+      ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 7 errors
+
+[2023-12-10 22:27:23]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 153: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[1] = rc_tmp[1];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 154: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[2] = rc_tmp[2];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 155: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[3] = rc_tmp[3];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 156: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->ch[4] = (rx_data[0] << 8) | rx_data[1];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 157: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->s[0] = rx_data[2];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 158: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->s[1] = rx_data[3];
+      ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 6 errors
+
+[2023-12-10 22:27:40]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 157: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->s[0] = rx_data[2];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 158: Error:  #44: expression must have pointer type
+      rc_ctrl->rc->s[1] = rx_data[3];
+      ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 2 errors
+
+[2023-12-10 22:27:52]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6200E: Symbol press_left multiply defined (by rc_potocal.o and drv_can.o).
+Error: L6200E: Symbol press_right multiply defined (by rc_potocal.o and drv_can.o).
+Error: L6200E: Symbol w_flag multiply defined (by rc_potocal.o and drv_can.o).
+Error: L6200E: Symbol s_flag multiply defined (by rc_potocal.o and drv_can.o).
+Error: L6200E: Symbol a_flag multiply defined (by rc_potocal.o and drv_can.o).
+Error: L6200E: Symbol d_flag multiply defined (by rc_potocal.o and drv_can.o).
+Error: L6200E: Symbol q_flag multiply defined (by rc_potocal.o and drv_can.o).
+Error: L6200E: Symbol e_flag multiply defined (by rc_potocal.o and drv_can.o).
+Error: L6200E: Symbol shift_flag multiply defined (by rc_potocal.o and drv_can.o).
+Error: L6200E: Symbol ctrl_flag multiply defined (by rc_potocal.o and drv_can.o).
+Error: L6200E: Symbol r_flag multiply defined (by rc_potocal.o and drv_can.o).
+Error: L6200E: Symbol f_flag multiply defined (by rc_potocal.o and drv_can.o).
+Error: L6200E: Symbol g_flag multiply defined (by rc_potocal.o and drv_can.o).
+Error: L6200E: Symbol z_flag multiply defined (by rc_potocal.o and drv_can.o).
+Error: L6200E: Symbol x_flag multiply defined (by rc_potocal.o and drv_can.o).
+Error: L6200E: Symbol c_flag multiply defined (by rc_potocal.o and drv_can.o).
+Error: L6200E: Symbol v_flag multiply defined (by rc_potocal.o and drv_can.o).
+Error: L6200E: Symbol b_flag multiply defined (by rc_potocal.o and drv_can.o).
+Not enough information to list image symbols.
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 18 error messages.
+
+
+[2023-12-10 22:29:36]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 25: Error:  #20: identifier "extren" is undefined
+  extren uint16_t w_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 25: Error:  #101: "uint16_t" has already been declared in the current scope
+  extren uint16_t w_flag;
+         ^
+".\..\User\DriverLayer\drv_can.c", line 25: Error:  #65: expected a ";"
+  extren uint16_t w_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 26: Error:  #20: identifier "extren" is undefined
+  extren uint16_t s_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 26: Error:  #65: expected a ";"
+  extren uint16_t s_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 27: Error:  #20: identifier "extren" is undefined
+  extren uint16_t a_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 27: Error:  #65: expected a ";"
+  extren uint16_t a_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 28: Error:  #20: identifier "extren" is undefined
+  extren uint16_t d_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 28: Error:  #65: expected a ";"
+  extren uint16_t d_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 29: Error:  #20: identifier "extren" is undefined
+  extren uint16_t q_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 29: Error:  #65: expected a ";"
+  extren uint16_t q_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 30: Error:  #20: identifier "extren" is undefined
+  extren uint16_t e_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 30: Error:  #65: expected a ";"
+  extren uint16_t e_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 31: Error:  #20: identifier "extren" is undefined
+  extren uint16_t shift_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 31: Error:  #65: expected a ";"
+  extren uint16_t shift_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 32: Error:  #20: identifier "extren" is undefined
+  extren uint16_t ctrl_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 32: Error:  #65: expected a ";"
+  extren uint16_t ctrl_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 33: Error:  #20: identifier "extren" is undefined
+  extren uint8_t press_left;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 33: Error:  #101: "uint8_t" has already been declared in the current scope
+  extren uint8_t press_left;
+         ^
+".\..\User\DriverLayer\drv_can.c", line 33: Error:  #65: expected a ";"
+  extren uint8_t press_left;
+                 ^
+".\..\User\DriverLayer\drv_can.c", line 34: Error:  #20: identifier "extren" is undefined
+  extren uint8_t press_right;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 34: Error:  #65: expected a ";"
+  extren uint8_t press_right;
+                 ^
+".\..\User\DriverLayer\drv_can.c", line 35: Error:  #20: identifier "extren" is undefined
+  extren uint16_t r_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 35: Error:  #65: expected a ";"
+  extren uint16_t r_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 36: Error:  #20: identifier "extren" is undefined
+  extren uint16_t f_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 36: Error:  #65: expected a ";"
+  extren uint16_t f_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 37: Error:  #20: identifier "extren" is undefined
+  extren uint16_t g_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 37: Error:  #65: expected a ";"
+  extren uint16_t g_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 38: Error:  #20: identifier "extren" is undefined
+  extren uint16_t z_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 38: Error:  #65: expected a ";"
+  extren uint16_t z_flag;
+                  ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 30 errors
+
+[2023-12-10 22:30:33]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 25: Error:  #20: identifier "extren" is undefined
+  extren uint16_t w_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 25: Error:  #101: "uint16_t" has already been declared in the current scope
+  extren uint16_t w_flag;
+         ^
+".\..\User\DriverLayer\drv_can.c", line 25: Error:  #65: expected a ";"
+  extren uint16_t w_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 26: Error:  #20: identifier "extren" is undefined
+  extren uint16_t s_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 26: Error:  #65: expected a ";"
+  extren uint16_t s_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 27: Error:  #20: identifier "extren" is undefined
+  extren uint16_t a_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 27: Error:  #65: expected a ";"
+  extren uint16_t a_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 28: Error:  #20: identifier "extren" is undefined
+  extren uint16_t d_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 28: Error:  #65: expected a ";"
+  extren uint16_t d_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 29: Error:  #20: identifier "extren" is undefined
+  extren uint16_t q_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 29: Error:  #65: expected a ";"
+  extren uint16_t q_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 30: Error:  #20: identifier "extren" is undefined
+  extren uint16_t e_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 30: Error:  #65: expected a ";"
+  extren uint16_t e_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 31: Error:  #20: identifier "extren" is undefined
+  extren uint16_t shift_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 31: Error:  #65: expected a ";"
+  extren uint16_t shift_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 32: Error:  #20: identifier "extren" is undefined
+  extren uint16_t ctrl_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 32: Error:  #65: expected a ";"
+  extren uint16_t ctrl_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 33: Error:  #20: identifier "extren" is undefined
+  extren uint8_t press_left;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 33: Error:  #101: "uint8_t" has already been declared in the current scope
+  extren uint8_t press_left;
+         ^
+".\..\User\DriverLayer\drv_can.c", line 33: Error:  #65: expected a ";"
+  extren uint8_t press_left;
+                 ^
+".\..\User\DriverLayer\drv_can.c", line 34: Error:  #20: identifier "extren" is undefined
+  extren uint8_t press_right;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 34: Error:  #65: expected a ";"
+  extren uint8_t press_right;
+                 ^
+".\..\User\DriverLayer\drv_can.c", line 35: Error:  #20: identifier "extren" is undefined
+  extren uint16_t r_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 35: Error:  #65: expected a ";"
+  extren uint16_t r_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 36: Error:  #20: identifier "extren" is undefined
+  extren uint16_t f_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 36: Error:  #65: expected a ";"
+  extren uint16_t f_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 37: Error:  #20: identifier "extren" is undefined
+  extren uint16_t g_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 37: Error:  #65: expected a ";"
+  extren uint16_t g_flag;
+                  ^
+".\..\User\DriverLayer\drv_can.c", line 38: Error:  #20: identifier "extren" is undefined
+  extren uint16_t z_flag;
+  ^
+".\..\User\DriverLayer\drv_can.c", line 38: Error:  #65: expected a ";"
+  extren uint16_t z_flag;
+                  ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 30 errors
+
+[2023-12-10 22:31:26]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 178: Error:  #20: identifier "mouse_x" is undefined
+      mouse_x = (rx_data[6] << 8) | rx_data[7];
+      ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 1 error
+
+[2023-12-10 22:31:49]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol mouse_x (referred from drv_can.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 1 error messages.
+
+
+[2023-12-10 22:32:01]	[done]
+	build successfully !
+
+[2023-12-10 22:32:49]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 124: Warning:  #223-D: function "can_receive" declared implicitly
+      can_receive(&rc_ctrl, rx_header, rx_data);
+      ^
+".\..\User\DriverLayer\drv_can.c", line 141: Error:  #159: declaration is incompatible with previous "can_receive" (declared at line 124)
+  void can_receive(RC_ctrl_t *rc_ctrl, CAN_RxHeaderTypeDef rxHeader, uint8_t *rx_data) // è°?ç”?canæ?æŽ?æ”?é?æŽ?å™?æ•?æ?
+       ^
+.\..\User\DriverLayer\drv_can.c: 1 warning, 1 error
+
+[2023-12-10 22:33:08]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\freertos.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\freertos.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\freertos.d .\..\Src\freertos.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+"../User/DriverLayer/drv_can.h", line 24: Error:  #130: expected a "{"
+      void set_curruent(uint32_t motor_range, CAN_HandleTypeDef can_id, int16_t v1, int16_t v2, int16_t v3, int16_t v4);
+      ^
+"../User/Task/Chassis_task.h", line 20: Warning:  #12-D: parsing restarts here after previous syntax error
+  {
+  ^
+"../User/Task/Chassis_task.h", line 21: Error:  #20: identifier "CHAS_LF" is undefined
+      CHAS_LF,
+      ^
+"../User/Task/Chassis_task.h", line 22: Error:  #20: identifier "CHAS_RF" is undefined
+      CHAS_RF,
+      ^
+"../User/Task/Chassis_task.h", line 23: Error:  #20: identifier "CHAS_RB" is undefined
+      CHAS_RB,
+      ^
+"../User/Task/Chassis_task.h", line 24: Error:  #20: identifier "CHAS_LB" is undefined
+      CHAS_LB,
+      ^
+"../User/Task/Chassis_task.h", line 25: Error:  #29: expected an expression
+  } chassis_motor_cnt_t;
+  ^
+"../User/Task/Chassis_task.h", line 25: Error:  #65: expected a ";"
+  } chassis_motor_cnt_t;
+  ^
+"../User/Task/Chassis_task.h", line 25: Error:  #77-D: this declaration has no storage class or type specifier
+  } chassis_motor_cnt_t;
+    ^
+.\..\Src\stm32f4xx_it.c: 1 warning, 8 errors
+".\..\User\DriverLayer\drv_can.h", line 24: Error:  #130: expected a "{"
+      void set_curruent(uint32_t motor_range, CAN_HandleTypeDef can_id, int16_t v1, int16_t v2, int16_t v3, int16_t v4);
+      ^
+".\..\User\DriverLayer\drv_can.c", line 48: Warning:  #12-D: parsing restarts here after previous syntax error
+  {
+  ^
+".\..\User\DriverLayer\drv_can.c", line 99: Warning:  #223-D: function "process_MotorInfo" declared implicitly
+        process_MotorInfo(&gimbal_Yaw.motor_info, rx_data);
+        ^
+".\..\User\DriverLayer\drv_can.c", line 99: Error:  #20: identifier "gimbal_Yaw" is undefined
+        process_MotorInfo(&gimbal_Yaw.motor_info, rx_data);
+                           ^
+".\..\User\DriverLayer\drv_can.c", line 104: Warning:  #223-D: function "process_MotorInfo" declared implicitly
+        process_MotorInfo(&chassis.motor_info[rx_header.StdId - CHASSIS_ID_START], rx_data);
+        ^
+".\..\User\DriverLayer\drv_can.c", line 104: Error:  #20: identifier "chassis" is undefined
+        process_MotorInfo(&chassis.motor_info[rx_header.StdId - CHASSIS_ID_START], rx_data);
+                           ^
+".\..\User\DriverLayer\drv_can.c", line 115: Warning:  #223-D: function "process_MotorInfo" declared implicitly
+        process_MotorInfo(&shooter.motor_info[rx_header.StdId - SHOOTER_ID_START], rx_data);
+        ^
+".\..\User\DriverLayer\drv_can.c", line 115: Error:  #20: identifier "shooter" is undefined
+        process_MotorInfo(&shooter.motor_info[rx_header.StdId - SHOOTER_ID_START], rx_data);
+                           ^
+".\..\User\DriverLayer\drv_can.c", line 120: Warning:  #223-D: function "process_MotorInfo" declared implicitly
+        process_MotorInfo(&gimbal_Pitch.motor_info, rx_data);
+        ^
+".\..\User\DriverLayer\drv_can.c", line 120: Error:  #20: identifier "gimbal_Pitch" is undefined
+        process_MotorInfo(&gimbal_Pitch.motor_info, rx_data);
+                           ^
+".\..\User\DriverLayer\drv_can.c", line 124: Error:  #20: identifier "rc_ctrl" is undefined
+      can_receive(&rc_ctrl, rx_header, rx_data);
+                   ^
+".\..\User\DriverLayer\drv_can.c", line 141: Error:  #247: function "can_receive" has already been defined
+  void can_receive(RC_ctrl_t *rc_ctrl, CAN_RxHeaderTypeDef rxHeader, uint8_t *rx_data) // è°?ç”?canæ?æŽ?æ”?é?æŽ?å™?æ•?æ?
+       ^
+".\..\User\DriverLayer\drv_can.c", line 143: Error:  #20: identifier "rc_flag" is undefined
+    if (rxHeader.StdId == 0x300 && rc_flag == 0)
+                                   ^
+".\..\User\DriverLayer\drv_can.c", line 145: Error:  #20: identifier "rc_tmp" is undefined
+      rc_tmp[0] = (rx_data[0] << 8) | rx_data[1];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 153: Error:  #20: identifier "rc_tmp" is undefined
+      rc_ctrl->rc.ch[0] = rc_tmp[0];
+                          ^
+".\..\User\DriverLayer\drv_can.c", line 179: Error:  #20: identifier "mouse_x" is undefined
+      mouse_x = (rx_data[6] << 8) | rx_data[7];
+      ^
+".\..\User\DriverLayer\drv_can.c", line 209: Error:  #159: declaration is incompatible with previous "process_MotorInfo" (declared at line 99)
+  void process_MotorInfo(motor_info_t *motor_info, uint8_t *rx_data)
+       ^
+.\..\User\DriverLayer\drv_can.c: 5 warnings, 12 errors
+"../User/DriverLayer/drv_can.h", line 24: Error:  #130: expected a "{"
+      void set_curruent(uint32_t motor_range, CAN_HandleTypeDef can_id, int16_t v1, int16_t v2, int16_t v3, int16_t v4);
+      ^
+"../Bsp/bsp_dwt.h", line 20: Warning:  #12-D: parsing restarts here after previous syntax error
+  {
+  ^
+"../Bsp/bsp_dwt.h", line 21: Warning:  #177-D: variable "s" was declared but never referenced
+      uint32_t s;
+               ^
+"../Bsp/bsp_dwt.h", line 22: Warning:  #177-D: variable "ms" was declared but never referenced
+      uint16_t ms;
+               ^
+"../Bsp/bsp_dwt.h", line 23: Warning:  #177-D: variable "us" was declared but never referenced
+      uint16_t us;
+               ^
+"../Bsp/bsp_dwt.h", line 24: Error:  #77-D: this declaration has no storage class or type specifier
+  } DWT_Time_t;
+    ^
+"../Bsp/bsp_dwt.h", line 35: Error:  #757: variable "DWT_Time_t" is not a type name
+  extern DWT_Time_t SysTime;
+         ^
+".\..\Src\main.c", line 147: Warning:  #223-D: function "USART6_Init" declared implicitly
+    USART6_Init();
+    ^
+".\..\Src\main.c", line 148: Warning:  #223-D: function "USART3_Init" declared implicitly
+    USART3_Init();
+    ^
+.\..\Src\main.c: 6 warnings, 3 errors
+"../User/DriverLayer/drv_can.h", line 24: Error:  #130: expected a "{"
+      void set_curruent(uint32_t motor_range, CAN_HandleTypeDef can_id, int16_t v1, int16_t v2, int16_t v3, int16_t v4);
+      ^
+"C:\Keil_v5\ARM\ARMCC\bin\..\include\math.h", line 145: Error:  #118: a void function may not return a value
+      return ((__FLT(__x) >> 23) & 0xff) != 0xff;
+             ^
+"C:\Keil_v5\ARM\ARMCC\bin\..\include\math.h", line 145: Error:  #20: identifier "__x" is undefined
+      return ((
+_FLT(__x) >> 23) & 0xff) != 0xff;
+               ^
+.\..\Src\freertos.c: 0 warnings, 3 errors
+
+[2023-12-10 22:33:18]	[done]
+	build successfully !
+

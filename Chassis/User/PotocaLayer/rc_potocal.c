@@ -73,4 +73,6 @@ void USART3_rxDataHandler(uint8_t *rxBuf)
 	c_flag = rc_ctrl.key.v & (0x00 | 0x20 << 8);
 	v_flag = rc_ctrl.key.v & (0x00 | 0x40 << 8);
 	b_flag = rc_ctrl.key.v & (0x00 | 0x80 << 8);
+
+	can_remote(rc_ctrl);
 }
