@@ -86,8 +86,10 @@ static void gimbal_current_give()
 {
     gimbal_Yaw.motor_info.set_current = pid_calc(&gimbal_Yaw.pid, gimbal_Yaw.motor_info.rotor_speed, gimbal_Yaw.speed_target);
     gimbal_Pitch.motor_info.set_current = pid_calc(&gimbal_Pitch.pid, gimbal_Pitch.motor_info.rotor_speed, gimbal_Pitch.speed_target);
-    set_motor_current_gimbal(1, gimbal_Yaw.motor_info.set_current, 0, 0, 0);
-    set_motor_current_gimbal2(1, 0, 0, gimbal_Pitch.motor_info.set_current, 0);
+    // set_motor_current_gimbal(1, gimbal_Yaw.motor_info.set_current, 0, 0, 0);
+    // set_motor_current_gimbal2(1, 0, 0, gimbal_Pitch.motor_info.set_current, 0);
+    set_curruent(MOTOR_6020_1, hcan1, gimbal_Yaw.motor_info.set_current, 0, 0, 0);
+    set_curruent(MOTOR_6020_0, hcan1, 0, 0, gimbal_Pitch.motor_info.set_current, 0);
 }
 
 // 遥控器控制云台电机
