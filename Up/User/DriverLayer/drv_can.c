@@ -109,6 +109,38 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
   {
     uint8_t rx_data[8];
     HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header, rx_data); // receive can2 data
+    // 接收遥控器数据
+    if (rx_header.StdId == 0x33) // 双C板传递遥控器信号的接口标识符
+    {
+      rc_ctrl.rc.ch[0] = (rx_data[0] | (rx_data[1] << 8)) & 0x07ff;                 //!< Channel 0  中值为1024，最大值1684，最小值364，波动范围：660
+      rc_ctrl.rc.ch[1] = (((rx_data[1] >> 3) & 0xff) | (rx_data[2] << 5)) & 0x07ff; //!< Channel 1
+      rc_ctrl.rc.ch[2] = (((rx_data[2] >> 6) & 0xff) | (rx_data[3] << 2) |          //!< Channel 2
+                          (rx_data[4] << 10)) &
+                         0x07ff;
+      rc_ctrl.rc.ch[3] = (((rx_data[4] >> 1) & 0xff) | (rx_data[5] << 7)) & 0x07ff; //!< Channel 3
+      rc_ctrl.rc.s[0] = ((rx_data[5] >> 4) & 0x0003);                               // 这是右
+      rc_ctrl.rc.s[1] = ((rx_data[5] >> 4) & 0x000C) >> 2;                          // 这才是左
+      rc_ctrl.mouse.x = rx_data[6] | (rx_data[7] << 8);                             //!< Mouse X axis
+    }
+    if (rx_header.StdId == 0x34) // 双C板传递遥控器信号的接口标识符
+    {
+      rc_ctrl.mouse.y = rx_data[0] | (rx_data[1] << 8); //!< Mouse Y axis
+      rc_ctrl.mouse.z = rx_data[2] | (rx_data[3] << 8); //!< Mouse Z axis
+      rc_ctrl.mouse.press_l = rx_data[4];               //!< Mouse Left Is Press ?
+      rc_ctrl.mouse.press_r = rx_data[5];               //!< Mouse Right Is Press ?
+      rc_ctrl.key.v = rx_data[6] | (rx_data[7] << 8);
+    }
+    if (rx_header.StdId == 0x35) // 双C板传递遥控器信号的接口标识符
+    {
+      rc_ctrl.rc.ch[4] = rx_data[0] | (rx_data[1] << 8);
+      //================================================底盘数据================================================//
+      // 接收底盘旋转量(用来修正yaw轴，作为前馈控制)
+      // Rotate_w = (rx_data[3] << 8) | rx_data[4];
+
+      // 接收底盘imu的Pitch数据(用来检测上下坡限位)
+      // Down_pitch = (rx_data[5] << 8) | rx_data[6];
+    }
+
     // 發射機構电机信息接收
     if (rx_header.StdId >= SHOOTER_ID_START && rx_header.StdId <= SHOOTER_ID_END)
     {
@@ -119,9 +151,6 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
     {
       process_MotorInfo(&gimbal_Pitch.motor_info, rx_data);
     }
-
-    // 上C板收遥控器数据
-    can_receive(&rc_ctrl, rx_header, rx_data);
 
     if (rx_header.StdId == 0x211)
     {
@@ -134,50 +163,6 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
       powerdata[2] = (float)pPowerdata[2] / 100.f; // 输入电流
       powerdata[3] = (float)pPowerdata[3] / 100.f; // P
     }
-  }
-}
-
-void can_receive(RC_ctrl_t *rc_ctrl, CAN_RxHeaderTypeDef rxHeader, uint8_t *rx_data) // 调用can来接收遥控器数据
-{
-  if (rxHeader.StdId == 0x300)
-  {
-    rc_tmp[0] = (rx_data[0] << 8) | rx_data[1];
-    rc_tmp[1] = (rx_data[2] << 8) | rx_data[3];
-    rc_tmp[2] = (rx_data[4] << 8) | rx_data[5];
-    rc_tmp[3] = (rx_data[6] << 8) | rx_data[7];
-    rc_flag = 1;
-  }
-  else if (rxHeader.StdId == 0x301)
-  {
-    rc_ctrl->rc.ch[0] = rc_tmp[0];
-    rc_ctrl->rc.ch[1] = rc_tmp[1];
-    rc_ctrl->rc.ch[2] = rc_tmp[2];
-    rc_ctrl->rc.ch[3] = rc_tmp[3];
-    rc_ctrl->rc.ch[4] = (rx_data[0] << 8) | rx_data[1];
-    rc_ctrl->rc.s[0] = rx_data[2];
-    rc_ctrl->rc.s[1] = rx_data[3];
-
-    w_flag = (rx_data[5] & 0x01);
-    s_flag = (rx_data[5] & 0x02);
-    a_flag = (rx_data[5] & 0x04);
-    d_flag = (rx_data[5] & 0x08);
-    q_flag = (rx_data[5] & 0x40);
-    e_flag = (rx_data[5] & 0x80);
-    shift_flag = (rx_data[5] & 0x10);
-    ctrl_flag = (rx_data[5] & 0x20);
-
-    r_flag = (rx_data[4] & 0x01);
-    f_flag = (rx_data[4] & 0x02);
-    g_flag = (rx_data[4] & 0x04);
-    z_flag = (rx_data[4] & 0x08);
-    x_flag = (rx_data[4] & 0x10);
-    c_flag = (rx_data[4] & 0x20);
-    v_flag = (rx_data[4] & 0x40);
-    b_flag = (rx_data[4] & 0x80);
-
-    mouse_x = (rx_data[6] << 8) | rx_data[7];
-
-    rc_flag = 0;
   }
 }
 

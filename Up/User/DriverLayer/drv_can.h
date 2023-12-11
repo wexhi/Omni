@@ -19,7 +19,6 @@
 
 void CAN1_Init(void);
 void CAN2_Init(void);
-void can_receive(RC_ctrl_t *rc_ctrl, CAN_RxHeaderTypeDef rxHeader, uint8_t *rx_data); // 调用can来接收遥控器数据
 
 void set_curruent(uint32_t motor_range, CAN_HandleTypeDef can_id, int16_t v1, int16_t v2, int16_t v3, int16_t v4);
 void process_MotorInfo(motor_info_t *motor_info, uint8_t *rx_data);
