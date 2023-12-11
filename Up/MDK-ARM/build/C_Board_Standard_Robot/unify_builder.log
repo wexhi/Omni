@@ -1,3 +1,242 @@
 [2023-12-11 15:37:06]	[done]
 	build successfully !
 
+[2023-12-11 19:20:56]	[done]
+	build successfully !
+
+[2023-12-11 19:23:31]	[done]
+	build successfully !
+
+[2023-12-11 19:25:17]	[done]
+	build successfully !
+
+[2023-12-11 19:28:22]	[done]
+	build successfully !
+
+[2023-12-11 19:28:56]	[done]
+	build successfully !
+
+[2023-12-11 19:31:11]	[done]
+	build successfully !
+
+[2023-12-11 19:32:41]	[done]
+	build successfully !
+
+[2023-12-11 19:32:50]	[done]
+	build successfully !
+
+[2023-12-11 19:33:52]	[done]
+	build successfully !
+
+[2023-12-11 19:34:02]	[done]
+	build successfully !
+
+[2023-12-11 19:35:13]	[done]
+	build successfully !
+
+[2023-12-11 19:37:30]	[done]
+	build successfully !
+
+[2023-12-11 19:38:06]	[done]
+	build successfully !
+
+[2023-12-11 19:40:08]	[done]
+	build successfully !
+
+[2023-12-11 19:41:25]	[done]
+	build successfully !
+
+[2023-12-11 19:42:52]	[done]
+	build successfully !
+
+[2023-12-11 19:43:50]	[done]
+	build successfully !
+
+[2023-12-11 19:44:40]	[done]
+	build successfully !
+
+[2023-12-11 19:47:04]	[done]
+	build successfully !
+
+[2023-12-11 19:49:11]	[done]
+	build successfully !
+
+[2023-12-11 19:51:33]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\freertos.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\freertos.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\freertos.d .\..\Src\freertos.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\freertos.c", line 191: Error:  #20: identifier "rc_ctrl" is undefined
+    if (rc_ctrl.rc.s[0] == 1)
+        ^
+".\..\Src\freertos.c", line 209: Warning:  #223-D: function "RC_Move" declared implicitly
+      RC_Move();
+      ^
+.\..\Src\freertos.c: 1 warning, 1 error
+
+[2023-12-11 19:52:22]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol RC_Move (referred from freertos.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 1 error messages.
+
+
+[2023-12-11 19:52:45]	[done]
+	build successfully !
+
+[2023-12-11 19:54:18]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\Task\Gimbal_task.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\Gimbal_task.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\Gimbal_task.d .\..\User\Task\Gimbal_task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\Gimbal_task.c", line 52: Error:  #20: identifier "gimbal_Yaw" is undefined
+      gimbal_Yaw.pid_parameter[0] = 85, gimbal_Yaw.pid_parameter[1] = 0, gimbal_Yaw.pid_parameter[2] = 0;
+      ^
+".\..\User\Task\Gimbal_task.c", line 87: Error:  #20: identifier "gimbal_Yaw" is undefined
+      gimbal_Yaw.motor_info.set_current = pid_calc(&gimbal_Yaw.pid, gimbal_Yaw.motor_info.rotor_speed, gimbal_Yaw.speed_target);
+      ^
+".\..\User\Task\Gimbal_task.c", line 126: Error:  #20: identifier "gimbal_Yaw" is undefined
+          gimbal_Yaw.angle_target += rc_ctrl.rc.ch[0] / 660.0 * (-0.1);
+          ^
+".\..\User\Task\Gimbal_task.c", line 134: Error:  #20: identifier "gimbal_Yaw" is undefined
+          gimbal_Yaw.angle_target = 0;
+          ^
+".\..\User\Task\Gimbal_task.c", line 30: Error:  #114: function "RC_Yaw_speed" was referenced but not defined
+  static void RC_Yaw_speed();
+              ^
+.\..\User\Task\Gimbal_task.c: 0 warnings, 5 errors
+
+[2023-12-11 19:54:39]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\Task\Gimbal_task.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\Gimbal_task.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\Gimbal_task.d .\..\User\Task\Gimbal_task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\Gimbal_task.c", line 30: Error:  #114: function "RC_Yaw_speed" was referenced but not defined
+  static void RC_Yaw_speed();
+              ^
+.\..\User\Task\Gimbal_task.c: 0 warnings, 1 error
+
+[2023-12-11 19:54:57]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\Task\Gimbal_task.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\Gimbal_task.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\Gimbal_task.d .\..\User\Task\Gimbal_task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\Gimbal_task.c", line 30: Error:  #114: function "RC_Yaw_speed" was referenced but not defined
+  static void RC_Yaw_speed();
+              ^
+.\..\User\Task\Gimbal_task.c: 0 warnings, 1 error
+
+[2023-12-11 19:55:42]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\Task\Gimbal_task.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\Gimbal_task.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\Gimbal_task.d .\..\User\Task\Gimbal_task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\Gimbal_task.c", line 30: Error:  #114: function "RC_Yaw_speed" was referenced but not defined
+  static void RC_Yaw_speed();
+              ^
+.\..\User\Task\Gimbal_task.c: 0 warnings, 1 error
+
+[2023-12-11 19:56:13]	[done]
+	build successfully !
+
+[2023-12-11 19:59:33]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\Task\Gimbal_task.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\Gimbal_task.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\Gimbal_task.d .\..\User\Task\Gimbal_task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\Gimbal_task.c", line 32: Warning:  #223-D: function "RC_Pitch_control" declared implicitly
+          RC_Pitch_control();
+          ^
+".\..\User\Task\Gimbal_task.c", line 58: Error:  #159: declaration is incompatible with previous "RC_Pitch_control" (declared at line 32)
+  static void RC_Pitch_control()
+              ^
+".\..\User\Task\Gimbal_task.c", line 22: Warning:  #177-D: function "RC_gimbal_control" was declared but never referenced
+  static void RC_gimbal_control();
+              ^
+".\..\User\Task\Gimbal_task.c", line 71: Warning:  #177-D: function "detel_calc" was declared but never referenced
+  static void detel_calc(fp32 *angle)
+              ^
+".\..\User\Task\Gimbal_task.c", line 58: Warning:  #177-D: function "RC_Pitch_control" was declared but never referenced
+  static void RC_Pitch_control()
+              ^
+.\..\User\Task\Gimbal_task.c: 4 warnings, 1 error
+
+[2023-12-11 20:00:08]	[done]
+	build successfully !
+
+[2023-12-11 20:00:35]	[done]
+	build successfully !
+
+[2023-12-11 20:03:02]	[done]
+	build successfully !
+
+[2023-12-11 20:03:17]	[done]
+	build successfully !
+
+[2023-12-11 20:05:21]	[done]
+	build successfully !
+
+[2023-12-11 20:05:40]	[done]
+	build successfully !
+
+[2023-12-11 20:06:04]	[done]
+	build successfully !
+
+[2023-12-11 20:07:24]	[done]
+	build successfully !
+
+[2023-12-11 20:08:28]	[done]
+	build successfully !
+
+[2023-12-11 20:10:11]	[done]
+	build successfully !
+
+[2023-12-11 20:10:51]	[done]
+	build successfully !
+
+[2023-12-11 20:11:11]	[done]
+	build successfully !
+
+[2023-12-11 20:12:20]	[done]
+	build successfully !
+
+[2023-12-11 20:13:14]	[done]
+	build successfully !
+
+[2023-12-11 20:15:02]	[done]
+	build successfully !
+
+[2023-12-11 20:15:46]	[done]
+	build successfully !
+
+[2023-12-11 20:16:37]	[done]
+	build successfully !
+
+[2023-12-11 20:16:44]	[done]
+	build successfully !
+
+[2023-12-11 20:19:15]	[done]
+	build successfully !
+
+[2023-12-11 20:19:55]	[done]
+	build successfully !
+
+[2023-12-11 20:20:52]	[done]
+	build successfully !
+
+[2023-12-11 20:22:45]	[done]
+	build successfully !
+
+[2023-12-11 20:23:31]	[done]
+	build successfully !
+
+[2023-12-11 20:24:00]	[done]
+	build successfully !
+
+[2023-12-11 20:25:37]	[done]
+	build successfully !
+
+[2023-12-11 20:31:42]	[done]
+	build successfully !
+

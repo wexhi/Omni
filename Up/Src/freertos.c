@@ -55,7 +55,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
-osThreadId Chassis_taskHandle;
+// osThreadId Chassis_taskHandle;
 osThreadId myTask02Handle;
 osThreadId super_capHandle;
 osThreadId UI_taskHandle;
@@ -146,8 +146,8 @@ void MX_FREERTOS_Init(void)
   osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
-  osThreadDef(Chassistask, Chassis_task, osPriorityRealtime, 0, 512); // �����ƶ�����
-  Chassis_taskHandle = osThreadCreate(osThread(Chassistask), NULL);
+  // osThreadDef(Chassistask, Chassis_task, osPriorityRealtime, 0, 512); // �����ƶ�����
+  // Chassis_taskHandle = osThreadCreate(osThread(Chassistask), NULL);
 
   osThreadDef(UItask, UI_Task, osPriorityRealtime, 0, 512);
   UI_taskHandle = osThreadCreate(osThread(UItask), NULL);

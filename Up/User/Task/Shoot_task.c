@@ -5,7 +5,7 @@
 #include "drv_can.h"
 
 shooter_t shooter; // 发射机构信息结构体
-// 电机0为拨盘电机，电机1为弹舱盖电机，电机2、3为摩擦轮电机
+// 电机0为拨盘电机，电机1、2为摩擦轮电机
 
 extern RC_ctrl_t rc_ctrl; // 遥控器信息结构体
 
@@ -50,12 +50,12 @@ static void Shooter_Inint(void)
 static void model_choice(void)
 {
     // 取消注释开始发射
-    // friction_control();
-    if (rc_ctrl.rc.s[1] == 1)
+    friction_control();
+    if (rc_ctrl.rc.s[0] == 1)
     {
         // 发射
-        // dial_control();
-        // bay_control();
+        dial_control();
+        bay_control();
     }
     else
     {
@@ -68,9 +68,11 @@ static void model_choice(void)
 // 拨盘电机控制
 static void dial_control(void)
 {
-    if (rc_ctrl.rc.s[1] == 1)
+    if (rc_ctrl.rc.s[0] == 1)
     {
-        LEDR_OFF();
+        LEDR_ON();
+        LEDB_OFF();
+        LEDG_OFF();
         shooter.dial_speed_target = 2000;
     }
     else
@@ -97,9 +99,9 @@ static void bay_control(void)
 static void shooter_current_given(void)
 {
     shooter.motor_info[0].set_current = pid_calc(&shooter.pid_dial, shooter.motor_info[0].rotor_speed, shooter.dial_speed_target);            // 拨盘电机
-    shooter.motor_info[1].set_current = pid_calc(&shooter.pid_bay, shooter.motor_info[1].rotor_speed, shooter.bay_speed_target);              // 弹舱电机
-    shooter.motor_info[2].set_current = pid_calc(&shooter.pid_friction, shooter.motor_info[2].rotor_speed, shooter.friction_speed_target[0]); // 摩擦轮电机
-    shooter.motor_info[3].set_current = pid_calc(&shooter.pid_friction, shooter.motor_info[3].rotor_speed, shooter.friction_speed_target[1]); // 摩擦轮电机
+    // shooter.motor_info[1].set_current = pid_calc(&shooter.pid_bay, shooter.motor_info[1].rotor_speed, shooter.bay_speed_target);              // 弹舱电机
+    shooter.motor_info[1].set_current = pid_calc(&shooter.pid_friction, shooter.motor_info[1].rotor_speed, shooter.friction_speed_target[0]); // 摩擦轮电机
+    shooter.motor_info[2].set_current = pid_calc(&shooter.pid_friction, shooter.motor_info[2].rotor_speed, shooter.friction_speed_target[1]); // 摩擦轮电机
     // set_motor_current_shoot(1, shooter.motor_info[0].set_current, shooter.motor_info[1].set_current, shooter.motor_info[2].set_current, shooter.motor_info[3].set_current);
-    set_curruent(MOTOR_3508_1, hcan1, shooter.motor_info[0].set_current, shooter.motor_info[1].set_current, shooter.motor_info[2].set_current, shooter.motor_info[3].set_current);
+    // set_curruent(MOTOR_3508_0, hcan1, shooter.motor_info[0].set_current, shooter.motor_info[1].set_current, shooter.motor_info[2].set_current, 0);
 }

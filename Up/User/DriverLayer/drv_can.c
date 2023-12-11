@@ -1,10 +1,10 @@
 #include "drv_can.h"
 #define GIMBAL_YAW_ID 0x20b
-#define CHASSIS_ID_START 0x201
-#define CHASSIS_ID_END 0x204
-#define SHOOTER_ID_START 0x205
-#define SHOOTER_ID_END 0x208
-#define GIMBAL_PITCH_ID 0x209
+// #define CHASSIS_ID_START 0x201
+// #define CHASSIS_ID_END 0x204
+#define SHOOTER_ID_START 0x201
+#define SHOOTER_ID_END 0x203
+#define GIMBAL_PITCH_ID 0x207
 #define POWERDATA_ID 0x211
 
 extern CAN_HandleTypeDef hcan1;
@@ -93,15 +93,16 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
     uint8_t rx_data[8];
     HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header, rx_data); // receive can1 data
 
-    // 云台电机信息接收
-    if (rx_header.StdId == GIMBAL_YAW_ID)
+        // Pitch云台电机信息接收
+    if (rx_header.StdId == GIMBAL_PITCH_ID)
     {
-      process_MotorInfo(&gimbal_Yaw.motor_info, rx_data);
+      process_MotorInfo(&gimbal_Pitch.motor_info, rx_data);
     }
-    // 底盤电机信息接收
-    if (rx_header.StdId >= CHASSIS_ID_START && rx_header.StdId <= CHASSIS_ID_END)
+
+    // 發射機構电机信息接收
+    if (rx_header.StdId >= SHOOTER_ID_START && rx_header.StdId <= SHOOTER_ID_END)
     {
-      process_MotorInfo(&chassis.motor_info[rx_header.StdId - CHASSIS_ID_START], rx_data);
+      process_MotorInfo(&shooter.motor_info[rx_header.StdId - SHOOTER_ID_START], rx_data);
     }
   }
 
@@ -139,17 +140,6 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
 
       // 接收底盘imu的Pitch数据(用来检测上下坡限位)
       // Down_pitch = (rx_data[5] << 8) | rx_data[6];
-    }
-
-    // 發射機構电机信息接收
-    if (rx_header.StdId >= SHOOTER_ID_START && rx_header.StdId <= SHOOTER_ID_END)
-    {
-      process_MotorInfo(&shooter.motor_info[rx_header.StdId - SHOOTER_ID_START], rx_data);
-    }
-    // 云台电机信息接收
-    if (rx_header.StdId == GIMBAL_PITCH_ID)
-    {
-      process_MotorInfo(&gimbal_Pitch.motor_info, rx_data);
     }
 
     if (rx_header.StdId == 0x211)
