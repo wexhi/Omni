@@ -22,7 +22,7 @@ void Shoot_task(void const *pvParameters)
     for (;;)
     {
         model_choice();
-        shooter_current_given();
+        // shooter_current_given(); // 发射的时候再打开
         osDelay(1);
     }
 }
