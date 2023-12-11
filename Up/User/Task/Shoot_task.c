@@ -5,7 +5,7 @@
 #include "drv_can.h"
 
 shooter_t shooter; // 发射机构信息结构体
-// 电机0为拨盘电机，电机1、2为摩擦轮电机
+// 电机0为拨盘电机，电机1、2为摩擦轮电机，电机3原为弹舱电机，现为备用电机
 
 extern RC_ctrl_t rc_ctrl; // 遥控器信息结构体
 
@@ -98,7 +98,7 @@ static void bay_control(void)
 // 给电流
 static void shooter_current_given(void)
 {
-    shooter.motor_info[0].set_current = pid_calc(&shooter.pid_dial, shooter.motor_info[0].rotor_speed, shooter.dial_speed_target);            // 拨盘电机
+    shooter.motor_info[0].set_current = pid_calc(&shooter.pid_dial, shooter.motor_info[0].rotor_speed, shooter.dial_speed_target); // 拨盘电机
     // shooter.motor_info[1].set_current = pid_calc(&shooter.pid_bay, shooter.motor_info[1].rotor_speed, shooter.bay_speed_target);              // 弹舱电机
     shooter.motor_info[1].set_current = pid_calc(&shooter.pid_friction, shooter.motor_info[1].rotor_speed, shooter.friction_speed_target[0]); // 摩擦轮电机
     shooter.motor_info[2].set_current = pid_calc(&shooter.pid_friction, shooter.motor_info[2].rotor_speed, shooter.friction_speed_target[1]); // 摩擦轮电机
