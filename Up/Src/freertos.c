@@ -188,8 +188,8 @@ void StartINSTask(void const *argument)
 void StartDefaultTask(void const *argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
-  HAL_GPIO_WritePin(GPIOH, GPIO_PIN_11, GPIO_PIN_SET);
-  HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_SET);
+  // HAL_GPIO_WritePin(GPIOH, GPIO_PIN_11, GPIO_PIN_SET);
+  // HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_SET);
   // uint8_t TIM1_flag = 1; // ��֪��bug // 这东西有什么用啊？
   /* Infinite loop */
   for (;;)
