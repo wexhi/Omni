@@ -69,7 +69,7 @@ void USART3_rxDataHandler(uint8_t *rxBuf)
 	temp_remote[2] = rxBuf[18];
 
 	// crul_w用来传递底盘旋转量
-	// Rotate_w = (motor_info_chassis[0].rotor_speed + motor_info_chassis[1].rotor_speed + motor_info_chassis[2].rotor_speed + motor_info_chassis[3].rotor_speed) / (4 * 19);
+	Rotate_w = (chassis.motor_info[0].rotor_speed + chassis.motor_info[1].rotor_speed + chassis.motor_info[2].rotor_speed + chassis.motor_info[3].rotor_speed) / (4 * 19);
 	temp_remote[3] = ((Rotate_w >> 8) & 0xff); // 先发高8位
 	temp_remote[4] = (Rotate_w & 0xff);
 

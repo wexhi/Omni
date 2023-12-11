@@ -40,6 +40,7 @@
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+.\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../User/Task/chassis_task.h
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Inc/gpio.h
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../User/Task/Gimbal_task.h
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../User/Task/Shoot_task.h

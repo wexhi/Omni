@@ -1,6 +1,22 @@
 >>> cc
 
-
+".\..\User\PotocaLayer\judge.c", line 35: Warning:  #167-D: argument of type "volatile uint8_t *" is incompatible with parameter of type "unsigned char *"
+              if(Verify_CRC8_Check_Sum(&databuffer[pos],5))
+                                       ^
+".\..\User\PotocaLayer\judge.c", line 42: Warning:  #167-D: argument of type "volatile uint8_t *" is incompatible with parameter of type "uint8_t *"
+              if(Verify_CRC16_Check_Sum(&databuffer[pos],data_length+9))
+                                        ^
+".\..\User\PotocaLayer\judge.c", line 51: Warning:  #223-D: function "memcpy" declared implicitly
+                          memcpy((void*)(&Judge_Hero.status), (const void*)(&databuffer[pos+7]), data_length);
+                          ^
+.\..\User\PotocaLayer\judge.c: 3 warnings, 0 errors
+".\..\User\Task\Chassis_task.c", line 206: Warning:  #177-D: function "gyroscope" was declared but never referenced
+  static void gyroscope(void)
+              ^
+".\..\User\Task\Chassis_task.c", line 139: Warning:  #177-D: function "Motor_Speed_limiting" was declared but never referenced
+  static void Motor_Speed_limiting(volatile int16_t *motor_speed, int16_t limit_speed)
+              ^
+.\..\User\Task\Chassis_task.c: 2 warnings, 0 errors
 ".\..\User\Task\Gimbal_task.c", line 96: Warning:  #177-D: function "RC_gimbal_control" was declared but never referenced
   static void RC_gimbal_control()
               ^
@@ -19,7 +35,6 @@
               ^
 .\..\User\Task\Shoot_task.c: 3 warnings, 0 errors
 
-
 >>> ld
 
-Program Size: Code=48544 RO-data=3776 RW-data=716 ZI-data=48284  
+Program Size: Code=48576 RO-data=3776 RW-data=716 ZI-data=48284  
