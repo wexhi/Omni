@@ -112,39 +112,16 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
   }
 }
 
-void can_remote(RC_ctrl_t rc_ctrl) // 调用can来发送遥控器数据
+void can_remote(uint8_t sbus_buf[], uint8_t can_send_id) // 调用can来发送遥控器数据
 {
-  // c板发送遥控器数据 分俩帧
   CAN_TxHeaderTypeDef tx_header;
-  uint8_t tx_data[8];
 
-  tx_header.StdId = RC_ID_0;
-  tx_header.IDE = CAN_ID_STD;
-  tx_header.RTR = CAN_RTR_DATA;
-  tx_header.DLC = 0x08;
-  tx_data[0] = rc_ctrl.rc.ch[0] >> 8;
-  tx_data[1] = rc_ctrl.rc.ch[0];
-  tx_data[2] = rc_ctrl.rc.ch[1] >> 8;
-  tx_data[3] = rc_ctrl.rc.ch[1];
-  tx_data[4] = rc_ctrl.rc.ch[2] >> 8;
-  tx_data[5] = rc_ctrl.rc.ch[2];
-  tx_data[6] = rc_ctrl.rc.ch[3] >> 8;
-  tx_data[7] = rc_ctrl.rc.ch[3];
-  HAL_CAN_AddTxMessage(&hcan2, &tx_header, tx_data, (uint32_t *)CAN_TX_MAILBOX0);
+  tx_header.StdId = can_send_id; // 如果id_range==0则等于0x1ff,id_range==1则等于0x2ff（ID号）
+  tx_header.IDE = CAN_ID_STD;    // 标准帧
+  tx_header.RTR = CAN_RTR_DATA;  // 数据帧
+  tx_header.DLC = 8;             // 发送数据长度（字节）
 
-  tx_header.StdId = RC_ID_1;
-  tx_header.IDE = CAN_ID_STD;
-  tx_header.RTR = CAN_RTR_DATA;
-  tx_header.DLC = 0x08;
-  tx_data[0] = rc_ctrl.rc.ch[4] >> 8;
-  tx_data[1] = rc_ctrl.rc.ch[4];
-  tx_data[2] = rc_ctrl.rc.s[0];
-  tx_data[3] = rc_ctrl.rc.s[1];
-  tx_data[4] = rc_ctrl.key.v >> 8;
-  tx_data[5] = rc_ctrl.key.v;
-  tx_data[6] = rc_ctrl.mouse.x >> 8;
-  tx_data[7] = rc_ctrl.mouse.x;
-  HAL_CAN_AddTxMessage(&hcan2, &tx_header, tx_data, (uint32_t *)CAN_TX_MAILBOX0);
+  HAL_CAN_AddTxMessage(&hcan2, &tx_header, sbus_buf, (uint32_t *)CAN_TX_MAILBOX0);
 }
 
 // 一步解决所有电机控制

@@ -1,7 +1,25 @@
 >>> cc
 
 
+".\..\User\Task\Gimbal_task.c", line 96: Warning:  #177-D: function "RC_gimbal_control" was declared but never referenced
+  static void RC_gimbal_control()
+              ^
+".\..\User\Task\Gimbal_task.c", line 103: Warning:  #177-D: function "gimbal_yaw_control" was declared but never referenced
+  static void gimbal_yaw_control()
+              ^
+.\..\User\Task\Gimbal_task.c: 2 warnings, 0 errors
+".\..\User\Task\Shoot_task.c", line 69: Warning:  #177-D: function "dial_control" was declared but never referenced
+  static void dial_control(void)
+              ^
+".\..\User\Task\Shoot_task.c", line 83: Warning:  #177-D: function "friction_control" was declared but never referenced
+  static void friction_control(void)
+              ^
+".\..\User\Task\Shoot_task.c", line 90: Warning:  #177-D: function "bay_control" was declared but never referenced
+  static void bay_control(void)
+              ^
+.\..\User\Task\Shoot_task.c: 3 warnings, 0 errors
+
 
 >>> ld
 
-Program Size: Code=48588 RO-data=3776 RW-data=708 ZI-data=48284  
+Program Size: Code=48544 RO-data=3776 RW-data=716 ZI-data=48284  

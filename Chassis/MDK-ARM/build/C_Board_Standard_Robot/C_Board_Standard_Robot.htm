@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\build\C_Board_Standard_Robot\C_Board_Standard_Robot.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\build\C_Board_Standard_Robot\C_Board_Standard_Robot.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Sun Dec 10 23:58:14 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Mon Dec 11 13:41:32 2023
 <BR><P>
 <H3>Maximum Stack Usage =        376 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -436,7 +436,6 @@ Global Symbols
 <LI><a href="#[19b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_display_string
 <LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_display_7_graph
 <LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_display_1_graph
-<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART3_rxDataHandler
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JUDGE_Receive
 </UL>
 
@@ -2113,11 +2112,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[15d]"></a>USART3_rxDataHandler</STRONG> (Thumb, 280 bytes, Stack size 56 bytes, rc_potocal.o(i.USART3_rxDataHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = USART3_rxDataHandler &rArr; can_remote &rArr; HAL_CAN_AddTxMessage
+<P><STRONG><a name="[15d]"></a>USART3_rxDataHandler</STRONG> (Thumb, 358 bytes, Stack size 24 bytes, rc_potocal.o(i.USART3_rxDataHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = USART3_rxDataHandler &rArr; can_remote &rArr; HAL_CAN_AddTxMessage
 </UL>
 <BR>[Calls]<UL><LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;can_remote
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_m1_rxcplt_callback
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_m0_rxcplt_callback
@@ -2294,8 +2292,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BMI088_init
 </UL>
 
-<P><STRONG><a name="[15e]"></a>can_remote</STRONG> (Thumb, 160 bytes, Stack size 56 bytes, drv_can.o(i.can_remote))
-<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = can_remote &rArr; HAL_CAN_AddTxMessage
+<P><STRONG><a name="[15e]"></a>can_remote</STRONG> (Thumb, 32 bytes, Stack size 32 bytes, drv_can.o(i.can_remote))
+<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = can_remote &rArr; HAL_CAN_AddTxMessage
 </UL>
 <BR>[Calls]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_AddTxMessage
 </UL>
@@ -3444,7 +3442,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[5e]"></a>dma_m0_rxcplt_callback</STRONG> (Thumb, 54 bytes, Stack size 0 bytes, drv_usart.o(i.dma_m0_rxcplt_callback))
-<BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = dma_m0_rxcplt_callback &rArr; USART3_rxDataHandler &rArr; can_remote &rArr; HAL_CAN_AddTxMessage
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = dma_m0_rxcplt_callback &rArr; USART3_rxDataHandler &rArr; can_remote &rArr; HAL_CAN_AddTxMessage
 </UL>
 <BR>[Calls]<UL><LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART3_rxDataHandler
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JUDGE_Receive
@@ -3452,7 +3450,7 @@ Local Symbols
 <BR>[Address Reference Count : 1]<UL><LI> drv_usart.o(i.DMAEx_MultiBufferStart_NoIT)
 </UL>
 <P><STRONG><a name="[5f]"></a>dma_m1_rxcplt_callback</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, drv_usart.o(i.dma_m1_rxcplt_callback))
-<BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = dma_m1_rxcplt_callback &rArr; USART3_rxDataHandler &rArr; can_remote &rArr; HAL_CAN_AddTxMessage
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = dma_m1_rxcplt_callback &rArr; USART3_rxDataHandler &rArr; can_remote &rArr; HAL_CAN_AddTxMessage
 </UL>
 <BR>[Calls]<UL><LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART3_rxDataHandler
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JUDGE_Receive
