@@ -1,5 +1,5 @@
 {
-    "name": "C_Board_Standard_Robot",
+    "name": "UP",
     "target": "C_Board_Standard_Robot",
     "toolchain": "AC5",
     "toolchainLocation": "C:\\Keil_v5\\ARM\\ARMCC",
@@ -123,7 +123,7 @@
         "afterBuildTasks": [
             {
                 "name": "axf to elf",
-                "command": "axf2elf -d \"C:\\Keil_v5\\ARM\\ARMCC\" -b \"${outDir}\\C_Board_Standard_Robot.bin\" -i \"${outDir}\\C_Board_Standard_Robot.axf\" -o \"${outDir}\\C_Board_Standard_Robot.elf\" > \"${outDir}\\axf2elf.log\""
+                "command": "axf2elf -d \"C:\\Keil_v5\\ARM\\ARMCC\" -b \"${outDir}\\UP.bin\" -i \"${outDir}\\UP.axf\" -o \"${outDir}\\UP.elf\" > \"${outDir}\\axf2elf.log\""
             }
         ],
         "global": {
@@ -149,7 +149,7 @@
             "ro-base": "0x08000000",
             "rw-base": "0x20000000",
             "link-scatter": [
-                "\"c:/Users/14775/Desktop/study/robomaster/Omni/Up/MDK-ARM/build/C_Board_Standard_Robot/C_Board_Standard_Robot.sct\""
+                "\"c:/Users/14775/Desktop/study/robomaster/Omni/Up/MDK-ARM/build/C_Board_Standard_Robot/UP.sct\""
             ]
         }
     },
@@ -159,10 +159,10 @@
         "OutDir": "c:\\Users\\14775\\Desktop\\study\\robomaster\\Omni\\Up\\MDK-ARM\\build\\C_Board_Standard_Robot",
         "OutDirRoot": "build",
         "OutDirBase": "build\\C_Board_Standard_Robot",
-        "ProjectName": "C_Board_Standard_Robot",
+        "ProjectName": "UP",
         "ConfigName": "C_Board_Standard_Robot",
         "ProjectRoot": "c:\\Users\\14775\\Desktop\\study\\robomaster\\Omni\\Up\\MDK-ARM",
-        "ExecutableName": "c:\\Users\\14775\\Desktop\\study\\robomaster\\Omni\\Up\\MDK-ARM\\build\\C_Board_Standard_Robot\\C_Board_Standard_Robot",
+        "ExecutableName": "c:\\Users\\14775\\Desktop\\study\\robomaster\\Omni\\Up\\MDK-ARM\\build\\C_Board_Standard_Robot\\UP",
         "SYS_Platform": "win32",
         "SYS_DirSep": "\\",
         "SYS_DirSeparator": "\\",
@@ -174,10 +174,10 @@
     "sha": {
         "c/cpp-defines": "e1b44b7efd158e17c3cc0c3ce7c5a595",
         "beforeBuildTasks": "d751713988987e9331980363e24189ce",
-        "afterBuildTasks": "4c4b8285372075c91dfa5ab1875d7723",
+        "afterBuildTasks": "6a4352e07e19fff139ede3001c92104e",
         "global": "3ae75cac734e7a166338bea4b35ae2e0",
         "c/cpp-compiler": "3d14884587f8567240206b91bbb91847",
         "asm-compiler": "99914b932bd37a50b983c5e7c90ae93b",
-        "linker": "7ceafaaa4841ec85783593782692bdbf"
+        "linker": "874a19087d5d8d2b06fa86c939bb8dd9"
     }
 }
