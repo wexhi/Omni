@@ -28,8 +28,8 @@ static float dt = 0, t = 0;
 uint8_t ins_debug_mode = 0;
 float RefTemp = 40;
 
-float yaw_up = 0;
-float INS_Data[3];
+int16_t yaw_up = 0;
+int16_t INS_Data[3];
 
 static void
 IMU_Param_Correction(IMU_Param_t *param, float gyro[3], float accel[3]);
