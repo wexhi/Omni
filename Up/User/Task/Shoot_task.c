@@ -102,6 +102,6 @@ static void shooter_current_given(void)
     // shooter.motor_info[1].set_current = pid_calc(&shooter.pid_bay, shooter.motor_info[1].rotor_speed, shooter.bay_speed_target);              // 弹舱电机
     shooter.motor_info[1].set_current = pid_calc(&shooter.pid_friction, shooter.motor_info[1].rotor_speed, shooter.friction_speed_target[0]); // 摩擦轮电机
     shooter.motor_info[2].set_current = pid_calc(&shooter.pid_friction, shooter.motor_info[2].rotor_speed, shooter.friction_speed_target[1]); // 摩擦轮电机
-    // set_curruent(MOTOR_3508_0, hcan1, shooter.motor_info[0].set_current, shooter.motor_info[1].set_current, shooter.motor_info[2].set_current, 0);
-    set_motor_current_shoot(0, shooter.motor_info[0].set_current, shooter.motor_info[1].set_current, shooter.motor_info[2].set_current, 0);
+    set_curruent(MOTOR_3508_0, hcan1, shooter.motor_info[0].set_current, shooter.motor_info[1].set_current, shooter.motor_info[2].set_current, 0);
+    // set_motor_current_shoot(0, shooter.motor_info[0].set_current, shooter.motor_info[1].set_current, shooter.motor_info[2].set_current, 0);
 }
