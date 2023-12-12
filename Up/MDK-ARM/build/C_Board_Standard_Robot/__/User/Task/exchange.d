@@ -41,3 +41,11 @@
 .\build\C_Board_Standard_Robot\__\User\Task\exchange.o: ../Components/kalman_filter.h
 .\build\C_Board_Standard_Robot\__\User\Task\exchange.o: ../Drivers/CMSIS/Include/arm_math.h
 .\build\C_Board_Standard_Robot\__\User\Task\exchange.o: ../Drivers/CMSIS/Include/core_cm4.h
+.\build\C_Board_Standard_Robot\__\User\Task\exchange.o: ../User/DriverLayer/drv_can.h
+.\build\C_Board_Standard_Robot\__\User\Task\exchange.o: ../User/Task/chassis_task.h
+.\build\C_Board_Standard_Robot\__\User\Task\exchange.o: ../User/AlgorithmLayer/pid.h
+.\build\C_Board_Standard_Robot\__\User\Task\exchange.o: ../User/DriverLayer/drv_can.h
+.\build\C_Board_Standard_Robot\__\User\Task\exchange.o: ../User/PotocaLayer/rc_potocal.h
+.\build\C_Board_Standard_Robot\__\User\Task\exchange.o: ../Inc/gpio.h
+.\build\C_Board_Standard_Robot\__\User\Task\exchange.o: ../User/Task/Gimbal_task.h
+.\build\C_Board_Standard_Robot\__\User\Task\exchange.o: ../User/Task/Shoot_task.h
