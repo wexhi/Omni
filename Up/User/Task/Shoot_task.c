@@ -22,7 +22,7 @@ void Shoot_task(void const *pvParameters)
     for (;;)
     {
         model_choice();
-        // shooter_current_given(); // 发射的时候再打开
+        shooter_current_given(); // 发射的时候再打开
         osDelay(1);
     }
 }
@@ -51,7 +51,7 @@ static void model_choice(void)
 {
     // 取消注释开始发射
     friction_control();
-    if (rc_ctrl.rc.s[0] == 1)
+    if (rc_ctrl.rc.s[1] == 1)
     {
         // 发射
         dial_control();
