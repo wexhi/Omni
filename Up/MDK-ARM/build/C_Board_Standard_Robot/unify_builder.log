@@ -270,3 +270,200 @@ command:
 [2023-12-12 20:16:25]	[done]
 	build successfully !
 
+[2023-12-12 20:52:06]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol can_remote (referred from exchange.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 1 error messages.
+
+
+[2023-12-12 20:53:15]	[done]
+	build successfully !
+
+[2023-12-12 20:54:24]	[done]
+	build successfully !
+
+[2023-12-12 20:59:47]	[done]
+	build successfully !
+
+[2023-12-12 21:16:05]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\Task\exchange.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\exchange.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\exchange.d .\..\User\Task\exchange.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\exchange.c", line 18: Warning:  #223-D: function "osDelay" declared implicitly
+  	osDelay(1);
+  	^
+".\..\User\Task\exchange.c", line 26: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[0] = (INS.Yaw >> 8) & 0xff;
+  	              ^
+".\..\User\Task\exchange.c", line 27: Error:  #31: expression must have integral type
+  	ins_buf[1] = INS.Yaw & 0xff;
+  	             ^
+".\..\User\Task\exchange.c", line 28: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[2] = (INS.Roll >> 8) & 0xff;
+  	              ^
+".\..\User\Task\exchange.c", line 29: Error:  #31: expression must have integral type
+  	ins_buf[3] = INS.Roll & 0xff;
+  	             ^
+".\..\User\Task\exchange.c", line 30: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[4] = (INS.Pitch >> 8) & 0xff;
+  	              ^
+".\..\User\Task\exchange.c", line 31: Error:  #31: expression must have integral type
+  	ins_buf[5] = INS.Pitch & 0xff;
+  	             ^
+".\..\User\Task\exchange.c", line 32: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[6] = (INS.YawTotalAngle >> 8) & 0xff;
+  	              ^
+".\..\User\Task\exchange.c", line 33: Error:  #31: expression must have integral type
+  	ins_buf[7] = INS.YawTotalAngle & 0xff;
+  	             ^
+".\..\User\Task\exchange.c", line 34: Warning:  #223-D: function "can_remote" declared implicitly
+  	can_remote(ins_buf, 0x55);
+  	^
+.\..\User\Task\exchange.c: 2 warnings, 8 errors
+
+[2023-12-12 21:16:52]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\Task\exchange.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\exchange.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\exchange.d .\..\User\Task\exchange.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\exchange.c", line 18: Warning:  #223-D: function "osDelay" declared implicitly
+  	osDelay(1);
+  	^
+".\..\User\Task\exchange.c", line 26: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[0] = (int16_t)(INS.Yaw >> 8) & 0xff;
+  	                       ^
+".\..\User\Task\exchange.c", line 28: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[2] = (int16_t)(INS.Roll >> 8) & 0xff;
+  	                       ^
+".\..\User\Task\exchange.c", line 30: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[4] = (int16_t)(INS.Pitch >> 8) & 0xff;
+  	                       ^
+".\..\User\Task\exchange.c", line 32: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[6] = (int16_t)(INS.YawTotalAngle >> 8) & 0xff;
+  	                       ^
+".\..\User\Task\exchange.c", line 34: Warning:  #223-D: function "can_remote" declared implicitly
+  	can_remote(ins_buf, 0x55);
+  	^
+.\..\User\Task\exchange.c: 2 warnings, 4 errors
+
+[2023-12-12 21:17:19]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\Task\exchange.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\exchange.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\exchange.d .\..\User\Task\exchange.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\exchange.c", line 18: Warning:  #223-D: function "osDelay" declared implicitly
+  	osDelay(1);
+  	^
+".\..\User\Task\exchange.c", line 26: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[0] = (int16_t*)(INS.Yaw >> 8) & 0xff;
+  	                        ^
+".\..\User\Task\exchange.c", line 27: Error:  #171: invalid type conversion
+  	ins_buf[1] = (int16_t*)INS.Yaw & 0xff;
+  	             ^
+".\..\User\Task\exchange.c", line 28: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[2] = (int16_t*)(INS.Roll >> 8) & 0xff;
+  	                        ^
+".\..\User\Task\exchange.c", line 29: Error:  #171: invalid type conversion
+  	ins_buf[3] = (int16_t*)INS.Roll & 0xff;
+  	             ^
+".\..\User\Task\exchange.c", line 30: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[4] = (int16_t*)(INS.Pitch >> 8) & 0xff;
+  	                        ^
+".\..\User\Task\exchange.c", line 31: Error:  #171: invalid type conversion
+  	ins_buf[5] = (int16_t*)INS.Pitch & 0xff;
+  	             ^
+".\..\User\Task\exchange.c", line 32: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[6] = (int16_t*)(INS.YawTotalAngle >> 8) & 0xff;
+  	                        ^
+".\..\User\Task\exchange.c", line 33: Error:  #171: invalid type conversion
+  	ins_buf[7] = (int16_t*)INS.YawTotalAngle & 0xff;
+  	             ^
+".\..\User\Task\exchange.c", line 34: Warning:  #223-D: function "can_remote" declared implicitly
+  	can_remote(ins_buf, 0x55);
+  	^
+.\..\User\Task\exchange.c: 2 warnings, 8 errors
+
+[2023-12-12 21:18:32]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\Task\exchange.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\exchange.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\exchange.d .\..\User\Task\exchange.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\exchange.c", line 18: Warning:  #223-D: function "osDelay" declared implicitly
+  	osDelay(1);
+  	^
+".\..\User\Task\exchange.c", line 26: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[0] = (uint8_t)(INS.Yaw >> 8) & 0xff;
+  	                       ^
+".\..\User\Task\exchange.c", line 28: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[2] = (uint8_t)(INS.Roll >> 8) & 0xff;
+  	                       ^
+".\..\User\Task\exchange.c", line 30: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[4] = (uint8_t)(INS.Pitch >> 8) & 0xff;
+  	                       ^
+".\..\User\Task\exchange.c", line 32: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[6] = (uint8_t)(INS.YawTotalAngle >> 8) & 0xff;
+  	                       ^
+".\..\User\Task\exchange.c", line 34: Warning:  #223-D: function "can_remote" declared implicitly
+  	can_remote(ins_buf, 0x55);
+  	^
+.\..\User\Task\exchange.c: 2 warnings, 4 errors
+
+[2023-12-12 21:19:06]	[done]
+	build successfully !
+
+[2023-12-12 21:23:47]	[done]
+	build successfully !
+
+[2023-12-12 21:24:19]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\Task\exchange.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\exchange.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\exchange.d .\..\User\Task\exchange.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\exchange.c", line 12: Error:  #29: expected an expression
+  	for ()
+  	     ^
+".\..\User\Task\exchange.c", line 12: Error:  #65: expected a ";"
+  	for ()
+  	     ^
+".\..\User\Task\exchange.c", line 12: Error:  #29: expected an expression
+  	for ()
+  	     ^
+".\..\User\Task\exchange.c", line 12: Error:  #65: expected a ";"
+  	for ()
+  	     ^
+".\..\User\Task\exchange.c", line 14: Warning:  #223-D: function "osDelay" declared implicitly
+  		osDelay(1);
+  		^
+".\..\User\Task\exchange.c", line 34: Warning:  #223-D: function "can_remote" declared implicitly
+  	can_remote(ins_buf, 0x55);
+  	^
+.\..\User\Task\exchange.c: 2 warnings, 4 errors
+
+[2023-12-12 21:24:27]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\Task\exchange.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\exchange.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\exchange.d .\..\User\Task\exchange.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\exchange.c", line 12: Error:  #29: expected an expression
+  	for (;)
+  	      ^
+".\..\User\Task\exchange.c", line 12: Error:  #65: expected a ";"
+  	for (;)
+  	      ^
+".\..\User\Task\exchange.c", line 14: Warning:  #223-D: function "osDelay" declared implicitly
+  		osDelay(1);
+  		^
+".\..\User\Task\exchange.c", line 34: Warning:  #223-D: function "can_remote" declared implicitly
+  	can_remote(ins_buf, 0x55);
+  	^
+.\..\User\Task\exchange.c: 2 warnings, 2 errors
+
+[2023-12-12 21:24:31]	[done]
+	build successfully !
+
+[2023-12-12 21:26:59]	[done]
+	build successfully !
+

@@ -253,6 +253,19 @@ void set_curruent(uint32_t motor_range, CAN_HandleTypeDef can_id, int16_t v1, in
   HAL_CAN_AddTxMessage(&can_id, &tx_header, tx_data, (uint32_t *)CAN_TX_MAILBOX0);
 }
 
+// 向C板发送数据
+void can_remote(uint8_t sbus_buf[], uint8_t can_send_id) // 调用can来发送遥控器数据
+{
+  CAN_TxHeaderTypeDef tx_header;
+
+  tx_header.StdId = can_send_id; // 如果id_range==0则等于0x1ff,id_range==1则等于0x2ff（ID号）
+  tx_header.IDE = CAN_ID_STD;    // 标准帧
+  tx_header.RTR = CAN_RTR_DATA;  // 数据帧
+  tx_header.DLC = 8;             // 发送数据长度（字节）
+
+  HAL_CAN_AddTxMessage(&hcan2, &tx_header, sbus_buf, (uint32_t *)CAN_TX_MAILBOX0);
+}
+
 // 接收代码
 void process_MotorInfo(motor_info_t *motor_info, uint8_t *rx_data)
 {

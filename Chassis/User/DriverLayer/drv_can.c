@@ -15,6 +15,8 @@ uint16_t can_cnt_1 = 0;
 extern gimbal_t gimbal_Yaw, gimbal_Pitch;
 extern chassis_t chassis;
 extern shooter_t shooter;
+extern float yaw_up;
+extern float INS_Data[3];
 
 float powerdata[4];
 uint16_t pPowerdata[8];
@@ -87,6 +89,14 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
   {
     uint8_t rx_data[8];
     HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header, rx_data); // receive can2 data
+
+    if (rx_header.StdId == 0x55)
+    {
+      yaw_up = (float)((rx_data[0] << 8) | rx_data[1]);
+      INS_Data[0] = (float)((rx_data[2] << 8) | rx_data[3]);
+      INS_Data[1] = (float)((rx_data[4] << 8) | rx_data[5]);
+      INS_Data[2] = (float)((rx_data[6] << 8) | rx_data[7]);
+    }
     
 
     if (rx_header.StdId == 0x211)
