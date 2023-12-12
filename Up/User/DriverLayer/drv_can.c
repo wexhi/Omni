@@ -22,24 +22,6 @@ uint16_t pPowerdata[8];
 uint16_t rc_flag = 0;
 uint16_t rc_tmp[5];
 int16_t mouse_x;
-// extren uint16_t w_flag;
-// extren uint16_t s_flag;
-// extren uint16_t a_flag;
-// extren uint16_t d_flag;
-// extren uint16_t q_flag;
-// extren uint16_t e_flag;
-// extren uint16_t shift_flag;
-// extren uint16_t ctrl_flag;
-// extren uint8_t press_left;
-// extren uint8_t press_right;
-// extren uint16_t r_flag;
-// extren uint16_t f_flag;
-// extren uint16_t g_flag;
-// extren uint16_t z_flag;
-// extren uint16_t x_flag;
-// extren uint16_t c_flag;
-// extren uint16_t v_flag;
-// extren uint16_t b_flag;
 
 uint16_t setpower = 5500;
 int canerror = 0;
@@ -93,7 +75,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
     uint8_t rx_data[8];
     HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header, rx_data); // receive can1 data
 
-        // Pitch云台电机信息接收
+    // Pitch云台电机信息接收
     if (rx_header.StdId == GIMBAL_PITCH_ID)
     {
       process_MotorInfo(&gimbal_Pitch.motor_info, rx_data);
@@ -154,6 +136,98 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
       powerdata[3] = (float)pPowerdata[3] / 100.f; // P
     }
   }
+}
+
+// 底盤電機控制
+void set_motor_current_chassis(uint8_t id_range, int16_t v1, int16_t v2, int16_t v3, int16_t v4)
+{
+  CAN_TxHeaderTypeDef tx_header;
+  uint8_t tx_data[8];
+
+  tx_header.StdId = (id_range == 0) ? (0x200) : (0x1ff); // 如果id_range==0则等于0x200,id_range==1则等于0x1ff（ID号）
+  tx_header.IDE = CAN_ID_STD;                            // 标准帧
+  tx_header.RTR = CAN_RTR_DATA;                          // 数据帧
+
+  tx_header.DLC = 8; // 发送数据长度（字节）
+
+  tx_data[0] = (v1 >> 8) & 0xff; // 先发高八位
+  tx_data[1] = (v1) & 0xff;
+  tx_data[2] = (v2 >> 8) & 0xff;
+  tx_data[3] = (v2) & 0xff;
+  tx_data[4] = (v3 >> 8) & 0xff;
+  tx_data[5] = (v3) & 0xff;
+  tx_data[6] = (v4 >> 8) & 0xff;
+  tx_data[7] = (v4) & 0xff;
+  HAL_CAN_AddTxMessage(&hcan1, &tx_header, tx_data, (uint32_t *)CAN_TX_MAILBOX0);
+}
+
+// 雲臺電機控制
+void set_motor_current_gimbal(uint8_t id_range, int16_t v1, int16_t v2, int16_t v3, int16_t v4)
+{
+  CAN_TxHeaderTypeDef tx_header;
+  uint8_t tx_data[8];
+
+  tx_header.StdId = (id_range == 0) ? (0x1ff) : (0x2ff); // 如果id_range==0则等于0x1ff,id_range==1则等于0x2ff（ID号）
+  tx_header.IDE = CAN_ID_STD;                            // 标准帧
+  tx_header.RTR = CAN_RTR_DATA;                          // 数据帧
+
+  tx_header.DLC = 8; // 发送数据长度（字节）
+
+  tx_data[0] = (v1 >> 8) & 0xff; // 先发高八位
+  tx_data[1] = (v1) & 0xff;
+  tx_data[2] = (v2 >> 8) & 0xff;
+  tx_data[3] = (v2) & 0xff;
+  tx_data[4] = (v3 >> 8) & 0xff;
+  tx_data[5] = (v3) & 0xff;
+  tx_data[6] = (v4 >> 8) & 0xff;
+  tx_data[7] = (v4) & 0xff;
+  HAL_CAN_AddTxMessage(&hcan1, &tx_header, tx_data, (uint32_t *)CAN_TX_MAILBOX0);
+}
+
+// 雲臺電機控制 -- CAN2
+void set_motor_current_gimbal2(uint8_t id_range, int16_t v1, int16_t v2, int16_t v3, int16_t v4)
+{
+  CAN_TxHeaderTypeDef tx_header;
+  uint8_t tx_data[8];
+
+  tx_header.StdId = (id_range == 0) ? (0x1ff) : (0x2ff); // 如果id_range==0则等于0x1ff,id_range==1则等于0x2ff（ID号）
+  tx_header.IDE = CAN_ID_STD;                            // 标准帧
+  tx_header.RTR = CAN_RTR_DATA;                          // 数据帧
+
+  tx_header.DLC = 8; // 发送数据长度（字节）
+
+  tx_data[0] = (v1 >> 8) & 0xff; // 先发高八位
+  tx_data[1] = (v1) & 0xff;
+  tx_data[2] = (v2 >> 8) & 0xff;
+  tx_data[3] = (v2) & 0xff;
+  tx_data[4] = (v3 >> 8) & 0xff;
+  tx_data[5] = (v3) & 0xff;
+  tx_data[6] = (v4 >> 8) & 0xff;
+  tx_data[7] = (v4) & 0xff;
+  HAL_CAN_AddTxMessage(&hcan2, &tx_header, tx_data, (uint32_t *)CAN_TX_MAILBOX0);
+}
+
+// 發射機構電機控制
+void set_motor_current_shoot(uint8_t id_range, int16_t v1, int16_t v2, int16_t v3, int16_t v4)
+{
+  CAN_TxHeaderTypeDef tx_header;
+  uint8_t tx_data[8];
+
+  tx_header.StdId = (id_range == 0) ? (0x200) : (0x1ff); // 如果id_range==0则等于0x200,id_range==1则等于0x1ff（ID号）
+  tx_header.IDE = CAN_ID_STD;                            // 标准帧
+  tx_header.RTR = CAN_RTR_DATA;                          // 数据帧
+
+  tx_header.DLC = 8; // 发送数据长度（字节）
+
+  tx_data[0] = (v1 >> 8) & 0xff; // 先发高八位
+  tx_data[1] = (v1) & 0xff;
+  tx_data[2] = (v2 >> 8) & 0xff;
+  tx_data[3] = (v2) & 0xff;
+  tx_data[4] = (v3 >> 8) & 0xff;
+  tx_data[5] = (v3) & 0xff;
+  tx_data[6] = (v4 >> 8) & 0xff;
+  tx_data[7] = (v4) & 0xff;
+  HAL_CAN_AddTxMessage(&hcan2, &tx_header, tx_data, (uint32_t *)CAN_TX_MAILBOX0);
 }
 
 // 一步解决所有电机控制

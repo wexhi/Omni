@@ -87,16 +87,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
   {
     uint8_t rx_data[8];
     HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header, rx_data); // receive can2 data
-    // 發射機構电机信息接收
-    if (rx_header.StdId >= SHOOTER_ID_START && rx_header.StdId <= SHOOTER_ID_END)
-    {
-      process_MotorInfo(&shooter.motor_info[rx_header.StdId - SHOOTER_ID_START], rx_data);
-    }
-    // 云台电机信息接收
-    if (rx_header.StdId == GIMBAL_PITCH_ID)
-    {
-      process_MotorInfo(&gimbal_Pitch.motor_info, rx_data);
-    }
+    
 
     if (rx_header.StdId == 0x211)
     {
