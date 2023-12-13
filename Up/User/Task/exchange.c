@@ -5,6 +5,7 @@
 #include <string.h>
 
 extern fp32 INS_angle[3];
+int16_t INS_angle_send[3];
 uint8_t ins_buf[8];
 
 static void Up_send_to_down();
@@ -21,12 +22,16 @@ void exchange_task()
 //================================================上C向下C发送数据================================================//
 static void Up_send_to_down()
 {
-	ins_buf[0] = (uint16_t)(INS_angle[0] * 100) >> 8;
-	ins_buf[1] = (uint16_t)(INS_angle[0] * 100);
-	ins_buf[2] = (uint16_t)(INS_angle[1] * 100) >> 8;
-	ins_buf[3] = (uint16_t)(INS_angle[1] * 100);
-	ins_buf[4] = (uint16_t)(INS_angle[2] * 100) >> 8;
-	ins_buf[5] = (uint16_t)(INS_angle[2] * 100);
+	INS_angle_send[0] = INS_angle[0] * 1000;
+	INS_angle_send[1] = INS_angle[1] * 1000;
+	INS_angle_send[2] = INS_angle[2] * 1000;
+
+	ins_buf[0] = (INS_angle_send[0] >> 8) & 0xff;
+	ins_buf[1] = INS_angle_send[1] >> 8;
+	ins_buf[2] = (INS_angle_send[2] >> 8) & 0xff;
+	ins_buf[3] = INS_angle_send[3] >> 8;
+	ins_buf[4] = (INS_angle_send[4] >> 8) & 0xff;
+	ins_buf[5] = INS_angle_send[5] >> 8;
 	ins_buf[6] = 0;
 	ins_buf[7] = 0;
 	can_remote(ins_buf, 0x55);

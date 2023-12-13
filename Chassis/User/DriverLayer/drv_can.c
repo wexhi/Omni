@@ -10,12 +10,11 @@
 extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;
 extern RC_ctrl_t rc_ctrl;
-uint16_t can_cnt_1 = 0;
 
 extern gimbal_t gimbal_Yaw, gimbal_Pitch;
 extern chassis_t chassis;
 extern shooter_t shooter;
-int16_t up_angle[3];
+int16_t up_angle[3] = {0};
 
 float powerdata[4];
 uint16_t pPowerdata[8];

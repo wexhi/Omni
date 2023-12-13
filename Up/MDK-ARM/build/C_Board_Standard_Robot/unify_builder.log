@@ -226,3 +226,112 @@ Finished: 2 information, 0 warning and 1 error messages.
 [2023-12-13 20:35:35]	[done]
 	build successfully !
 
+[2023-12-13 21:02:01]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\Task\exchange.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\exchange.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\exchange.d .\..\User\Task\exchange.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\exchange.c", line 16: Warning:  #223-D: function "osDelay" declared implicitly
+  		osDelay(7);
+  		^
+".\..\User\Task\exchange.c", line 24: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[0] = (uint16_t)((INS_angle[0] * 100) >> 8) & 0xff;
+  	                        ^
+".\..\User\Task\exchange.c", line 26: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[2] = (uint16_t)((INS_angle[1] * 100) >> 8) & 0xff;
+  	                        ^
+".\..\User\Task\exchange.c", line 28: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[4] = (uint16_t)((INS_angle[2] * 100) >> 8) & 0xff;
+  	                        ^
+.\..\User\Task\exchange.c: 1 warning, 3 errors
+
+[2023-12-13 21:08:48]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\Task\exchange.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\exchange.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\exchange.d .\..\User\Task\exchange.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\exchange.c", line 17: Warning:  #223-D: function "osDelay" declared implicitly
+  		osDelay(7);
+  		^
+".\..\User\Task\exchange.c", line 30: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[1] = INS_angle[1] >> 8;
+  	             ^
+".\..\User\Task\exchange.c", line 32: Warning:  #175-D: subscript out of range
+  	ins_buf[3] = INS_angle[3] >> 8;
+  	             ^
+".\..\User\Task\exchange.c", line 32: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[3] = INS_angle[3] >> 8;
+  	             ^
+".\..\User\Task\exchange.c", line 33: Warning:  #175-D: subscript out of range
+  	ins_buf[4] = (INS_angle_send[4] >> 8) & 0xff;
+  	                            ^
+".\..\User\Task\exchange.c", line 34: Warning:  #175-D: subscript out of range
+  	ins_buf[5] = INS_angle[5] >> 8;
+  	                      ^
+".\..\User\Task\exchange.c", line 34: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[5] = INS_angle[5] >> 8;
+  	             ^
+.\..\User\Task\exchange.c: 4 warnings, 3 errors
+
+[2023-12-13 21:11:08]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\Task\exchange.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\exchange.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\exchange.d .\..\User\Task\exchange.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\exchange.c", line 17: Warning:  #223-D: function "osDelay" declared implicitly
+  		osDelay(7);
+  		^
+".\..\User\Task\exchange.c", line 30: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[1] = INS_angle[1] >> 8;
+  	             ^
+".\..\User\Task\exchange.c", line 32: Warning:  #175-D: subscript out of range
+  	ins_buf[3] = INS_angle[3] >> 8;
+  	             ^
+".\..\User\Task\exchange.c", line 32: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[3] = INS_angle[3] >> 8;
+  	             ^
+".\..\User\Task\exchange.c", line 33: Warning:  #175-D: subscript out of range
+  	ins_buf[4] = (INS_angle_send[4] >> 8) & 0xff;
+  	                            ^
+".\..\User\Task\exchange.c", line 34: Warning:  #175-D: subscript out of range
+  	ins_buf[5] = INS_angle[5] >> 8;
+  	                      ^
+".\..\User\Task\exchange.c", line 34: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[5] = INS_angle[5] >> 8;
+  	             ^
+.\..\User\Task\exchange.c: 4 warnings, 3 errors
+
+[2023-12-13 21:11:23]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\Task\exchange.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\exchange.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\exchange.d .\..\User\Task\exchange.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\exchange.c", line 17: Warning:  #223-D: function "osDelay" declared implicitly
+  		osDelay(7);
+  		^
+".\..\User\Task\exchange.c", line 30: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[1] = INS_angle[1] >> 8;
+  	             ^
+".\..\User\Task\exchange.c", line 32: Warning:  #175-D: subscript out of range
+  	ins_buf[3] = INS_angle[3] >> 8;
+  	             ^
+".\..\User\Task\exchange.c", line 32: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[3] = INS_angle[3] >> 8;
+  	             ^
+".\..\User\Task\exchange.c", line 33: Warning:  #175-D: subscript out of range
+  	ins_buf[4] = (INS_angle_send[4] >> 8) & 0xff;
+  	                            ^
+".\..\User\Task\exchange.c", line 34: Warning:  #175-D: subscript out of range
+  	ins_buf[5] = INS_angle[5] >> 8;
+  	                      ^
+".\..\User\Task\exchange.c", line 34: Error:  #1460: expression must have integral or fixed-point type
+  	ins_buf[5] = INS_angle[5] >> 8;
+  	             ^
+.\..\User\Task\exchange.c: 4 warnings, 3 errors
+
+[2023-12-13 21:13:05]	[done]
+	build successfully !
+
+[2023-12-13 21:16:34]	[done]
+	build successfully !
+
