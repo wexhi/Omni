@@ -81,9 +81,9 @@ typedef struct
     pid_struct_t pid_friction; // 摩擦轮电机的pid结构体
     pid_struct_t pid_bay;      // 弹舱电机的pid结构体
 
-    int16_t dial_speed_target;     // 拨盘电机的目标速度
+    int16_t dial_speed_target;        // 拨盘电机的目标速度
     int16_t friction_speed_target[2]; // 摩擦轮电机的目标速度
-    int16_t bay_speed_target;      // 弹舱电机的目标速度
+    int16_t bay_speed_target;         // 弹舱电机的目标速度
 
 } shooter_t;
 

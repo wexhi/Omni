@@ -28,7 +28,7 @@
 /* USER CODE BEGIN Includes */
 #include "rc_potocal.h"
 #include "arm_math.h"
-#include "INS_task.h"
+#include "ins_task.h"
 #include "exchange.h"
 #include "Chassis_task.h"
 #include "super_cap.h"
@@ -56,14 +56,11 @@
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
 // osThreadId Chassis_taskHandle;
-osThreadId myTask02Handle;
 osThreadId super_capHandle;
-osThreadId UI_taskHandle;
 osThreadId Gimbal_taskHandle;
 osThreadId shoot_taskHandle;
-osThreadId INSTaskHandle;
+osThreadId imuTaskHandle;
 osThreadId exchangeTaskHandle;
-osThreadId defaultTaskHandle;
 /* USER CODE END Variables */
 osThreadId defaultTaskHandle;
 
@@ -72,15 +69,15 @@ osThreadId defaultTaskHandle;
 
 /* USER CODE END FunctionPrototypes */
 
-void StartDefaultTask(void const *argument);
+void StartDefaultTask(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
 /* GetIdleTaskMemory prototype (linked to static allocation support) */
-void vApplicationGetIdleTaskMemory(StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskStackBuffer, uint32_t *pulIdleTaskStackSize);
+void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskStackBuffer, uint32_t *pulIdleTaskStackSize );
 
 /* GetTimerTaskMemory prototype (linked to static allocation support) */
-void vApplicationGetTimerTaskMemory(StaticTask_t **ppxTimerTaskTCBBuffer, StackType_t **ppxTimerTaskStackBuffer, uint32_t *pulTimerTaskStackSize);
+void vApplicationGetTimerTaskMemory( StaticTask_t **ppxTimerTaskTCBBuffer, StackType_t **ppxTimerTaskStackBuffer, uint32_t *pulTimerTaskStackSize );
 
 /* USER CODE BEGIN GET_IDLE_TASK_MEMORY */
 static StaticTask_t xIdleTaskTCBBuffer;
@@ -109,12 +106,11 @@ void vApplicationGetTimerTaskMemory(StaticTask_t **ppxTimerTaskTCBBuffer, StackT
 /* USER CODE END GET_TIMER_TASK_MEMORY */
 
 /**
- * @brief  FreeRTOS initialization
- * @param  None
- * @retval None
- */
-void MX_FREERTOS_Init(void)
-{
+  * @brief  FreeRTOS initialization
+  * @param  None
+  * @retval None
+  */
+void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
@@ -142,12 +138,8 @@ void MX_FREERTOS_Init(void)
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
-
-  // osThreadDef(Chassistask, Chassis_task, osPriorityRealtime, 0, 512); // �����ƶ�����
-  // Chassis_taskHandle = osThreadCreate(osThread(Chassistask), NULL);
-
-  osThreadDef(UItask, UI_Task, osPriorityRealtime, 0, 512);
-  UI_taskHandle = osThreadCreate(osThread(UItask), NULL);
+  osThreadDef(imuTask, INS_task, osPriorityRealtime, 0, 1024);
+  imuTaskHandle = osThreadCreate(osThread(imuTask), NULL);
 
   osThreadDef(exchangeTask, exchange_task, osPriorityNormal, 0, 128);
   exchangeTaskHandle = osThreadCreate(osThread(exchangeTask), NULL);
@@ -158,6 +150,7 @@ void MX_FREERTOS_Init(void)
   osThreadDef(shootTask, Shoot_task, osPriorityNormal, 0, 256);
   shoot_taskHandle = osThreadCreate(osThread(shootTask), NULL);
   /* USER CODE END RTOS_THREADS */
+
 }
 
 /* USER CODE BEGIN Header_StartDefaultTask */
@@ -167,12 +160,12 @@ void MX_FREERTOS_Init(void)
  * @retval None
  */
 /* USER CODE END Header_StartDefaultTask */
-void StartDefaultTask(void const *argument)
+void StartDefaultTask(void const * argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
   // HAL_GPIO_WritePin(GPIOH, GPIO_PIN_11, GPIO_PIN_SET);
   // HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_SET);
-  // uint8_t TIM1_flag = 1; // ��֪��bug // 这东西有�?么用啊？
+  // uint8_t TIM1_flag = 1; // ï¿½ï¿½Öªï¿½ï¿½bug // è¿™ä¸œè¥¿æœ�?�ä�??ä¹ˆç”¨å�?�Šï¼�?
   /* Infinite loop */
   for (;;)
   {

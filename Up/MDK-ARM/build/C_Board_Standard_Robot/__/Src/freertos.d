@@ -59,10 +59,7 @@
 .\build\C_Board_Standard_Robot\__\Src\freertos.o: ../User/Task/Shoot_task.h
 .\build\C_Board_Standard_Robot\__\Src\freertos.o: ../Drivers/CMSIS/Include/arm_math.h
 .\build\C_Board_Standard_Robot\__\Src\freertos.o: ../Drivers/CMSIS/Include/core_cm4.h
-.\build\C_Board_Standard_Robot\__\Src\freertos.o: ../Application/INS_task.h
-.\build\C_Board_Standard_Robot\__\Src\freertos.o: ../Components/Devices/BMI088driver.h
-.\build\C_Board_Standard_Robot\__\Src\freertos.o: ../Components/Algorithm/QuaternionEKF.h
-.\build\C_Board_Standard_Robot\__\Src\freertos.o: ../Components/kalman_filter.h
+.\build\C_Board_Standard_Robot\__\Src\freertos.o: ../Application/ins_task.h
 .\build\C_Board_Standard_Robot\__\Src\freertos.o: ../User/Task/exchange.h
 .\build\C_Board_Standard_Robot\__\Src\freertos.o: ../Inc/super_cap.h
 .\build\C_Board_Standard_Robot\__\Src\freertos.o: ../User/Task/UI_task.h

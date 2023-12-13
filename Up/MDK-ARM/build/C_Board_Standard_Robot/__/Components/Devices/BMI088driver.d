@@ -1,5 +1,6 @@
 .\build\C_Board_Standard_Robot\__\Components\Devices\BMI088driver.o: .\..\Components\Devices\BMI088driver.c
 .\build\C_Board_Standard_Robot\__\Components\Devices\BMI088driver.o: .\..\Components\Devices\BMI088driver.h
+.\build\C_Board_Standard_Robot\__\Components\Devices\BMI088driver.o: ../Inc/struct_typedef.h
 .\build\C_Board_Standard_Robot\__\Components\Devices\BMI088driver.o: ../Inc/main.h
 .\build\C_Board_Standard_Robot\__\Components\Devices\BMI088driver.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 .\build\C_Board_Standard_Robot\__\Components\Devices\BMI088driver.o: ../Inc/stm32f4xx_hal_conf.h
@@ -36,4 +37,3 @@
 .\build\C_Board_Standard_Robot\__\Components\Devices\BMI088driver.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 .\build\C_Board_Standard_Robot\__\Components\Devices\BMI088driver.o: .\..\Components\Devices\BMI088reg.h
 .\build\C_Board_Standard_Robot\__\Components\Devices\BMI088driver.o: .\..\Components\Devices\BMI088Middleware.h
-.\build\C_Board_Standard_Robot\__\Components\Devices\BMI088driver.o: ../Bsp/bsp_dwt.h

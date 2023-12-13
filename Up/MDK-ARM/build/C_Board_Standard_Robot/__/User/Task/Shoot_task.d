@@ -58,9 +58,4 @@
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Application/INS_task.h
-.\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Components/Devices/BMI088driver.h
-.\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Components/Algorithm/QuaternionEKF.h
-.\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Components/kalman_filter.h
-.\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Drivers/CMSIS/Include/arm_math.h
-.\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Drivers/CMSIS/Include/core_cm4.h
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: .\..\User\Task\exchange.h

@@ -7,7 +7,7 @@
 #define MAX_ANGLE 8000
 #define MIN_ANGLE 2200
 
-extern INS_t INS;
+
 gimbal_t gimbal_Yaw, gimbal_Pitch; // 云台电机信息结构体
 
 extern RC_ctrl_t rc_ctrl; // 遥控器信息结构体

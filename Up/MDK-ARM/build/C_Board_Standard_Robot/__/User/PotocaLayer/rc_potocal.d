@@ -44,9 +44,4 @@
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../User/Task/Gimbal_task.h
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../User/Task/Shoot_task.h
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../Application/INS_task.h
-.\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../Components/Devices/BMI088driver.h
-.\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../Components/Algorithm/QuaternionEKF.h
-.\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../Components/kalman_filter.h
-.\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../Drivers/CMSIS/Include/arm_math.h
-.\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../Drivers/CMSIS/Include/core_cm4.h
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../User/Task/exchange.h

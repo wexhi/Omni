@@ -1,5 +1,6 @@
 .\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: .\..\Components\Devices\BMI088Middleware.c
 .\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: .\..\Components\Devices\BMI088Middleware.h
+.\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Inc/struct_typedef.h
 .\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Inc/main.h
 .\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 .\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Inc/stm32f4xx_hal_conf.h
@@ -34,3 +35,18 @@
 .\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 .\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 .\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+.\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
+.\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+.\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Inc/FreeRTOSConfig.h
+.\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+.\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+.\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+.\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+.\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+.\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+.\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+.\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
+.\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
+.\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
+.\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
+.\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Bsp/bsp_delay.h

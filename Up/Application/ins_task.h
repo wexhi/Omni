@@ -1,80 +1,78 @@
 /**
- ******************************************************************************
- * @file    ins_task.h
- * @author  Wang Hongxi
- * @version V2.0.0
- * @date    2022/2/23
- * @brief
- ******************************************************************************
- * @attention
- *
- ******************************************************************************
- */
-#ifndef __INS_TASK_H
-#define __INS_TASK_H
+  ****************************(C) COPYRIGHT 2019 DJI****************************
+  * @file       INS_task.c/h
+  * @brief      use bmi088 to calculate the euler angle. no use ist8310, so only
+  *             enable data ready pin to save cpu time.enalbe bmi088 data ready
+  *             enable spi DMA to save the time spi transmit
+  *             ��Ҫ����������bmi088��������ist8310�������̬���㣬�ó�ŷ���ǣ�
+  *             �ṩͨ��bmi088��data ready �ж�����ⲿ�������������ݵȴ��ӳ�
+  *             ͨ��DMA��SPI�����ԼCPUʱ��.
+  * @note
+  * @history
+  *  Version    Date            Author          Modification
+  *  V1.0.0     Dec-26-2018     RM              1. done
+  *  V2.0.0     Nov-11-2019     RM              1. support bmi088, but don't support mpu6500
+  *
+  @verbatim
+  ==============================================================================
 
-#include "stdint.h"
-#include "BMI088driver.h"
-#include "QuaternionEKF.h"
+  ==============================================================================
+  @endverbatim
+  ****************************(C) COPYRIGHT 2019 DJI****************************
+  */
 
-#define X 0
-#define Y 1
-#define Z 2
+#ifndef INS_Task_H
+#define INS_Task_H
+#include "struct_typedef.h"
 
-#define INS_TASK_PERIOD 1
+#define SPI_DMA_GYRO_LENGHT 8
+#define SPI_DMA_ACCEL_LENGHT 9
+#define SPI_DMA_ACCEL_TEMP_LENGHT 4
 
-typedef struct
-{
-    float q[4]; // 四元数估计值
+#define IMU_DR_SHFITS 0
+#define IMU_SPI_SHFITS 1
+#define IMU_UPDATE_SHFITS 2
 
-    float Gyro[3];  // 角速度
-    float Accel[3]; // 加速度
-    float MotionAccel_b[3]; // 机体坐标加速度
-    float MotionAccel_n[3]; // 绝对系加速度
+#define BMI088_GYRO_RX_BUF_DATA_OFFSET 1
+#define BMI088_ACCEL_RX_BUF_DATA_OFFSET 2
 
-    float AccelLPF; // 加速度低通滤波系数
+#define TEMPERATURE_PID_KP 1600.0f // �¶ȿ���PID��kp
+#define TEMPERATURE_PID_KI 0.2f    // �¶ȿ���PID��ki
+#define TEMPERATURE_PID_KD 0.0f    // �¶ȿ���PID��kd
 
-    // 加速度在绝对系的向量表示
-    float xn[3];
-    float yn[3];
-    float zn[3];
+#define TEMPERATURE_PID_MAX_OUT 4500.0f  // �¶ȿ���PID��max_out
+#define TEMPERATURE_PID_MAX_IOUT 4400.0f // �¶ȿ���PID��max_iout
 
-    float atanxz;
-    float atanyz;
+#define MPU6500_TEMP_PWM_MAX 5000 // mpu6500�����¶ȵ�����TIM������ֵ������PWM���Ϊ MPU6500_TEMP_PWM_MAX - 1
 
-    // 位姿
-    float Roll;
-    float Pitch;
-    float Yaw;
-    float YawTotalAngle;
-} INS_t;
+#define INS_TASK_INIT_TIME 7 // ����ʼ���� delay һ��ʱ��
 
+#define INS_YAW_ADDRESS_OFFSET 0
+#define INS_PITCH_ADDRESS_OFFSET 1
+#define INS_ROLL_ADDRESS_OFFSET 2
+
+#define INS_GYRO_X_ADDRESS_OFFSET 0
+#define INS_GYRO_Y_ADDRESS_OFFSET 1
+#define INS_GYRO_Z_ADDRESS_OFFSET 2
+
+#define INS_ACCEL_X_ADDRESS_OFFSET 0
+#define INS_ACCEL_Y_ADDRESS_OFFSET 1
+#define INS_ACCEL_Z_ADDRESS_OFFSET 2
+
+#define INS_MAG_X_ADDRESS_OFFSET 0
+#define INS_MAG_Y_ADDRESS_OFFSET 1
+#define INS_MAG_Z_ADDRESS_OFFSET 2
 
 /**
- * @brief 用于修正安装误差的参数,demo中可无视
- * 
+ * @brief          imu task, init bmi088, ist8310, calculate the euler angle
+ * @param[in]      pvParameters: NULL
+ * @retval         none
  */
-typedef struct
-{
-    uint8_t flag;
-
-    float scale[3];
-
-    float Yaw;
-    float Pitch;
-    float Roll;
-} IMU_Param_t;
-
-extern INS_t INS;
-
-void INS_Init(void);
-void INS_Task(void);
-void IMU_Temperature_Ctrl(void);
-
-void QuaternionUpdate(float *q, float gx, float gy, float gz, float dt);
-void QuaternionToEularAngle(float *q, float *Yaw, float *Pitch, float *Roll);
-void EularAngleToQuaternion(float Yaw, float Pitch, float Roll, float *q);
-void BodyFrameToEarthFrame(const float *vecBF, float *vecEF, float *q);
-void EarthFrameToBodyFrame(const float *vecEF, float *vecBF, float *q);
+/**
+ * @brief          imu����, ��ʼ�� bmi088, ist8310, ����ŷ����
+ * @param[in]      pvParameters: NULL
+ * @retval         none
+ */
+extern void INS_task(void const *pvParameters);
 
 #endif

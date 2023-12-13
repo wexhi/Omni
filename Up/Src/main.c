@@ -33,6 +33,7 @@
 #include "drv_can.h"
 #include "drv_usart.h"
 #include "bsp_dwt.h"
+#include "bsp_delay.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -138,6 +139,7 @@ int main(void)
   MX_USART3_UART_Init();
   MX_USART6_UART_Init();
   /* USER CODE BEGIN 2 */
+  delay_init();
   HAL_TIM_PWM_Start(&htim10, TIM_CHANNEL_1);
   HAL_NVIC_SetPriority(TIM2_IRQn, 0, 0); // 修改TIM2中断优先级
   //	HAL_NVIC_SetPriority(SysTick_IRQn,1,1);//调高HAL_Delay的时钟中断优先级
@@ -146,10 +148,9 @@ int main(void)
   USART6_Init();
   USART3_Init();
   HAL_TIM_Base_Start_IT(&htim1); // 开启定时器1并打开中断,记得修改优先级
-  DWT_Init(168);
+  // DWT_Init(168);
   // __HAL_UART_ENABLE_IT(&huart3, UART_IT_IDLE); // 使能空闲中断
-  while (BMI088_init(&hspi1, 1) != BMI088_NO_ERROR)
-    ;
+
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
@@ -157,6 +158,7 @@ int main(void)
 
   /* Start scheduler */
   osKernelStart();
+
   /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */

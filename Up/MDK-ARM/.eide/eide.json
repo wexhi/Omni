@@ -22,7 +22,10 @@
             "name": "Applications",
             "files": [
               {
-                "path": "../Application/ins_task.c"
+                "path": "../Application/INS_task.c"
+              },
+              {
+                "path": "../User/AlgorithmLayer/pid_imu.c"
               }
             ],
             "folders": []
@@ -31,10 +34,19 @@
             "name": "Bsp",
             "files": [
               {
+                "path": "../Bsp/bsp_delay.c"
+              },
+              {
                 "path": "../Bsp/bsp_dwt.c"
               },
               {
+                "path": "../Bsp/bsp_imu_pwm.c"
+              },
+              {
                 "path": "../Bsp/bsp_PWM.c"
+              },
+              {
+                "path": "../Bsp/bsp_spi.c"
               }
             ],
             "folders": []
@@ -246,9 +258,6 @@
         "name": "RTOS TASK",
         "files": [
           {
-            "path": "../User/Task/Chassis_task.c"
-          },
-          {
             "path": "../User/Task/exchange.c"
           },
           {
@@ -256,9 +265,6 @@
           },
           {
             "path": "../User/Task/Shoot_task.c"
-          },
-          {
-            "path": "../User/Task/UI_task.c"
           }
         ],
         "folders": []
@@ -297,7 +303,9 @@
   },
   "targets": {
     "C_Board_Standard_Robot": {
-      "excludeList": [],
+      "excludeList": [
+        "<virtual_root>/RTOS TASK/UI_task.c"
+      ],
       "toolchain": "AC5",
       "compileConfig": {
         "cpuType": "Cortex-M4",
