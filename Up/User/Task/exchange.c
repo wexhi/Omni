@@ -4,12 +4,6 @@
 #include "drv_can.h"
 #include <string.h>
 
-
-int16_t yaw_to_down = 0;
-int16_t pitch_to_down = 0;
-int16_t roll_to_down = 0;
-int16_t yaw_total_angle_to_down = 0;
-
 extern fp32 INS_angle[3];
 
 static void Up_send_to_down();

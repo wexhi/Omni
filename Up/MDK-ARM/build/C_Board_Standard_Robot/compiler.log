@@ -1,6 +1,9 @@
 >>> cc
 
-
+".\..\User\Task\exchange.c", line 15: Warning:  #223-D: function "osDelay" declared implicitly
+  		osDelay(7);
+  		^
+.\..\User\Task\exchange.c: 1 warning, 0 errors
 
 >>> ld
 
