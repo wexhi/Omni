@@ -1,4 +1,4 @@
---cpu Cortex-M4.fp --library_type=microlib --scatter "c:/Users/wexhi/Desktop/study/robomaster/Omni/Up/MDK-ARM/build/C_Board_Standard_Robot/UP.sct" --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols --info sizes --info totals --info unused --info veneers
+--cpu Cortex-M4.fp --library_type=microlib --scatter "c:/Users/14775/Desktop/study/robomaster/Omni/Up/MDK-ARM/build/C_Board_Standard_Robot/UP.sct" --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols --info sizes --info totals --info unused --info veneers
 --list .\build\C_Board_Standard_Robot\UP.map
 .\build\C_Board_Standard_Robot\__\Components\Algorithm\QuaternionEKF.o
 .\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o

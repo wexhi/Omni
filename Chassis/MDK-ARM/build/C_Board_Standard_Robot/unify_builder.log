@@ -47,3 +47,51 @@ command:
 [2023-12-12 23:07:38]	[done]
 	build successfully !
 
+[2023-12-13 20:27:56]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\Application\ins_task.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Application\ins_task.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Application\ins_task.d .\..\Application\ins_task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Application\ins_task.c", line 31: Error:  #20: identifier "fp32" is undefined
+  fp32 yaw_up = 0;
+  ^
+.\..\Application\ins_task.c: 0 warnings, 1 error
+
+[2023-12-13 20:28:23]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 94: Error:  #20: identifier "can_rx_message" is undefined
+      if (can_rx_message.StdId == 0x55) // ‰∏?CÂê?‰∏?C‰º?IMUÊï?Êç?
+          ^
+".\..\User\DriverLayer\drv_can.c", line 96: Error:  #20: identifier "can_receive_data" is undefined
+        if (can_receive_data[0] == 8) // Ê†?È™?‰Ω?
+            ^
+.\..\User\DriverLayer\drv_can.c: 0 warnings, 2 errors
+
+[2023-12-13 20:28:57]	[done]
+	build successfully !
+
+[2023-12-13 20:31:48]	[done]
+	build successfully !
+
+[2023-12-13 20:33:08]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\DriverLayer\drv_can.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_can.d .\..\User\DriverLayer\drv_can.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\DriverLayer\drv_can.c", line 98: Warning:  #223-D: function "memcpy" declared implicitly
+          memcpy(&Up_ins_yaw, &rx_data[1], 4);
+          ^
+".\..\User\DriverLayer\drv_can.c", line 98: Error:  #20: identifier "Up_ins_yaw" is undefined
+          memcpy(&Up_ins_yaw, &rx_data[1], 4);
+                  ^
+.\..\User\DriverLayer\drv_can.c: 1 warning, 1 error
+
+[2023-12-13 20:33:32]	[done]
+	build successfully !
+
+[2023-12-13 20:36:55]	[done]
+	build successfully !
+

@@ -58,3 +58,4 @@
 .\build\C_Board_Standard_Robot\__\Application\ins_task.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
 .\build\C_Board_Standard_Robot\__\Application\ins_task.o: ../Bsp/bsp_PWM.h
 .\build\C_Board_Standard_Robot\__\Application\ins_task.o: ../Inc/tim.h
+.\build\C_Board_Standard_Robot\__\Application\ins_task.o: ../Inc/struct_typedef.h

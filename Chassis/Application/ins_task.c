@@ -14,6 +14,7 @@
 #include "controller.h"
 #include "QuaternionEKF.h"
 #include "bsp_PWM.h"
+#include "struct_typedef.h"
 
 INS_t INS;
 IMU_Param_t IMU_Param;
@@ -28,8 +29,6 @@ static float dt = 0, t = 0;
 uint8_t ins_debug_mode = 0;
 float RefTemp = 40;
 
-int16_t yaw_up = 0;
-int16_t INS_Data[3];
 
 static void
 IMU_Param_Correction(IMU_Param_t *param, float gyro[3], float accel[3]);
