@@ -1,10 +1,12 @@
 >>> cc
 
-
-".\..\User\Task\exchange.c", line 22: Warning:  #223-D: function "osDelay" declared implicitly
-  	osDelay(1);
-  	^
-.\..\User\Task\exchange.c: 1 warning, 0 errors
+".\..\User\Task\Gimbal_task.c", line 96: Warning:  #177-D: function "RC_gimbal_control" was declared but never referenced
+  static void RC_gimbal_control()
+              ^
+".\..\User\Task\Gimbal_task.c", line 103: Warning:  #177-D: function "gimbal_yaw_control" was declared but never referenced
+  static void gimbal_yaw_control()
+              ^
+.\..\User\Task\Gimbal_task.c: 2 warnings, 0 errors
 
 >>> ld
 

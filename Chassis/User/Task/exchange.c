@@ -16,9 +16,9 @@ void exchange_task()
 		ins_data.angle[1] = INS.Roll;
 		ins_data.angle[2] = INS.Pitch;
 
-		UP_C_angle.yaw = up_angle[0] / 1000.0f;
-		UP_C_angle.roll = up_angle[1] / 1000.0f;
-		UP_C_angle.pitch = up_angle[2] / 1000.0f;
+		UP_C_angle.yaw = up_angle[0] / 100.0f;
+		UP_C_angle.roll = up_angle[1] / 100.0f;
+		UP_C_angle.pitch = up_angle[2] / 100.0f;
 
 		osDelay(1);
 	}

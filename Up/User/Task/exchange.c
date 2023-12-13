@@ -22,9 +22,9 @@ void exchange_task()
 //================================================上C向下C发送数据================================================//
 static void Up_send_to_down()
 {
-	INS_angle_send[0] = INS_angle[0] * 1000;
-	INS_angle_send[1] = INS_angle[1] * 1000;
-	INS_angle_send[2] = INS_angle[2] * 1000;
+	INS_angle_send[0] = INS_angle[0] * 100;
+	INS_angle_send[1] = INS_angle[1] * 100;
+	INS_angle_send[2] = INS_angle[2] * 100;
 
 	ins_buf[0] = (INS_angle_send[0] >> 8) & 0xff;
 	ins_buf[1] = INS_angle_send[1] >> 8;
