@@ -95,3 +95,131 @@ command:
 [2023-12-13 20:36:55]	[done]
 	build successfully !
 
+[2023-12-13 20:47:35]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\Task\exchange.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\exchange.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\exchange.d .\..\User\Task\exchange.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\exchange.c", line 7: Error:  #147: declaration is incompatible with "UP_C_angle_t up_angle" (declared at line 6)
+  int16_t up_angle[3];
+          ^
+".\..\User\Task\exchange.c", line 12: Error:  #154: expression must have struct or union type
+  		up_angle.yaw = up_angle[0] / 100.f;
+  		^
+".\..\User\Task\exchange.c", line 13: Error:  #154: expression must have struct or union type
+  		up_angle.pitch = up_angle[1] / 100.f;
+  		^
+".\..\User\Task\exchange.c", line 14: Error:  #154: expression must have struct or union type
+  		up_angle.roll = up_angle[2] / 100.f;
+  		^
+".\..\User\Task\exchange.c", line 16: Warning:  #223-D: function "osDelay" declared implicitly
+  	osDelay(1);
+  	^
+.\..\User\Task\exchange.c: 1 warning, 4 errors
+
+[2023-12-13 20:48:26]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\Task\exchange.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\exchange.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\exchange.d .\..\User\Task\exchange.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\exchange.c", line 7: Error:  #147: declaration is incompatible with "UP_C_angle_t up_angle" (declared at line 6)
+  int16_t up_angle[3];
+          ^
+".\..\User\Task\exchange.c", line 13: Error:  #154: expression must have struct or union type
+  		up_angle.yaw = (fp32)up_angle[0] / 100.f;
+  		^
+".\..\User\Task\exchange.c", line 14: Error:  #154: expression must have struct or union type
+  		up_angle.pitch = (fp32)up_angle[1] / 100.f;
+  		^
+".\..\User\Task\exchange.c", line 15: Error:  #154: expression must have struct or union type
+  		up_angle.roll = (fp32)up_angle[2] / 100.f;
+  		^
+".\..\User\Task\exchange.c", line 17: Warning:  #223-D: function "osDelay" declared implicitly
+  		osDelay(1);
+  		^
+.\..\User\Task\exchange.c: 1 warning, 4 errors
+
+[2023-12-13 20:49:06]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\Src\freertos.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\freertos.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\freertos.d .\..\Src\freertos.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+"../User/Task/exchange.h", line 2: Error:  #101: "INS_DATA" has already been declared in the current scope
+  typedef struct INS_DATA
+                 ^
+"../User/Task/exchange.h", line 11: Error:  #256: invalid redeclaration of type name "ins_data_t" (declared at line 11)
+  } ins_data_t;
+    ^
+.\..\Src\freertos.c: 0 warnings, 2 errors
+
+[2023-12-13 20:49:38]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\PotocaLayer\rc_potocal.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.d .\..\User\PotocaLayer\rc_potocal.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\PotocaLayer\rc_potocal.c", line 8: Error:  #20: identifier "ins_data_t" is undefined
+  extern ins_data_t ins_data;
+         ^
+.\..\User\PotocaLayer\rc_potocal.c: 0 warnings, 1 error
+
+[2023-12-13 20:49:52]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\PotocaLayer\rc_potocal.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.d .\..\User\PotocaLayer\rc_potocal.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\PotocaLayer\rc_potocal.c", line 77: Error:  #20: identifier "ins_data" is undefined
+  	temp_remote[5] = ((int)ins_data.angle[1] >> 8) & 0xff; // ÂÖ?Âè?È´?8‰Ω?
+  	                       ^
+.\..\User\PotocaLayer\rc_potocal.c: 0 warnings, 1 error
+
+[2023-12-13 20:50:09]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\Task\exchange.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\exchange.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\exchange.d .\..\User\Task\exchange.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\exchange.c", line 7: Error:  #147: declaration is incompatible with "UP_C_angle_t up_angle" (declared at line 6)
+  int16_t up_angle[3];
+          ^
+".\..\User\Task\exchange.c", line 13: Error:  #154: expression must have struct or union type
+  		up_angle.yaw = (fp32)up_angle[0] / 100.f;
+  		^
+".\..\User\Task\exchange.c", line 14: Error:  #154: expression must have struct or union type
+  		up_angle.pitch = (fp32)up_angle[1] / 100.f;
+  		^
+".\..\User\Task\exchange.c", line 15: Error:  #154: expression must have struct or union type
+  		up_angle.roll = (fp32)up_angle[2] / 100.f;
+  		^
+".\..\User\Task\exchange.c", line 17: Warning:  #223-D: function "osDelay" declared implicitly
+  		osDelay(1);
+  		^
+.\..\User\Task\exchange.c: 1 warning, 4 errors
+
+[2023-12-13 20:51:31]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\Src\freertos.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\freertos.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\freertos.d .\..\Src\freertos.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+"../User/Task/exchange.h", line 2: Error:  #101: "INS_DATA" has already been declared in the current scope
+  typedef struct INS_DATA
+                 ^
+"../User/Task/exchange.h", line 11: Error:  #256: invalid redeclaration of type name "ins_data_t" (declared at line 11)
+  } ins_data_t;
+    ^
+.\..\Src\freertos.c: 0 warnings, 2 errors
+
+[2023-12-13 20:52:00]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol up_angle (referred from drv_can.o).
+Error: L6218E: Undefined symbol ins_data (referred from rc_potocal.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 2 error messages.
+
+
+[2023-12-13 20:52:28]	[done]
+	build successfully !
+
