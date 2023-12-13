@@ -1,10 +1,7 @@
 >>> cc
 
-".\..\User\Task\exchange.c", line 19: Warning:  #223-D: function "osDelay" declared implicitly
-  		osDelay(1);
-  		^
-.\..\User\Task\exchange.c: 1 warning, 0 errors
+
 
 >>> ld
 
-Program Size: Code=44928 RO-data=3704 RW-data=700 ZI-data=47604  
+Program Size: Code=30920 RO-data=1424 RW-data=380 ZI-data=38788  
