@@ -24,7 +24,6 @@ uint16_t rc_tmp[5];
 int16_t mouse_x;
 
 uint16_t setpower = 5500;
-int canerror = 0;
 
 void CAN1_Init(void)
 {
@@ -95,12 +94,12 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
     // 接收遥控器数据
     if (rx_header.StdId == 0x33) // 双C板传递遥控器信号的接口标识符
     {
-      rc_ctrl.rc.ch[0] = (rx_data[0] | (rx_data[1] << 8)) & 0x07ff;                 //!< Channel 0  中值为1024，最大值1684，最小值364，波动范围：660
-      rc_ctrl.rc.ch[1] = (((rx_data[1] >> 3) & 0xff) | (rx_data[2] << 5)) & 0x07ff; //!< Channel 1
-      rc_ctrl.rc.ch[2] = (((rx_data[2] >> 6) & 0xff) | (rx_data[3] << 2) |          //!< Channel 2
+      rc_ctrl.rc.ch[0] = ((rx_data[0] | (rx_data[1] << 8)) & 0x07ff) - 1024;                 //!< Channel 0  中值为1024，最大值1684，最小值364，波动范围：660
+      rc_ctrl.rc.ch[1] = ((((rx_data[1] >> 3) & 0xff) | (rx_data[2] << 5)) & 0x07ff) - 1024; //!< Channel 1
+      rc_ctrl.rc.ch[2] = ((((rx_data[2] >> 6) & 0xff) | (rx_data[3] << 2) |          //!< Channel 2
                           (rx_data[4] << 10)) &
-                         0x07ff;
-      rc_ctrl.rc.ch[3] = (((rx_data[4] >> 1) & 0xff) | (rx_data[5] << 7)) & 0x07ff; //!< Channel 3
+                         0x07ff)  - 1024;
+      rc_ctrl.rc.ch[3] = ((((rx_data[4] >> 1) & 0xff) | (rx_data[5] << 7)) & 0x07ff) - 1024; //!< Channel 3
       rc_ctrl.rc.s[0] = ((rx_data[5] >> 4) & 0x0003);                               // 这是右
       rc_ctrl.rc.s[1] = ((rx_data[5] >> 4) & 0x000C) >> 2;                          // 这才是左
       rc_ctrl.mouse.x = rx_data[6] | (rx_data[7] << 8);                             //!< Mouse X axis
@@ -115,7 +114,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
     }
     if (rx_header.StdId == 0x35) // 双C板传递遥控器信号的接口标识符
     {
-      rc_ctrl.rc.ch[4] = rx_data[0] | (rx_data[1] << 8);
+      rc_ctrl.rc.ch[4] = (rx_data[0] | (rx_data[1] << 8)) - 1024; //!< Channel 4
       //================================================底盘数据================================================//
       // 接收底盘旋转量(用来修正yaw轴，作为前馈控制)
       // Rotate_w = (rx_data[3] << 8) | rx_data[4];
