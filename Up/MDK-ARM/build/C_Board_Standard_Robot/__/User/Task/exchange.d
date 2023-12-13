@@ -1,7 +1,7 @@
 .\build\C_Board_Standard_Robot\__\User\Task\exchange.o: .\..\User\Task\exchange.c
 .\build\C_Board_Standard_Robot\__\User\Task\exchange.o: ../Inc/struct_typedef.h
 .\build\C_Board_Standard_Robot\__\User\Task\exchange.o: .\..\User\Task\exchange.h
-.\build\C_Board_Standard_Robot\__\User\Task\exchange.o: .\..\User\Task\ins_task.h
+.\build\C_Board_Standard_Robot\__\User\Task\exchange.o: .\..\User\Task\INS_task.h
 .\build\C_Board_Standard_Robot\__\User\Task\exchange.o: ../User/DriverLayer/drv_can.h
 .\build\C_Board_Standard_Robot\__\User\Task\exchange.o: ../User/Task/Gimbal_task.h
 .\build\C_Board_Standard_Robot\__\User\Task\exchange.o: ../User/AlgorithmLayer/pid.h

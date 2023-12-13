@@ -160,3 +160,60 @@ command:
 [2023-12-13 15:57:50]	[done]
 	build successfully !
 
+[2023-12-13 19:29:00]	compilation failed at : "c:\Users\wexhi\Desktop\study\robomaster\Omni\Up\User\Task\exchange.c", exit code: 1
+command: 
+  "c:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\exchange.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\exchange.d .\..\User\Task\exchange.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\exchange.c", line 20: Warning:  #223-D: function "osDelay" declared implicitly
+  		osDelay(1);
+  		^
+".\..\User\Task\exchange.c", line 30: Error:  #20: identifier "INS_angle" is undefined
+  	memcpy(&ins_buf[1], &INS_angle[0], 4); // Ëé?Âè?yawÁö?Ëß?Â∫?Âπ?ÂÇ?Â≠?Âú?Âè?ÈÄ?Áö?Â≠?Ëä?‰∏?
+  	                     ^
+.\..\User\Task\exchange.c: 1 warning, 1 error
+
+[2023-12-13 19:30:21]	compilation failed at : "c:\Users\wexhi\Desktop\study\robomaster\Omni\Up\User\Task\exchange.c", exit code: 1
+command: 
+  "c:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\exchange.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\exchange.d .\..\User\Task\exchange.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\exchange.c", line 19: Warning:  #223-D: function "osDelay" declared implicitly
+  		osDelay(7);
+  		^
+".\..\User\Task\exchange.c", line 29: Error:  #20: identifier "INS_angle" is undefined
+  	memcpy(&ins_buf[1], &INS_angle[0], 4); // Ëé?Âè?yawÁö?Ëß?Â∫?Âπ?ÂÇ?Â≠?Âú?Âè?ÈÄ?Áö?Â≠?Ëä?‰∏?
+  	                     ^
+.\..\User\Task\exchange.c: 1 warning, 1 error
+
+[2023-12-13 19:30:51]	compilation failed at : "c:\Users\wexhi\Desktop\study\robomaster\Omni\Up\User\Task\exchange.c", exit code: 1
+command: 
+  "c:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\exchange.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\exchange.d .\..\User\Task\exchange.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\exchange.c", line 19: Warning:  #223-D: function "osDelay" declared implicitly
+  		osDelay(7);
+  		^
+".\..\User\Task\exchange.c", line 29: Error:  #20: identifier "INS_angle" is undefined
+  	memcpy(&ins_buf[1], &INS_angle[0], 4); // Ëé?Âè?yawÁö?Ëß?Â∫?Âπ?ÂÇ?Â≠?Âú?Âè?ÈÄ?Áö?Â≠?Ëä?‰∏?
+  	                     ^
+.\..\User\Task\exchange.c: 1 warning, 1 error
+
+[2023-12-13 19:31:19]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6200E: Symbol INS_angle multiply defined (by exchange.o and INS_task.o).
+Not enough information to list image symbols.
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 1 error messages.
+
+
+[2023-12-13 19:31:38]	[done]
+	build successfully !
+
+[2023-12-13 19:31:54]	[done]
+	build successfully !
+
+[2023-12-13 19:34:07]	[done]
+	build successfully !
+
