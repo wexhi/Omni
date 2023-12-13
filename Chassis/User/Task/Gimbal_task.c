@@ -46,8 +46,8 @@ void Gimbal_task(void const *pvParameters)
 static void Gimbal_loop_Init()
 {
     // 初始化pid参数
-    gimbal_Yaw.pid_parameter[0] = 85, gimbal_Yaw.pid_parameter[1] = 0, gimbal_Yaw.pid_parameter[2] = 0;
-    gimbal_Yaw.pid_angle_parameter[0] = 5, gimbal_Yaw.pid_angle_parameter[1] = 0, gimbal_Yaw.pid_angle_parameter[2] = 0;
+    gimbal_Yaw.pid_parameter[0] = 46, gimbal_Yaw.pid_parameter[1] = 0, gimbal_Yaw.pid_parameter[2] = 0.1;
+    gimbal_Yaw.pid_angle_parameter[0] = 2.6, gimbal_Yaw.pid_angle_parameter[1] = 0, gimbal_Yaw.pid_angle_parameter[2] = 0;
     gimbal_Yaw.angle_target = 0;
 
     // 初始化pid结构体
@@ -97,7 +97,7 @@ static void RC_Yaw_control()
 {
     if (rc_ctrl.rc.ch[0] >= -660 && rc_ctrl.rc.ch[0] <= 660)
     {
-        gimbal_Yaw.angle_target += rc_ctrl.rc.ch[0] / 660.0 * (-0.1);
+        gimbal_Yaw.angle_target += rc_ctrl.rc.ch[0] / 660.0 * (-0.2);
 
         detel_calc(&gimbal_Yaw.angle_target);
 
@@ -105,7 +105,7 @@ static void RC_Yaw_control()
 
         detel_calc2(&gimbal_Yaw.err_angle);
 
-        if (gimbal_Yaw.err_angle > 3)
+        if (gimbal_Yaw.err_angle > 5 || gimbal_Yaw.err_angle < -5)
         {
             gimbal_Yaw.speed_target = gimbal_Yaw_PID_calc(&gimbal_Yaw.pid_angle, UP_C_angle.yaw, gimbal_Yaw.angle_target);
         }
