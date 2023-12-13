@@ -1,13 +1,10 @@
 >>> cc
 
-".\..\User\Task\Gimbal_task.c", line 96: Warning:  #177-D: function "RC_gimbal_control" was declared but never referenced
-  static void RC_gimbal_control()
+".\..\User\Task\Gimbal_task.c", line 125: Warning:  #177-D: function "detel_calc2" was declared but never referenced
+  static void detel_calc2(fp32 *angle)
               ^
-".\..\User\Task\Gimbal_task.c", line 103: Warning:  #177-D: function "gimbal_yaw_control" was declared but never referenced
-  static void gimbal_yaw_control()
-              ^
-.\..\User\Task\Gimbal_task.c: 2 warnings, 0 errors
+.\..\User\Task\Gimbal_task.c: 1 warning, 0 errors
 
 >>> ld
 
-Program Size: Code=48636 RO-data=3776 RW-data=724 ZI-data=48300  
+Program Size: Code=49204 RO-data=3776 RW-data=724 ZI-data=48116  

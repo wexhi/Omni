@@ -1,7 +1,7 @@
 >>> cc
 
 ".\..\User\Task\exchange.c", line 17: Warning:  #223-D: function "osDelay" declared implicitly
-  		osDelay(7);
+  		osDelay(1);
   		^
 ".\..\User\Task\exchange.c", line 32: Warning:  #175-D: subscript out of range
   	ins_buf[3] = INS_angle_send[3] >> 8;

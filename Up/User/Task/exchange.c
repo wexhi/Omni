@@ -14,7 +14,7 @@ void exchange_task()
 {
 	for (;;)
 	{
-		osDelay(7);
+		osDelay(1);
 		Up_send_to_down();
 	}
 }
