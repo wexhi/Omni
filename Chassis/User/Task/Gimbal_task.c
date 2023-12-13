@@ -101,11 +101,18 @@ static void RC_Yaw_control()
 
         detel_calc(&gimbal_Yaw.angle_target);
 
-        gimbal_Yaw.speed_target = gimbal_Yaw_PID_calc(&gimbal_Yaw.pid_angle, UP_C_angle.yaw, gimbal_Yaw.angle_target);
-    }
-    else
-    {
-        gimbal_Yaw.angle_target = 0;
+        gimbal_Yaw.err_angle = gimbal_Yaw.angle_target - UP_C_angle.yaw;
+
+        detel_calc2(&gimbal_Yaw.err_angle);
+
+        if (gimbal_Yaw.err_angle > 3)
+        {
+            gimbal_Yaw.speed_target = gimbal_Yaw_PID_calc(&gimbal_Yaw.pid_angle, UP_C_angle.yaw, gimbal_Yaw.angle_target);
+        }
+        else
+        {
+            gimbal_Yaw.speed_target = 0;
+        }
     }
 }
 
