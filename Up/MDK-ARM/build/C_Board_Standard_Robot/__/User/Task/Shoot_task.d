@@ -3,7 +3,7 @@
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Inc/struct_typedef.h
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../User/AlgorithmLayer/pid.h
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../User/DriverLayer/drv_can.h
-.\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../User/Task/chassis_task.h
+.\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../User/Task/Gimbal_task.h
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../User/DriverLayer/drv_can.h
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../User/PotocaLayer/rc_potocal.h
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Inc/main.h
@@ -41,7 +41,6 @@
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Inc/gpio.h
-.\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../User/Task/Gimbal_task.h
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../User/Task/Shoot_task.h
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
@@ -57,5 +56,5 @@
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
-.\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: ../Application/INS_task.h
+.\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: .\..\User\Task\INS_task.h
 .\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o: .\..\User\Task\exchange.h

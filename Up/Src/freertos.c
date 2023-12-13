@@ -30,9 +30,7 @@
 #include "arm_math.h"
 #include "ins_task.h"
 #include "exchange.h"
-#include "Chassis_task.h"
 #include "super_cap.h"
-#include "UI_task.h"
 #include "Gimbal_task.h"
 #include "Shoot_task.h"
 #include "stm32f4xx_it.h"
@@ -165,7 +163,7 @@ void StartDefaultTask(void const * argument)
   /* USER CODE BEGIN StartDefaultTask */
   // HAL_GPIO_WritePin(GPIOH, GPIO_PIN_11, GPIO_PIN_SET);
   // HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_SET);
-  // uint8_t TIM1_flag = 1; // ï¿½ï¿½Öªï¿½ï¿½bug // è¿™ä¸œè¥¿æœ�?�ä�??ä¹ˆç”¨å�?�Šï¼�?
+  // uint8_t TIM1_flag = 1; // ï¿½ï¿½Öªï¿½ï¿½bug // è¿™ä¸œè¥¿æœ�?�ä�??ä¹ˆç”¨å�?�Šï¼�?
   /* Infinite loop */
   for (;;)
   {

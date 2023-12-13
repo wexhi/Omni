@@ -49,4 +49,4 @@
 .\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 .\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 .\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
-.\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../Bsp/bsp_delay.h
+.\build\C_Board_Standard_Robot\__\Components\Devices\BMI088Middleware.o: ../User/DriverLayer/bsp_delay.h

@@ -22,9 +22,6 @@
             "name": "Applications",
             "files": [
               {
-                "path": "../Application/INS_task.c"
-              },
-              {
                 "path": "../User/AlgorithmLayer/pid_imu.c"
               }
             ],
@@ -34,19 +31,13 @@
             "name": "Bsp",
             "files": [
               {
-                "path": "../Bsp/bsp_delay.c"
+                "path": "../User/DriverLayer/bsp_delay.c"
               },
               {
-                "path": "../Bsp/bsp_dwt.c"
+                "path": "../User/DriverLayer/bsp_imu_pwm.c"
               },
               {
-                "path": "../Bsp/bsp_imu_pwm.c"
-              },
-              {
-                "path": "../Bsp/bsp_PWM.c"
-              },
-              {
-                "path": "../Bsp/bsp_spi.c"
+                "path": "../User/DriverLayer/bsp_spi.c"
               }
             ],
             "folders": []
@@ -56,9 +47,6 @@
             "files": [
               {
                 "path": "../Components/Algorithm/QuaternionEKF.c"
-              },
-              {
-                "path": "../Components/Controller/controller.c"
               },
               {
                 "path": "../Components/Devices/BMI088driver.c"
@@ -264,6 +252,9 @@
             "path": "../User/Task/Gimbal_task.c"
           },
           {
+            "path": "../User/Task/INS_task.c"
+          },
+          {
             "path": "../User/Task/Shoot_task.c"
           }
         ],
@@ -304,7 +295,8 @@
   "targets": {
     "C_Board_Standard_Robot": {
       "excludeList": [
-        "<virtual_root>/RTOS TASK/UI_task.c"
+        "<virtual_root>/RTOS TASK/UI_task.c",
+        "<virtual_root>/Application/Applications/INS_task.c"
       ],
       "toolchain": "AC5",
       "compileConfig": {

@@ -37,11 +37,10 @@
 .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_usart.o: ../User/PotocaLayer/rc_potocal.h
 .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_usart.o: ../Inc/struct_typedef.h
 .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_usart.o: ../User/DriverLayer/drv_can.h
-.\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_usart.o: ../User/Task/chassis_task.h
+.\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_usart.o: ../User/Task/Gimbal_task.h
 .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_usart.o: ../User/AlgorithmLayer/pid.h
 .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_usart.o: ../User/DriverLayer/drv_can.h
 .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_usart.o: ../User/PotocaLayer/rc_potocal.h
 .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_usart.o: ../Inc/gpio.h
-.\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_usart.o: ../User/Task/Gimbal_task.h
 .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_usart.o: ../User/Task/Shoot_task.h
 .\build\C_Board_Standard_Robot\__\User\DriverLayer\drv_usart.o: ../User/PotocaLayer/judge.h

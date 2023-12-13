@@ -2,7 +2,7 @@
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: .\..\User\PotocaLayer\rc_potocal.h
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../Inc/struct_typedef.h
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../User/DriverLayer/drv_can.h
-.\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../User/Task/chassis_task.h
+.\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../User/Task/Gimbal_task.h
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../User/AlgorithmLayer/pid.h
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../User/DriverLayer/drv_can.h
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../User/PotocaLayer/rc_potocal.h
@@ -41,7 +41,6 @@
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../Inc/gpio.h
-.\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../User/Task/Gimbal_task.h
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../User/Task/Shoot_task.h
-.\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../Application/INS_task.h
+.\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../User/Task/INS_task.h
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o: ../User/Task/exchange.h

@@ -18,3 +18,145 @@ Finished: 1 information, 0 warning and 1 error messages.
 [2023-12-13 15:10:37]	[done]
 	build successfully !
 
+[2023-12-13 15:29:41]	[done]
+	build successfully !
+
+[2023-12-13 15:38:58]	compilation failed at : "c:\Users\wexhi\Desktop\study\robomaster\Omni\Up\Components\Controller\controller.c", exit code: 1
+command: 
+  "c:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Components\Controller\controller.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Components\Controller\controller.d .\..\Components\Controller\controller.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+"../User/DriverLayer/drv_can.h", line 5: Error:  #5: cannot open source input file "chassis_task.h": No such file or directory
+  #include "chassis_task.h"
+                           ^
+.\..\Src\main.c: 0 warnings, 1 error
+"../User/DriverLayer/drv_can.h", line 5: Error:  #5: cannot open source input file "chassis_task.h": No such file or directory
+  #include "chassis_task.h"
+                           ^
+.\..\Src\freertos.c: 0 warnings, 1 error
+".\..\Components\Controller\controller.h", line 22: Error:  #5: cannot open source input file "bsp_dwt.h": No such file or directory
+  #include "bsp_dwt.h"
+                      ^
+.\..\Components\Controller\controller.c: 0 warnings, 1 error
+
+[2023-12-13 15:40:39]	compilation failed at : "c:\Users\wexhi\Desktop\study\robomaster\Omni\Up\Src\freertos.c", exit code: 1
+command: 
+  "c:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\freertos.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\freertos.d .\..\Src\freertos.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 26: Error:  #5: cannot open source input file "Chassis_task.h": No such file or directory
+  #include "Chassis_task.h"
+                           ^
+.\..\Src\stm32f4xx_it.c: 0 warnings, 1 error
+".\..\Src\main.c", line 35: Error:  #5: cannot open source input file "bsp_dwt.h": No such file or directory
+  #include "bsp_dwt.h"
+                      ^
+.\..\Src\main.c: 0 warnings, 1 error
+".\..\Src\freertos.c", line 33: Error:  #5: cannot open source input file "Chassis_task.h": No such file or directory
+  #include "Chassis_task.h"
+                           ^
+.\..\Src\freertos.c: 0 warnings, 1 error
+
+[2023-12-13 15:41:12]	compilation failed at : "c:\Users\wexhi\Desktop\study\robomaster\Omni\Up\Src\freertos.c", exit code: 1
+command: 
+  "c:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\freertos.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\freertos.d .\..\Src\freertos.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\freertos.c", line 34: Error:  #5: cannot open source input file "UI_task.h": No such file or directory
+  #include "UI_task.h"
+                      ^
+.\..\Src\freertos.c: 0 warnings, 1 error
+
+[2023-12-13 15:41:23]	compilation failed at : "c:\Users\wexhi\Desktop\study\robomaster\Omni\Up\User\Task\INS_task.c", exit code: 1
+command: 
+  "c:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\INS_task.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\INS_task.d .\..\User\Task\INS_task.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\INS_task.c", line 132: Error:  #20: identifier "pid_type_def" is undefined
+   pid_type_def imu_temp_pid;
+   ^
+".\..\User\Task\INS_task.c", line 251: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      *yaw = atan2f(2.0f*(q[0]*q[3]+q[1]*q[2]), 2.0f*(q[0]*q[0]+q[1]*q[1])-1.0f) *57.3;
+             ^
+".\..\User\Task\INS_task.c", line 252: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      *pitch = asinf(-2.0f*(q[1]*q[3]-q[0]*q[2])) *57.3;
+               ^
+".\..\User\Task\INS_task.c", line 253: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      *roll = atan2f(2.0f*(q[0]*q[1]+q[2]*q[3]),2.0f*(q[0]*q[0]+q[3]*q[3])-1.0f) *57.3;
+              ^
+".\..\User\Task\INS_task.c", line 262: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	   gyrooffset[0]-=bmi088_real_data.gyro[0]*0.00005;
+  	                  ^
+".\..\User\Task\INS_task.c", line 263: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		 gyrooffset[1]-=bmi088_real_data.gyro[1]*0.00005;
+  		                ^
+".\..\User\Task\INS_task.c", line 264: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		 gyrooffset[2]-=bmi088_real_data.gyro[2]*0.00005;
+  		                ^
+".\..\User\Task\INS_task.c", line 293: Warning:  #223-D: function "PID_init" declared implicitly
+      PID_init(&imu_temp_pid, PID_POSITION, imu_temp_PID, TEMPERATURE_PID_MAX_OUT, TEMPERATURE_PID_MAX_IOUT);
+      ^
+".\..\User\Task\INS_task.c", line 293: Error:  #20: identifier "PID_POSITION" is undefined
+      PID_init(&imu_temp_pid, PID_POSITION, imu_temp_PID, TEMPERATURE_PID_MAX_OUT, TEMPERATURE_PID_MAX_IOUT);
+                              ^
+".\..\User\Task\INS_task.c", line 405: Warning:  #223-D: function "PID_calc" declared implicitly
+          PID_calc(&imu_temp_pid, temp,40);
+          ^
+".\..\User\Task\INS_task.c", line 134: Warning:  #177-D: variable "timing_time" was declared but never referenced
+  static const float timing_time = 0.001f;   //tast run time , unit s.???????械?时?? 单位 s
+                     ^
+.\..\User\Task\INS_task.c: 9 warnings, 2 errors
+
+[2023-12-13 15:43:36]	compilation failed at : "c:\Users\wexhi\Desktop\study\robomaster\Omni\Up\User\Task\INS_task.c", exit code: 1
+command: 
+  "c:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\INS_task.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\INS_task.d .\..\User\Task\INS_task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\INS_task.c", line 132: Error:  #20: identifier "pid_type_def" is undefined
+   pid_type_def imu_temp_pid;
+   ^
+".\..\User\Task\INS_task.c", line 251: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      *yaw = atan2f(2.0f*(q[0]*q[3]+q[1]*q[2]), 2.0f*(q[0]*q[0]+q[1]*q[1])-1.0f) *57.3;
+             ^
+".\..\User\Task\INS_task.c", line 252: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      *pitch = asinf(-2.0f*(q[1]*q[3]-q[0]*q[2])) *57.3;
+               ^
+".\..\User\Task\INS_task.c", line 253: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      *roll = atan2f(2.0f*(q[0]*q[1]+q[2]*q[3]),2.0f*(q[0]*q[0]+q[3]*q[3])-1.0f) *57.3;
+              ^
+".\..\User\Task\INS_task.c", line 262: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	   gyrooffset[0]-=bmi088_real_data.gyro[0]*0.00005;
+  	                  ^
+".\..\User\Task\INS_task.c", line 263: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		 gyrooffset[1]-=bmi088_real_data.gyro[1]*0.00005;
+  		                ^
+".\..\User\Task\INS_task.c", line 264: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		 gyrooffset[2]-=bmi088_real_data.gyro[2]*0.00005;
+  		                ^
+".\..\User\Task\INS_task.c", line 293: Warning:  #223-D: function "PID_init" declared implicitly
+      PID_init(&imu_temp_pid, PID_POSITION, imu_temp_PID, TEMPERATURE_PID_MAX_OUT, TEMPERATURE_PID_MAX_IOUT);
+      ^
+".\..\User\Task\INS_task.c", line 293: Error:  #20: identifier "PID_POSITION" is undefined
+      PID_init(&imu_temp_pid, PID_POSITION, imu_temp_PID, TEMPERATURE_PID_MAX_OUT, TEMPERATURE_PID_MAX_IOUT);
+                              ^
+".\..\User\Task\INS_task.c", line 405: Warning:  #223-D: function "PID_calc" declared implicitly
+          PID_calc(&imu_temp_pid, temp,40);
+          ^
+".\..\User\Task\INS_task.c", line 134: Warning:  #177-D: variable "timing_time" was declared but never referenced
+  static const float timing_time = 0.001f;   //tast run time , unit s.???????械?时?? 单位 s
+                     ^
+.\..\User\Task\INS_task.c: 9 warnings, 2 errors
+
+[2023-12-13 15:44:01]	[done]
+	build successfully !
+
+[2023-12-13 15:55:29]	[done]
+	build successfully !
+
+[2023-12-13 15:57:50]	[done]
+	build successfully !
+

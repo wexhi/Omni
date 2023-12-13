@@ -39,10 +39,9 @@
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\judge.o: ../Inc/struct_typedef.h
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\judge.o: .\..\User\PotocaLayer\rc_potocal.h
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\judge.o: ../User/DriverLayer/drv_can.h
-.\build\C_Board_Standard_Robot\__\User\PotocaLayer\judge.o: ../User/Task/chassis_task.h
+.\build\C_Board_Standard_Robot\__\User\PotocaLayer\judge.o: ../User/Task/Gimbal_task.h
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\judge.o: ../User/AlgorithmLayer/pid.h
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\judge.o: ../User/DriverLayer/drv_can.h
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\judge.o: ../User/PotocaLayer/rc_potocal.h
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\judge.o: ../Inc/gpio.h
-.\build\C_Board_Standard_Robot\__\User\PotocaLayer\judge.o: ../User/Task/Gimbal_task.h
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\judge.o: ../User/Task/Shoot_task.h

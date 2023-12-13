@@ -2,7 +2,6 @@
 #define __DRV_CAN_H
 
 #include "struct_typedef.h"
-#include "chassis_task.h"
 #include "Gimbal_task.h"
 #include "Shoot_task.h"
 #include "rc_potocal.h"
