@@ -4,12 +4,12 @@
 #include "exchange.h"
 #include "drv_can.h"
 #define MAX_SPEED 200
-#define MAX_ANGLE 8000
-#define MIN_ANGLE 2200
+#define MAX_ANGLE 140
+#define MIN_ANGLE -140
 
+gimbal_t gimbal_Pitch; // 云台电机信息结构体
 
-gimbal_t gimbal_Yaw, gimbal_Pitch; // 云台电机信息结构体
-
+extern fp32 INS_angle[3];
 extern RC_ctrl_t rc_ctrl; // 遥控器信息结构体
 
 // 云台电机的初始化
@@ -26,11 +26,12 @@ static void detel_calc2(fp32 *angle);
 
 void Gimbal_task(void const *pvParameters)
 {
+    osDelay(6000);
     Gimbal_loop_Init();
     for (;;)
     {
         RC_Pitch_control();
-        // gimbal_current_give();
+        gimbal_current_give();
         osDelay(1);
     }
 }
@@ -39,13 +40,13 @@ void Gimbal_task(void const *pvParameters)
 static void Gimbal_loop_Init()
 {
     // 初始化pid参数
-    gimbal_Pitch.pid_parameter[0] = 60, gimbal_Pitch.pid_parameter[1] = 0, gimbal_Pitch.pid_parameter[2] = 10;
-    gimbal_Pitch.pid_angle_parameter[0] = 1, gimbal_Pitch.pid_angle_parameter[1] = 0, gimbal_Pitch.pid_angle_parameter[2] = 0;
-    gimbal_Pitch.angle_target = 2200;
+    gimbal_Pitch.pid_parameter[0] = 80, gimbal_Pitch.pid_parameter[1] = 0.1, gimbal_Pitch.pid_parameter[2] = 0;
+    gimbal_Pitch.pid_angle_parameter[0] = 6, gimbal_Pitch.pid_angle_parameter[1] = 0, gimbal_Pitch.pid_angle_parameter[2] = 0;
+    gimbal_Pitch.angle_target = 140;
 
     // 初始化pid结构体
-    pid_init(&gimbal_Pitch.pid, gimbal_Pitch.pid_parameter, 15000, 15000);
-    pid_init(&gimbal_Pitch.pid_angle, gimbal_Pitch.pid_angle_parameter, 8192, 8192);
+    pid_init(&gimbal_Pitch.pid, gimbal_Pitch.pid_parameter, 30000, 30000);
+    pid_init(&gimbal_Pitch.pid_angle, gimbal_Pitch.pid_angle_parameter, 30000, 30000);
 }
 
 // 给电流
@@ -61,12 +62,16 @@ static void RC_Pitch_control()
     // 把头装上再写吧
     if (rc_ctrl.rc.ch[1] >= -660 && rc_ctrl.rc.ch[1] <= 660)
     {
-        // gimbal_Pitch.angle_target += rc_ctrl.rc.ch[1] / 660.0 * 3;
-        // detel_calc2(&gimbal_Pitch.angle_target);
-        
+        gimbal_Pitch.angle_target += rc_ctrl.rc.ch[1] / 660.0 * 0.2;
+        // detel_calc(&gimbal_Pitch.angle_target);
+        gimbal_Pitch.err_angle = gimbal_Pitch.angle_target - INS_angle[2];
+        detel_calc2(&gimbal_Pitch.err_angle);
 
-        // gimbal_Pitch.speed_target = gimbal_Pitch_PID_cal(&gimbal_Pitch.pid_angle, gimbal_Pitch.motor_info.rotor_angle, gimbal_Pitch.angle_target);
-    }
+        gimbal_Pitch.speed_target = gimbal_Pitch_PID_cal(&gimbal_Pitch.pid_angle, 0, gimbal_Pitch.err_angle);
+
+        // gimbal_Pitch.speed_target = gimbal_Pitch_PID_cal(&gimbal_Pitch.pid_angle, INS_angle[2], gimbal_Pitch.angle_target);
+        // gimbal_Pitch.speed_target = rc_ctrl.rc.ch[1] / 660.0 * MAX_SPEED;
+        }
     else
     {
         gimbal_Pitch.speed_target = 0;
@@ -75,7 +80,7 @@ static void RC_Pitch_control()
 
 static void detel_calc(fp32 *angle)
 {
-    if (*angle > 360)
+    if (*angle > 180)
     {
         *angle -= 360;
     }
@@ -88,15 +93,8 @@ static void detel_calc(fp32 *angle)
 
 static void detel_calc2(fp32 *angle)
 {
-    if (*angle > 8192)
-        *angle -= 8192;
-
-    else if (*angle < 0)
-        *angle += 8192;
-
-    if (*angle >= MAX_ANGLE)
-        *angle = MAX_ANGLE;
-
-    else if (*angle <= MIN_ANGLE)
-        *angle = MIN_ANGLE;
+    if (*angle > 180)
+    {
+        *angle -= 360;
+    }
 }
