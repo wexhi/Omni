@@ -4,8 +4,8 @@
 #include "exchange.h"
 #include "drv_can.h"
 #define MAX_SPEED 200
-#define MAX_ANGLE 140
-#define MIN_ANGLE -140
+#define MAX_ANGLE 220
+#define MIN_ANGLE 140
 
 gimbal_t gimbal_Pitch; // 云台电机信息结构体
 
@@ -21,12 +21,12 @@ static void RC_Pitch_control();
 // 云台电机的任务
 static void gimbal_current_give();
 
-static void detel_calc(fp32 *angle);
+static void Angle_Limit(fp32 *angle);
 static void detel_calc2(fp32 *angle);
 
 void Gimbal_task(void const *pvParameters)
 {
-    osDelay(6000);
+    osDelay(8000);
     Gimbal_loop_Init();
     for (;;)
     {
@@ -41,7 +41,7 @@ static void Gimbal_loop_Init()
 {
     // 初始化pid参数
     gimbal_Pitch.pid_parameter[0] = 80, gimbal_Pitch.pid_parameter[1] = 0.1, gimbal_Pitch.pid_parameter[2] = 0;
-    gimbal_Pitch.pid_angle_parameter[0] = 6, gimbal_Pitch.pid_angle_parameter[1] = 0, gimbal_Pitch.pid_angle_parameter[2] = 0;
+    gimbal_Pitch.pid_angle_parameter[0] = 8, gimbal_Pitch.pid_angle_parameter[1] = 0, gimbal_Pitch.pid_angle_parameter[2] = 0;
     gimbal_Pitch.angle_target = 140;
 
     // 初始化pid结构体
@@ -62,15 +62,15 @@ static void RC_Pitch_control()
     // 把头装上再写吧
     if (rc_ctrl.rc.ch[1] >= -660 && rc_ctrl.rc.ch[1] <= 660)
     {
-        gimbal_Pitch.angle_target += rc_ctrl.rc.ch[1] / 660.0 * 0.2;
-        // detel_calc(&gimbal_Pitch.angle_target);
+        gimbal_Pitch.angle_target += rc_ctrl.rc.ch[1] / 660.0 * 0.25;
+
+        Angle_Limit(&gimbal_Pitch.angle_target);
+
         gimbal_Pitch.err_angle = gimbal_Pitch.angle_target - INS_angle[2];
         detel_calc2(&gimbal_Pitch.err_angle);
 
         gimbal_Pitch.speed_target = gimbal_Pitch_PID_cal(&gimbal_Pitch.pid_angle, 0, gimbal_Pitch.err_angle);
 
-        // gimbal_Pitch.speed_target = gimbal_Pitch_PID_cal(&gimbal_Pitch.pid_angle, INS_angle[2], gimbal_Pitch.angle_target);
-        // gimbal_Pitch.speed_target = rc_ctrl.rc.ch[1] / 660.0 * MAX_SPEED;
         }
     else
     {
@@ -78,16 +78,15 @@ static void RC_Pitch_control()
     }
 }
 
-static void detel_calc(fp32 *angle)
+static void Angle_Limit(fp32 *angle)
 {
-    if (*angle > 180)
+    if (*angle <= MIN_ANGLE && *angle > 0)
     {
-        *angle -= 360;
+        *angle = MIN_ANGLE;
     }
-
-    else if (*angle < 0)
+    else if (*angle >= MAX_ANGLE)
     {
-        *angle += 360;
+        *angle = MAX_ANGLE;
     }
 }
 

@@ -1,10 +1,7 @@
 >>> cc
 
-".\..\User\Task\Gimbal_task.c", line 81: Warning:  #177-D: function "detel_calc" was declared but never referenced
-  static void detel_calc(fp32 *angle)
-              ^
-.\..\User\Task\Gimbal_task.c: 1 warning, 0 errors
+
 
 >>> ld
 
-Program Size: Code=33280 RO-data=1456 RW-data=448 ZI-data=38120  
+Program Size: Code=33348 RO-data=1456 RW-data=448 ZI-data=38120  
