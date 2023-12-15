@@ -2,6 +2,20 @@
 
 
 
+".\..\User\Task\exchange.c", line 17: Warning:  #223-D: function "osDelay" declared implicitly
+  		osDelay(1);
+  		^
+".\..\User\Task\exchange.c", line 32: Warning:  #175-D: subscript out of range
+  	ins_buf[3] = INS_angle_send[3] >> 8;
+  	             ^
+".\..\User\Task\exchange.c", line 33: Warning:  #175-D: subscript out of range
+  	ins_buf[4] = (INS_angle_send[4] >> 8) & 0xff;
+  	                            ^
+".\..\User\Task\exchange.c", line 34: Warning:  #175-D: subscript out of range
+  	ins_buf[5] = INS_angle_send[5] >> 8;
+  	                           ^
+.\..\User\Task\exchange.c: 4 warnings, 0 errors
+
 >>> ld
 
 Program Size: Code=33348 RO-data=1456 RW-data=448 ZI-data=38120  
