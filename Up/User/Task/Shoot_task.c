@@ -22,7 +22,7 @@ void Shoot_task(void const *pvParameters)
     for (;;)
     {
         model_choice();
-        // shooter_current_given(); // 发射的时候再打开
+        shooter_current_given(); // 发射的时候再打开
         osDelay(1);
     }
 }
@@ -36,9 +36,9 @@ static void Shooter_Inint(void)
     shooter.pid_bay_para[0] = 10, shooter.pid_bay_para[1] = 0, shooter.pid_bay_para[2] = 0;
 
     // 初始化pid结构体
-    pid_init(&shooter.pid_dial, shooter.pid_dial_para, 8000, 8000);
-    pid_init(&shooter.pid_friction, shooter.pid_friction_para, 8000, 8000);
-    pid_init(&shooter.pid_bay, shooter.pid_bay_para, 8000, 8000);
+    pid_init(&shooter.pid_dial, shooter.pid_dial_para, 10000, 10000);
+    pid_init(&shooter.pid_friction, shooter.pid_friction_para, 10000, 10000);
+    pid_init(&shooter.pid_bay, shooter.pid_bay_para, 10000, 10000);
 
     // 初始化速度目标
     shooter.dial_speed_target = 0;
@@ -50,15 +50,16 @@ static void Shooter_Inint(void)
 static void model_choice(void)
 {
     // 取消注释开始发射
-    friction_control();
-    if (rc_ctrl.rc.s[1] == 1)
+    if (rc_ctrl.rc.s[1] == 3 || rc_ctrl.rc.s[1] == 1)
     {
         // 发射
+        friction_control();
         dial_control();
         bay_control();
     }
     else
     {
+        shooter.friction_speed_target[0] = 0;shooter.friction_speed_target[1] = 0;
         shooter.dial_speed_target = 0;
         shooter.bay_speed_target = 0;
         // 停止
@@ -68,12 +69,12 @@ static void model_choice(void)
 // 拨盘电机控制
 static void dial_control(void)
 {
-    if (rc_ctrl.rc.s[0] == 1)
+    if (rc_ctrl.rc.s[1] == 1)
     {
         LEDR_ON();
         LEDB_OFF();
         LEDG_OFF();
-        shooter.dial_speed_target = 2000;
+        shooter.dial_speed_target = -2000;
     }
     else
     {
@@ -84,8 +85,8 @@ static void dial_control(void)
 // 摩擦轮电机控制
 static void friction_control(void)
 {
-    shooter.friction_speed_target[0] = -2000;
-    shooter.friction_speed_target[1] = 2000;
+    shooter.friction_speed_target[0] = -8000;
+    shooter.friction_speed_target[1] = 8000;
 }
 
 // 弹舱电机控制
