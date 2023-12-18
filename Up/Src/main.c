@@ -147,6 +147,7 @@ int main(void)
   USART6_Init();
   USART3_Init();
   HAL_TIM_Base_Start_IT(&htim1); // 开启定时器1并打开中断,记得修改优先级
+  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
   // DWT_Init(168);
   // __HAL_UART_ENABLE_IT(&huart3, UART_IT_IDLE); // 使能空闲中断
 

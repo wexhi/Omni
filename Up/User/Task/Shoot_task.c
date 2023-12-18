@@ -22,7 +22,7 @@ void Shoot_task(void const *pvParameters)
     for (;;)
     {
         model_choice();
-        shooter_current_given(); // 发射的时候再打开
+        // shooter_current_given(); // 发射的时候再打开
         osDelay(1);
     }
 }
@@ -49,17 +49,18 @@ static void Shooter_Inint(void)
 // 模式选择
 static void model_choice(void)
 {
+    bay_control();
     // 取消注释开始发射
     if (rc_ctrl.rc.s[1] == 3 || rc_ctrl.rc.s[1] == 1)
     {
         // 发射
         friction_control();
         dial_control();
-        bay_control();
     }
     else
     {
-        shooter.friction_speed_target[0] = 0;shooter.friction_speed_target[1] = 0;
+        shooter.friction_speed_target[0] = 0;
+        shooter.friction_speed_target[1] = 0;
         shooter.dial_speed_target = 0;
         shooter.bay_speed_target = 0;
         // 停止
@@ -78,6 +79,9 @@ static void dial_control(void)
     }
     else
     {
+        LEDR_OFF();
+        LEDB_OFF();
+        LEDG_ON();
         shooter.dial_speed_target = 0;
     }
 }
@@ -93,7 +97,14 @@ static void friction_control(void)
 static void bay_control(void)
 {
     // 暂留
-    shooter.bay_speed_target = 0;
+    if (rc_ctrl.rc.s[1] == 1)
+    {
+        __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 1000);
+    }
+    else
+    {
+        __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 500);
+    }
 }
 
 // 给电流
