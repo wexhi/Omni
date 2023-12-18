@@ -97,7 +97,13 @@ static void friction_control(void)
 static void bay_control(void)
 {
     // 暂留
-    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 1800);
+    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 2000);
+    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 2000);
+    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 2000);
+    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4, 2000);
+    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, 2000);
+    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, 2000);
+    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 2000);
 }
 
 // 给电流

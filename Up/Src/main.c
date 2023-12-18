@@ -148,6 +148,12 @@ int main(void)
   USART3_Init();
   HAL_TIM_Base_Start_IT(&htim1); // 开启定时器1并打开中断,记得修改优先级
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
+  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3); // 开启定时器1的PWM输出
+  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
+  HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_1);
+  HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_2);
+  HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_3); // 开启定时器8的PWM输出
   // DWT_Init(168);
   // __HAL_UART_ENABLE_IT(&huart3, UART_IT_IDLE); // 使能空闲中断
 
