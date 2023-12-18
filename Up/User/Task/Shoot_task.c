@@ -21,7 +21,9 @@ void Shoot_task(void const *pvParameters)
     Shooter_Inint();
     for (;;)
     {
+        // bay_control();
         model_choice();
+        __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 500);
         // shooter_current_given(); // 发射的时候再打开
         osDelay(1);
     }
@@ -49,7 +51,7 @@ static void Shooter_Inint(void)
 // 模式选择
 static void model_choice(void)
 {
-    bay_control();
+
     // 取消注释开始发射
     if (rc_ctrl.rc.s[1] == 3 || rc_ctrl.rc.s[1] == 1)
     {
@@ -97,13 +99,8 @@ static void friction_control(void)
 static void bay_control(void)
 {
     // 暂留
-    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 2000);
-    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 2000);
-    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 2000);
-    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4, 2000);
-    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, 2000);
-    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, 2000);
-    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 2000);
+    __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 500);
+    // __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 500);
 }
 
 // 给电流
