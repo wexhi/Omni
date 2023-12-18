@@ -1,10 +1,10 @@
 >>> cc
 
-".\..\User\Task\Shoot_task.c", line 111: Warning:  #177-D: function "shooter_current_given" was declared but never referenced
+".\..\User\Task\Shoot_task.c", line 104: Warning:  #177-D: function "shooter_current_given" was declared but never referenced
   static void shooter_current_given(void)
               ^
 .\..\User\Task\Shoot_task.c: 1 warning, 0 errors
 
 >>> ld
 
-Program Size: Code=33628 RO-data=1456 RW-data=444 ZI-data=38116  
+Program Size: Code=33620 RO-data=1456 RW-data=444 ZI-data=38116  
