@@ -29,8 +29,8 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
-uint16_t TIM1_Count = 0;
-uint8_t TIM1_flag = 1;
+// uint16_t TIM1_Count = 0;
+// uint8_t TIM1_flag = 1;
 /* USER CODE END TD */
 
 /* Private define ------------------------------------------------------------*/
@@ -315,16 +315,16 @@ void TIM1_BRK_TIM9_IRQHandler(void)
 void TIM1_UP_TIM10_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM1_UP_TIM10_IRQn 0 */
-  if (__HAL_TIM_GET_FLAG(&htim1, TIM_FLAG_CC1) != RESET)
-  {
-    TIM1_Count++;
-    if (TIM1_Count == 30) // 1s触发一次,共
-    {
-      TIM1_Count = 0;
-      TIM1_flag = 1;
-      HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_SET);
-    }
-  }
+  // if (__HAL_TIM_GET_FLAG(&htim1, TIM_FLAG_CC1) != RESET)
+  // {
+  //   TIM1_Count++;
+  //   if (TIM1_Count == 30) // 1s触发一次,共
+  //   {
+  //     TIM1_Count = 0;
+  //     TIM1_flag = 1;
+  //     HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_SET);
+  //   }
+  // }
   /* USER CODE END TIM1_UP_TIM10_IRQn 0 */
   HAL_TIM_IRQHandler(&htim1);
   HAL_TIM_IRQHandler(&htim10);
