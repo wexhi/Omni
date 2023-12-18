@@ -102,7 +102,7 @@ static void bay_control(void)
     }
     else
     {
-        __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 1000);
+        __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 2100);
     }
 }
 
