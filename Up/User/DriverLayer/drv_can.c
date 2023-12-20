@@ -1,7 +1,4 @@
 #include "drv_can.h"
-#define GIMBAL_YAW_ID 0x20b
-// #define CHASSIS_ID_START 0x201
-// #define CHASSIS_ID_END 0x204
 #define SHOOTER_ID_START 0x201
 #define SHOOTER_ID_END 0x203
 #define GIMBAL_PITCH_ID 0x207

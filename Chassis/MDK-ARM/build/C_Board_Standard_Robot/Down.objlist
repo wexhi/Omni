@@ -58,7 +58,6 @@
 .\build\C_Board_Standard_Robot\__\User\PotocaLayer\rc_potocal.o
 .\build\C_Board_Standard_Robot\__\User\Task\Chassis_task.o
 .\build\C_Board_Standard_Robot\__\User\Task\Gimbal_task.o
-.\build\C_Board_Standard_Robot\__\User\Task\Shoot_task.o
 .\build\C_Board_Standard_Robot\__\User\Task\UI_task.o
 .\build\C_Board_Standard_Robot\__\User\Task\exchange.o
 .\build\C_Board_Standard_Robot\startup_stm32f407xx.o

@@ -1,5 +1,5 @@
 #include "drv_can.h"
-#define GIMBAL_YAW_ID 0x203
+#define GIMBAL_YAW_ID 0x207
 #define CHASSIS_ID_START 0x201
 #define CHASSIS_ID_END 0x204
 #define POWERDATA_ID 0x211
