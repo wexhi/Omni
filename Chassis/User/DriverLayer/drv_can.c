@@ -5,6 +5,11 @@
 #define CAN_ID_IMU 0x55
 #define POWERDATA_ID 0x211
 
+CAN_RxHeaderTypeDef rx_header1;
+CAN_RxHeaderTypeDef rx_header2;
+uint8_t rx_data1[8];
+uint8_t rx_data2[8];
+
 extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;
 extern RC_ctrl_t rc_ctrl;
@@ -62,36 +67,35 @@ void CAN2_Init(void)
 
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断回调函数
 {
-  CAN_RxHeaderTypeDef rx_header;
 
   if (hcan->Instance == CAN1)
   {
-    uint8_t rx_data[8];
-    HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header, rx_data); // receive can1 data
+
+    HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header1, rx_data1); // receive can1 data
 
     // 云台电机信息接收
-    if (rx_header.StdId == GIMBAL_YAW_ID)
+    if (rx_header1.StdId == GIMBAL_YAW_ID)
     {
-      process_MotorInfo(&gimbal_Yaw.motor_info, rx_data);
+      process_MotorInfo(&gimbal_Yaw.motor_info, rx_data1);
     }
     // 底盤电机信息接收
-    if (rx_header.StdId >= CHASSIS_ID_START && rx_header.StdId <= CHASSIS_ID_END)
+    if (rx_header1.StdId >= CHASSIS_ID_START && rx_header1.StdId <= CHASSIS_ID_END)
     {
-      process_MotorInfo(&chassis.motor_info[rx_header.StdId - CHASSIS_ID_START], rx_data);
+      process_MotorInfo(&chassis.motor_info[rx_header1.StdId - CHASSIS_ID_START], rx_data1);
     }
   }
 
   if (hcan->Instance == CAN2)
   {
-    uint8_t rx_data[8];
-    HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header, rx_data); // receive can2 data
+
+    HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header2, rx_data2); // receive can2 data
 
     // 接收上C板陀螺仪数据
-    if (rx_header.StdId == CAN_ID_IMU) // 上C向下C传IMU数据
+    if (rx_header2.StdId == CAN_ID_IMU) // 上C向下C传IMU数据
     {
-      UP_C_angle.yaw = ((rx_data[0] << 8) | rx_data[1]) / 100.0f;
-      UP_C_angle.roll = ((rx_data[2] << 8) | rx_data[3]) / 100.0f;
-      UP_C_angle.pitch = ((rx_data[4] << 8) | rx_data[5]) / 100.0f;
+      UP_C_angle.yaw = ((rx_data2[0] << 8) | rx_data2[1]) / 100.0f;
+      UP_C_angle.roll = ((rx_data2[2] << 8) | rx_data2[3]) / 100.0f;
+      UP_C_angle.pitch = ((rx_data2[4] << 8) | rx_data2[5]) / 100.0f;
     }
   }
 }
