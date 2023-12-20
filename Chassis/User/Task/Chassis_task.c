@@ -7,15 +7,14 @@
 
 #define RC_MAX 660
 #define RC_MIN -660
-#define motor_max 6000
-#define motor_min -6000
+#define motor_max 4000
+#define motor_min -4000
 #define angle_valve 5
 #define angle_weight 55
 
 chassis_t chassis;
 
 pid_struct_t supercap_pid;
-motor_info_t motor_info_chassis[10]; // 电机信息结构体
 fp32 superpid[3] = {120, 0.1, 0};
 
 int8_t chassis_mode;
@@ -69,11 +68,11 @@ void Chassis_task(void const *pvParameters)
 
 static void Chassis_Init()
 {
-  chassis.pid_parameter[0] = 30, chassis.pid_parameter[1] = 0.5, chassis.pid_parameter[2] = 10;
+  chassis.pid_parameter[0] = 30, chassis.pid_parameter[1] = 0.5, chassis.pid_parameter[2] = 0;
 
   for (uint8_t i = 0; i < 4; i++)
   {
-    pid_init(&chassis.pid[i], chassis.pid_parameter, 6000, 6000); // init pid parameter, kp=40, ki=3, kd=0, output limit = 16384
+    pid_init(&chassis.pid[i], chassis.pid_parameter, 16384, 16384); // init pid parameter, kp=40, ki=3, kd=0, output limit = 16384
   }
   pid_init(&supercap_pid, superpid, 3000, 3000); // init pid parameter, kp=40, ki=3, kd=0, output limit = 16384
 
