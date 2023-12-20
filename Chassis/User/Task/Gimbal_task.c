@@ -7,7 +7,7 @@
 #define MAX_ANGLE 3400
 #define MIN_ANGLE 1600
 
-extern INS_t INS;
+extern fp32 INS_angle[3];
 gimbal_t gimbal_Yaw; // 云台电机信息结构体
 extern UP_C_angle_t UP_C_angle;
 

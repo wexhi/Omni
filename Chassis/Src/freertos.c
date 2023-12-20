@@ -34,7 +34,6 @@
 #include "super_cap.h"
 #include "UI_task.h"
 #include "Gimbal_task.h"
-#include "Shoot_task.h"
 #include "stm32f4xx_it.h"
 /* USER CODE END Includes */
 
@@ -59,9 +58,8 @@ osThreadId Chassis_taskHandle;
 osThreadId super_capHandle;
 osThreadId UI_taskHandle;
 osThreadId Gimbal_taskHandle;
-osThreadId shoot_taskHandle;
-osThreadId INSTaskHandle;
 osThreadId exchangeTaskHandle;
+osThreadId imuTaskHandle;
 /* USER CODE END Variables */
 osThreadId defaultTaskHandle;
 
@@ -140,10 +138,10 @@ void MX_FREERTOS_Init(void)
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
-  // osThreadDef(INSTask, StartINSTask, osPriorityNormal, 0, 2048);
-  // INSTaskHandle = osThreadCreate(osThread(INSTask), NULL);
+  osThreadDef(imuTask, INS_task, osPriorityRealtime, 0, 1024);
+  imuTaskHandle = osThreadCreate(osThread(imuTask), NULL);
 
-  osThreadDef(Chassistask, Chassis_task, osPriorityRealtime, 0, 512); // �����ƶ�����
+  osThreadDef(Chassistask, Chassis_task, osPriorityNormal, 0, 1024); // �����ƶ�����
   Chassis_taskHandle = osThreadCreate(osThread(Chassistask), NULL);
 
   osThreadDef(UItask, UI_Task, osPriorityRealtime, 0, 512);
@@ -152,11 +150,9 @@ void MX_FREERTOS_Init(void)
   osThreadDef(exchangeTask, exchange_task, osPriorityNormal, 0, 128);
   exchangeTaskHandle = osThreadCreate(osThread(exchangeTask), NULL);
 
-  osThreadDef(GimbalTask, Gimbal_task, osPriorityRealtime, 0, 512);
+  osThreadDef(GimbalTask, Gimbal_task, osPriorityNormal, 0, 512);
   Gimbal_taskHandle = osThreadCreate(osThread(GimbalTask), NULL);
 
-  osThreadDef(shootTask, Shoot_task, osPriorityNormal, 0, 256);
-  shoot_taskHandle = osThreadCreate(osThread(shootTask), NULL);
   /* USER CODE END RTOS_THREADS */
 }
 

@@ -28,8 +28,7 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
-uint16_t TIM1_Count = 0;
-uint8_t TIM1_flag = 1;
+
 /* USER CODE END TD */
 
 /* Private define ------------------------------------------------------------*/
