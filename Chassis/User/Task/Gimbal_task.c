@@ -47,7 +47,7 @@ static void Gimbal_loop_Init()
 {
     // 初始化pid参数
     gimbal_Yaw.pid_parameter[0] = 180, gimbal_Yaw.pid_parameter[1] = 0, gimbal_Yaw.pid_parameter[2] = 0;
-    gimbal_Yaw.pid_angle_parameter[0] = 7, gimbal_Yaw.pid_angle_parameter[1] = 0, gimbal_Yaw.pid_angle_parameter[2] = 0;
+    gimbal_Yaw.pid_angle_parameter[0] = 4, gimbal_Yaw.pid_angle_parameter[1] = 0, gimbal_Yaw.pid_angle_parameter[2] = 0;
     gimbal_Yaw.angle_target = 0;
 
     // 初始化pid结构体
@@ -75,7 +75,7 @@ static void mode_select()
 static void gimbal_current_give()
 {
     gimbal_Yaw.motor_info.set_current = pid_calc(&gimbal_Yaw.pid, gimbal_Yaw.motor_info.rotor_speed, gimbal_Yaw.speed_target);
-    set_motor_current_gimbal(1, 0, 0, gimbal_Yaw.motor_info.set_current, 0);
+    set_motor_current_gimbal(0, 0, 0, gimbal_Yaw.motor_info.set_current, 0);
     // set_motor_current_gimbal2(1, 0, 0, gimbal_Pitch.motor_info.set_current, 0);
     // set_curruent(MOTOR_6020_1, hcan1, 0, 0, gimbal_Yaw.motor_info.set_current, 0);
 }

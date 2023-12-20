@@ -1,10 +1,7 @@
 #include "drv_can.h"
-#define GIMBAL_YAW_ID 0x20b
+#define GIMBAL_YAW_ID 0x203
 #define CHASSIS_ID_START 0x201
 #define CHASSIS_ID_END 0x204
-#define SHOOTER_ID_START 0x205
-#define SHOOTER_ID_END 0x208
-#define GIMBAL_PITCH_ID 0x209
 #define POWERDATA_ID 0x211
 
 extern CAN_HandleTypeDef hcan1;

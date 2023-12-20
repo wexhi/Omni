@@ -7,8 +7,8 @@
 
 #define RC_MAX 660
 #define RC_MIN -660
-#define motor_max 6000
-#define motor_min -6000
+#define motor_max 4000
+#define motor_min -4000
 #define angle_valve 5
 #define angle_weight 55
 
