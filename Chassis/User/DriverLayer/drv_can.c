@@ -12,7 +12,7 @@ extern RC_ctrl_t rc_ctrl;
 extern gimbal_t gimbal_Yaw, gimbal_Pitch;
 extern chassis_t chassis;
 extern shooter_t shooter;
-int16_t up_angle[3] = {0};
+UP_C_angle_t UP_C_angle;
 
 float powerdata[4];
 uint16_t pPowerdata[8];
@@ -89,11 +89,10 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
     // 接收上C板陀螺仪数据
     if (rx_header.StdId == CAN_ID_IMU) // 上C向下C传IMU数据
     {
-      up_angle[0] = (rx_data[0] << 8) | rx_data[1];
-      up_angle[1] = (rx_data[2] << 8) | rx_data[3];
-      up_angle[2] = (rx_data[4] << 8) | rx_data[5];
+      UP_C_angle.yaw = ((rx_data[0] << 8) | rx_data[1]) / 100.0f;
+      UP_C_angle.roll = ((rx_data[2] << 8) | rx_data[3]) / 100.0f;
+      UP_C_angle.pitch = ((rx_data[4] << 8) | rx_data[5]) / 100.0f;
     }
-
   }
 }
 
