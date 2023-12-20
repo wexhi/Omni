@@ -56,23 +56,22 @@
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
 osThreadId Chassis_taskHandle;
-osThreadId myTask02Handle;
 osThreadId super_capHandle;
 osThreadId UI_taskHandle;
 osThreadId Gimbal_taskHandle;
 osThreadId shoot_taskHandle;
 osThreadId INSTaskHandle;
 osThreadId exchangeTaskHandle;
-osThreadId defaultTaskHandle;
 /* USER CODE END Variables */
+osThreadId defaultTaskHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
 
 /* USER CODE END FunctionPrototypes */
 
-void StartINSTask(void const *argument);
 void StartDefaultTask(void const *argument);
+
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
 /* GetIdleTaskMemory prototype (linked to static allocation support) */
@@ -135,16 +134,14 @@ void MX_FREERTOS_Init(void)
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
-  /* definition and creation of INSTask */
-
+  /* definition and creation of defaultTask */
+  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
+  defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
-  osThreadDef(INSTask, StartINSTask, osPriorityNormal, 0, 2048);
-  INSTaskHandle = osThreadCreate(osThread(INSTask), NULL);
-
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
-  defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
+  // osThreadDef(INSTask, StartINSTask, osPriorityNormal, 0, 2048);
+  // INSTaskHandle = osThreadCreate(osThread(INSTask), NULL);
 
   osThreadDef(Chassistask, Chassis_task, osPriorityRealtime, 0, 512); // �����ƶ�����
   Chassis_taskHandle = osThreadCreate(osThread(Chassistask), NULL);
@@ -163,34 +160,19 @@ void MX_FREERTOS_Init(void)
   /* USER CODE END RTOS_THREADS */
 }
 
-/* USER CODE BEGIN Header_StartINSTask */
+/* USER CODE BEGIN Header_StartDefaultTask */
 /**
- * @brief Function implementing the INSTask thread.
- * @param argument: Not used
+ * @brief  Function implementing the defaultTask thread.
+ * @param  argument: Not used
  * @retval None
  */
-/* USER CODE END Header_StartINSTask */
-void StartINSTask(void const *argument)
-{
-  /* USER CODE BEGIN StartINSTask */
-  INS_Init();
-  /* Infinite loop */
-  for (;;)
-  {
-    INS_Task();
-    osDelay(1);
-  }
-  /* USER CODE END StartINSTask */
-}
+/* USER CODE END Header_StartDefaultTask */
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
 void StartDefaultTask(void const *argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
-  HAL_GPIO_WritePin(GPIOH, GPIO_PIN_11, GPIO_PIN_SET);
-  HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_SET);
-  // uint8_t TIM1_flag = 1; // ��֪��bug // 这东西有什么用啊？
   /* Infinite loop */
   for (;;)
   {

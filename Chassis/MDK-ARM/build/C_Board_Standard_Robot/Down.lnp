@@ -1,4 +1,4 @@
---cpu Cortex-M4.fp --library_type=microlib --scatter "c:/Users/14775/Desktop/study/robomaster/Omni/Chassis/MDK-ARM/build/C_Board_Standard_Robot/Down.sct" --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols --info sizes --info totals --info unused --info veneers
+--cpu Cortex-M4.fp --library_type=microlib --scatter "c:/Users/wexhi/Desktop/study/robomaster/Omni/Chassis/MDK-ARM/build/C_Board_Standard_Robot/Down.sct" --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols --info sizes --info totals --info unused --info veneers
 --list .\build\C_Board_Standard_Robot\Down.map
 .\build\C_Board_Standard_Robot\__\Application\ins_task.o
 .\build\C_Board_Standard_Robot\__\Bsp\bsp_PWM.o
