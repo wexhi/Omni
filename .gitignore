@@ -1,3 +1,5 @@
-Chassis/MDK-ARM/build/C_Board_Standard_Robot/
-UP/MDK-ARM/build/C_Board_Standard_Robot/
+Chassis/MDK-ARM/build/C_Board_Standard_Robot/*
+!Chassis/MDK-ARM/build/C_Board_Standard_Robot/.gitkeep
+UP/MDK-ARM/build/C_Board_Standard_Robot/*
+!UP/MDK-ARM/build/C_Board_Standard_Robot/.gitkeep
 
