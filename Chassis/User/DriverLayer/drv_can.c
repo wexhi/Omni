@@ -1,10 +1,8 @@
 #include "drv_can.h"
-#define GIMBAL_YAW_ID 0x20b
+#define GIMBAL_YAW_ID 0x203
 #define CHASSIS_ID_START 0x201
 #define CHASSIS_ID_END 0x204
-#define SHOOTER_ID_START 0x205
-#define SHOOTER_ID_END 0x208
-#define GIMBAL_PITCH_ID 0x209
+#define CAN_ID_IMU 0x55
 #define POWERDATA_ID 0x211
 
 extern CAN_HandleTypeDef hcan1;
@@ -89,24 +87,13 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
     HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header, rx_data); // receive can2 data
 
     // 接收上C板陀螺仪数据
-    if (rx_header.StdId == 0x55) // 上C向下C传IMU数据
+    if (rx_header.StdId == CAN_ID_IMU) // 上C向下C传IMU数据
     {
       up_angle[0] = (rx_data[0] << 8) | rx_data[1];
       up_angle[1] = (rx_data[2] << 8) | rx_data[3];
       up_angle[2] = (rx_data[4] << 8) | rx_data[5];
     }
 
-    // if (rx_header.StdId == 0x211)
-    // {
-
-    //   extern float powerdata[4];
-    //   uint16_t *pPowerdata = (uint16_t *)rx_data;
-
-    //   powerdata[0] = (float)pPowerdata[0] / 100.f; // 输入电压
-    //   powerdata[1] = (float)pPowerdata[1] / 100.f; // 电容电压
-    //   powerdata[2] = (float)pPowerdata[2] / 100.f; // 输入电流
-    //   powerdata[3] = (float)pPowerdata[3] / 100.f; // P
-    // }
   }
 }
 
