@@ -22,7 +22,7 @@ void Shoot_task(void const *pvParameters)
     for (;;)
     {
         model_choice();
-        // shooter_current_given(); // 发射的时候再打开
+        shooter_current_given(); // 发射的时候再打开
         osDelay(1);
     }
 }
@@ -32,13 +32,13 @@ static void Shooter_Inint(void)
 {
     // 初始化pid参数
     shooter.pid_dial_para[0] = 20, shooter.pid_dial_para[1] = 0, shooter.pid_dial_para[2] = 0;
-    shooter.pid_friction_para[0] = 30, shooter.pid_friction_para[1] = 0, shooter.pid_friction_para[2] = 0;
+    shooter.pid_friction_para[0] = 30, shooter.pid_friction_para[1] = 0.1, shooter.pid_friction_para[2] = 0;
     shooter.pid_bay_para[0] = 10, shooter.pid_bay_para[1] = 0, shooter.pid_bay_para[2] = 0;
 
     // 初始化pid结构体
-    pid_init(&shooter.pid_dial, shooter.pid_dial_para, 10000, 10000);
-    pid_init(&shooter.pid_friction, shooter.pid_friction_para, 10000, 10000);
-    pid_init(&shooter.pid_bay, shooter.pid_bay_para, 10000, 10000);
+    pid_init(&shooter.pid_dial, shooter.pid_dial_para, 16384, 16384);
+    pid_init(&shooter.pid_friction, shooter.pid_friction_para, 16384, 16384);
+    pid_init(&shooter.pid_bay, shooter.pid_bay_para, 16384, 16384);
 
     // 初始化速度目标
     shooter.dial_speed_target = 0;

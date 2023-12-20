@@ -499,3 +499,111 @@ OTOR_6020_0, hcan1, 0, 0, gimbal_Pitch.motor_info.set_current, 0);
 [2023-12-15 12:41:54]	[done]
 	build successfully !
 
+[2023-12-19 21:49:10]	[done]
+	build successfully !
+
+[2023-12-19 22:01:45]	[done]
+	build successfully !
+
+[2023-12-19 22:02:06]	[done]
+	build successfully !
+
+[2023-12-19 22:06:15]	[done]
+	build successfully !
+
+[2023-12-19 22:11:15]	[done]
+	build successfully !
+
+[2023-12-19 22:11:57]	[done]
+	build successfully !
+
+[2023-12-19 22:12:33]	[done]
+	build successfully !
+
+[2023-12-19 22:14:25]	[done]
+	build successfully !
+
+[2023-12-19 22:15:51]	[done]
+	build successfully !
+
+[2023-12-19 22:17:25]	[done]
+	build successfully !
+
+[2023-12-19 22:18:19]	[done]
+	build successfully !
+
+[2023-12-19 22:19:10]	[done]
+	build successfully !
+
+[2023-12-19 22:21:17]	[done]
+	build successfully !
+
+[2023-12-19 22:22:16]	[done]
+	build successfully !
+
+[2023-12-19 22:25:58]	[done]
+	build successfully !
+
+[2023-12-19 22:30:20]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol set_motor_current_chassis (referred from Chassis_task.o).
+Error: L6218E: Undefined symbol set_motor_current_gimbal (referred from Gimbal_task.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 2 error messages.
+
+
+[2023-12-19 22:33:04]	[done]
+	build successfully !
+
+[2023-12-19 22:40:36]	[done]
+	build successfully !
+
+[2023-12-19 22:42:33]	[done]
+	build successfully !
+
+[2023-12-19 22:44:01]	[done]
+	build successfully !
+
+[2023-12-19 22:45:15]	[done]
+	build successfully !
+
+[2023-12-19 22:46:06]	[done]
+	build successfully !
+
+[2023-12-19 22:47:42]	[done]
+	build successfully !
+
+[2023-12-19 22:53:14]	[done]
+	build successfully !
+
+[2023-12-19 22:53:38]	[done]
+	build successfully !
+
+[2023-12-19 22:55:06]	[done]
+	build successfully !
+
+[2023-12-19 22:56:49]	[done]
+	build successfully !
+
+[2023-12-19 22:58:30]	[done]
+	build successfully !
+
+[2023-12-19 22:59:09]	[done]
+	build successfully !
+
+[2023-12-19 23:00:09]	[done]
+	build successfully !
+
+[2023-12-19 23:00:55]	[done]
+	build successfully !
+
+[2023-12-19 23:01:41]	[done]
+	build successfully !
+
+[2023-12-19 23:02:50]	[done]
+	build successfully !
+
+[2023-12-19 23:04:31]	[done]
+	build successfully !
+

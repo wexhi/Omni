@@ -96,17 +96,17 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
       up_angle[2] = (rx_data[4] << 8) | rx_data[5];
     }
 
-    if (rx_header.StdId == 0x211)
-    {
+    // if (rx_header.StdId == 0x211)
+    // {
 
-      extern float powerdata[4];
-      uint16_t *pPowerdata = (uint16_t *)rx_data;
+    //   extern float powerdata[4];
+    //   uint16_t *pPowerdata = (uint16_t *)rx_data;
 
-      powerdata[0] = (float)pPowerdata[0] / 100.f; // 输入电压
-      powerdata[1] = (float)pPowerdata[1] / 100.f; // 电容电压
-      powerdata[2] = (float)pPowerdata[2] / 100.f; // 输入电流
-      powerdata[3] = (float)pPowerdata[3] / 100.f; // P
-    }
+    //   powerdata[0] = (float)pPowerdata[0] / 100.f; // 输入电压
+    //   powerdata[1] = (float)pPowerdata[1] / 100.f; // 电容电压
+    //   powerdata[2] = (float)pPowerdata[2] / 100.f; // 输入电流
+    //   powerdata[3] = (float)pPowerdata[3] / 100.f; // P
+    // }
   }
 }
 
@@ -152,4 +152,49 @@ void process_MotorInfo(motor_info_t *motor_info, uint8_t *rx_data)
   motor_info->rotor_speed = ((rx_data[2] << 8) | rx_data[3]);
   motor_info->torque_current = ((rx_data[4] << 8) | rx_data[5]);
   motor_info->temp = rx_data[6];
+}
+
+// 底盤電機控制
+void set_motor_current_chassis(uint8_t id_range, int16_t v1, int16_t v2, int16_t v3, int16_t v4)
+{
+  CAN_TxHeaderTypeDef tx_header;
+  uint8_t tx_data[8];
+
+  tx_header.StdId = (id_range == 0) ? (0x200) : (0x1ff); // 如果id_range==0则等于0x200,id_range==1则等于0x1ff（ID号）
+  tx_header.IDE = CAN_ID_STD;                            // 标准帧
+  tx_header.RTR = CAN_RTR_DATA;                          // 数据帧
+
+  tx_header.DLC = 8; // 发送数据长度（字节）
+
+  tx_data[0] = (v1 >> 8) & 0xff; // 先发高八位
+  tx_data[1] = (v1) & 0xff;
+  tx_data[2] = (v2 >> 8) & 0xff;
+  tx_data[3] = (v2) & 0xff;
+  tx_data[4] = (v3 >> 8) & 0xff;
+  tx_data[5] = (v3) & 0xff;
+  tx_data[6] = (v4 >> 8) & 0xff;
+  tx_data[7] = (v4) & 0xff;
+  HAL_CAN_AddTxMessage(&hcan1, &tx_header, tx_data, (uint32_t *)CAN_TX_MAILBOX0);
+}
+
+void set_motor_current_gimbal(uint8_t id_range, int16_t v1, int16_t v2, int16_t v3, int16_t v4)
+{
+  CAN_TxHeaderTypeDef tx_header;
+  uint8_t tx_data[8];
+
+  tx_header.StdId = (id_range == 0) ? (0x1ff) : (0x2ff); // 如果id_range==0则等于0x1ff,id_range==1则等于0x2ff（ID号）
+  tx_header.IDE = CAN_ID_STD;                            // 标准帧
+  tx_header.RTR = CAN_RTR_DATA;                          // 数据帧
+
+  tx_header.DLC = 8; // 发送数据长度（字节）
+
+  tx_data[0] = (v1 >> 8) & 0xff; // 先发高八位
+  tx_data[1] = (v1) & 0xff;
+  tx_data[2] = (v2 >> 8) & 0xff;
+  tx_data[3] = (v2) & 0xff;
+  tx_data[4] = (v3 >> 8) & 0xff;
+  tx_data[5] = (v3) & 0xff;
+  tx_data[6] = (v4 >> 8) & 0xff;
+  tx_data[7] = (v4) & 0xff;
+  HAL_CAN_AddTxMessage(&hcan1, &tx_header, tx_data, (uint32_t *)CAN_TX_MAILBOX0);
 }
