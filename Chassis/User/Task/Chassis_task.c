@@ -9,8 +9,9 @@
 #define RC_MIN -660
 #define motor_max 2000
 #define motor_min -2000
+#define Wz_max 2000
 #define angle_valve 5
-#define angle_weight 55
+#define angle_weight 30
 
 chassis_t chassis;
 
@@ -118,6 +119,7 @@ static void mode_chooce()
     LEDG_ON(); // GREEN LED
     LEDR_OFF();
     LEDB_OFF();
+    chassis_follow_gimbal();
   }
   else if (rc_ctrl.rc.s[0] == 3)
   {
@@ -221,6 +223,20 @@ static void gyroscope(void)
 // 底盘跟随云台
 static void chassis_follow_gimbal()
 {
+  if (chassis.err_angle > 20 || chassis.err_angle < -20)
+  {
+    chassis.Wz = chassis.err_angle * angle_weight;
+  }
+
+  if (chassis.Wz > Wz_max)
+  {
+    chassis.Wz = Wz_max;
+  }
+  else if (chassis.Wz < -Wz_max)
+  {
+    chassis.Wz = -Wz_max;
+  }
+  
 }
 
 // 获取上下C板角度差
