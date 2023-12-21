@@ -103,7 +103,7 @@ static void RC_Yaw_control()
 
         gimbal_Yaw.err_angle = gimbal_Yaw.angle_target - UP_C_angle.yaw;
 
-        detel_calc2(&gimbal_Yaw.err_angle);
+        detel_calc(&gimbal_Yaw.err_angle);
 
         if (gimbal_Yaw.err_angle > 2 || gimbal_Yaw.err_angle < -2)
         {

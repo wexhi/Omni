@@ -66,6 +66,8 @@ typedef struct
     pid_struct_t pid[4];        // 底盘电机的pid结构体
     int16_t speed_target[4];    // 底盘电机的目标速度
     int16_t Vx, Vy, Wz;         // 底盘电机的目标速度
+    fp32 err_angle;             // 下板与上板的角度差
+    fp32 imu_err;               // 重置上下板角度差所用
 } chassis_t;
 
 typedef struct

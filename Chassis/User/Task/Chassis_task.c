@@ -22,6 +22,7 @@ int8_t chassis_mode;
 
 extern RC_ctrl_t rc_ctrl; // 遥控器信息结构体
 extern float powerdata[4];
+extern UP_C_angle_t UP_C_angle;
 
 uint8_t rc[18];
 
@@ -206,4 +207,14 @@ static void RC_Move(void)
 static void gyroscope(void)
 {
   chassis.Wz = 900;
+}
+
+// 底盘跟随云台
+static void chassis_follow_gimbal()
+{
+}
+
+// 获取上下C板角度差
+static void get_UpDown_Err()
+{
 }
