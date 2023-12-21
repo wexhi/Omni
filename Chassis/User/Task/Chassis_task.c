@@ -23,6 +23,7 @@ int8_t chassis_mode;
 extern RC_ctrl_t rc_ctrl; // 遥控器信息结构体
 extern float powerdata[4];
 extern UP_C_angle_t UP_C_angle;
+extern INS_t INS;
 
 uint8_t rc[18];
 
@@ -48,6 +49,12 @@ static void chassis_current_give();
 // 运动解算
 static void chassis_motol_speed_calculate();
 
+// 底盘跟随云台
+static void chassis_follow_gimbal();
+
+// 获取上下C板角度差
+static void get_UpDown_Err();
+
 void Chassis_task(void const *pvParameters)
 {
   Chassis_Init();
@@ -55,6 +62,8 @@ void Chassis_task(void const *pvParameters)
   for (;;) // 底盘运动任务
   {
     Chassis_loop_Init();
+    // 获取上下C板角度差
+    get_UpDown_Err();
 
     // 选择底盘运动模式
     mode_chooce();
@@ -217,4 +226,16 @@ static void chassis_follow_gimbal()
 // 获取上下C板角度差
 static void get_UpDown_Err()
 {
+  chassis.err_angle = INS.Yaw - UP_C_angle.yaw;
+
+  // 越界处理,保证转动方向不变
+  if (chassis.err_angle < -180) //	越界时：180 -> -180
+  {
+    chassis.err_angle += 360;
+  }
+
+  else if (chassis.err_angle > 180) //	越界时：-180 -> 180
+  {
+    chassis.err_angle -= 360;
+  }
 }
