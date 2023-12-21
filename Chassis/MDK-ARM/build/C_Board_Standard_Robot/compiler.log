@@ -1,10 +1,13 @@
 >>> cc
 
-".\..\User\Task\Gimbal_task.c", line 132: Warning:  #177-D: function "detel_calc2" was declared but never referenced
-  static void detel_calc2(fp32 *angle)
+".\..\User\Task\Chassis_task.c", line 218: Warning:  #177-D: function "gyroscope" was declared but never referenced
+  static void gyroscope(void)
               ^
-.\..\User\Task\Gimbal_task.c: 1 warning, 0 errors
+".\..\User\Task\Chassis_task.c", line 151: Warning:  #177-D: function "Motor_Speed_limiting" was declared but never referenced
+  static void Motor_Speed_limiting(volatile int16_t *motor_speed, int16_t limit_speed)
+              ^
+.\..\User\Task\Chassis_task.c: 2 warnings, 0 errors
 
 >>> ld
 
-Program Size: Code=48784 RO-data=3736 RW-data=724 ZI-data=47884  
+Program Size: Code=48884 RO-data=3736 RW-data=724 ZI-data=47884  

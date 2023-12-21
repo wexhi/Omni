@@ -9,9 +9,9 @@
 #define RC_MIN -660
 #define motor_max 2000
 #define motor_min -2000
-#define Wz_max 2000
+#define Wz_max 3000
 #define angle_valve 5
-#define angle_weight 30
+#define angle_weight 60
 
 chassis_t chassis;
 
@@ -223,9 +223,9 @@ static void gyroscope(void)
 // 底盘跟随云台
 static void chassis_follow_gimbal()
 {
-  if (chassis.err_angle > 20 || chassis.err_angle < -20)
+  if (chassis.err_angle > angle_valve || chassis.err_angle < -angle_valve)
   {
-    chassis.Wz = chassis.err_angle * angle_weight;
+    chassis.Wz -= chassis.err_angle * angle_weight;
   }
 
   if (chassis.Wz > Wz_max)
@@ -236,7 +236,11 @@ static void chassis_follow_gimbal()
   {
     chassis.Wz = -Wz_max;
   }
-  
+  // 从遥控器获取控制输入
+  chassis.Vx = rc_ctrl.rc.ch[3]; // 前后输入
+  chassis.Vy = rc_ctrl.rc.ch[2]; // 左右输入
+  chassis.Vx = map_range(chassis.Vx, RC_MIN, RC_MAX, motor_min, motor_max);
+  chassis.Vy = map_range(chassis.Vy, RC_MIN, RC_MAX, motor_min, motor_max);
 }
 
 // 获取上下C板角度差
