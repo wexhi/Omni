@@ -56,6 +56,9 @@ static void chassis_follow_gimbal();
 // 获取上下C板角度差
 static void get_UpDown_Err();
 
+// 旋转矩阵
+static void rotate();
+
 void Chassis_task(void const *pvParameters)
 {
   Chassis_Init();
@@ -208,6 +211,8 @@ static void RC_Move(void)
   chassis.Vy = rc_ctrl.rc.ch[2]; // 左右输入
   chassis.Wz = rc_ctrl.rc.ch[4]; // 旋转输入
 
+  rotate();
+
   /*************记得加上线性映射***************/
   chassis.Vx = map_range(chassis.Vx, RC_MIN, RC_MAX, motor_min, motor_max);
   chassis.Vy = map_range(chassis.Vy, RC_MIN, RC_MAX, motor_min, motor_max);
@@ -258,4 +263,17 @@ static void get_UpDown_Err()
   {
     chassis.err_angle -= 360;
   }
+
+  chassis.err_angle_rad = chassis.err_angle / 57.3;
+}
+
+// 旋转矩阵
+static void rotate()
+{
+  int16_t temp_Vx = 0;
+  int16_t temp_Vy = 0;
+  temp_Vx = chassis.Vx * cosf(chassis.err_angle_rad) - chassis.Vy * sinf(chassis.err_angle_rad);
+  temp_Vy = chassis.Vx * sinf(chassis.err_angle_rad) + chassis.Vy * cosf(chassis.err_angle_rad);
+  chassis.Vx = temp_Vx;
+  chassis.Vy = temp_Vy;
 }
