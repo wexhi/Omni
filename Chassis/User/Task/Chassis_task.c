@@ -255,10 +255,11 @@ static void get_UpDown_Err()
 {
   if (rc_ctrl.rc.s[0] == 1)
   {
-    chassis.imu_err = -chassis.err_angle;
+    chassis.imu_err = INS.Yaw - UP_C_angle.yaw;
+  }else{
+    chassis.err_angle = INS.Yaw - UP_C_angle.yaw - chassis.imu_err;
   }
 
-  chassis.err_angle = INS.Yaw - UP_C_angle.yaw + chassis.imu_err;
 
   // 越界处理,保证转动方向不变
   if (chassis.err_angle < -180) //	越界时：180 -> -180
