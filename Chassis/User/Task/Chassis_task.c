@@ -92,6 +92,8 @@ static void Chassis_Init()
   pid_init(&supercap_pid, superpid, 3000, 3000); // init pid parameter, kp=40, ki=3, kd=0, output limit = 16384
 
   chassis.Vx = 0, chassis.Vy = 0, chassis.Wz = 0;
+
+  chassis.imu_err = 0;
 }
 
 static void Chassis_loop_Init()
@@ -251,7 +253,12 @@ static void chassis_follow_gimbal()
 // 获取上下C板角度差
 static void get_UpDown_Err()
 {
-  chassis.err_angle = INS.Yaw - UP_C_angle.yaw;
+  if (rc_ctrl.rc.s[0] == 1)
+  {
+    chassis.imu_err = -chassis.err_angle;
+  }
+
+  chassis.err_angle = INS.Yaw - UP_C_angle.yaw + chassis.imu_err;
 
   // 越界处理,保证转动方向不变
   if (chassis.err_angle < -180) //	越界时：180 -> -180
