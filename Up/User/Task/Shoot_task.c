@@ -8,6 +8,7 @@ shooter_t shooter; // 发射机构信息结构体
 // 电机0为拨盘电机，电机1、2为摩擦轮电机，电机3原为弹舱电机，现为备用电机
 
 extern RC_ctrl_t rc_ctrl; // 遥控器信息结构体
+static uint8_t friction_flag;
 
 static void Shooter_Inint();         // 发射机构的初始化
 static void model_choice();          // 模式选择
@@ -15,6 +16,7 @@ static void dial_control();          // 拨盘电机控制
 static void friction_control();      // 摩擦轮电机控制
 static void bay_control();           // 弹舱电机控制
 static void shooter_current_given(); // 给电流
+static void GetKeyBoard();           // 获取键盘信息
 
 void Shoot_task(void const *pvParameters)
 {
@@ -49,9 +51,10 @@ static void Shooter_Inint(void)
 // 模式选择
 static void model_choice(void)
 {
+    GetKeyBoard();
     bay_control();
     // 取消注释开始发射
-    if (rc_ctrl.rc.s[1] == 3 || rc_ctrl.rc.s[1] == 1)
+    if (rc_ctrl.rc.s[1] == 3 || rc_ctrl.rc.s[1] == 1 || friction_flag == 1)
     {
         // 发射
         friction_control();
@@ -70,7 +73,7 @@ static void model_choice(void)
 // 拨盘电机控制
 static void dial_control(void)
 {
-    if (rc_ctrl.rc.s[1] == 1)
+    if (rc_ctrl.rc.s[1] == 1 || rc_ctrl.mouse.press_l == 1)
     {
         LEDR_ON();
         LEDB_OFF();
@@ -96,7 +99,7 @@ static void friction_control(void)
 // 弹舱电机控制
 static void bay_control(void)
 {
-    if (rc_ctrl.rc.s[1] == 2)
+    if (rc_ctrl.rc.s[1] == 2 && !friction_flag)
     {
         __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 500);
     }
@@ -115,4 +118,16 @@ static void shooter_current_given(void)
     shooter.motor_info[2].set_current = pid_calc(&shooter.pid_friction, shooter.motor_info[2].rotor_speed, shooter.friction_speed_target[1]); // 摩擦轮电机
     set_curruent(MOTOR_3508_0, hcan1, shooter.motor_info[0].set_current, shooter.motor_info[1].set_current, shooter.motor_info[2].set_current, 0);
     // set_motor_current_shoot(0, shooter.motor_info[0].set_current, shooter.motor_info[1].set_current, shooter.motor_info[2].set_current, 0);
+}
+
+static void GetKeyBoard()
+{
+    if (q_flag)
+    {
+        friction_flag = 1;
+    }
+    else if (e_flag)
+    {
+        friction_flag = 0;
+    }
 }
