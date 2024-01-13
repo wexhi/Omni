@@ -12,6 +12,8 @@
 #define Wz_max 3000
 #define angle_valve 5
 #define angle_weight 60
+#define KEY_START_OFFSET 3
+#define KEY_STOP_OFFSET 20
 
 chassis_t chassis;
 
@@ -27,6 +29,7 @@ extern UP_C_angle_t UP_C_angle;
 extern INS_t INS;
 
 uint8_t rc[18];
+static int16_t key_x_fast, key_y_fast, key_x_slow, key_y_slow;
 
 static void Chassis_Init();
 
@@ -58,6 +61,9 @@ static void get_UpDown_Err();
 
 // 旋转矩阵
 static void rotate();
+
+// 键盘控制函数
+static void key_control(void);
 
 void Chassis_task(void const *pvParameters)
 {
@@ -131,6 +137,7 @@ static void mode_chooce()
     LEDR_ON(); // RED LED
     LEDB_OFF();
     LEDG_OFF();
+    key_control();
     RC_Move();
   }
   else
@@ -209,9 +216,9 @@ static int16_t map_range(int value, int from_min, int from_max, int to_min, int 
 static void RC_Move(void)
 {
   // 从遥控器获取控制输入
-  chassis.Vx = rc_ctrl.rc.ch[3]; // 前后输入
-  chassis.Vy = rc_ctrl.rc.ch[2]; // 左右输入
-  chassis.Wz = rc_ctrl.rc.ch[4]; // 旋转输入
+  chassis.Vx = rc_ctrl.rc.ch[3] + key_x_fast - key_x_slow; // 前后输入
+  chassis.Vy = rc_ctrl.rc.ch[2] + key_y_fast - key_y_slow; // 左右输入
+  chassis.Wz = rc_ctrl.rc.ch[4];                           // 旋转输入
 
   rotate();
 
@@ -256,10 +263,11 @@ static void get_UpDown_Err()
   if (rc_ctrl.rc.s[0] == 1)
   {
     chassis.imu_err = INS.Yaw - UP_C_angle.yaw;
-  }else{
+  }
+  else
+  {
     chassis.err_angle = INS.Yaw - UP_C_angle.yaw - chassis.imu_err;
   }
-
 
   // 越界处理,保证转动方向不变
   if (chassis.err_angle < -180) //	越界时：180 -> -180
@@ -284,4 +292,41 @@ static void rotate()
   temp_Vy = chassis.Vx * sinf(chassis.err_angle_rad) + chassis.Vy * cosf(chassis.err_angle_rad);
   chassis.Vx = temp_Vx;
   chassis.Vy = temp_Vy;
+}
+
+static void key_control(void)
+{
+  if (d_flag)
+    key_y_fast += KEY_START_OFFSET;
+  else
+    key_y_fast -= KEY_STOP_OFFSET;
+  if (a_flag)
+    key_y_slow += KEY_START_OFFSET;
+  else
+    key_y_slow -= KEY_STOP_OFFSET;
+  if (w_flag)
+    key_x_fast += KEY_START_OFFSET;
+  else
+    key_x_fast -= KEY_STOP_OFFSET;
+  if (s_flag)
+    key_x_slow += KEY_START_OFFSET;
+  else
+    key_x_slow -= KEY_STOP_OFFSET;
+
+  if (key_x_fast > motor_max)
+    key_x_fast = motor_max;
+  if (key_x_fast < 0)
+    key_x_fast = 0;
+  if (key_x_slow > motor_max)
+    key_x_slow = motor_max;
+  if (key_x_slow < 0)
+    key_x_slow = 0;
+  if (key_y_fast > motor_max)
+    key_y_fast = motor_max;
+  if (key_y_fast < 0)
+    key_y_fast = 0;
+  if (key_y_slow > motor_max)
+    key_y_slow = motor_max;
+  if (key_y_slow < 0)
+    key_y_slow = 0;
 }
