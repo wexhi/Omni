@@ -3,7 +3,9 @@
   "type": "ARM",
   "dependenceList": [],
   "srcDirs": [
-    ".eide/deps"
+    ".eide/deps",
+    "../User/BSP",
+    "../User/moudle"
   ],
   "virtualFolder": {
     "name": "<virtual_root>",
@@ -457,7 +459,9 @@
           "../User/Task",
           "../User/DriverLayer",
           "../User/AlgorithmLayer",
-          "../User/PotocaLayer"
+          "../User/PotocaLayer",
+          "../User/BSP",
+          "../User/moudle"
         ],
         "libList": [],
         "sourceDirList": [],

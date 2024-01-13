@@ -829,3 +829,871 @@ command:
 [2024-01-13 19:30:50]	[done]
 	build successfully !
 
+[2024-01-13 19:52:56]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 379: Error:  #20: identifier "huart4" is undefined
+      temp = huart4.Instance->SR;
+             ^
+".\..\Src\stm32f4xx_it.c", line 382: Error:  #20: identifier "hdma_uart1_rx" is undefined
+      temp = hdma_uart1_rx.Instance->NDTR;
+             ^
+".\..\Src\stm32f4xx_it.c", line 393: Error:  #20: identifier "JY901_data" is undefined
+      JY901_data.Rx_len = RXBUFFER_LEN - temp;
+      ^
+".\..\Src\stm32f4xx_it.c", line 393: Error:  #20: identifier "RXBUFFER_LEN" is undefined
+      JY901_data.Rx_len = RXBUFFER_LEN - temp;
+                          ^
+".\..\Src\stm32f4xx_it.c", line 394: Warning:  #223-D: function "JY901_Process" declared implicitly
+      JY901_Process();
+      ^
+".\..\Src\stm32f4xx_it.c", line 398: Error:  #20: identifier "JY901_data" is undefined
+    HAL_UART_Receive_DMA(&huart1, JY901_data.RxBuffer, RXBUFFER_LEN);
+                                  ^
+".\..\Src\stm32f4xx_it.c", line 398: Error:  #20: identifier "RXBUFFER_LEN" is undefined
+    HAL_UART_Receive_DMA(&huart1, JY901_data.RxBuffer, RXBUFFER_LEN);
+                                                       ^
+.\..\Src\stm32f4xx_it.c: 1 warning, 6 errors
+
+[2024-01-13 19:53:14]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 382: Error:  #20: identifier "hdma_uart1_rx" is undefined
+      temp = hdma_uart1_rx.Instance->NDTR;
+             ^
+".\..\Src\stm32f4xx_it.c", line 393: Error:  #20: identifier "JY901_data" is undefined
+      JY901_data.Rx_len = RXBUFFER_LEN - temp;
+      ^
+".\..\Src\stm32f4xx_it.c", line 393: Error:  #20: identifier "RXBUFFER_LEN" is undefined
+      JY901_data.Rx_len = RXBUFFER_LEN - temp;
+                          ^
+".\..\Src\stm32f4xx_it.c", line 394: Warning:  #223-D: function "JY901_Process" declared implicitly
+      JY901_Process();
+      ^
+".\..\Src\stm32f4xx_it.c", line 398: Error:  #20: identifier "JY901_data" is undefined
+    HAL_UART_Receive_DMA(&huart1, JY901_data.RxBuffer, RXBUFFER_LEN);
+                                  ^
+".\..\Src\stm32f4xx_it.c", line 398: Error:  #20: identifier "RXBUFFER_LEN" is undefined
+    HAL_UART_Receive_DMA(&huart1, JY901_data.RxBuffer, RXBUFFER_LEN);
+                                                       ^
+.\..\Src\stm32f4xx_it.c: 1 warning, 5 errors
+
+[2024-01-13 19:53:27]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 393: Error:  #20: identifier "JY901_data" is undefined
+      JY901_data.Rx_len = RXBUFFER_LEN - temp;
+      ^
+".\..\Src\stm32f4xx_it.c", line 393: Error:  #20: identifier "RXBUFFER_LEN" is undefined
+      JY901_data.Rx_len = RXBUFFER_LEN - temp;
+                          ^
+".\..\Src\stm32f4xx_it.c", line 394: Warning:  #223-D: function "JY901_Process" declared implicitly
+      JY901_Process();
+      ^
+".\..\Src\stm32f4xx_it.c", line 398: Error:  #20: identifier "JY901_data" is undefined
+    HAL_UART_Receive_DMA(&huart1, JY901_data.RxBuffer, RXBUFFER_LEN);
+                                  ^
+".\..\Src\stm32f4xx_it.c", line 398: Error:  #20: identifier "RXBUFFER_LEN" is undefined
+    HAL_UART_Receive_DMA(&huart1, JY901_data.RxBuffer, RXBUFFER_LEN);
+                                                       ^
+.\..\Src\stm32f4xx_it.c: 1 warning, 4 errors
+
+[2024-01-13 19:54:18]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 394: Error:  #20: identifier "RXBUFFER_LEN" is undefined
+      Rx_len = RXBUFFER_LEN - temp;
+               ^
+".\..\Src\stm32f4xx_it.c", line 396: Error:  #20: identifier "Rx_flag" is undefined
+      Rx_flag = 1;
+      ^
+".\..\Src\stm32f4xx_it.c", line 399: Error:  #20: identifier "JY901_data" is undefined
+    HAL_UART_Receive_DMA(&huart1, JY901_data.RxBuffer, RXBUFFER_LEN);
+                                  ^
+".\..\Src\stm32f4xx_it.c", line 399: Error:  #20: identifier "RXBUFFER_LEN" is undefined
+    HAL_UART_Receive_DMA(&huart1, JY901_data.RxBuffer, RXBUFFER_LEN);
+                                                       ^
+".\..\Src\stm32f4xx_it.c", line 375: Warning:  #550-D: variable "Rx_len" was set but never used
+    int Rx_len = 9;
+        ^
+.\..\Src\stm32f4xx_it.c: 1 warning, 4 errors
+
+[2024-01-13 19:54:46]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 400: Error:  #20: identifier "JY901_data" is undefined
+    HAL_UART_Receive_DMA(&huart1, JY901_data.RxBuffer, RXBUFFER_LEN);
+                                  ^
+".\..\Src\stm32f4xx_it.c", line 400: Error:  #20: identifier "RXBUFFER_LEN" is undefined
+    HAL_UART_Receive_DMA(&huart1, JY901_data.RxBuffer, RXBUFFER_LEN);
+                                                       ^
+".\..\Src\stm32f4xx_it.c", line 375: Warning:  #550-D: variable "Rx_len" was set but never used
+    int Rx_len = 9;
+        ^
+".\..\Src\stm32f4xx_it.c", line 376: Warning:  #550-D: variable "Rx_flag" was set but never used
+    int Rx_flag = 0;
+        ^
+.\..\Src\stm32f4xx_it.c: 2 warnings, 2 errors
+
+[2024-01-13 19:55:32]	[done]
+	build successfully !
+
+[2024-01-13 20:08:26]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 402: Warning:  #223-D: function "memcpy" declared implicitly
+        memcpy(&recv->yaw, &rx_buff[1], 4);
+        ^
+".\..\Src\stm32f4xx_it.c", line 402: Error:  #44: expression must have pointer type
+        memcpy(&recv->yaw, &rx_buff[1], 4);
+                ^
+".\..\Src\stm32f4xx_it.c", line 403: Error:  #44: expression must have pointer type
+        memcpy(&recv->pitch, &rx_buff[5], 4);
+                ^
+".\..\Src\stm32f4xx_it.c", line 406: Error:  #44: expression must have pointer type
+        memcpy(&recv->checksum, &rx_buff[9], 2);
+                ^
+".\..\Src\stm32f4xx_it.c", line 382: Warning:  #177-D: variable "Rx_len" was declared but never referenced
+    int Rx_len = 12;
+        ^
+".\..\Src\stm32f4xx_it.c", line 383: Warning:  #177-D: variable "Rx_flag" was declared but never referenced
+    int Rx_flag = 0;
+        ^
+.\..\Src\stm32f4xx_it.c: 3 warnings, 3 errors
+
+[2024-01-13 20:08:30]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 402: Warning:  #223-D: function "memcpy" declared implicitly
+        memcpy(&recv->yaw, &rx_buff[1], 4);
+        ^
+".\..\Src\stm32f4xx_it.c", line 402: Error:  #44: expression must have pointer type
+        memcpy(&recv->yaw, &rx_buff[1], 4);
+                ^
+".\..\Src\stm32f4xx_it.c", line 403: Error:  #44: expression must have pointer type
+        memcpy(&recv->pitch, &rx_buff[5], 4);
+                ^
+".\..\Src\stm32f4xx_it.c", line 406: Error:  #44: expression must have pointer type
+        memcpy(&recv->checksum, &rx_buff[9], 2);
+                ^
+".\..\Src\stm32f4xx_it.c", line 382: Warning:  #177-D: variable "Rx_len" was declared but never referenced
+    int Rx_len = 12;
+        ^
+".\..\Src\stm32f4xx_it.c", line 383: Warning:  #177-D: variable "Rx_flag" was declared but never referenced
+    int Rx_flag = 0;
+        ^
+.\..\Src\stm32f4xx_it.c: 3 warnings, 3 errors
+
+[2024-01-13 20:08:57]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6200E: Symbol rx_buff multiply defined (by BMI088driver.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by user_lib.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by can.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by dma.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by freertos.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by gpio.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by i2c.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by main.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by spi.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by stm32f4xx_hal_msp.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by stm32f4xx_it.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by tim.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by usart.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by CRC.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by pid.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by pid_imu.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by bsp_delay.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by bsp_imu_pwm.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by bsp_spi.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by drv_can.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by drv_usart.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by judge.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by rc_potocal.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by Gimbal_task.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by INS_task.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by Shoot_task.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff multiply defined (by exchange.o and BMI088Middleware.o).
+Not enough information to list image symbols.
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 27 error messages.
+
+
+[2024-01-13 20:10:37]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6200E: Symbol rx_buff_sj multiply defined (by BMI088driver.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by user_lib.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by can.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by dma.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by freertos.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by gpio.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by i2c.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by main.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by spi.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by stm32f4xx_hal_msp.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by stm32f4xx_it.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by tim.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by usart.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by CRC.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by pid.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by pid_imu.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by bsp_delay.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by bsp_imu_pwm.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by bsp_spi.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by drv_can.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by drv_usart.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by judge.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by rc_potocal.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by Gimbal_task.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by INS_task.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by Shoot_task.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by exchange.o and BMI088Middleware.o).
+Not enough information to list image symbols.
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 27 error messages.
+
+
+[2024-01-13 20:11:21]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6200E: Symbol rx_buff_sj multiply defined (by BMI088driver.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by user_lib.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by can.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by dma.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by freertos.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by gpio.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by i2c.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by main.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by spi.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by stm32f4xx_hal_msp.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by stm32f4xx_it.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by tim.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by usart.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by CRC.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by pid.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by pid_imu.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by bsp_delay.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by bsp_imu_pwm.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by bsp_spi.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by drv_can.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by drv_usart.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by judge.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by rc_potocal.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by Gimbal_task.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by INS_task.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by Shoot_task.o and BMI088Middleware.o).
+Error: L6200E: Symbol rx_buff_sj multiply defined (by exchange.o and BMI088Middleware.o).
+Not enough information to list image symbols.
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 27 error messages.
+
+
+[2024-01-13 20:12:18]	[done]
+	build successfully !
+
+[2024-01-13 20:12:44]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 403: Warning:  #223-D: function "memcpy" declared implicitly
+        memcpy(&recv->yaw, &rx_buff_sj[1], 4);
+        ^
+".\..\Src\stm32f4xx_it.c", line 403: Error:  #20: identifier "recv" is undefined
+        memcpy(&recv->yaw, &rx_buff_sj[1], 4);
+                ^
+".\..\Src\stm32f4xx_it.c", line 383: Warning:  #177-D: variable "Rx_len" was declared but never referenced
+    int Rx_len = 12;
+        ^
+".\..\Src\stm32f4xx_it.c", line 384: Warning:  #177-D: variable "Rx_flag" was declared but never referenced
+    int Rx_flag = 0;
+        ^
+.\..\Src\stm32f4xx_it.c: 3 warnings, 1 error
+
+[2024-01-13 20:13:11]	[done]
+	build successfully !
+
+[2024-01-13 20:18:35]	[done]
+	build successfully !
+
+[2024-01-13 20:20:18]	[done]
+	build successfully !
+
+[2024-01-13 20:50:58]	[done]
+	build successfully !
+
+[2024-01-13 20:52:41]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 404: Error:  #137: expression must be a modifiable lvalue
+        &recv->yaw = rx_buff_sj[0];
+        ^
+".\..\Src\stm32f4xx_it.c", line 405: Warning:  #223-D: function "memcpy" declared implicitly
+        memcpy(&recv->yaw, &rx_buff_sj[1], 4);
+        ^
+".\..\Src\stm32f4xx_it.c", line 384: Warning:  #177-D: variable "Rx_len" was declared but never referenced
+    int Rx_len = 12;
+        ^
+".\..\Src\stm32f4xx_it.c", line 385: Warning:  #177-D: variable "Rx_flag" was declared but never referenced
+    int Rx_flag = 0;
+        ^
+.\..\Src\stm32f4xx_it.c: 3 warnings, 1 error
+
+[2024-01-13 20:53:13]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 404: Error:  #137: expression must be a modifiable lvalue
+        &recv->header = rx_buff_sj[0];
+        ^
+".\..\Src\stm32f4xx_it.c", line 405: Warning:  #223-D: function "memcpy" declared implicitly
+        memcpy(&recv->yaw, &rx_buff_sj[1], 4);
+        ^
+".\..\Src\stm32f4xx_it.c", line 384: Warning:  #177-D: variable "Rx_len" was declared but never referenced
+    int Rx_len = 12;
+        ^
+".\..\Src\stm32f4xx_it.c", line 385: Warning:  #177-D: variable "Rx_flag" was declared but never referenced
+    int Rx_flag = 0;
+        ^
+.\..\Src\stm32f4xx_it.c: 3 warnings, 1 error
+
+[2024-01-13 20:53:21]	[done]
+	build successfully !
+
+[2024-01-13 20:54:55]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 404: Error:  #44: expression must have pointer type
+        recv->header = rx_buff_sj[0];
+        ^
+".\..\Src\stm32f4xx_it.c", line 405: Warning:  #223-D: function "memcpy" declared implicitly
+        memcpy(&recv->yaw, &rx_buff_sj[1], 4);
+        ^
+".\..\Src\stm32f4xx_it.c", line 405: Error:  #44: expression must have pointer type
+        memcpy(&recv->yaw, &rx_buff_sj[1], 4);
+                ^
+".\..\Src\stm32f4xx_it.c", line 406: Error:  #44: expression must have pointer type
+        memcpy(&recv->pitch, &rx_buff_sj[5], 4);
+                ^
+".\..\Src\stm32f4xx_it.c", line 409: Error:  #44: expression must have pointer type
+        memcpy(&recv->checksum, &rx_buff_sj[9], 2);
+                ^
+".\..\Src\stm32f4xx_it.c", line 384: Warning:  #177-D: variable "Rx_len" was declared but never referenced
+    int Rx_len = 12;
+        ^
+".\..\Src\stm32f4xx_it.c", line 385: Warning:  #177-D: variable "Rx_flag" was declared but never referenced
+    int Rx_flag = 0;
+        ^
+.\..\Src\stm32f4xx_it.c: 3 warnings, 4 errors
+
+[2024-01-13 20:55:02]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 404: Error:  #44: expression must have pointer type
+        recv->header = rx_buff_sj[0];
+        ^
+".\..\Src\stm32f4xx_it.c", line 405: Warning:  #223-D: function "memcpy" declared implicitly
+        memcpy(&recv->yaw, &rx_buff_sj[1], 4);
+        ^
+".\..\Src\stm32f4xx_it.c", line 405: Error:  #44: expression must have pointer type
+        memcpy(&recv->yaw, &rx_buff_sj[1], 4);
+                ^
+".\..\Src\stm32f4xx_it.c", line 406: Error:  #44: expression must have pointer type
+        memcpy(&recv->pitch, &rx_buff_sj[5], 4);
+                ^
+".\..\Src\stm32f4xx_it.c", line 409: Error:  #44: expression must have pointer type
+        memcpy(&recv->checksum, &rx_buff_sj[9], 2);
+                ^
+".\..\Src\stm32f4xx_it.c", line 384: Warning:  #177-D: variable "Rx_len" was declared but never referenced
+    int Rx_len = 12;
+        ^
+".\..\Src\stm32f4xx_it.c", line 385: Warning:  #177-D: variable "Rx_flag" was declared but never referenced
+    int Rx_flag = 0;
+        ^
+.\..\Src\stm32f4xx_it.c: 3 warnings, 4 errors
+
+[2024-01-13 20:55:48]	[done]
+	build successfully !
+
+[2024-01-13 20:55:54]	[done]
+	build successfully !
+
+[2024-01-13 20:57:28]	[done]
+	build successfully !
+
+[2024-01-13 21:00:06]	[done]
+	build successfully !
+
+[2024-01-13 21:02:18]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 28: Error:  #5: cannot open source input file "memory.h": No such file or directory
+  #include "memory.h"
+                     ^
+.\..\Src\stm32f4xx_it.c: 0 warnings, 1 error
+
+[2024-01-13 21:02:34]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 405: Error:  #167: argument of type "uint8_t" is incompatible with parameter of type "const void *restrict"
+        memcpy(&recv->header, rx_buff_sj[0], 1);
+                              ^
+".\..\Src\stm32f4xx_it.c", line 406: Error:  #167: argument of type "uint8_t" is incompatible with parameter of type "const void *restrict"
+        memcpy(&recv->yaw, rx_buff_sj[1], 4);
+                           ^
+".\..\Src\stm32f4xx_it.c", line 407: Error:  #167: argument of type "uint8_t" is incompatible with parameter of type "const void *restrict"
+        memcpy(&recv->pitch, rx_buff_sj[5], 4);
+                             ^
+".\..\Src\stm32f4xx_it.c", line 385: Warning:  #177-D: variable "Rx_len" was declared but never referenced
+    int Rx_len = 12;
+        ^
+".\..\Src\stm32f4xx_it.c", line 386: Warning:  #177-D: variable "Rx_flag" was declared but never referenced
+    int Rx_flag = 0;
+        ^
+.\..\Src\stm32f4xx_it.c: 2 warnings, 3 errors
+
+[2024-01-13 21:03:04]	[done]
+	build successfully !
+
+[2024-01-13 21:07:03]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 405: Error:  #167: argument of type "uint8_t" is incompatible with parameter of type "const void *restrict"
+        memcpy(&recv->header, rx_buff_sj[0], 1);
+                              ^
+".\..\Src\stm32f4xx_it.c", line 406: Error:  #167: argument of type "uint8_t" is incompatible with parameter of type "const void *restrict"
+        memcpy(&recv->yaw, rx_buff_sj[1], 4);
+                           ^
+".\..\Src\stm32f4xx_it.c", line 407: Error:  #167: argument of type "uint8_t" is incompatible with parameter of type "const void *restrict"
+        memcpy(&recv->pitch, rx_buff_sj[5], 4);
+                             ^
+".\..\Src\stm32f4xx_it.c", line 385: Warning:  #177-D: variable "Rx_len" was declared but never referenced
+    int Rx_len = 12;
+        ^
+".\..\Src\stm32f4xx_it.c", line 386: Warning:  #177-D: variable "Rx_flag" was declared but never referenced
+    int Rx_flag = 0;
+        ^
+.\..\Src\stm32f4xx_it.c: 2 warnings, 3 errors
+
+[2024-01-13 21:08:45]	[done]
+	build successfully !
+
+[2024-01-13 21:09:40]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 404: Error:  #144: a value of type "uint8_t" cannot be used to initialize an entity of type "uint8_t *"
+        uint8_t *rx_buff = rx_buff_sj[0];
+                           ^
+".\..\Src\stm32f4xx_it.c", line 385: Warning:  #177-D: variable "Rx_len" was declared but never referenced
+    int Rx_len = 12;
+        ^
+".\..\Src\stm32f4xx_it.c", line 386: Warning:  #177-D: variable "Rx_flag" was declared but never referenced
+    int Rx_flag = 0;
+        ^
+".\..\Src\stm32f4xx_it.c", line 418: Error:  #79: expected a type specifier
+  HAL_UART_Receive_DMA(&huart1, rx_buff_sj, 12);
+                       ^
+".\..\Src\stm32f4xx_it.c", line 418: Error:  #757: variable "rx_buff_sj" is not a type name
+  HAL_UART_Receive_DMA(&huart1, rx_buff_sj, 12);
+                                ^
+".\..\Src\stm32f4xx_it.c", line 418: Error:  #79: expected a type specifier
+  HAL_UART_Receive_DMA(&huart1, rx_buff_sj, 12);
+                                            ^
+".\..\Src\stm32f4xx_it.c", line 418: Error:  #260-D: explicit type is missing ("int" assumed)
+  HAL_UART_Receive_DMA(&huart1, rx_buff_sj, 12);
+  ^
+".\..\Src\stm32f4xx_it.c", line 418: Error:  #147: declaration is incompatible with "HAL_StatusTypeDef HAL_UART_Receive_DMA(UART_HandleTypeDef *, uint8_t *, uint16_t)" (declared at line 727 of "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h")
+  HAL_UART_Receive_DMA(&huart1, rx_buff_sj, 12);
+  ^
+".\..\Src\stm32f4xx_it.c", line 421: Error:  #79: expected a type specifier
+  HAL_UART_IRQHandler(&huart1);
+                      ^
+".\..\Src\stm32f4xx_it.c", line 421: Error:  #260-D: explicit type is missing ("int" assumed)
+  HAL_UART_IRQHandler(&huart1);
+  ^
+".\..\Src\stm32f4xx_it.c", line 421: Error:  #147: declaration is incompatible with "void HAL_UART_IRQHandler(UART_HandleTypeDef *)" (declared at line 745 of "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h")
+  HAL_UART_IRQHandler(&huart1);
+  ^
+".\..\Src\stm32f4xx_it.c", line 429: Error:  #169: expected a declaration
+  }
+  ^
+".\..\Src\stm32f4xx_it.c", line 573: Warning: At end of source:  #12-D: parsing restarts here after previous syntax error
+.\..\Src\stm32f4xx_it.c: 3 warnings, 10 errors
+
+[2024-01-13 21:09:50]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 385: Warning:  #177-D: variable "Rx_len" was declared but never referenced
+    int Rx_len = 12;
+        ^
+".\..\Src\stm32f4xx_it.c", line 386: Warning:  #177-D: variable "Rx_flag" was declared but never referenced
+    int Rx_flag = 0;
+        ^
+".\..\Src\stm32f4xx_it.c", line 418: Error:  #79: expected a type specifier
+  HAL_UART_Receive_DMA(&huart1, rx_buff_sj, 12);
+                       ^
+".\..\Src\stm32f4xx_it.c", line 418: Error:  #757: variable "rx_buff_sj" is not a type name
+  HAL_UART_Receive_DMA(&huart1, rx_buff_sj, 12);
+                                ^
+".\..\Src\stm32f4xx_it.c", line 418: Error:  #79: expected a type specifier
+  HAL_UART_Receive_DMA(&huart1, rx_buff_sj, 12);
+                                            ^
+".\..\Src\stm32f4xx_it.c", line 418: Error:  #260-D: explicit type is missing ("int" assumed)
+  HAL_UART_Receive_DMA(&huart1, rx_buff_sj, 12);
+  ^
+".\..\Src\stm32f4xx_it.c", line 418: Error:  #147: declaration is incompatible with "HAL_StatusTypeDef HAL_UART_Receive_DMA(UART_HandleTypeDef *, uint8_t *, uint16_t)" (declared at line 727 of "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h")
+  HAL_UART_Receive_DMA(&huart1, rx_buff_sj, 12);
+  ^
+".\..\Src\stm32f4xx_it.c", line 421: Error:  #79: expected a type specifier
+  HAL_UART_IRQHandler(&huart1);
+                      ^
+".\..\Src\stm32f4xx_it.c", line 421: Error:  #260-D: explicit type is missing ("int" assumed)
+  HAL_UART_IRQHandler(&huart1);
+  ^
+".\..\Src\stm32f4xx_it.c", line 421: Error:  #147: declaration is incompatible with "void HAL_UART_IRQHandler(UART_HandleTypeDef *)" (declared at line 745 of "../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h")
+  HAL_UART_IRQHandler(&huart1);
+  ^
+".\..\Src\stm32f4xx_it.c", line 429: Error:  #169: expected a declaration
+  }
+  ^
+".\..\Src\stm32f4xx_it.c", line 573: Warning: At end of source:  #12-D: parsing restarts here after previous syntax error
+.\..\Src\stm32f4xx_it.c: 3 warnings, 9 errors
+
+[2024-01-13 21:10:17]	[done]
+	build successfully !
+
+[2024-01-13 21:11:58]	[done]
+	build successfully !
+
+[2024-01-13 21:14:39]	[done]
+	build successfully !
+
+[2024-01-13 21:15:38]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 404: Error:  #144: a value of type "uint8_t *" cannot be used to initialize an entity of type "uint8_t"
+        uint8_t rx_buff = rx_buff_sj;
+                          ^
+".\..\Src\stm32f4xx_it.c", line 405: Error:  #142: expression must have pointer-to-object type
+        memcpy(&recv->header, &rx_buff[0], 1);
+                                       ^
+".\..\Src\stm32f4xx_it.c", line 406: Error:  #142: expression must have pointer-to-object type
+        memcpy(&recv->yaw, &rx_buff[1], 4);
+                                    ^
+".\..\Src\stm32f4xx_it.c", line 407: Error:  #142: expression must have pointer-to-object type
+        memcpy(&recv->pitch, &rx_buff[5], 4);
+                                      ^
+".\..\Src\stm32f4xx_it.c", line 410: Error:  #142: expression must have pointer-to-object type
+        memcpy(&recv->checksum, &rx_buff[9], 2);
+                                         ^
+".\..\Src\stm32f4xx_it.c", line 397: Warning:  #177-D: variable "len" was declared but never referenced
+      int len = 12 - temp;
+          ^
+".\..\Src\stm32f4xx_it.c", line 385: Warning:  #177-D: variable "Rx_len" was declared but never referenced
+    int Rx_len = 12;
+        ^
+".\..\Src\stm32f4xx_it.c", line 386: Warning:  #177-D: variable "Rx_flag" was declared but never referenced
+    int Rx_flag = 0;
+        ^
+.\..\Src\stm32f4xx_it.c: 3 warnings, 5 errors
+
+[2024-01-13 21:15:54]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 404: Error:  #144: a value of type "uint8_t *" cannot be used to initialize an entity of type "uint8_t"
+        uint8_t rx_buff = rx_buff_sj;
+                          ^
+".\..\Src\stm32f4xx_it.c", line 405: Error:  #142: expression must have pointer-to-object type
+        memcpy(&recv->header, rx_buff[0], 1);
+                                      ^
+".\..\Src\stm32f4xx_it.c", line 406: Error:  #142: expression must have pointer-to-object type
+        memcpy(&recv->yaw, rx_buff[1], 4);
+                                   ^
+".\..\Src\stm32f4xx_it.c", line 407: Error:  #142: expression must have pointer-to-object type
+        memcpy(&recv->pitch, rx_buff[5], 4);
+                                     ^
+".\..\Src\stm32f4xx_it.c", line 410: Error:  #142: expression must have pointer-to-object type
+        memcpy(&recv->checksum, &rx_buff[9], 2);
+                                         ^
+".\..\Src\stm32f4xx_it.c", line 397: Warning:  #177-D: variable "len" was declared but never referenced
+      int len = 12 - temp;
+          ^
+".\..\Src\stm32f4xx_it.c", line 385: Warning:  #177-D: variable "Rx_len" was declared but never referenced
+    int Rx_len = 12;
+        ^
+".\..\Src\stm32f4xx_it.c", line 386: Warning:  #177-D: variable "Rx_flag" was declared but never referenced
+    int Rx_flag = 0;
+        ^
+.\..\Src\stm32f4xx_it.c: 3 warnings, 5 errors
+
+[2024-01-13 21:15:59]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 404: Error:  #144: a value of type "uint8_t *" cannot be used to initialize an entity of type "uint8_t"
+        uint8_t rx_buff = rx_buff_sj;
+                          ^
+".\..\Src\stm32f4xx_it.c", line 405: Error:  #142: expression must have pointer-to-object type
+        memcpy(&recv->header, rx_buff[0], 1);
+                                      ^
+".\..\Src\stm32f4xx_it.c", line 406: Error:  #142: expression must have pointer-to-object type
+        memcpy(&recv->yaw, rx_buff[1], 4);
+                                   ^
+".\..\Src\stm32f4xx_it.c", line 407: Error:  #142: expression must have pointer-to-object type
+        memcpy(&recv->pitch, rx_buff[5], 4);
+                                     ^
+".\..\Src\stm32f4xx_it.c", line 410: Error:  #142: expression must have pointer-to-object type
+        memcpy(&recv->checksum, rx_buff[9], 2);
+                                        ^
+".\..\Src\stm32f4xx_it.c", line 397: Warning:  #177-D: variable "len" was declared but never referenced
+      int len = 12 - temp;
+          ^
+".\..\Src\stm32f4xx_it.c", line 385: Warning:  #177-D: variable "Rx_len" was declared but never referenced
+    int Rx_len = 12;
+        ^
+".\..\Src\stm32f4xx_it.c", line 386: Warning:  #177-D: variable "Rx_flag" was declared but never referenced
+    int Rx_flag = 0;
+        ^
+.\..\Src\stm32f4xx_it.c: 3 warnings, 5 errors
+
+[2024-01-13 21:16:11]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 404: Error:  #144: a value of type "uint8_t *" cannot be used to initialize an entity of type "uint8_t"
+        uint8_t rx_buff = rx_buff_sj;
+                          ^
+".\..\Src\stm32f4xx_it.c", line 405: Error:  #142: expression must have pointer-to-object type
+        memcpy(&recv->header, &rx_buff[0], 1);
+                                       ^
+".\..\Src\stm32f4xx_it.c", line 406: Error:  #142: expression must have pointer-to-object type
+        memcpy(&recv->yaw, &rx_buff[1], 4);
+                                    ^
+".\..\Src\stm32f4xx_it.c", line 407: Error:  #142: expression must have pointer-to-object type
+        memcpy(&recv->pitch, &rx_buff[5], 4);
+                                      ^
+".\..\Src\stm32f4xx_it.c", line 410: Error:  #142: expression must have pointer-to-object type
+        memcpy(&recv->checksum, &rx_buff[9], 2);
+                                         ^
+".\..\Src\stm32f4xx_it.c", line 397: Warning:  #177-D: variable "len" was declared but never referenced
+      int len = 12 - temp;
+          ^
+".\..\Src\stm32f4xx_it.c", line 385: Warning:  #177-D: variable "Rx_len" was declared but never referenced
+    int Rx_len = 12;
+        ^
+".\..\Src\stm32f4xx_it.c", line 386: Warning:  #177-D: variable "Rx_flag" was declared but never referenced
+    int Rx_flag = 0;
+        ^
+.\..\Src\stm32f4xx_it.c: 3 warnings, 5 errors
+
+[2024-01-13 21:16:48]	[done]
+	build successfully !
+
+[2024-01-13 21:17:11]	[done]
+	build successfully !
+
+[2024-01-13 21:18:04]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 406: Error:  #44: expression must have pointer type
+        recv->header = rx_buff[0];
+        ^
+".\..\Src\stm32f4xx_it.c", line 407: Error:  #44: expression must have pointer type
+        memcpy(&recv->yaw, &rx_buff[1], 4);
+                ^
+".\..\Src\stm32f4xx_it.c", line 408: Error:  #44: expression must have pointer type
+        memcpy(&recv->pitch, &rx_buff[5], 4);
+                ^
+".\..\Src\stm32f4xx_it.c", line 411: Error:  #44: expression must have pointer type
+        memcpy(&recv->checksum, &rx_buff[9], 2);
+                ^
+".\..\Src\stm32f4xx_it.c", line 397: Warning:  #177-D: variable "len" was declared but never referenced
+      int len = 12 - temp;
+          ^
+".\..\Src\stm32f4xx_it.c", line 385: Warning:  #177-D: variable "Rx_len" was declared but never referenced
+    int Rx_len = 12;
+        ^
+".\..\Src\stm32f4xx_it.c", line 386: Warning:  #177-D: variable "Rx_flag" was declared but never referenced
+    int Rx_flag = 0;
+        ^
+.\..\Src\stm32f4xx_it.c: 3 warnings, 4 errors
+
+[2024-01-13 21:18:19]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 406: Error:  #44: expression must have pointer type
+        recv->header = rx_buff[0];
+        ^
+".\..\Src\stm32f4xx_it.c", line 407: Error:  #44: expression must have pointer type
+        memcpy(recv->yaw, &rx_buff[1], 4);
+               ^
+".\..\Src\stm32f4xx_it.c", line 408: Error:  #44: expression must have pointer type
+        memcpy(recv->pitch, &rx_buff[5], 4);
+               ^
+".\..\Src\stm32f4xx_it.c", line 411: Error:  #44: expression must have pointer type
+        memcpy(recv->checksum, &rx_buff[9], 2);
+               ^
+".\..\Src\stm32f4xx_it.c", line 397: Warning:  #177-D: variable "len" was declared but never referenced
+      int len = 12 - temp;
+          ^
+".\..\Src\stm32f4xx_it.c", line 385: Warning:  #177-D: variable "Rx_len" was declared but never referenced
+    int Rx_len = 12;
+        ^
+".\..\Src\stm32f4xx_it.c", line 386: Warning:  #177-D: variable "Rx_flag" was declared but never referenced
+    int Rx_flag = 0;
+        ^
+.\..\Src\stm32f4xx_it.c: 3 warnings, 4 errors
+
+[2024-01-13 21:18:39]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\stm32f4xx_it.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\stm32f4xx_it.d .\..\Src\stm32f4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Src\stm32f4xx_it.c", line 407: Error:  #167: argument of type "float" is incompatible with parameter of type "void *restrict"
+        memcpy(recv.yaw, &rx_buff[1], 4);
+               ^
+".\..\Src\stm32f4xx_it.c", line 408: Error:  #167: argument of type "float" is incompatible with parameter of type "void *restrict"
+        memcpy(recv.pitch, &rx_buff[5], 4);
+               ^
+".\..\Src\stm32f4xx_it.c", line 411: Error:  #167: argument of type "uint16_t" is incompatible with parameter of type "void *restrict"
+        memcpy(recv.checksum, &rx_buff[9], 2);
+               ^
+".\..\Src\stm32f4xx_it.c", line 397: Warning:  #177-D: variable "len" was declared but never referenced
+      int len = 12 - temp;
+          ^
+".\..\Src\stm32f4xx_it.c", line 385: Warning:  #177-D: variable "Rx_len" was declared but never referenced
+    int Rx_len = 12;
+        ^
+".\..\Src\stm32f4xx_it.c", line 386: Warning:  #177-D: variable "Rx_flag" was declared but never referenced
+    int Rx_flag = 0;
+        ^
+.\..\Src\stm32f4xx_it.c: 3 warnings, 3 errors
+
+[2024-01-13 21:18:52]	[done]
+	build successfully !
+
+[2024-01-13 21:27:02]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\Task\Gimbal_task.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\Gimbal_task.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\Gimbal_task.d .\..\User\Task\Gimbal_task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\Gimbal_task.c", line 15: Error:  #20: identifier "Vision_Recv_s" is undefined
+  extern Vision_Recv_s recv;
+         ^
+".\..\User\Task\Gimbal_task.c", line 86: Warning:  #177-D: function "Auto_Pitch_control" was declared but never referenced
+  static void Auto_Pitch_control()
+              ^
+".\..\User\Task\Gimbal_task.c", line 25: Warning:  #177-D: function "model_choice" was declared but never referenced
+  static void model_choice();
+              ^
+.\..\User\Task\Gimbal_task.c: 2 warnings, 1 error
+
+[2024-01-13 21:28:09]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\Src\freertos.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\Src\freertos.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\Src\freertos.d .\..\Src\freertos.c
+   at unify_builder.Program.Main(String[] args_)
+---
+"../Inc/stm32f4xx_it.h", line 37: Error:  #20: identifier "Vision_Recv_s" is undefined
+    extern Vision_Recv_s recv;
+           ^
+.\..\Src\freertos.c: 0 warnings, 1 error
+
+[2024-01-13 21:29:06]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6200E: Symbol recv multiply defined (by stm32f4xx_it.o and freertos.o).
+Error: L6200E: Symbol recv multiply defined (by Gimbal_task.o and freertos.o).
+Not enough information to list image symbols.
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 2 error messages.
+
+
+[2024-01-13 21:29:30]	[done]
+	build successfully !
+
+[2024-01-13 21:29:51]	[done]
+	build successfully !
+
+[2024-01-13 21:32:19]	[done]
+	build successfully !
+
+[2024-01-13 21:34:08]	[done]
+	build successfully !
+
+[2024-01-13 21:37:51]	[done]
+	build successfully !
+
+[2024-01-13 21:46:23]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\BSP\bsp_usart.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -I../User/BSP -I../User/moudle -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\BSP\bsp_usart.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\BSP\bsp_usart.d .\..\User\BSP\bsp_usart.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\BSP\bsp_usart.c", line 14: Error:  #5: cannot open source input file "memory.h": No such file or directory
+  #include "memory.h"
+                     ^
+.\..\User\BSP\bsp_usart.c: 0 warnings, 1 error
+
+[2024-01-13 21:46:39]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\Task\exchange.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -I../User/BSP -I../User/moudle -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\exchange.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\exchange.d .\..\User\Task\exchange.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\exchange.c", line 6: Error:  #5: cannot open source input file "miniPC.h": No such file or directory
+  #include "miniPC.h"
+                     ^
+.\..\User\Task\exchange.c: 0 warnings, 1 error
+
+[2024-01-13 21:47:24]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\Task\exchange.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -I../User/BSP -I../User/moudle -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\exchange.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\exchange.d .\..\User\Task\exchange.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\exchange.c", line 6: Error:  #5: cannot open source input file "miniPC_process.h": No such file or directory
+  #include "miniPC_process.h"
+                             ^
+.\..\User\Task\exchange.c: 0 warnings, 1 error
+

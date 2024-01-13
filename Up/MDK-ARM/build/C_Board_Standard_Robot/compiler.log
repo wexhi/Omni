@@ -1,7 +1,9 @@
 >>> cc
 
-
+".\..\User\Task\exchange.c", line 6: Error:  #5: cannot open source input file "miniPC_process.h": No such file or directory
+  #include "miniPC_process.h"
+                             ^
+.\..\User\Task\exchange.c: 0 warnings, 1 error
 
 >>> ld
 
-Program Size: Code=33996 RO-data=1456 RW-data=444 ZI-data=38116  

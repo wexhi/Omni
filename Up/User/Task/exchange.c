@@ -3,6 +3,7 @@
 #include "INS_task.h"
 #include "drv_can.h"
 #include <string.h>
+#include "miniPC_process.h"
 
 extern fp32 INS_angle[3];
 int16_t INS_angle_send[3];

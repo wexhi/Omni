@@ -3,6 +3,7 @@
 #include "INS_task.h"
 #include "exchange.h"
 #include "drv_can.h"
+#include "stm32f4xx_it.h"
 #define MAX_SPEED 200
 #define MAX_ANGLE 190
 #define MIN_ANGLE 160
@@ -11,12 +12,17 @@ gimbal_t gimbal_Pitch; // 云台电机信息结构体
 
 extern fp32 INS_angle[3];
 extern RC_ctrl_t rc_ctrl; // 遥控器信息结构体
+extern Vision_Recv_s recv;
 
 // 云台电机的初始化
 static void Gimbal_loop_Init();
 
 // 遥控器控制云台电机
-static void RC_Pitch_control();
+static void Hum_Pitch_control();
+// 自瞄控制云台电机
+static void Auto_Pitch_control();
+// 模式选择
+static void model_choice();
 
 // 云台电机的任务
 static void gimbal_current_give();
@@ -30,7 +36,8 @@ void Gimbal_task(void const *pvParameters)
     Gimbal_loop_Init();
     for (;;)
     {
-        RC_Pitch_control();
+        Hum_Pitch_control();
+
         gimbal_current_give();
         osDelay(1);
     }
@@ -56,14 +63,14 @@ static void gimbal_current_give()
     set_curruent(MOTOR_6020_0, hcan1, 0, 0, gimbal_Pitch.motor_info.set_current, 0);
 }
 
-static void RC_Pitch_control()
+static void Hum_Pitch_control()
 {
     // Pitch轴
     // 把头装上再写吧
     if (rc_ctrl.rc.ch[1] >= -660 && rc_ctrl.rc.ch[1] <= 660)
     {
         gimbal_Pitch.angle_target += rc_ctrl.rc.ch[1] / 660.0 * 0.25 - (rc_ctrl.mouse.y / 16384.00 * 80);
-
+        Auto_Pitch_control();
         Angle_Limit(&gimbal_Pitch.angle_target);
 
         gimbal_Pitch.err_angle = gimbal_Pitch.angle_target - INS_angle[2];
@@ -74,6 +81,18 @@ static void RC_Pitch_control()
     else
     {
         gimbal_Pitch.speed_target = 0;
+    }
+}
+
+static void Auto_Pitch_control()
+{
+    if (rc_ctrl.mouse.press_r)
+    {
+        gimbal_Pitch.angle_target = 90;
+    }
+    else
+    {
+        return;
     }
 }
 
