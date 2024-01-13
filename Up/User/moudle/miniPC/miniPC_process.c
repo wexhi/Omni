@@ -1,7 +1,6 @@
 #include "miniPC_process.h"
 #include "string.h"
 
-#include "led.h"
 
 static Vision_Instance *vision_instance; // 用于和视觉通信的串口实例
 
@@ -31,11 +30,8 @@ static void DecodeVision(void)
         // 读取视觉数据
         RecvProcess(vision_instance->recv_data, vision_instance->usart->recv_buff);
 
-        // 调试用，记得删掉
-        LEDSetState(LED_COLOR_G, LED_ON);
-        LEDSet(LED_COLOR_G, 255, 255);
     } else {
-        LEDSetState(LED_COLOR_G, LED_OFF);
+
     }
 }
 

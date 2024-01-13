@@ -39,6 +39,7 @@
 
 Vision_Recv_s recv;
 extern uint8_t rx_buff_sj[12];
+float yaw_send = 0;
 // Vision_Recv_s *recv;
 /* USER CODE END PD */
 
@@ -403,6 +404,15 @@ void USART1_IRQHandler(void)
 
       /* 接收校验位 */
       memcpy(&recv.checksum, &rx_buff[9], 2);
+
+      if (recv.yaw > 180)
+      {
+        yaw_send = recv.yaw - 360;
+      }
+      else
+      {
+        yaw_send = recv.yaw;
+      }
     }
     // Rx_len = 8 - temp;
     //  JY901_Process();

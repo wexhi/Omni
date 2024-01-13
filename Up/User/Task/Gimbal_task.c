@@ -88,7 +88,7 @@ static void Auto_Pitch_control()
 {
     if (rc_ctrl.mouse.press_r)
     {
-        gimbal_Pitch.angle_target = 90;
+        gimbal_Pitch.angle_target = recv.pitch;
     }
     else
     {
@@ -98,7 +98,7 @@ static void Auto_Pitch_control()
 
 static void Angle_Limit(fp32 *angle)
 {
-    if (*angle <= MIN_ANGLE && *angle > 0)
+    if (*angle <= MIN_ANGLE && *angle >= 0)
     {
         *angle = MIN_ANGLE;
     }

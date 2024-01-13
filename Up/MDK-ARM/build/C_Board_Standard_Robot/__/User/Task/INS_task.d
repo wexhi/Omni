@@ -55,3 +55,6 @@
 .\build\C_Board_Standard_Robot\__\User\Task\INS_task.o: ../User/DriverLayer/bsp_spi.h
 .\build\C_Board_Standard_Robot\__\User\Task\INS_task.o: ../Components/Devices/bmi088driver.h
 .\build\C_Board_Standard_Robot\__\User\Task\INS_task.o: ../User/AlgorithmLayer/pid_imu.h
+.\build\C_Board_Standard_Robot\__\User\Task\INS_task.o: ../User/moudle/miniPC/miniPC_process.h
+.\build\C_Board_Standard_Robot\__\User\Task\INS_task.o: ../User/BSP/bsp_usart.h
+.\build\C_Board_Standard_Robot\__\User\Task\INS_task.o: ../Inc/usart.h

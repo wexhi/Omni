@@ -37,7 +37,8 @@
         "../User/AlgorithmLayer",
         "../User/PotocaLayer",
         "../User/BSP",
-        "../User/moudle"
+        "../User/moudle",
+        "../User/moudle/miniPC"
     ],
     "libDirs": [],
     "defines": [

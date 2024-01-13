@@ -1,13 +1,16 @@
 >>> cc
 
-".\..\User\Task\Chassis_task.c", line 232: Warning:  #177-D: function "gyroscope" was declared but never referenced
+".\..\User\Task\Chassis_task.c", line 235: Warning:  #177-D: function "gyroscope" was declared but never referenced
   static void gyroscope(void)
               ^
-".\..\User\Task\Chassis_task.c", line 163: Warning:  #177-D: function "Motor_Speed_limiting" was declared but never referenced
+".\..\User\Task\Chassis_task.c", line 166: Warning:  #177-D: function "Motor_Speed_limiting" was declared but never referenced
   static void Motor_Speed_limiting(volatile int16_t *motor_speed, int16_t limit_speed)
               ^
-.\..\User\Task\Chassis_task.c: 2 warnings, 0 errors
+".\..\User\Task\Chassis_task.c", line 346: Warning:  #177-D: function "ChassisLimit" was declared but never referenced
+  static void ChassisLimit(void)
+              ^
+.\..\User\Task\Chassis_task.c: 3 warnings, 0 errors
 
 >>> ld
 
-Program Size: Code=49692 RO-data=3736 RW-data=732 ZI-data=47884  
+Program Size: Code=49808 RO-data=3736 RW-data=744 ZI-data=47880  

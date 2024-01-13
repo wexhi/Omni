@@ -29,7 +29,7 @@ extern UP_C_angle_t UP_C_angle;
 extern INS_t INS;
 
 uint8_t rc[18];
-static int16_t key_x_fast, key_y_fast, key_x_slow, key_y_slow;
+static int16_t key_x_fast, key_y_fast, key_x_slow, key_y_slow, key_Wz;
 
 static void Chassis_Init();
 
@@ -221,7 +221,7 @@ static void GimbalMove(void)
   // 从遥控器和键盘获取控制输入
   chassis.Vx = rc_ctrl.rc.ch[3] + key_x_fast - key_x_slow; // 前后输入
   chassis.Vy = rc_ctrl.rc.ch[2] + key_y_fast - key_y_slow; // 左右输入
-  chassis.Wz = rc_ctrl.rc.ch[4];                           // 旋转输入
+  chassis.Wz = rc_ctrl.rc.ch[4] + key_Wz;                           // 旋转输入
 
   rotate();
 
@@ -315,6 +315,10 @@ static void key_control(void)
     key_x_slow += KEY_START_OFFSET;
   else
     key_x_slow -= KEY_STOP_OFFSET;
+  if (shift_flag)
+    key_Wz += KEY_START_OFFSET;
+  else
+    key_Wz -= KEY_STOP_OFFSET;
 
   if (key_x_fast > motor_max)
     key_x_fast = motor_max;
@@ -332,6 +336,10 @@ static void key_control(void)
     key_y_slow = motor_max;
   if (key_y_slow < 0)
     key_y_slow = 0;
+  if (key_Wz > motor_max)
+    key_Wz = motor_max;
+  if (key_Wz < 0)
+    key_Wz = 0;
 }
 
 // 限速

@@ -1697,3 +1697,92 @@ command:
                              ^
 .\..\User\Task\exchange.c: 0 warnings, 1 error
 
+[2024-01-13 21:49:06]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\moudle\miniPC\miniPC_process.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -I../User/BSP -I../User/moudle -I../User/moudle/miniPC -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\moudle\miniPC\miniPC_process.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\moudle\miniPC\miniPC_process.d .\..\User\moudle\miniPC\miniPC_process.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\moudle\miniPC\miniPC_process.c", line 4: Error:  #5: cannot open source input file "led.h": No such file or directory
+  #include "led.h"
+                  ^
+.\..\User\moudle\miniPC\miniPC_process.c: 0 warnings, 1 error
+
+[2024-01-13 21:49:21]	[done]
+	build successfully !
+
+[2024-01-13 21:51:00]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\Task\exchange.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -I../User/BSP -I../User/moudle -I../User/moudle/miniPC -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\__\User\Task\exchange.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\__\User\Task\exchange.d .\..\User\Task\exchange.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\exchange.c", line 13: Error:  #260-D: explicit type is missing ("int" assumed)
+  static ExchangInit();
+         ^
+".\..\User\Task\exchange.c", line 21: Warning:  #223-D: function "osDelay" declared implicitly
+  		osDelay(1);
+  		^
+".\..\User\Task\exchange.c", line 26: Error:  #260-D: explicit type is missing ("int" assumed)
+  ExchangInit()
+  ^
+".\..\User\Task\exchange.c", line 58: Warning:  #175-D: subscript out of range
+  	ins_buf[3] = INS_angle_send[3] >> 8;
+  	             ^
+".\..\User\Task\exchange.c", line 59: Warning:  #175-D: subscript out of range
+  	ins_buf[4] = (INS_angle_send[4] >> 8) & 0xff;
+  	                            ^
+".\..\User\Task\exchange.c", line 60: Warning:  #175-D: subscript out of range
+  	ins_buf[5] = INS_angle_send[5] >> 8;
+  	                           ^
+".\..\User\Task\exchange.c", line 8: Warning:  #550-D: variable "vision_recv_data" was set but never used
+  static Vision_Recv_s *vision_recv_data; // Ëß?Ëß?Êé?Êî?Êï?Êç?Êå?Èí?,Âà?Âß?Âå?Êó?Ëø?Âõ?
+                        ^
+".\..\User\Task\exchange.c", line 26: Warning:  #177-D: function "ExchangInit" was declared but never referenced
+  ExchangInit()
+  ^
+.\..\User\Task\exchange.c: 6 warnings, 2 errors
+
+[2024-01-13 21:51:26]	[done]
+	build successfully !
+
+[2024-01-13 21:51:48]	[done]
+	build successfully !
+
+[2024-01-13 21:53:24]	[done]
+	build successfully !
+
+[2024-01-13 21:53:42]	[done]
+	build successfully !
+
+[2024-01-13 21:54:25]	[done]
+	build successfully !
+
+[2024-01-13 21:55:59]	[done]
+	build successfully !
+
+[2024-01-13 22:10:08]	[done]
+	build successfully !
+
+[2024-01-13 22:17:22]	[done]
+	build successfully !
+
+[2024-01-13 22:28:19]	[done]
+	build successfully !
+
+[2024-01-13 22:49:00]	[done]
+	build successfully !
+
+[2024-01-13 23:10:02]	[done]
+	build successfully !
+
+[2024-01-13 23:12:11]	[done]
+	build successfully !
+
+[2024-01-13 23:13:03]	[done]
+	build successfully !
+
+[2024-01-13 23:16:42]	[done]
+	build successfully !
+
+[2024-01-13 23:19:06]	[done]
+	build successfully !
+

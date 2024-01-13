@@ -35,7 +35,10 @@
         "../User/Task",
         "../User/DriverLayer",
         "../User/AlgorithmLayer",
-        "../User/PotocaLayer"
+        "../User/PotocaLayer",
+        "../User/BSP",
+        "../User/moudle",
+        "../User/moudle/miniPC"
     ],
     "libDirs": [],
     "defines": [
@@ -101,6 +104,7 @@
         "../User/AlgorithmLayer/CRC.c",
         "../User/AlgorithmLayer/pid.c",
         "../User/AlgorithmLayer/pid_imu.c",
+        "../User/BSP/bsp_usart.c",
         "../User/DriverLayer/bsp_delay.c",
         "../User/DriverLayer/bsp_imu_pwm.c",
         "../User/DriverLayer/bsp_spi.c",
@@ -112,6 +116,7 @@
         "../User/Task/INS_task.c",
         "../User/Task/Shoot_task.c",
         "../User/Task/exchange.c",
+        "../User/moudle/miniPC/miniPC_process.c",
         "startup_stm32f407xx.s"
     ],
     "sourceParams": {},

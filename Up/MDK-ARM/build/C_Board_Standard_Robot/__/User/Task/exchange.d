@@ -43,3 +43,6 @@
 .\build\C_Board_Standard_Robot\__\User\Task\exchange.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 .\build\C_Board_Standard_Robot\__\User\Task\exchange.o: ../Inc/gpio.h
 .\build\C_Board_Standard_Robot\__\User\Task\exchange.o: ../User/Task/Shoot_task.h
+.\build\C_Board_Standard_Robot\__\User\Task\exchange.o: ../User/moudle/miniPC/miniPC_process.h
+.\build\C_Board_Standard_Robot\__\User\Task\exchange.o: ../User/BSP/bsp_usart.h
+.\build\C_Board_Standard_Robot\__\User\Task\exchange.o: ../Inc/usart.h
