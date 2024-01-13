@@ -39,7 +39,7 @@ static void Chassis_loop_Init();
 static void mode_chooce();
 
 // 遥控器控制底盘电机
-static void RC_Move(void);
+static void GimbalMove(void);
 
 // 小陀螺模式
 static void gyroscope(void);
@@ -138,7 +138,7 @@ static void mode_chooce()
     LEDB_OFF();
     LEDG_OFF();
     key_control();
-    RC_Move();
+    GimbalMove();
   }
   else
   {
@@ -213,9 +213,9 @@ static int16_t map_range(int value, int from_min, int from_max, int to_min, int 
   return mapped_value;
 }
 
-static void RC_Move(void)
+static void GimbalMove(void)
 {
-  // 从遥控器获取控制输入
+  // 从遥控器和键盘获取控制输入
   chassis.Vx = rc_ctrl.rc.ch[3] + key_x_fast - key_x_slow; // 前后输入
   chassis.Vy = rc_ctrl.rc.ch[2] + key_y_fast - key_y_slow; // 左右输入
   chassis.Wz = rc_ctrl.rc.ch[4];                           // 旋转输入
