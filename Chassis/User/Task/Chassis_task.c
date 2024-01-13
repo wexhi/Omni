@@ -7,8 +7,8 @@
 
 #define RC_MAX 660
 #define RC_MIN -660
-#define motor_max 2000
-#define motor_min -2000
+#define motor_max 1000
+#define motor_min -1000
 #define Wz_max 3000
 #define angle_valve 5
 #define angle_weight 60
@@ -64,6 +64,9 @@ static void rotate();
 
 // 键盘控制函数
 static void key_control(void);
+
+// 限速
+static void ChassisLimit(void);
 
 void Chassis_task(void const *pvParameters)
 {
@@ -280,7 +283,7 @@ static void get_UpDown_Err()
     chassis.err_angle -= 360;
   }
 
-  chassis.err_angle_rad = chassis.err_angle / 57.3;
+  chassis.err_angle_rad = chassis.err_angle / 57.3f;
 }
 
 // 旋转矩阵
@@ -329,4 +332,9 @@ static void key_control(void)
     key_y_slow = motor_max;
   if (key_y_slow < 0)
     key_y_slow = 0;
+}
+
+// 限速
+static void ChassisLimit(void)
+{
 }
