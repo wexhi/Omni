@@ -97,7 +97,7 @@ static void RC_Yaw_control()
 {
     if (rc_ctrl.rc.ch[0] >= -660 && rc_ctrl.rc.ch[0] <= 660)
     {
-        gimbal_Yaw.angle_target += rc_ctrl.rc.ch[0] / 660.0 * (-0.3);
+        gimbal_Yaw.angle_target += rc_ctrl.rc.ch[0] / 660.0 * (-0.3) - (rc_ctrl.mouse.x / 16384.00 * 50);
 
         detel_calc(&gimbal_Yaw.angle_target);
 
