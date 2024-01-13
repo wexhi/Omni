@@ -1,40 +1,6 @@
 >>> cc
 
-".\..\User\Task\INS_task.c", line 228: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      *yaw = atan2f(2.0f * (q[0] * q[3] + q[1] * q[2]), 2.0f * (q[0] * q[0] + q[1] * q[1]) - 1.0f) * 57.3;
-             ^
-".\..\User\Task\INS_task.c", line 229: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      *pitch = asinf(-2.0f * (q[1] * q[3] - q[0] * q[2])) * 57.3;
-               ^
-".\..\User\Task\INS_task.c", line 230: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      *roll = atan2f(2.0f * (q[0] * q[1] + q[2] * q[3]), 2.0f * (q[0] * q[0] + q[3] * q[3]) - 1.0f) * 57.3;
-              ^
-".\..\User\Task\INS_task.c", line 239: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          gyrooffset[0] -= bmi088_real_data.gyro[0] * 0.00005;
-                           ^
-".\..\User\Task\INS_task.c", line 240: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          gyrooffset[1] -= bmi088_real_data.gyro[1] * 0.00005;
-                           ^
-".\..\User\Task\INS_task.c", line 241: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          gyrooffset[2] -= bmi088_real_data.gyro[2] * 0.00005;
-                           ^
-".\..\User\Task\INS_task.c", line 117: Warning:  #177-D: variable "timing_time" was declared but never referenced
-  static const float timing_time = 0.001f; // tast run time , unit s.???????Ğµ?Ê±?? µ¥Î» s
-                     ^
-.\..\User\Task\INS_task.c: 7 warnings, 0 errors
-".\..\User\Task\exchange.c", line 17: Warning:  #223-D: function "osDelay" declared implicitly
-  		osDelay(1);
-  		^
-".\..\User\Task\exchange.c", line 32: Warning:  #175-D: subscript out of range
-  	ins_buf[3] = INS_angle_send[3] >> 8;
-  	             ^
-".\..\User\Task\exchange.c", line 33: Warning:  #175-D: subscript out of range
-  	ins_buf[4] = (INS_angle_send[4] >> 8) & 0xff;
-  	                            ^
-".\..\User\Task\exchange.c", line 34: Warning:  #175-D: subscript out of range
-  	ins_buf[5] = INS_angle_send[5] >> 8;
-  	                           ^
-.\..\User\Task\exchange.c: 4 warnings, 0 errors
+
 
 >>> ld
 

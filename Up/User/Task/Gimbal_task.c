@@ -4,8 +4,8 @@
 #include "exchange.h"
 #include "drv_can.h"
 #define MAX_SPEED 200
-#define MAX_ANGLE 200
-#define MIN_ANGLE 140
+#define MAX_ANGLE 190
+#define MIN_ANGLE 160
 
 gimbal_t gimbal_Pitch; // 云台电机信息结构体
 
@@ -26,7 +26,7 @@ static void detel_calc2(fp32 *angle);
 
 void Gimbal_task(void const *pvParameters)
 {
-    osDelay(8000);
+    osDelay(10000);
     Gimbal_loop_Init();
     for (;;)
     {
@@ -42,7 +42,7 @@ static void Gimbal_loop_Init()
     // 初始化pid参数
     gimbal_Pitch.pid_parameter[0] = 80, gimbal_Pitch.pid_parameter[1] = 0.1, gimbal_Pitch.pid_parameter[2] = 0;
     gimbal_Pitch.pid_angle_parameter[0] = 8, gimbal_Pitch.pid_angle_parameter[1] = 0, gimbal_Pitch.pid_angle_parameter[2] = 0;
-    gimbal_Pitch.angle_target = 140;
+    gimbal_Pitch.angle_target = MIN_ANGLE;
 
     // 初始化pid结构体
     pid_init(&gimbal_Pitch.pid, gimbal_Pitch.pid_parameter, 30000, 30000);
