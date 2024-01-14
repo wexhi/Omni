@@ -901,3 +901,189 @@ command:
 [2024-01-14 00:38:02]	[done]
 	build successfully !
 
+[2024-01-14 09:38:22]	[done]
+	build successfully !
+
+[2024-01-14 09:45:34]	[done]
+	build successfully !
+
+[2024-01-14 10:02:50]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\Task\Chassis_task.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\.obj\__\User\Task\Chassis_task.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\.obj\__\User\Task\Chassis_task.d .\..\User\Task\Chassis_task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\Chassis_task.c", line 30: Error:  #20: identifier "ext_power_heat_data_t" is undefined
+  extern ext_power_heat_data_t powerd;
+         ^
+".\..\User\Task\Chassis_task.c", line 374: Error:  #20: identifier "motor_speed_target" is undefined
+      Motor_Speed_limiting(motor_speed_target, 4096); // é™?åˆ?æœ€å¤?é€?åº? ;//5*4*24;å…?ä»?æœ€å¤?ç”?æµ?å?åŠ?ï¼?å?å¹?æ»?æ”?å?ï¼?ä¸?çŸ?é?ä¸?å•?ä¸€å¼€å§?ç”?çš?Power>960,å?ä»?è§?æµ?ä¸?è¿?ä¸?å€?ï¼?çœ?çœ?èƒ?ä¸?èƒ?å?æ¦?ç¼?å†?åŠ?ç?
+                           ^
+".\..\User\Task\Chassis_task.c", line 377: Error:  #20: identifier "motor_speed_target" is undefined
+      Chassis_pidout = (fabs(motor_speed_target[0] - motor_info_chassis[0].rotor_speed) +
+                             ^
+".\..\User\Task\Chassis_task.c", line 247: Warning:  #177-D: function "gyroscope" was declared but never referenced
+  static void gyroscope(void)
+              ^
+".\..\User\Task\Chassis_task.c", line 358: Warning:  #177-D: function "ChassisLimit" was declared but never referenced
+  static void ChassisLimit(void)
+              ^
+".\..\User\Task\Chassis_task.c", line 362: Warning:  #177-D: function "Chassis_Power_Limit" was declared but never referenced
+  static void Chassis_Power_Limit(double Chassis_pidout_target_limit)
+              ^
+.\..\User\Task\Chassis_task.c: 3 warnings, 3 errors
+
+[2024-01-14 10:08:04]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\Task\Chassis_task.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\.obj\__\User\Task\Chassis_task.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\.obj\__\User\Task\Chassis_task.d .\..\User\Task\Chassis_task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\Chassis_task.c", line 30: Error:  #20: identifier "ext_power_heat_data_t" is undefined
+  extern ext_power_heat_data_t powerd;
+         ^
+".\..\User\Task\Chassis_task.c", line 247: Warning:  #177-D: function "gyroscope" was declared but never referenced
+  static void gyroscope(void)
+              ^
+".\..\User\Task\Chassis_task.c", line 358: Warning:  #177-D: function "ChassisLimit" was declared but never referenced
+  static void ChassisLimit(void)
+              ^
+".\..\User\Task\Chassis_task.c", line 362: Warning:  #177-D: function "Chassis_Power_Limit" was declared but never referenced
+  static void Chassis_Power_Limit(double Chassis_pidout_target_limit)
+              ^
+.\..\User\Task\Chassis_task.c: 3 warnings, 1 error
+
+[2024-01-14 10:08:19]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\Task\Chassis_task.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\.obj\__\User\Task\Chassis_task.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\.obj\__\User\Task\Chassis_task.d .\..\User\Task\Chassis_task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\Chassis_task.c", line 368: Error:  #513: a value of type "ext_power_heat_data_t" cannot be assigned to an entity of type "float"
+    Watch_Power = powerd;
+                ^
+".\..\User\Task\Chassis_task.c", line 248: Warning:  #177-D: function "gyroscope" was declared but never referenced
+  static void gyroscope(void)
+              ^
+".\..\User\Task\Chassis_task.c", line 359: Warning:  #177-D: function "ChassisLimit" was declared but never referenced
+  static void ChassisLimit(void)
+              ^
+".\..\User\Task\Chassis_task.c", line 363: Warning:  #177-D: function "Chassis_Power_Limit" was declared but never referenced
+  static void Chassis_Power_Limit(double Chassis_pidout_target_limit)
+              ^
+.\..\User\Task\Chassis_task.c: 3 warnings, 1 error
+
+[2024-01-14 10:08:51]	[done]
+	build successfully !
+
+[2024-01-14 10:09:35]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\Task\Chassis_task.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\.obj\__\User\Task\Chassis_task.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\.obj\__\User\Task\Chassis_task.d .\..\User\Task\Chassis_task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\Chassis_task.c", line 32: Error:  #81: more than one storage class may not be specified
+  extern static void Chassis_Power_Limit(double Chassis_pidout_target_limit);
+         ^
+".\..\User\Task\Chassis_task.c", line 364: Warning:  #177-D: function "Chassis_Power_Limit" was declared but never referenced
+  static void Chassis_Power_Limit(double Chassis_pidout_target_limit)
+              ^
+".\..\User\Task\Chassis_task.c", line 249: Warning:  #177-D: function "gyroscope" was declared but never referenced
+  static void gyroscope(void)
+              ^
+".\..\User\Task\Chassis_task.c", line 360: Warning:  #177-D: function "ChassisLimit" was declared but never referenced
+  static void ChassisLimit(void)
+              ^
+.\..\User\Task\Chassis_task.c: 3 warnings, 1 error
+
+[2024-01-14 10:09:43]	[done]
+	build successfully !
+
+[2024-01-14 10:12:58]	[done]
+	build successfully !
+
+[2024-01-14 10:19:59]	[done]
+	build successfully !
+
+[2024-01-14 10:23:30]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\Task\Chassis_task.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\.obj\__\User\Task\Chassis_task.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\.obj\__\User\Task\Chassis_task.d .\..\User\Task\Chassis_task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\Chassis_task.c", line 377: Error:  #44: expression must have pointer type
+      Motor_Speed_limiting(chassis->speed_target, 4096); // é™?åˆ?æœ€å¤?é€?åº? ;//5*4*24;å…?ä»?æœ€å¤?ç”?æµ?å?åŠ?ï¼?å?å¹?æ»?æ”?å?ï¼?ä¸?çŸ?é?ä¸?å•?ä¸€å¼€å§?ç”?çš?Power>960,å?ä»?è§?æµ?ä¸?è¿?ä¸?å€?ï¼?çœ?çœ?èƒ?ä¸?èƒ?å?æ¦?ç¼?å†?åŠ?ç?
+                           ^
+".\..\User\Task\Chassis_task.c", line 250: Warning:  #177-D: function "gyroscope" was declared but never referenced
+  static void gyroscope(void)
+              ^
+".\..\User\Task\Chassis_task.c", line 361: Warning:  #177-D: function "ChassisLimit" was declared but never referenced
+  static void ChassisLimit(void)
+              ^
+.\..\User\Task\Chassis_task.c: 2 warnings, 1 error
+
+[2024-01-14 10:23:38]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\Task\Chassis_task.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\.obj\__\User\Task\Chassis_task.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\.obj\__\User\Task\Chassis_task.d .\..\User\Task\Chassis_task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\Chassis_task.c", line 377: Error:  #44: expression must have pointer type
+      Motor_Speed_limiting(*chassis->speed_target, 4096); // é™?åˆ?æœ€å¤?é€?åº? ;//5*4*24;å…?ä»?æœ€å¤?ç”?æµ?å?åŠ?ï¼?å?å¹?æ»?æ”?å?ï¼?ä¸?çŸ?é?ä¸?å•?ä¸€å¼€å§?ç”?çš?Power>960,å?ä»?è§?æµ?ä¸?è¿?ä¸?å€?ï¼?çœ?çœ?èƒ?ä¸?èƒ?å?æ¦?ç¼?å†?åŠ?ç?
+                            ^
+".\..\User\Task\Chassis_task.c", line 250: Warning:  #177-D: function "gyroscope" was declared but never referenced
+  static void gyroscope(void)
+              ^
+".\..\User\Task\Chassis_task.c", line 361: Warning:  #177-D: function "ChassisLimit" was declared but never referenced
+  static void ChassisLimit(void)
+              ^
+.\..\User\Task\Chassis_task.c: 2 warnings, 1 error
+
+[2024-01-14 10:23:46]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\Task\Chassis_task.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\.obj\__\User\Task\Chassis_task.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\.obj\__\User\Task\Chassis_task.d .\..\User\Task\Chassis_task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\Chassis_task.c", line 377: Error:  #44: expression must have pointer type
+      Motor_Speed_limiting(&chassis->speed_target, 4096); // é™?åˆ?æœ€å¤?é€?åº? ;//5*4*24;å…?ä»?æœ€å¤?ç”?æµ?å?åŠ?ï¼?å?å¹?æ»?æ”?å?ï¼?ä¸?çŸ?é?ä¸?å•?ä¸€å¼€å§?ç”?çš?Power>960,å?ä»?è§?æµ?ä¸?è¿?ä¸?å€?ï¼?çœ?çœ?èƒ?ä¸?èƒ?å?æ¦?ç¼?å†?åŠ?ç?
+                            ^
+".\..\User\Task\Chassis_task.c", line 250: Warning:  #177-D: function "gyroscope" was declared but never referenced
+  static void gyroscope(void)
+              ^
+".\..\User\Task\Chassis_task.c", line 361: Warning:  #177-D: function "ChassisLimit" was declared but never referenced
+  static void ChassisLimit(void)
+              ^
+.\..\User\Task\Chassis_task.c: 2 warnings, 1 error
+
+[2024-01-14 10:23:51]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\Task\Chassis_task.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\.obj\__\User\Task\Chassis_task.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\.obj\__\User\Task\Chassis_task.d .\..\User\Task\Chassis_task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\Chassis_task.c", line 377: Error:  #167: argument of type "int16_t (*)[4]" is incompatible with parameter of type "volatile int16_t *"
+      Motor_Speed_limiting(&chassis.speed_target, 4096); // é™?åˆ?æœ€å¤?é€?åº? ;//5*4*24;å…?ä»?æœ€å¤?ç”?æµ?å?åŠ?ï¼?å?å¹?æ»?æ”?å?ï¼?ä¸?çŸ?é?ä¸?å•?ä¸€å¼€å§?ç”?çš?Power>960,å?ä»?è§?æµ?ä¸?è¿?ä¸?å€?ï¼?çœ?çœ?èƒ?ä¸?èƒ?å?æ¦?ç¼?å†?åŠ?ç?
+                           ^
+".\..\User\Task\Chassis_task.c", line 250: Warning:  #177-D: function "gyroscope" was declared but never referenced
+  static void gyroscope(void)
+              ^
+".\..\User\Task\Chassis_task.c", line 361: Warning:  #177-D: function "ChassisLimit" was declared but never referenced
+  static void ChassisLimit(void)
+              ^
+.\..\User\Task\Chassis_task.c: 2 warnings, 1 error
+
+[2024-01-14 10:23:54]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Chassis\User\Task\Chassis_task.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\.obj\__\User\Task\Chassis_task.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\.obj\__\User\Task\Chassis_task.d .\..\User\Task\Chassis_task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\Chassis_task.c", line 377: Error:  #167: argument of type "int16_t (*)[4]" is incompatible with parameter of type "volatile int16_t *"
+      Motor_Speed_limiting(&chassis.speed_target, 4096); // é™?åˆ?æœ€å¤?é€?åº? ;//5*4*24;å…?ä»?æœ€å¤?ç”?æµ?å?åŠ?ï¼?å?å¹?æ»?æ”?å?ï¼?ä¸?çŸ?é?ä¸?å•?ä¸€å¼€å§?ç”?çš?Power>960,å?ä»?è§?æµ?ä¸?è¿?ä¸?å€?ï¼?çœ?çœ?èƒ?ä¸?èƒ?å?æ¦?ç¼?å†?åŠ?ç?
+                           ^
+".\..\User\Task\Chassis_task.c", line 250: Warning:  #177-D: function "gyroscope" was declared but never referenced
+  static void gyroscope(void)
+              ^
+".\..\User\Task\Chassis_task.c", line 361: Warning:  #177-D: function "ChassisLimit" was declared but never referenced
+  static void ChassisLimit(void)
+              ^
+.\..\User\Task\Chassis_task.c: 2 warnings, 1 error
+
+[2024-01-14 10:24:28]	[done]
+	build successfully !
+
+[2024-01-14 10:25:45]	[done]
+	build successfully !
+

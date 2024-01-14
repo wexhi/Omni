@@ -5,7 +5,7 @@
 #include "drv_can.h"
 #include "stm32f4xx_it.h"
 #define MAX_SPEED 200
-#define MAX_ANGLE 190
+#define MAX_ANGLE 193
 #define MIN_ANGLE 160
 
 gimbal_t gimbal_Pitch; // 云台电机信息结构体

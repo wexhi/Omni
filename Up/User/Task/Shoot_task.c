@@ -92,8 +92,8 @@ static void dial_control(void)
 // 摩擦轮电机控制
 static void friction_control(void)
 {
-    shooter.friction_speed_target[0] = -8000;
-    shooter.friction_speed_target[1] = 8000;
+    shooter.friction_speed_target[0] = -7000;
+    shooter.friction_speed_target[1] = 7000;
 }
 
 // 弹舱电机控制
