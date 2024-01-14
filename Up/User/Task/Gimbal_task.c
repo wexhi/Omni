@@ -69,7 +69,7 @@ static void Hum_Pitch_control()
     // 把头装上再写吧
     if (rc_ctrl.rc.ch[1] >= -660 && rc_ctrl.rc.ch[1] <= 660)
     {
-        gimbal_Pitch.angle_target += rc_ctrl.rc.ch[1] / 660.0 * 0.25 - (rc_ctrl.mouse.y / 16384.00 * 80);
+        gimbal_Pitch.angle_target += rc_ctrl.rc.ch[1] / 660.0 * 0.25 + (rc_ctrl.mouse.y / 16384.00 * 80);
         Auto_Pitch_control();
         Angle_Limit(&gimbal_Pitch.angle_target);
 

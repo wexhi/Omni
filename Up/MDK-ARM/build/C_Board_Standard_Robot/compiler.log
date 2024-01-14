@@ -1,10 +1,28 @@
 >>> cc
 
-".\..\User\Task\Gimbal_task.c", line 25: Warning:  #177-D: function "model_choice" was declared but never referenced
-  static void model_choice();
+".\..\User\Task\exchange.c", line 22: Warning:  #223-D: function "osDelay" declared implicitly
+  		osDelay(1);
+  		^
+".\..\User\Task\exchange.c", line 63: Warning:  #175-D: subscript out of range
+  	ins_buf[4] = (INS_angle_send[4] >> 8) & 0xff;
+  	              ^
+".\..\User\Task\exchange.c", line 64: Warning:  #175-D: subscript out of range
+  	ins_buf[5] = INS_angle_send[5] >> 8;
+  	                           ^
+".\..\User\Task\exchange.c", line 65: Warning:  #175-D: subscript out of range
+  	ins_buf[6] = (INS_angle_send[6] >> 8) & 0xff;
+  	                            ^
+".\..\User\Task\exchange.c", line 66: Warning:  #175-D: subscript out of range
+  	ins_buf[7] = INS_angle_send[7] >> 8;
+  	                           ^
+".\..\User\Task\exchange.c", line 8: Warning:  #550-D: variable "vision_recv_data" was set but never used
+  static Vision_Recv_s *vision_recv_data; // è§?è§?æŽ?æ”?æ•?æ?æŒ?é’?,åˆ?å§?åŒ?æ—?è¿?å›?
+                        ^
+".\..\User\Task\exchange.c", line 28: Warning:  #177-D: function "ExchangInit" was declared but never referenced
+  static void ExchangInit()
               ^
-.\..\User\Task\Gimbal_task.c: 1 warning, 0 errors
+.\..\User\Task\exchange.c: 7 warnings, 0 errors
 
 >>> ld
 
-Program Size: Code=36364 RO-data=1476 RW-data=468 ZI-data=46372  
+Program Size: Code=35244 RO-data=1456 RW-data=456 ZI-data=38160  
