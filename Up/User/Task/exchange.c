@@ -16,12 +16,12 @@ static void Up_send_to_down();
 
 void exchange_task()
 {
-	// ExchangInit();
+	ExchangInit();
 	for (;;)
 	{
 		osDelay(1);
 		Up_send_to_down();
-		// VisionSend();
+		VisionSend();
 	}
 }
 

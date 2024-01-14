@@ -18,11 +18,8 @@
 ".\..\User\Task\exchange.c", line 8: Warning:  #550-D: variable "vision_recv_data" was set but never used
   static Vision_Recv_s *vision_recv_data; // è§?è§?æŽ?æ”?æ•?æ?æŒ?é’?,åˆ?å§?åŒ?æ—?è¿?å›?
                         ^
-".\..\User\Task\exchange.c", line 28: Warning:  #177-D: function "ExchangInit" was declared but never referenced
-  static void ExchangInit()
-              ^
-.\..\User\Task\exchange.c: 7 warnings, 0 errors
+.\..\User\Task\exchange.c: 6 warnings, 0 errors
 
 >>> ld
 
-Program Size: Code=35244 RO-data=1456 RW-data=456 ZI-data=38160  
+Program Size: Code=36364 RO-data=1476 RW-data=468 ZI-data=46372  
