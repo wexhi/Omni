@@ -33,7 +33,7 @@ static void ExchangInit()
 		},
 		.send_config = {
 			.header = VISION_SEND_HEADER,
-			.detect_color = VISION_DETECT_COLOR_RED,
+			.detect_color = VISION_DETECT_COLOR_BLUE,
 			.reset_tracker = VISION_RESET_TRACKER_NO,
 			.is_shoot = VISION_SHOOTING,
 			.tail = VISION_SEND_TAIL,

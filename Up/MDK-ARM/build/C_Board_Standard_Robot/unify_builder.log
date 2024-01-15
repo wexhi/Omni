@@ -1819,3 +1819,64 @@ command:
 [2024-01-14 12:21:38]	[done]
 	build successfully !
 
+[2024-01-15 16:43:29]	[done]
+	build successfully !
+
+[2024-01-15 16:50:18]	[done]
+	build successfully !
+
+[2024-01-15 16:50:31]	[done]
+	build successfully !
+
+[2024-01-15 16:52:41]	[done]
+	build successfully !
+
+[2024-01-15 16:52:53]	[done]
+	build successfully !
+
+[2024-01-15 17:04:41]	[done]
+	build successfully !
+
+[2024-01-15 17:38:13]	[done]
+	build successfully !
+
+[2024-01-15 17:47:51]	[done]
+	build successfully !
+
+[2024-01-15 17:57:40]	compilation failed at : "c:\Users\14775\Desktop\study\robomaster\Omni\Up\User\Task\INS_task.c", exit code: 1
+command: 
+  "C:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Application -I../Bsp -I../Components -I../Components/Algorithm -I../Components/Controller -I../Components/Devices -I../Components/Algorithm/Include -I.cmsis/include -IRTE/_C_Board_Standard_Robot -I.eide/deps -I../Src -I../User/Task -I../User/DriverLayer -I../User/AlgorithmLayer -I../User/PotocaLayer -I../User/BSP -I../User/moudle -I../User/moudle/miniPC -DUSE_HAL_DRIVER -DSTM32F407xx -DARM_MATH_CM4 -D__FPU_USED="1U" -D__FPU_PRESENT="1U" -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\C_Board_Standard_Robot\.obj\__\User\Task\INS_task.o --no_depend_system_headers --depend .\build\C_Board_Standard_Robot\.obj\__\User\Task\INS_task.d .\..\User\Task\INS_task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\User\Task\INS_task.c", line 229: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      *yaw = atan2f(2.0f * (q[0] * q[3] + q[1] * q[2]), 2.0f * (q[0] * q[0] + q[1] * q[1]) - 1.0f) * 57.3;
+             ^
+".\..\User\Task\INS_task.c", line 230: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      *pitch = asinf(-2.0f * (q[1] * q[3] - q[0] * q[2])) * 57.3;
+               ^
+".\..\User\Task\INS_task.c", line 231: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      *roll = atan2f(2.0f * (q[0] * q[1] + q[2] * q[3]), 2.0f * (q[0] * q[0] + q[3] * q[3]) - 1.0f) * 57.3;
+              ^
+".\..\User\Task\INS_task.c", line 240: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          gyrooffset[0] -= bmi088_real_data.gyro[0] * 0.00005;
+                           ^
+".\..\User\Task\INS_task.c", line 241: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          gyrooffset[1] -= bmi088_real_data.gyro[1] * 0.00005;
+                           ^
+".\..\User\Task\INS_task.c", line 242: Warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          gyrooffset[2] -= bmi088_real_data.gyro[2] * 0.00005;
+                           ^
+".\..\User\Task\INS_task.c", line 338: Error:  #165: too few arguments in function call
+          VisionSetAltitude(INS_angle[0] INS_angle[2] + 180, INS_angle[1]);
+                                         ^
+".\..\User\Task\INS_task.c", line 338: Error:  #18: expected a ")"
+          VisionSetAltitude(INS_angle[0] INS_angle[2] + 180, INS_angle[1]);
+                                         ^
+".\..\User\Task\INS_task.c", line 118: Warning:  #177-D: variable "timing_time" was declared but never referenced
+  static const float timing_time = 0.001f; // tast run time , unit s.???????Ðµ?Ê±?? µ¥Î» s
+                     ^
+.\..\User\Task\INS_task.c: 7 warnings, 2 errors
+
+[2024-01-15 17:57:48]	[done]
+	build successfully !
+
