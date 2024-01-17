@@ -8,13 +8,13 @@
 
 #define RC_MAX 660
 #define RC_MIN -660
-#define motor_max 1200
-#define motor_min -1200
+#define motor_max 2000
+#define motor_min -2000
 #define Wz_max 4000
 #define angle_valve 5
 #define angle_weight 60
 #define KEY_START_OFFSET 3
-#define KEY_STOP_OFFSET 20
+#define KEY_STOP_OFFSET 5
 
 chassis_t chassis;
 

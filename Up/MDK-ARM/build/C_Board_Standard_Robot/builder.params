@@ -3,7 +3,7 @@
     "target": "C_Board_Standard_Robot",
     "toolchain": "AC5",
     "toolchainLocation": "C:\\Keil_v5\\ARM\\ARMCC",
-    "toolchainCfgFile": "c:\\Users\\14775\\.vscode\\extensions\\cl.eide-3.13.2023060401\\res\\data\\models\\win32/arm.v5.model.json",
+    "toolchainCfgFile": "c:\\Users\\14775\\.vscode\\extensions\\cl.eide-3.14.0\\res\\data\\models\\win32/arm.v5.model.json",
     "buildMode": "fast|multhread",
     "showRepathOnLog": true,
     "threadNum": 16,

@@ -4,11 +4,17 @@
 #include "exchange.h"
 #include "drv_can.h"
 
+#define MAX_DIAL_SPEED 2000
+#define MAX_FRICTION_SPEED 7000
+#define KEY_ENTER_OFFSET 10
+#define KEY_SLOW_OFFSET 100
+
 shooter_t shooter; // 发射机构信息结构体
 // 电机0为拨盘电机，电机1、2为摩擦轮电机，电机3原为弹舱电机，现为备用电机
 
 extern RC_ctrl_t rc_ctrl; // 遥控器信息结构体
 static uint8_t friction_flag;
+static int16_t key_dial_speed; // 键盘控制拨盘电机的速度
 
 static void Shooter_Inint();         // 发射机构的初始化
 static void model_choice();          // 模式选择
@@ -78,7 +84,14 @@ static void dial_control(void)
         LEDR_ON();
         LEDB_OFF();
         LEDG_OFF();
-        shooter.dial_speed_target = -2000;
+        shooter.dial_speed_target = -MAX_DIAL_SPEED;
+    }
+    else if(f_flag)
+    {
+        LEDR_OFF();
+        LEDB_ON();
+        LEDG_OFF();
+        shooter.dial_speed_target = key_dial_speed;
     }
     else
     {
@@ -92,8 +105,8 @@ static void dial_control(void)
 // 摩擦轮电机控制
 static void friction_control(void)
 {
-    shooter.friction_speed_target[0] = -7000;
-    shooter.friction_speed_target[1] = 7000;
+    shooter.friction_speed_target[0] = -MAX_FRICTION_SPEED;
+    shooter.friction_speed_target[1] = MAX_FRICTION_SPEED;
 }
 
 // 弹舱电机控制
@@ -129,5 +142,21 @@ static void GetKeyBoard()
     else if (e_flag)
     {
         friction_flag = 0;
+    }
+    if (f_flag)
+    {
+        key_dial_speed += KEY_ENTER_OFFSET;
+    }
+    else 
+    {
+        key_dial_speed -= KEY_SLOW_OFFSET;
+    }
+    if (key_dial_speed > MAX_DIAL_SPEED / 2)
+    {
+        key_dial_speed = MAX_DIAL_SPEED / 2;
+    }
+    else if (key_dial_speed < 0)
+    {
+        key_dial_speed = 0;
     }
 }

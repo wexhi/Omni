@@ -81,7 +81,7 @@ Vision_Recv_s *VisionInit(Vision_Init_Config_s *init_config)
     vision_instance = (Vision_Instance *)malloc(sizeof(Vision_Instance));
     memset(vision_instance, 0, sizeof(Vision_Instance));
 
-    init_config->usart_config.module_callback = DecodeVision;
+    init_config->usart_config.module_callback = NULL;
 
     vision_instance->usart     = USARTRegister(&init_config->usart_config);
     vision_instance->recv_data = VisionRecvRegister(&init_config->recv_config);

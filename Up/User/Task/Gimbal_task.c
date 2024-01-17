@@ -86,7 +86,7 @@ static void Hum_Pitch_control()
 
 static void Auto_Pitch_control()
 {
-    if (rc_ctrl.mouse.press_r)
+    if (rc_ctrl.mouse.press_r && recv.is_tracking)
     {
         gimbal_Pitch.angle_target = recv.pitch;
     }

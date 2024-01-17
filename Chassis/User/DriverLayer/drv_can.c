@@ -16,8 +16,9 @@ extern RC_ctrl_t rc_ctrl;
 extern gimbal_t gimbal_Yaw, gimbal_Pitch;
 extern chassis_t chassis;
 extern shooter_t shooter;
-int16_t up_angle[3] = {0};
+int16_t up_angle[2] = {0};
 int16_t aim_target;
+uint8_t is_track = 0;
 
 float powerdata[4];
 uint16_t pPowerdata[8];
@@ -96,7 +97,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
     {
       up_angle[0] = (rx_data2[0] << 8) | rx_data2[1];
       up_angle[1] = (rx_data2[2] << 8) | rx_data2[3];
-      up_angle[2] = (rx_data2[4] << 8) | rx_data2[5];
+      is_track = rx_data2[4];
       aim_target = (rx_data2[6] << 8) | rx_data2[7];
     }
 

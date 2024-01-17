@@ -2,7 +2,7 @@
 #include "exchange.h"
 #include "ins_task.h"
 extern INS_t INS;
-extern int16_t up_angle[3];
+extern int16_t up_angle[2];
 extern int16_t aim_target;
 extern float yaw_aim;
 
@@ -20,7 +20,7 @@ void exchange_task()
 
 		UP_C_angle.yaw = up_angle[0] / 100.0f;
 		UP_C_angle.roll = up_angle[1] / 100.0f;
-		UP_C_angle.pitch = up_angle[2] / 100.0f;
+
 		yaw_aim = aim_target / 100.0f;
 
 		osDelay(1);

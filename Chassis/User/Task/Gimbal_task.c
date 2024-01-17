@@ -10,6 +10,7 @@
 extern INS_t INS;
 gimbal_t gimbal_Yaw; // 云台电机信息结构体
 float yaw_aim;
+extern uint8_t is_track;
 extern UP_C_angle_t UP_C_angle;
 
 extern RC_ctrl_t rc_ctrl; // 遥控器信息结构体
@@ -99,7 +100,7 @@ static void RC_Yaw_control()
     if (rc_ctrl.rc.ch[0] >= -660 && rc_ctrl.rc.ch[0] <= 660)
     {
         gimbal_Yaw.angle_target += rc_ctrl.rc.ch[0] / 660.0 * (-0.3) - (rc_ctrl.mouse.x / 16384.00 * 50);
-        if (rc_ctrl.mouse.press_r)
+        if (rc_ctrl.mouse.press_r && is_track)
         {
             gimbal_Yaw.angle_target = yaw_aim;
         }

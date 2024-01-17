@@ -335,8 +335,7 @@ void INS_task(void const *pvParameters)
 
         MahonyAHRSupdateIMU(INS_quat, INS_gyro[0], INS_gyro[1], INS_gyro[2], accel_fliter_3[0], accel_fliter_3[1], accel_fliter_3[2]);
         get_angle(INS_quat, INS_angle + INS_YAW_ADDRESS_OFFSET, INS_angle + INS_PITCH_ADDRESS_OFFSET, INS_angle + INS_ROLL_ADDRESS_OFFSET);
-        VisionSetAltitude(INS_angle[0], INS_angle[2] + 180, INS_angle[1]);
-    }
+}
 }
 
 /**

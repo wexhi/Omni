@@ -40,6 +40,7 @@
 Vision_Recv_s recv;
 extern uint8_t rx_buff_sj[12];
 float yaw_send = 0;
+uint8_t is_tracking = 0;
 // Vision_Recv_s *recv;
 /* USER CODE END PD */
 
@@ -399,11 +400,13 @@ void USART1_IRQHandler(void)
       uint8_t *rx_buff = rx_buff_sj;
       // memcpy(&recv->header, &rx_buff[0], 1);
       recv.header = rx_buff[0];
-      memcpy(&recv.yaw, &rx_buff[1], 4);
-      memcpy(&recv.pitch, &rx_buff[5], 4);
+      recv.is_tracking = rx_buff[1];
+      is_tracking = recv.is_tracking;
+      memcpy(&recv.yaw, &rx_buff[2], 4);
+      memcpy(&recv.pitch, &rx_buff[6], 4);
 
       /* 接收校验位 */
-      memcpy(&recv.checksum, &rx_buff[9], 2);
+      memcpy(&recv.checksum, &rx_buff[10], 2);
 
       if (recv.yaw > 180)
       {

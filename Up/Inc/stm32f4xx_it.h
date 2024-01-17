@@ -29,13 +29,16 @@ extern "C"
 
   /* Private includes ----------------------------------------------------------*/
   /* USER CODE BEGIN Includes */
+  #pragma pack(1)
   typedef struct
   {
     uint8_t header;
+    uint8_t is_tracking;
     float yaw;
     float pitch;
     uint16_t checksum;
   } Vision_Recv_s;
+  #pragma pack()
   /* USER CODE END Includes */
 
   /* Exported types ------------------------------------------------------------*/
