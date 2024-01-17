@@ -8,13 +8,13 @@
 
 #define RC_MAX 660
 #define RC_MIN -660
-#define motor_max 2000
-#define motor_min -2000
+#define motor_max 7000
+#define motor_min -7000
 #define Wz_max 4000
 #define angle_valve 5
 #define angle_weight 60
-#define KEY_START_OFFSET 3
-#define KEY_STOP_OFFSET 5
+#define KEY_START_OFFSET 1
+#define KEY_STOP_OFFSET 2
 
 chassis_t chassis;
 
@@ -154,7 +154,7 @@ static void mode_chooce()
     LEDR_ON(); // RED LED
     LEDB_OFF();
     LEDG_OFF();
-    key_control();
+    // key_control();
     GimbalMove();
   }
   else
@@ -238,7 +238,7 @@ static void GimbalMove(void)
   chassis.Vy = rc_ctrl.rc.ch[2] + key_y_fast - key_y_slow; // 左右输入
   chassis.Wz = rc_ctrl.rc.ch[4] + key_Wz;                  // 旋转输入
 
-  rotate();
+  // rotate();
 
   /*************记得加上线性映射***************/
   chassis.Vx = map_range(chassis.Vx, RC_MIN, RC_MAX, motor_min, motor_max);

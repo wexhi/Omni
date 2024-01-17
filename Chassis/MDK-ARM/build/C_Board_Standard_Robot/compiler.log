@@ -1,7 +1,22 @@
 >>> cc
 
-
+".\..\User\Task\Chassis_task.c", line 365: Warning:  #177-D: function "Chassis_Power_Limit" was declared but never referenced
+  static void Chassis_Power_Limit(double Chassis_pidout_target_limit)
+              ^
+".\..\User\Task\Chassis_task.c", line 250: Warning:  #177-D: function "gyroscope" was declared but never referenced
+  static void gyroscope(void)
+              ^
+".\..\User\Task\Chassis_task.c", line 305: Warning:  #177-D: function "rotate" was declared but never referenced
+  static void rotate()
+              ^
+".\..\User\Task\Chassis_task.c", line 315: Warning:  #177-D: function "key_control" was declared but never referenced
+  static void key_control(void)
+              ^
+".\..\User\Task\Chassis_task.c", line 361: Warning:  #177-D: function "ChassisLimit" was declared but never referenced
+  static void ChassisLimit(void)
+              ^
+.\..\User\Task\Chassis_task.c: 5 warnings, 0 errors
 
 >>> ld
 
-Program Size: Code=49792 RO-data=3736 RW-data=744 ZI-data=47880  
+Program Size: Code=49084 RO-data=3736 RW-data=744 ZI-data=47880  
