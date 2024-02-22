@@ -43,4 +43,5 @@
 .\build\C_Board_Standard_Robot\.obj\__\User\PotocaLayer\rc_potocal.o: ../Inc/gpio.h
 .\build\C_Board_Standard_Robot\.obj\__\User\PotocaLayer\rc_potocal.o: ../User/Task/Shoot_task.h
 .\build\C_Board_Standard_Robot\.obj\__\User\PotocaLayer\rc_potocal.o: ../User/Task/INS_task.h
+.\build\C_Board_Standard_Robot\.obj\__\User\PotocaLayer\rc_potocal.o: ../Components/Devices/BMI088driver.h
 .\build\C_Board_Standard_Robot\.obj\__\User\PotocaLayer\rc_potocal.o: ../User/Task/exchange.h

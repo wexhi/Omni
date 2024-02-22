@@ -55,6 +55,7 @@
 .\build\C_Board_Standard_Robot\.obj\__\Src\main.o: ../Inc/usart.h
 .\build\C_Board_Standard_Robot\.obj\__\Src\main.o: ../Inc/gpio.h
 .\build\C_Board_Standard_Robot\.obj\__\Src\main.o: ../User/Task/INS_task.h
+.\build\C_Board_Standard_Robot\.obj\__\Src\main.o: ../Components/Devices/BMI088driver.h
 .\build\C_Board_Standard_Robot\.obj\__\Src\main.o: ../Inc/struct_typedef.h
 .\build\C_Board_Standard_Robot\.obj\__\Src\main.o: ../User/DriverLayer/drv_can.h
 .\build\C_Board_Standard_Robot\.obj\__\Src\main.o: ../User/Task/Gimbal_task.h

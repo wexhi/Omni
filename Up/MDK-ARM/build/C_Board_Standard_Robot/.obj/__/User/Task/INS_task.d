@@ -1,5 +1,6 @@
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\INS_task.o: .\..\User\Task\INS_task.c
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\INS_task.o: .\..\User\Task\INS_task.h
+.\build\C_Board_Standard_Robot\.obj\__\User\Task\INS_task.o: ../Components/Devices/BMI088driver.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\INS_task.o: ../Inc/struct_typedef.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\INS_task.o: ../Inc/main.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\INS_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
@@ -53,7 +54,6 @@
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\INS_task.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\INS_task.o: ../User/DriverLayer/bsp_imu_pwm.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\INS_task.o: ../User/DriverLayer/bsp_spi.h
-.\build\C_Board_Standard_Robot\.obj\__\User\Task\INS_task.o: ../Components/Devices/bmi088driver.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\INS_task.o: ../User/AlgorithmLayer/pid_imu.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\INS_task.o: ../User/moudle/miniPC/miniPC_process.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\INS_task.o: ../User/BSP/bsp_usart.h

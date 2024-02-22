@@ -23,6 +23,7 @@
 
 #ifndef INS_Task_H
 #define INS_Task_H
+#include "BMI088driver.h"
 #include "struct_typedef.h"
 
 

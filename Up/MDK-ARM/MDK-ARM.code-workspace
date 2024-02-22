@@ -37,7 +37,9 @@
         "commentTranslate.hover.variable": true,
         "commentTranslate.hover.string": true,
         "commentTranslate.targetLanguage": "zh-CN",
-        "commentTranslate.selectTargetLanguageWhenReplacing": false
+        "commentTranslate.selectTargetLanguageWhenReplacing": false,
+        "cortex-debug.armToolchainPath": "C:\\PROGRAM FILES (X86)\\GNU ARM EMBEDDED TOOLCHAIN\\10 2021.10\\BIN",
+        "cortex-debug.openocdPath": "C:\\USERS\\WEXHI\\.EIDE\\TOOLS\\OPENOCD_7A1ADFBEC_MINGW32\\BIN\\OPENOCD.EXE"
     },
     "extensions": {
         "recommendations": [

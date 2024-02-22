@@ -154,7 +154,8 @@ int main(void)
   HAL_UART_Receive_DMA(&huart1, rx_buff_sj, 12);
   // DWT_Init(168);
   // __HAL_UART_ENABLE_IT(&huart3, UART_IT_IDLE); // Ê¹ÄÜ¿ÕÏÐÖÐ¶Ï
-
+  while (BMI088_init() != BMI088_NO_ERROR)
+    ;
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */

@@ -57,5 +57,6 @@
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\Gimbal_task.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\Gimbal_task.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\Gimbal_task.o: .\..\User\Task\INS_task.h
+.\build\C_Board_Standard_Robot\.obj\__\User\Task\Gimbal_task.o: ../Components/Devices/BMI088driver.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\Gimbal_task.o: .\..\User\Task\exchange.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\Gimbal_task.o: ../Inc/stm32f4xx_it.h

@@ -2,11 +2,7 @@
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: ../Inc/struct_typedef.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: .\..\User\Task\exchange.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: .\..\User\Task\INS_task.h
-.\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: ../User/DriverLayer/drv_can.h
-.\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: ../User/Task/Gimbal_task.h
-.\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: ../User/AlgorithmLayer/pid.h
-.\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: ../User/DriverLayer/drv_can.h
-.\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: ../User/PotocaLayer/rc_potocal.h
+.\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: ../Components/Devices/BMI088driver.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: ../Inc/main.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: ../Inc/stm32f4xx_hal_conf.h
@@ -41,6 +37,11 @@
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+.\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: ../User/DriverLayer/drv_can.h
+.\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: ../User/Task/Gimbal_task.h
+.\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: ../User/AlgorithmLayer/pid.h
+.\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: ../User/DriverLayer/drv_can.h
+.\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: ../User/PotocaLayer/rc_potocal.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: ../Inc/gpio.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: ../User/Task/Shoot_task.h
 .\build\C_Board_Standard_Robot\.obj\__\User\Task\exchange.o: ../User/moudle/miniPC/miniPC_process.h
