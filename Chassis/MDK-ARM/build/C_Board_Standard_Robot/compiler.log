@@ -1,7 +1,13 @@
 >>> cc
 
-
+".\..\User\Task\Chassis_task.c", line 251: Warning:  #177-D: function "gyroscope" was declared but never referenced
+  static void gyroscope(void)
+              ^
+".\..\User\Task\Chassis_task.c", line 362: Warning:  #177-D: function "ChassisLimit" was declared but never referenced
+  static void ChassisLimit(void)
+              ^
+.\..\User\Task\Chassis_task.c: 2 warnings, 0 errors
 
 >>> ld
 
-Program Size: Code=49084 RO-data=3736 RW-data=744 ZI-data=47880  
+Program Size: Code=50800 RO-data=3736 RW-data=812 ZI-data=47884  

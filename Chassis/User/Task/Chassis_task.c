@@ -8,6 +8,7 @@
 
 #define RC_MAX 660
 #define RC_MIN -660
+#define RC_OFFSET 2000 / 660
 #define motor_max 7000
 #define motor_min -7000
 #define Wz_max 4000
@@ -154,7 +155,7 @@ static void mode_chooce()
     LEDR_ON(); // RED LED
     LEDB_OFF();
     LEDG_OFF();
-    // key_control();
+    key_control();
     GimbalMove();
   }
   else
@@ -214,7 +215,7 @@ static void chassis_current_give()
   {
     chassis.motor_info[i].set_current = pid_calc(&chassis.pid[i], chassis.motor_info[i].rotor_speed, chassis.speed_target[i]);
   }
-  // Chassis_Power_Limit(80);
+  Chassis_Power_Limit(4000);
   set_motor_current_chassis(0, chassis.motor_info[0].set_current, chassis.motor_info[1].set_current, chassis.motor_info[2].set_current, chassis.motor_info[3].set_current);
   // set_curruent(MOTOR_3508_0, hcan1, chassis.motor_info[0].set_current, chassis.motor_info[1].set_current, chassis.motor_info[2].set_current, chassis.motor_info[3].set_current);
 }
@@ -234,16 +235,16 @@ static int16_t map_range(int value, int from_min, int from_max, int to_min, int 
 static void GimbalMove(void)
 {
   // 从遥控器和键盘获取控制输入
-  chassis.Vx = rc_ctrl.rc.ch[3] + key_x_fast - key_x_slow; // 前后输入
-  chassis.Vy = rc_ctrl.rc.ch[2] + key_y_fast - key_y_slow; // 左右输入
-  chassis.Wz = rc_ctrl.rc.ch[4] + key_Wz;                  // 旋转输入
+  chassis.Vx = rc_ctrl.rc.ch[3] * RC_OFFSET + key_x_fast - key_x_slow; // 前后输入
+  chassis.Vy = rc_ctrl.rc.ch[2] * RC_OFFSET + key_y_fast - key_y_slow; // 左右输入
+  chassis.Wz = rc_ctrl.rc.ch[4] * RC_OFFSET + key_Wz;                  // 旋转输入
 
-  // rotate();
+  rotate();
 
   /*************记得加上线性映射***************/
-  chassis.Vx = map_range(chassis.Vx, RC_MIN, RC_MAX, motor_min, motor_max);
-  chassis.Vy = map_range(chassis.Vy, RC_MIN, RC_MAX, motor_min, motor_max);
-  chassis.Wz = map_range(chassis.Wz, RC_MIN, RC_MAX, motor_min, motor_max);
+  // chassis.Vx = map_range(chassis.Vx, RC_MIN, RC_MAX, motor_min, motor_max);
+  // chassis.Vy = map_range(chassis.Vy, RC_MIN, RC_MAX, motor_min, motor_max);
+  // chassis.Wz = map_range(chassis.Wz, RC_MIN, RC_MAX, motor_min, motor_max);
 }
 
 // 小陀螺模式

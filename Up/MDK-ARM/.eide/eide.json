@@ -418,7 +418,7 @@
       "uploadConfig": {
         "bin": "",
         "target": "stm32f4x",
-        "interface": "stlink",
+        "interface": "stlink-v2",
         "baseAddr": "0x08000000"
       },
       "uploadConfigMap": {

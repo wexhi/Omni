@@ -10,7 +10,7 @@
             "executable": "build\\C_Board_Standard_Robot\\UP.elf",
             "runToEntryPoint": "main",
             "configFiles": [
-                "interface/stlink.cfg",
+                "interface/stlink-v2.cfg",
                 "target/stm32f4x.cfg"
             ],
             "liveWatch": {
