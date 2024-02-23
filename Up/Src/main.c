@@ -64,34 +64,34 @@ void MX_FREERTOS_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-// È«¾Ö±äÁ¿
+// È«ï¿½Ö±ï¿½ï¿½ï¿½
 uint16_t can_cnt_2;
-float target_speed[7] = {0};       // Êµ²â×î´ó¿ÕÔØ×ªËÙ320rpm
-float target_speed_can_2[7] = {0}; // Êµ²â×î´ó¿ÕÔØ×ªËÙ320rpm
+float target_speed[7] = {0};       // Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½320rpm
+float target_speed_can_2[7] = {0}; // Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½320rpm
 
 uint8_t can_flag = 0;
 double step = 9158 / 660;
 double r;
 double target_v;
 int16_t target_int1;
-int16_t target_int2; // ÓÃÓÚµþ¼ÓÐý×ªºÍÖ±ÐÐ
+int16_t target_int2; // ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Ö±ï¿½ï¿½
 double target_curl;
 float yuntai_step = 60 * (1024 - 364);
 
-// ²¦ÅÌ
-float time = 100;   // Ê±¼ä
-float time_count;   // Ê±¼ä¼ÆÊýÖµ
-uint8_t flag_shoot; // ±êÖ¾Î»
-float round_shoot;  // ×ª¶¯È¦Êý
+// ï¿½ï¿½ï¿½ï¿½
+float time = 100;   // Ê±ï¿½ï¿½
+float time_count;   // Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
+uint8_t flag_shoot; // ï¿½ï¿½Ö¾Î»
+float round_shoot;  // ×ªï¿½ï¿½È¦ï¿½ï¿½
 float down;
 float up;
 
-// YawÖá
+// Yawï¿½ï¿½
 int16_t target_angle = 4096;
 int16_t err_angle;
 int16_t max_yaw_speed;
 float small;
-float angle_limit = 8191; // ×ª½ÇµÄ×î´óÖµ
+float angle_limit = 8191; // ×ªï¿½Çµï¿½ï¿½ï¿½ï¿½Öµ
 
 uint8_t rx_data[8];
 uint8_t rx_buff_sj[12];
@@ -141,21 +141,19 @@ int main(void)
   /* USER CODE BEGIN 2 */
   delay_init();
   HAL_TIM_PWM_Start(&htim10, TIM_CHANNEL_1);
-  HAL_NVIC_SetPriority(TIM2_IRQn, 0, 0); // ÐÞ¸ÄTIM2ÖÐ¶ÏÓÅÏÈ¼¶
-  //	HAL_NVIC_SetPriority(SysTick_IRQn,1,1);//µ÷¸ßHAL_DelayµÄÊ±ÖÓÖÐ¶ÏÓÅÏÈ¼¶
+  HAL_NVIC_SetPriority(TIM2_IRQn, 0, 0); // ï¿½Þ¸ï¿½TIM2ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½È¼ï¿½
+  //	HAL_NVIC_SetPriority(SysTick_IRQn,1,1);//ï¿½ï¿½ï¿½ï¿½HAL_Delayï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½È¼ï¿½
   CAN1_Init();
   CAN2_Init();
   USART6_Init();
   USART3_Init();
-  HAL_TIM_Base_Start(&htim1); // ¿ªÆô¶¨Ê±Æ÷1²¢´ò¿ªÖÐ¶Ï,¼ÇµÃÐÞ¸ÄÓÅÏÈ¼¶
+  HAL_TIM_Base_Start(&htim1); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½,ï¿½Çµï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½È¼ï¿½
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
   __HAL_UART_ENABLE_IT(&huart1, UART_IT_IDLE);
   // HAL_UART_Receive_DMA(&huart4,(uint8_t *)RXbuf,sizeof(RXbuf));
   HAL_UART_Receive_DMA(&huart1, rx_buff_sj, 12);
   // DWT_Init(168);
-  // __HAL_UART_ENABLE_IT(&huart3, UART_IT_IDLE); // Ê¹ÄÜ¿ÕÏÐÖÐ¶Ï
-  while (BMI088_init() != BMI088_NO_ERROR)
-    ;
+  // __HAL_UART_ENABLE_IT(&huart3, UART_IT_IDLE); // Ê¹ï¿½Ü¿ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
