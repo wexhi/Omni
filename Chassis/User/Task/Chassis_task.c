@@ -8,7 +8,7 @@
 
 #define RC_MAX 660
 #define RC_MIN -660
-#define RC_OFFSET 2000 / 660
+#define RC_OFFSET 10000 / 660
 #define motor_max 7000
 #define motor_min -7000
 #define Wz_max 4000
@@ -215,7 +215,7 @@ static void chassis_current_give()
   {
     chassis.motor_info[i].set_current = pid_calc(&chassis.pid[i], chassis.motor_info[i].rotor_speed, chassis.speed_target[i]);
   }
-  Chassis_Power_Limit(4000);
+  // Chassis_Power_Limit(8000);
   set_motor_current_chassis(0, chassis.motor_info[0].set_current, chassis.motor_info[1].set_current, chassis.motor_info[2].set_current, chassis.motor_info[3].set_current);
   // set_curruent(MOTOR_3508_0, hcan1, chassis.motor_info[0].set_current, chassis.motor_info[1].set_current, chassis.motor_info[2].set_current, chassis.motor_info[3].set_current);
 }

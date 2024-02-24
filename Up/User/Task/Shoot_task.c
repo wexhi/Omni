@@ -4,7 +4,7 @@
 #include "exchange.h"
 #include "drv_can.h"
 
-#define MAX_DIAL_SPEED 2000
+#define MAX_DIAL_SPEED 500
 #define MAX_FRICTION_SPEED 7000
 #define KEY_ENTER_OFFSET 10
 #define KEY_SLOW_OFFSET 100
@@ -86,7 +86,7 @@ static void dial_control(void)
         LEDG_OFF();
         shooter.dial_speed_target = -MAX_DIAL_SPEED;
     }
-    else if(f_flag)
+    else if (f_flag)
     {
         LEDR_OFF();
         LEDB_ON();
@@ -114,11 +114,11 @@ static void bay_control(void)
 {
     if (rc_ctrl.rc.s[1] == 2 && !friction_flag)
     {
-        __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 500);
+        __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 2100); // 500
     }
     else
     {
-        __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 2100);
+        __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 2100); // 2100
     }
 }
 
@@ -147,7 +147,7 @@ static void GetKeyBoard()
     {
         key_dial_speed += KEY_ENTER_OFFSET;
     }
-    else 
+    else
     {
         key_dial_speed -= KEY_SLOW_OFFSET;
     }
