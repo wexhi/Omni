@@ -141,7 +141,7 @@ int main(void)
   MX_USART6_UART_Init();
   /* USER CODE BEGIN 2 */
   delay_init();
-  HAL_TIM_PWM_Start(&htim10, TIM_CHANNEL_1);
+  // HAL_TIM_PWM_Start(&htim10, TIM_CHANNEL_1);
   HAL_NVIC_SetPriority(TIM2_IRQn, 0, 0); // �޸�TIM2�ж����ȼ�
   //	HAL_NVIC_SetPriority(SysTick_IRQn,1,1);//����HAL_Delay��ʱ���ж����ȼ�
   CAN1_Init();
