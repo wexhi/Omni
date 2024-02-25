@@ -21,15 +21,6 @@
         "files": [],
         "folders": [
           {
-            "name": "Applications",
-            "files": [
-              {
-                "path": "../User/AlgorithmLayer/pid_imu.c"
-              }
-            ],
-            "folders": []
-          },
-          {
             "name": "Bsp",
             "files": [
               {
@@ -40,27 +31,6 @@
               },
               {
                 "path": "../User/DriverLayer/bsp_spi.c"
-              }
-            ],
-            "folders": []
-          },
-          {
-            "name": "Components",
-            "files": [
-              {
-                "path": "../Components/Algorithm/QuaternionEKF.c"
-              },
-              {
-                "path": "../Components/Devices/BMI088driver.c"
-              },
-              {
-                "path": "../Components/Devices/BMI088Middleware.c"
-              },
-              {
-                "path": "../Components/kalman_filter.c"
-              },
-              {
-                "path": "../Components/user_lib.c"
               }
             ],
             "folders": []
@@ -254,7 +224,7 @@
             "path": "../User/Task/Gimbal_task.c"
           },
           {
-            "path": "../User/Task/INS_task.c"
+            "path": "../User/Task/ins_task.c"
           },
           {
             "path": "../User/Task/Shoot_task.c"
@@ -298,14 +268,17 @@
     "C_Board_Standard_Robot": {
       "excludeList": [
         "<virtual_root>/RTOS TASK/UI_task.c",
-        "<virtual_root>/Application/Applications/INS_task.c"
+        "<virtual_root>/Application/Applications/INS_task.c",
+        "<virtual_root>/Application/Applications",
+        "<virtual_root>/Application/Components",
+        "<virtual_root>/RTOS TASK/INS_task.c"
       ],
       "toolchain": "AC5",
       "compileConfig": {
         "cpuType": "Cortex-M4",
         "floatingPointHardware": "single",
-        "scatterFilePath": "",
         "useCustomScatterFile": false,
+        "scatterFilePath": "<YOUR_SCATTER_FILE>.sct",
         "storageLayout": {
           "RAM": [
             {
@@ -394,7 +367,7 @@
               "tag": "IROM",
               "id": 1,
               "mem": {
-                "startAddr": "0x8000000",
+                "startAddr": "0x08000000",
                 "size": "0x100000"
               },
               "isChecked": true,
@@ -407,7 +380,7 @@
                 "startAddr": "0x0",
                 "size": "0x0"
               },
-              "isChecked": false,
+              "isChecked": true,
               "isStartup": false
             }
           ]
@@ -462,7 +435,11 @@
           "../User/PotocaLayer",
           "../User/BSP",
           "../User/moudle",
-          "../User/moudle/miniPC"
+          "../User/moudle/miniPC",
+          "../User/moudle/algorithm",
+          "../User/BSP/DWT",
+          "../User/BSP/USART",
+          "../User/moudle/imu"
         ],
         "libList": [],
         "sourceDirList": [],

@@ -24,7 +24,7 @@
 
 #include "stm32f407xx.h"
 #include "arm_math.h"
-//#include "dsp/matrix_functions.h"
+// #include "dsp/matrix_functions.h"
 #include "math.h"
 #include "stdint.h"
 #include "stdlib.h"
@@ -37,16 +37,16 @@
 #endif
 #endif
 
-#define mat arm_matrix_instance_f32
-#define Matrix_Init arm_mat_init_f32
-#define Matrix_Add arm_mat_add_f32
-#define Matrix_Subtract arm_mat_sub_f32
-#define Matrix_Multiply arm_mat_mult_f32
+// 若运算速度不够,可以使用q31代替f32,但是精度会降低
+#define mat              arm_matrix_instance_f32
+#define Matrix_Init      arm_mat_init_f32
+#define Matrix_Add       arm_mat_add_f32
+#define Matrix_Subtract  arm_mat_sub_f32
+#define Matrix_Multiply  arm_mat_mult_f32
 #define Matrix_Transpose arm_mat_trans_f32
-#define Matrix_Inverse arm_mat_inverse_f32
+#define Matrix_Inverse   arm_mat_inverse_f32
 
-typedef struct kf_t
-{
+typedef struct kf_t {
     float *FilteredValue;
     float *MeasuredVector;
     float *ControlVector;
@@ -92,7 +92,7 @@ typedef struct kf_t
     void (*User_Func4_f)(struct kf_t *kf);
     void (*User_Func5_f)(struct kf_t *kf);
     void (*User_Func6_f)(struct kf_t *kf);
-    
+
     // 矩阵存储空间指针
     float *xhat_data, *xhatminus_data;
     float *u_data;

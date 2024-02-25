@@ -9,8 +9,7 @@
 #define MIN_ANGLE 160
 
 gimbal_t gimbal_Pitch; // 云台电机信息结构体
-
-extern fp32 INS_angle[3];
+static attitude_t *gimba_IMU_data; // 云台IMU数据指针
 extern RC_ctrl_t rc_ctrl; // 遥控器信息结构体
 extern Vision_Recv_s recv;
 
@@ -21,8 +20,6 @@ static void Gimbal_loop_Init();
 static void Hum_Pitch_control();
 // 自瞄控制云台电机
 static void Auto_Pitch_control();
-// 模式选择
-static void model_choice();
 
 // 云台电机的任务
 static void gimbal_current_give();
@@ -32,7 +29,8 @@ static void detel_calc2(fp32 *angle);
 
 void Gimbal_task(void const *pvParameters)
 {
-    osDelay(10000);
+    // osDelay(10000);
+    gimba_IMU_data = INS_Init(); // IMU先初始化,获取姿态数据指针赋给yaw电机的其他数据来源
     Gimbal_loop_Init();
     for (;;)
     {
@@ -73,7 +71,7 @@ static void Hum_Pitch_control()
         Auto_Pitch_control();
         Angle_Limit(&gimbal_Pitch.angle_target);
 
-        gimbal_Pitch.err_angle = gimbal_Pitch.angle_target - INS_angle[2];
+        gimbal_Pitch.err_angle = gimbal_Pitch.angle_target - gimba_IMU_data->Pitch;
         detel_calc2(&gimbal_Pitch.err_angle);
 
         gimbal_Pitch.speed_target = gimbal_Pitch_PID_cal(&gimbal_Pitch.pid_angle, 0, gimbal_Pitch.err_angle);

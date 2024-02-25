@@ -29,10 +29,11 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "INS_task.h"
+#include "ins_task.h"
 #include "drv_can.h"
 #include "drv_usart.h"
 #include "bsp_delay.h"
+#include "bsp_dwt.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -152,7 +153,8 @@ int main(void)
   __HAL_UART_ENABLE_IT(&huart1, UART_IT_IDLE);
   // HAL_UART_Receive_DMA(&huart4,(uint8_t *)RXbuf,sizeof(RXbuf));
   HAL_UART_Receive_DMA(&huart1, rx_buff_sj, 12);
-  // DWT_Init(168);
+  DWT_Init(168);
+  INS_Init();
   // __HAL_UART_ENABLE_IT(&huart3, UART_IT_IDLE); // ʹ�ܿ����ж�
   /* USER CODE END 2 */
 

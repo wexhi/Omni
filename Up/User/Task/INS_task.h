@@ -1,94 +1,143 @@
 /**
-  ****************************(C) COPYRIGHT 2019 DJI****************************
-  * @file       INS_task.c/h
-  * @brief      use bmi088 to calculate the euler angle. no use ist8310, so only
-  *             enable data ready pin to save cpu time.enalbe bmi088 data ready
-  *             enable spi DMA to save the time spi transmit
-  *             Ö÷ÒªÀûÓÃÍÓÂİÒÇbmi088£¬´ÅÁ¦¼Æist8310£¬Íê³É×ËÌ¬½âËã£¬µÃ³öÅ·À­½Ç£¬
-  *             Ìá¹©Í¨¹ıbmi088µÄdata ready ÖĞ¶ÏÍê³ÉÍâ²¿´¥·¢£¬¼õÉÙÊı¾İµÈ´ıÑÓ³Ù
-  *             Í¨¹ıDMAµÄSPI´«Êä½ÚÔ¼CPUÊ±¼ä.
-  * @note       
-  * @history
-  *  Version    Date            Author          Modification
-  *  V1.0.0     Dec-26-2018     RM              1. done
-  *  V2.0.0     Nov-11-2019     RM              1. support bmi088, but don't support mpu6500
-  *
-  @verbatim
-  ==============================================================================
+ ******************************************************************************
+ * @file    ins_task.h
+ * @author  Wang Hongxi
+ * @author  annotation and modification by NeoZeng
+ * @version V2.0.0
+ * @date    2022/2/23
+ * @brief
+ ******************************************************************************
+ * @attention INSä»»åŠ¡çš„åˆå§‹åŒ–ä¸è¦æ”¾å…¥å®æ—¶ç³»ç»Ÿ!åº”è¯¥ç”±applicationæ‹¥æœ‰å®ä¾‹,éšååœ¨
+ *            åº”ç”¨å±‚è°ƒç”¨åˆå§‹åŒ–å‡½æ•°.
+ *
+ ******************************************************************************
+ */
+#ifndef __INS_TASK_H
+#define __INS_TASK_H
 
-  ==============================================================================
-  @endverbatim
-  ****************************(C) COPYRIGHT 2019 DJI****************************
-  */
-
-#ifndef INS_Task_H
-#define INS_Task_H
+#include "stdint.h"
 #include "BMI088driver.h"
-#include "struct_typedef.h"
+#include "QuaternionEKF.h"
 
+#define X 0
+#define Y 1
+#define Z 2
 
-#define SPI_DMA_GYRO_LENGHT       8
-#define SPI_DMA_ACCEL_LENGHT      9
-#define SPI_DMA_ACCEL_TEMP_LENGHT 4
+#define INS_TASK_PERIOD 1
 
+typedef struct
+{
+    float Gyro[3];  // è§’é€Ÿåº¦
+    float Accel[3]; // åŠ é€Ÿåº¦
+    // è¿˜éœ€è¦å¢åŠ è§’é€Ÿåº¦æ•°æ®
+    float Roll;
+    float Pitch;
+    float Yaw;
+    float YawTotalAngle;
+} attitude_t; // æœ€ç»ˆè§£ç®—å¾—åˆ°çš„è§’åº¦,ä»¥åŠyawè½¬åŠ¨çš„æ€»è§’åº¦(æ–¹ä¾¿å¤šåœˆæ§åˆ¶)
 
-#define IMU_DR_SHFITS        0
-#define IMU_SPI_SHFITS       1
-#define IMU_UPDATE_SHFITS        2
+typedef struct
+{
+    float q[4]; // å››å…ƒæ•°ä¼°è®¡å€¼
 
+    float MotionAccel_b[3]; // æœºä½“åæ ‡åŠ é€Ÿåº¦
+    float MotionAccel_n[3]; // ç»å¯¹ç³»åŠ é€Ÿåº¦
 
-#define BMI088_GYRO_RX_BUF_DATA_OFFSET  1
-#define BMI088_ACCEL_RX_BUF_DATA_OFFSET 2
+    float AccelLPF; // åŠ é€Ÿåº¦ä½é€šæ»¤æ³¢ç³»æ•°
 
+    // bodyframeåœ¨ç»å¯¹ç³»çš„å‘é‡è¡¨ç¤º
+    float xn[3];
+    float yn[3];
+    float zn[3];
 
+    // åŠ é€Ÿåº¦åœ¨æœºä½“ç³»å’ŒXYä¸¤è½´çš„å¤¹è§’
+    // float atanxz;
+    // float atanyz;
 
-#define TEMPERATURE_PID_KP 1600.0f //ÎÂ¶È¿ØÖÆPIDµÄkp
-#define TEMPERATURE_PID_KI 0.2f    //ÎÂ¶È¿ØÖÆPIDµÄki
-#define TEMPERATURE_PID_KD 0.0f    //ÎÂ¶È¿ØÖÆPIDµÄkd
+    // IMUé‡æµ‹å€¼
+    float Gyro[3];  // è§’é€Ÿåº¦
+    float Accel[3]; // åŠ é€Ÿåº¦
+    // ä½å§¿
+    float Roll;
+    float Pitch;
+    float Yaw;
+    float YawTotalAngle;
 
-#define TEMPERATURE_PID_MAX_OUT   4500.0f //ÎÂ¶È¿ØÖÆPIDµÄmax_out
-#define TEMPERATURE_PID_MAX_IOUT 4400.0f  //ÎÂ¶È¿ØÖÆPIDµÄmax_iout
+    uint8_t init;
+} INS_t;
 
-#define MPU6500_TEMP_PWM_MAX 5000 //mpu6500¿ØÖÆÎÂ¶ÈµÄÉèÖÃTIMµÄÖØÔØÖµ£¬¼´¸øPWM×î´óÎª MPU6500_TEMP_PWM_MAX - 1
+/* ç”¨äºä¿®æ­£å®‰è£…è¯¯å·®çš„å‚æ•° */
+typedef struct
+{
+    uint8_t flag;
 
+    float scale[3];
 
-#define INS_TASK_INIT_TIME 7 //ÈÎÎñ¿ªÊ¼³õÆÚ delay Ò»¶ÎÊ±¼ä
-
-#define INS_YAW_ADDRESS_OFFSET    0
-#define INS_PITCH_ADDRESS_OFFSET  1
-#define INS_ROLL_ADDRESS_OFFSET   2
-
-#define INS_GYRO_X_ADDRESS_OFFSET 0
-#define INS_GYRO_Y_ADDRESS_OFFSET 1
-#define INS_GYRO_Z_ADDRESS_OFFSET 2
-
-#define INS_ACCEL_X_ADDRESS_OFFSET 0
-#define INS_ACCEL_Y_ADDRESS_OFFSET 1
-#define INS_ACCEL_Z_ADDRESS_OFFSET 2
-
-#define INS_MAG_X_ADDRESS_OFFSET 0
-#define INS_MAG_Y_ADDRESS_OFFSET 1
-#define INS_MAG_Z_ADDRESS_OFFSET 2
+    float Yaw;
+    float Pitch;
+    float Roll;
+} IMU_Param_t;
 
 /**
-  * @brief          imu task, init bmi088, ist8310, calculate the euler angle
-  * @param[in]      pvParameters: NULL
-  * @retval         none
-  */
+ * @brief åˆå§‹åŒ–æƒ¯å¯¼è§£ç®—ç³»ç»Ÿ
+ *
+ */
+attitude_t *INS_Init(void);
+
 /**
-  * @brief          imuÈÎÎñ, ³õÊ¼»¯ bmi088, ist8310, ¼ÆËãÅ·À­½Ç
-  * @param[in]      pvParameters: NULL
-  * @retval         none
-  */
-extern void INS_task(void const *pvParameters);
+ * @brief æ­¤å‡½æ•°æ”¾å…¥å®æ—¶ç³»ç»Ÿä¸­,ä»¥1kHzé¢‘ç‡è¿è¡Œ
+ *        p.s. osDelay(1);
+ *
+ */
+void INS_Task(void);
 
+/**
+ * @brief å››å…ƒæ•°æ›´æ–°å‡½æ•°,å³å®ç°dq/dt=0.5Î©q
+ *
+ * @param q  å››å…ƒæ•°
+ * @param gx
+ * @param gy
+ * @param gz
+ * @param dt è·ç¦»ä¸Šæ¬¡è°ƒç”¨çš„æ—¶é—´é—´éš”
+ */
+void QuaternionUpdate(float *q, float gx, float gy, float gz, float dt);
 
+/**
+ * @brief å››å…ƒæ•°è½¬æ¢æˆæ¬§æ‹‰è§’ ZYX
+ *
+ * @param q
+ * @param Yaw
+ * @param Pitch
+ * @param Roll
+ */
+void QuaternionToEularAngle(float *q, float *Yaw, float *Pitch, float *Roll);
 
+/**
+ * @brief ZYXæ¬§æ‹‰è§’è½¬æ¢ä¸ºå››å…ƒæ•°
+ *
+ * @param Yaw
+ * @param Pitch
+ * @param Roll
+ * @param q
+ */
+void EularAngleToQuaternion(float Yaw, float Pitch, float Roll, float *q);
 
+/**
+ * @brief æœºä½“ç³»åˆ°æƒ¯æ€§ç³»çš„å˜æ¢å‡½æ•°
+ *
+ * @param vecBF body frame
+ * @param vecEF earth frame
+ * @param q
+ */
+void BodyFrameToEarthFrame(const float *vecBF, float *vecEF, float *q);
 
-
-
-
-
+/**
+ * @brief æƒ¯æ€§ç³»è½¬æ¢åˆ°æœºä½“ç³»
+ *
+ * @param vecEF
+ * @param vecBF
+ * @param q
+ */
+void EarthFrameToBodyFrame(const float *vecEF, float *vecBF, float *q);
 
 #endif
