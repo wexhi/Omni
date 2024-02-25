@@ -462,7 +462,11 @@
           "../User/PotocaLayer",
           "../User/BSP",
           "../User/moudle",
-          "../User/moudle/miniPC"
+          "../User/moudle/miniPC",
+          "../User/moudle/imu",
+          "../User/moudle/algorithm",
+          "../User/BSP/DWT",
+          "../User/BSP/USART"
         ],
         "libList": [],
         "sourceDirList": [],

@@ -8,7 +8,7 @@
 
 #define RC_MAX 660
 #define RC_MIN -660
-#define RC_OFFSET 10000 / 660
+#define RC_OFFSET 3000 / 660
 #define motor_max 7000
 #define motor_min -7000
 #define Wz_max 4000

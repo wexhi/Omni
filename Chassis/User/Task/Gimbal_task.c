@@ -48,12 +48,12 @@ void Gimbal_task(void const *pvParameters)
 static void Gimbal_loop_Init()
 {
     // 初始化pid参数
-    gimbal_Yaw.pid_parameter[0] = 100, gimbal_Yaw.pid_parameter[1] = 0, gimbal_Yaw.pid_parameter[2] = 0;
+    gimbal_Yaw.pid_parameter[0] = 80, gimbal_Yaw.pid_parameter[1] = 0, gimbal_Yaw.pid_parameter[2] = 0;
     gimbal_Yaw.pid_angle_parameter[0] = 9, gimbal_Yaw.pid_angle_parameter[1] = 0.01, gimbal_Yaw.pid_angle_parameter[2] = 0;
     gimbal_Yaw.angle_target = 0;
 
     // 初始化pid结构体
-    pid_init(&gimbal_Yaw.pid, gimbal_Yaw.pid_parameter, 30000, 30000);
+    pid_init(&gimbal_Yaw.pid, gimbal_Yaw.pid_parameter, 20000, 20000);
     pid_init(&gimbal_Yaw.pid_angle, gimbal_Yaw.pid_angle_parameter, 30000, 30000);
 }
 

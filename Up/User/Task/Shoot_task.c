@@ -114,11 +114,11 @@ static void bay_control(void)
 {
     if (rc_ctrl.rc.s[1] == 2 && !friction_flag)
     {
-        __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 500); // 500
+        __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 500); // 500 关
     }
     else
     {
-        __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 2100); // 2100
+        __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 500); // 2100
     }
 }
 
