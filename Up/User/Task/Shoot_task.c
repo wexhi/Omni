@@ -5,7 +5,7 @@
 #include "drv_can.h"
 
 #define MAX_DIAL_SPEED 500
-#define MAX_FRICTION_SPEED 7000
+#define MAX_FRICTION_SPEED 8000
 #define KEY_ENTER_OFFSET 10
 #define KEY_SLOW_OFFSET 100
 
