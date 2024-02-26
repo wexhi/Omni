@@ -94,7 +94,11 @@ static void RC_Yaw_speed()
         gimbal_Yaw.speed_target = 0;
     }
 }
-
+/**
+ * @brief 锁云台模式
+ * 
+ * @todo 可以修改小陀螺模式时鼠标控制的灵敏度，等连上图传可以试试
+ */
 static void RC_Yaw_control()
 {
     if (rc_ctrl.rc.ch[0] >= -660 && rc_ctrl.rc.ch[0] <= 660)
