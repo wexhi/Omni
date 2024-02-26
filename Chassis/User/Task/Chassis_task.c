@@ -56,9 +56,6 @@ static void mode_chooce();
 // 遥控器控制底盘电机
 static void GimbalMove(void);
 
-// 小陀螺模式
-static void gyroscope(void);
-
 // 速度限制函数
 static void Motor_Speed_limiting(volatile int16_t *motor_speed, int16_t limit_speed);
 
@@ -79,9 +76,6 @@ static void rotate();
 
 // 键盘控制函数
 static void key_control(void);
-
-// 限速
-static void ChassisLimit(void);
 
 void Chassis_task(void const *pvParameters)
 {
@@ -105,6 +99,11 @@ void Chassis_task(void const *pvParameters)
   }
 }
 
+/**
+ * @brief 底盘初始化，初始化底盘电机PID参数，将底盘速度清零，将IMU误差清零
+ *
+ * @todo 加入超级电容PID参数初始化
+ */
 static void Chassis_Init()
 {
   chassis.pid_parameter[0] = 30, chassis.pid_parameter[1] = 0.5, chassis.pid_parameter[2] = 0;
@@ -120,6 +119,10 @@ static void Chassis_Init()
   chassis.imu_err = 0;
 }
 
+/**
+ * @brief 底盘循环初始化，将底盘速度清零,防止疯车
+ *
+ */
 static void Chassis_loop_Init()
 {
   chassis.Vx = 0;
@@ -127,6 +130,13 @@ static void Chassis_loop_Init()
   chassis.Wz = 0;
 }
 
+/**
+ * @brief 底盘模式选择，根据遥控器的输入选择底盘的运动模式
+ *        模式1： 默认为紧急停车模式 （蓝灯）
+ *       模式2： 底盘跟随云台模式 （绿灯）
+ *      模式3： 遥控器控制底盘模式 （红灯）
+ *
+ */
 static void mode_chooce()
 {
   // 遥控器控制
@@ -166,7 +176,10 @@ static void mode_chooce()
   }
 }
 
-// 运动解算
+/**
+ * @brief 底盘电机速度解算，根据底盘速度分解的速度调整电机速度目标
+ *
+ */
 static void chassis_motol_speed_calculate()
 {
 
@@ -176,8 +189,13 @@ static void chassis_motol_speed_calculate()
   chassis.speed_target[CHAS_RB] = -chassis.Wz - sinf(PI / 4) * chassis.Vx + sinf(PI / 4) * chassis.Vy; // 3
   chassis.speed_target[CHAS_LB] = -chassis.Wz + sinf(PI / 4) * chassis.Vx + sinf(PI / 4) * chassis.Vy; // 4
 }
-// 运动解算
-// 速度限制函数
+
+/**
+ * @brief 速度限制函数，限制底盘速度
+ *
+ * @param motor_speed 4个底盘电机目标速度的数组
+ * @param limit_speed 限制的最大速度
+ */
 static void Motor_Speed_limiting(volatile int16_t *motor_speed, int16_t limit_speed)
 {
   uint8_t i = 0;
@@ -205,7 +223,10 @@ static void Motor_Speed_limiting(volatile int16_t *motor_speed, int16_t limit_sp
   }
 }
 
-// 电机电流控制
+/**
+ * @brief 电机电流控制，根据PID算法计算电机电流，使能电机
+ *
+ */
 static void chassis_current_give()
 {
 
@@ -220,18 +241,10 @@ static void chassis_current_give()
   // set_curruent(MOTOR_3508_0, hcan1, chassis.motor_info[0].set_current, chassis.motor_info[1].set_current, chassis.motor_info[2].set_current, chassis.motor_info[3].set_current);
 }
 
-// 线性映射函数
-static int16_t map_range(int value, int from_min, int from_max, int to_min, int to_max)
-{
-  // 首先将输入值映射到[0, 1]的范围
-  double normalized_value = (value * 1.0 - from_min * 1.0) / (from_max * 1.0 - from_min * 1.0);
-
-  // 然后将[0, 1]的范围映射到[to_min, to_max]的范围
-  int16_t mapped_value = (int16_t)(normalized_value * (to_max - to_min) + to_min);
-
-  return mapped_value;
-}
-
+/**
+ * @brief 遥控器控制底盘，后续考虑只保留此模式
+ *
+ */
 static void GimbalMove(void)
 {
   // 从遥控器和键盘获取控制输入
@@ -240,20 +253,12 @@ static void GimbalMove(void)
   chassis.Wz = rc_ctrl.rc.ch[4] * RC_OFFSET + key_Wz;                  // 旋转输入
 
   rotate();
-
-  /*************记得加上线性映射***************/
-  // chassis.Vx = map_range(chassis.Vx, RC_MIN, RC_MAX, motor_min, motor_max);
-  // chassis.Vy = map_range(chassis.Vy, RC_MIN, RC_MAX, motor_min, motor_max);
-  // chassis.Wz = map_range(chassis.Wz, RC_MIN, RC_MAX, motor_min, motor_max);
 }
 
-// 小陀螺模式
-static void gyroscope(void)
-{
-  chassis.Wz = 900;
-}
-
-// 底盘跟随云台
+/**
+ * @brief 底盘跟随云台
+ *
+ */
 static void chassis_follow_gimbal()
 {
   if (chassis.err_angle > angle_valve || chassis.err_angle < -angle_valve)
@@ -270,16 +275,18 @@ static void chassis_follow_gimbal()
     chassis.Wz = -Wz_max;
   }
   // 从遥控器获取控制输入
-  chassis.Vx = rc_ctrl.rc.ch[3]; // 前后输入
-  chassis.Vy = rc_ctrl.rc.ch[2]; // 左右输入
-  chassis.Vx = map_range(chassis.Vx, RC_MIN, RC_MAX, motor_min, motor_max);
-  chassis.Vy = map_range(chassis.Vy, RC_MIN, RC_MAX, motor_min, motor_max);
+  chassis.Vx = rc_ctrl.rc.ch[3] * RC_OFFSET; // 前后输入
+  chassis.Vy = rc_ctrl.rc.ch[2] * RC_OFFSET; // 左右输入
 }
 
-// 获取上下C板角度差
+/**
+ * @brief 获取上下C板角度差
+ *
+ * @todo 添加键盘控制IMU误差修正
+ */
 static void get_UpDown_Err()
 {
-  if (rc_ctrl.rc.s[0] == 1)
+  if (rc_ctrl.rc.s[0] == 1) // 修正IMU误差
   {
     chassis.imu_err = INS.Yaw - UP_C_angle.yaw;
   }
@@ -302,7 +309,10 @@ static void get_UpDown_Err()
   chassis.err_angle_rad = chassis.err_angle / 57.3f;
 }
 
-// 旋转矩阵
+/**
+ * @brief 旋转矩阵
+ *
+ */
 static void rotate()
 {
   int16_t temp_Vx = 0;
@@ -313,6 +323,11 @@ static void rotate()
   chassis.Vy = temp_Vy;
 }
 
+/**
+ * @brief 键盘控制
+ *
+ * @todo 写的太丑陋了，后续简洁一点
+ */
 static void key_control(void)
 {
   if (d_flag)
@@ -358,18 +373,14 @@ static void key_control(void)
     key_Wz = 0;
 }
 
-// 限速
-static void ChassisLimit(void)
-{
-}
-
 static void Chassis_Power_Limit(double Chassis_pidout_target_limit)
 {
   // 819.2/A，假设最大功率为120W，那么能够通过的最大电流为5A，取一个保守值：800.0 * 5 = 4000
 
   Watch_Power_Max = Klimit;
   Watch_Power = powerd.chassis_power;
-  Watch_Buffer = 60; // Hero_chassis_power_buffer;//限制值，功率值，缓冲能量值，初始值是1，0，0
+  Watch_Buffer = 60; // powerd.chassis_power_buffer
+  // Hero_chassis_power_buffer;//限制值，功率值，缓冲能量值，初始值是1，0，0
   // get_chassis_power_and_buffer(&Power, &Power_Buffer, &Power_Max);//通过裁判系统和编码器值获取（限制值，实时功率，实时缓冲能量）
 
   Chassis_pidout_max = 61536; // 32768，40，960			15384 * 4，取了4个3508电机最大电流的一个保守值
