@@ -6,95 +6,62 @@
 #include "arm_math.h"
 #include "judge.h"
 
-#define RC_MAX 660
-#define RC_MIN -660
 #define RC_OFFSET 3000 / 660
-#define motor_max 7000
-#define motor_min -7000
-#define Wz_max 4000
-#define angle_valve 5
-#define angle_weight 60
+#define KEY_MAX 7000
+#define WZ_MAX 4000
+#define ANGLE_VALVE 5
+#define ANGLE_WEIGHT 60
 #define KEY_START_OFFSET 1
 #define KEY_STOP_OFFSET 2
 
-chassis_t chassis;
-
-pid_struct_t supercap_pid;
+chassis_t chassis;                   // 底盘信息结构体
+pid_struct_t supercap_pid;           // 超级电容PID结构体
 motor_info_t motor_info_chassis[10]; // 电机信息结构体
-fp32 superpid[3] = {120, 0.1, 0};
-
-int8_t chassis_mode;
-
-extern RC_ctrl_t rc_ctrl; // 遥控器信息结构体
-extern float powerdata[4];
-extern UP_C_angle_t UP_C_angle;
-extern INS_t INS;
-extern ext_power_heat_data_t powerd;
-static void Chassis_Power_Limit(double Chassis_pidout_target_limit);
-
-uint8_t rc[18];
-
+fp32 superpid[3] = {120, 0.1, 0};    // 超级电容PID参数
+int8_t chassis_mode;                 // 底盘模式
+uint8_t rc[18];                      // 遥控器数据
 // 功率限制算法的变量定义
-float Watch_Power_Max;
-float Watch_Power;
-float Watch_Buffer;
-double Chassis_pidout;
-double Chassis_pidout_target;
-static double Scaling1 = 0, Scaling2 = 0, Scaling3 = 0, Scaling4 = 0;
-float Klimit = 1;
-float Plimit = 0;
-float Chassis_pidout_max;
-static int16_t key_x_fast, key_y_fast, key_x_slow, key_y_slow, key_Wz;
+float Watch_Power_Max;                                                 // 限制值
+float Watch_Power;                                                     // 实时功率
+float Watch_Buffer;                                                    // 缓冲能量值
+double Chassis_pidout;                                                 // 输出值
+double Chassis_pidout_target;                                          // 目标值
+static double Scaling1 = 0, Scaling2 = 0, Scaling3 = 0, Scaling4 = 0;  // 比例
+float Klimit = 1;                                                      // 限制值
+float Plimit = 0;                                                      // 约束比例
+float Chassis_pidout_max;                                              // 输出值限制
+static int16_t key_x_fast, key_y_fast, key_x_slow, key_y_slow, key_Wz; // 键盘控制变量
 
-static void Chassis_Init();
+extern RC_ctrl_t rc_ctrl;            // 遥控器信息结构体
+extern float powerdata[4];           // 电源数据
+extern UP_C_angle_t UP_C_angle;      // 上C的陀螺仪数据
+extern INS_t INS;                    // IMU信息结构体
+extern ext_power_heat_data_t powerd; // 电源数据
 
-static void Chassis_loop_Init();
-
-// 模式选择
-static void mode_chooce();
-
-// 遥控器控制底盘电机
-static void GimbalMove(void);
-
-// 速度限制函数
-static void Motor_Speed_limiting(volatile int16_t *motor_speed, int16_t limit_speed);
-
-// 电机电流控制
-static void chassis_current_give();
-
-// 运动解算
-static void chassis_motol_speed_calculate();
-
-// 底盘跟随云台
-static void chassis_follow_gimbal();
-
-// 获取上下C板角度差
-static void get_UpDown_Err();
-
-// 旋转矩阵
-static void rotate();
-
-// 键盘控制函数
-static void key_control(void);
+static void Chassis_Init();                                                           // 底盘初始化
+static void Chassis_loop_Init();                                                      // 底盘循环初始化
+static void mode_chooce();                                                            // 模式选择
+static void GimbalMove(void);                                                         // 遥控器控制底盘电机
+static void Motor_Speed_limiting(volatile int16_t *motor_speed, int16_t limit_speed); // 速度限制函数
+static void chassis_current_give();                                                   // 电机电流控制
+static void chassis_motol_speed_calculate();                                          // 运动解算
+static void chassis_follow_gimbal();                                                  // 底盘跟随云台
+static void get_UpDown_Err();                                                         // 获取上下C板角度差
+static void rotate();                                                                 // 旋转矩阵
+static void key_control(void);                                                        // 键盘控制函数
+static void Chassis_Power_Limit(double Chassis_pidout_target_limit);                  // 底盘功率限制
 
 void Chassis_task(void const *pvParameters)
 {
-  Chassis_Init();
+  Chassis_Init(); // 底盘初始化
 
   for (;;) // 底盘运动任务
   {
-    Chassis_loop_Init();
-    // 获取上下C板角度差
-    get_UpDown_Err();
-
-    // 选择底盘运动模式
-    mode_chooce();
-
-    // 电机速度解算
-    chassis_motol_speed_calculate();
-
-    // 电机电流控制
-    chassis_current_give();
+    Chassis_loop_Init();             // 获取上下C板角度差
+    get_UpDown_Err();                // 获取上下C板角度差
+    mode_chooce();                   // 模式选择
+    chassis_motol_speed_calculate(); // 运动解算
+    chassis_current_give();          // 电机电流控制
     osDelay(1);
   }
 }
@@ -106,17 +73,16 @@ void Chassis_task(void const *pvParameters)
  */
 static void Chassis_Init()
 {
-  chassis.pid_parameter[0] = 30, chassis.pid_parameter[1] = 0.5, chassis.pid_parameter[2] = 0;
+  chassis.pid_parameter[0] = 30, chassis.pid_parameter[1] = 0.5, chassis.pid_parameter[2] = 0; // 底盘电机PID参数
 
   for (uint8_t i = 0; i < 4; i++)
   {
-    pid_init(&chassis.pid[i], chassis.pid_parameter, 16384, 16384); // init pid parameter, kp=40, ki=3, kd=0, output limit = 16384
+    pid_init(&chassis.pid[i], chassis.pid_parameter, 16384, 16384); // 底盘电机PID参数初始化
   }
-  pid_init(&supercap_pid, superpid, 3000, 3000); // init pid parameter, kp=40, ki=3, kd=0, output limit = 16384
+  pid_init(&supercap_pid, superpid, 3000, 3000); // 超级电容PID参数初始化
 
-  chassis.Vx = 0, chassis.Vy = 0, chassis.Wz = 0;
-
-  chassis.imu_err = 0;
+  chassis.Vx = 0, chassis.Vy = 0, chassis.Wz = 0; // 底盘速度清零
+  chassis.imu_err = 0;                            // IMU误差清零
 }
 
 /**
@@ -125,7 +91,7 @@ static void Chassis_Init()
  */
 static void Chassis_loop_Init()
 {
-  chassis.Vx = 0;
+  chassis.Vx = 0; // 底盘速度清零
   chassis.Vy = 0;
   chassis.Wz = 0;
 }
@@ -146,27 +112,27 @@ static void mode_chooce()
   // chanel 3 up max==660,down max==-660
   // chanel 4 The remote control does not have this channel
 
-  if (rc_ctrl.rc.s[0] == 1)
+  if (rc_ctrl.rc.s[0] == 1) // 右侧拨杆向上
   {
     LEDB_ON(); // BLUE LED
     LEDR_OFF();
     LEDG_OFF();
-    // gyroscope();
+    Chassis_loop_Init(); // 底盘速度清零
   }
-  else if (rc_ctrl.rc.s[0] == 2)
+  else if (rc_ctrl.rc.s[0] == 2) // 右侧拨杆向下
   {
     LEDG_ON(); // GREEN LED
     LEDR_OFF();
     LEDB_OFF();
-    chassis_follow_gimbal();
+    chassis_follow_gimbal(); // 底盘跟随云台
   }
-  else if (rc_ctrl.rc.s[0] == 3)
+  else if (rc_ctrl.rc.s[0] == 3) // 右侧拨杆中间
   {
     LEDR_ON(); // RED LED
     LEDB_OFF();
     LEDG_OFF();
-    key_control();
-    GimbalMove();
+    key_control(); // 键盘控制
+    GimbalMove();  // 遥控器控制底盘
   }
   else
   {
@@ -208,9 +174,7 @@ static void Motor_Speed_limiting(volatile int16_t *motor_speed, int16_t limit_sp
     temp = (motor_speed[i] > 0) ? (motor_speed[i]) : (-motor_speed[i]); // 求绝对值
 
     if (temp > max)
-    {
       max = temp;
-    }
   }
 
   if (max > max_speed)
@@ -236,9 +200,8 @@ static void chassis_current_give()
   {
     chassis.motor_info[i].set_current = pid_calc(&chassis.pid[i], chassis.motor_info[i].rotor_speed, chassis.speed_target[i]);
   }
-  Chassis_Power_Limit(8000);
+  Chassis_Power_Limit(8000); // 限制底盘功率
   set_motor_current_chassis(0, chassis.motor_info[0].set_current, chassis.motor_info[1].set_current, chassis.motor_info[2].set_current, chassis.motor_info[3].set_current);
-  // set_curruent(MOTOR_3508_0, hcan1, chassis.motor_info[0].set_current, chassis.motor_info[1].set_current, chassis.motor_info[2].set_current, chassis.motor_info[3].set_current);
 }
 
 /**
@@ -252,7 +215,7 @@ static void GimbalMove(void)
   chassis.Vy = rc_ctrl.rc.ch[2] * RC_OFFSET + key_y_fast - key_y_slow; // 左右输入
   chassis.Wz = rc_ctrl.rc.ch[4] * RC_OFFSET + key_Wz;                  // 旋转输入
 
-  rotate();
+  rotate(); // 旋转矩阵
 }
 
 /**
@@ -261,19 +224,14 @@ static void GimbalMove(void)
  */
 static void chassis_follow_gimbal()
 {
-  if (chassis.err_angle > angle_valve || chassis.err_angle < -angle_valve)
-  {
-    chassis.Wz -= chassis.err_angle * angle_weight;
-  }
+  if (chassis.err_angle > ANGLE_VALVE || chassis.err_angle < -ANGLE_VALVE) // 云台偏差大于5度
+    chassis.Wz -= chassis.err_angle * ANGLE_WEIGHT;                        // 旋转速度输入
 
-  if (chassis.Wz > Wz_max)
-  {
-    chassis.Wz = Wz_max;
-  }
-  else if (chassis.Wz < -Wz_max)
-  {
-    chassis.Wz = -Wz_max;
-  }
+  if (chassis.Wz > WZ_MAX) // 旋转速度限制
+    chassis.Wz = WZ_MAX;
+  else if (chassis.Wz < -WZ_MAX)
+    chassis.Wz = -WZ_MAX;
+
   // 从遥控器获取控制输入
   chassis.Vx = rc_ctrl.rc.ch[3] * RC_OFFSET; // 前后输入
   chassis.Vy = rc_ctrl.rc.ch[2] * RC_OFFSET; // 左右输入
@@ -287,26 +245,17 @@ static void chassis_follow_gimbal()
 static void get_UpDown_Err()
 {
   if (rc_ctrl.rc.s[0] == 1) // 修正IMU误差
-  {
     chassis.imu_err = INS.Yaw - UP_C_angle.yaw;
-  }
   else
-  {
-    chassis.err_angle = INS.Yaw - UP_C_angle.yaw - chassis.imu_err;
-  }
+    chassis.err_angle = INS.Yaw - UP_C_angle.yaw - chassis.imu_err; // 获取上下C板角度差
 
   // 越界处理,保证转动方向不变
   if (chassis.err_angle < -180) //	越界时：180 -> -180
-  {
     chassis.err_angle += 360;
-  }
-
   else if (chassis.err_angle > 180) //	越界时：-180 -> 180
-  {
     chassis.err_angle -= 360;
-  }
 
-  chassis.err_angle_rad = chassis.err_angle / 57.3f;
+  chassis.err_angle_rad = chassis.err_angle / 57.3f; // 角度转弧度
 }
 
 /**
@@ -351,24 +300,24 @@ static void key_control(void)
   else
     key_Wz -= KEY_STOP_OFFSET;
 
-  if (key_x_fast > motor_max)
-    key_x_fast = motor_max;
+  if (key_x_fast > KEY_MAX)
+    key_x_fast = KEY_MAX;
   if (key_x_fast < 0)
     key_x_fast = 0;
-  if (key_x_slow > motor_max)
-    key_x_slow = motor_max;
+  if (key_x_slow > KEY_MAX)
+    key_x_slow = KEY_MAX;
   if (key_x_slow < 0)
     key_x_slow = 0;
-  if (key_y_fast > motor_max)
-    key_y_fast = motor_max;
+  if (key_y_fast > KEY_MAX)
+    key_y_fast = KEY_MAX;
   if (key_y_fast < 0)
     key_y_fast = 0;
-  if (key_y_slow > motor_max)
-    key_y_slow = motor_max;
+  if (key_y_slow > KEY_MAX)
+    key_y_slow = KEY_MAX;
   if (key_y_slow < 0)
     key_y_slow = 0;
-  if (key_Wz > motor_max)
-    key_Wz = motor_max;
+  if (key_Wz > KEY_MAX)
+    key_Wz = KEY_MAX;
   if (key_Wz < 0)
     key_Wz = 0;
 }

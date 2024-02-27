@@ -12,19 +12,16 @@ uint8_t rx_data2[8];
 extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;
 extern RC_ctrl_t rc_ctrl;
-
 extern gimbal_t gimbal_Yaw, gimbal_Pitch;
 extern chassis_t chassis;
 extern shooter_t shooter;
+
 int16_t up_angle[2] = {0};
 int16_t aim_target;
 uint8_t is_track = 0;
-
 float powerdata[4];
 uint16_t pPowerdata[8];
-
 uint16_t setpower = 5500;
-int canerror = 0;
 
 void CAN1_Init(void)
 {
@@ -69,7 +66,6 @@ void CAN2_Init(void)
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断回调函数
 {
 
-
   if (hcan->Instance == CAN1)
   {
 
@@ -89,7 +85,6 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
 
   if (hcan->Instance == CAN2)
   {
-    uint8_t rx_data2[8];
     HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header2, rx_data2); // receive can2 data
 
     // 接收上C板陀螺仪数据
