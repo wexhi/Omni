@@ -64,37 +64,7 @@ void MX_FREERTOS_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-// 全局变量
-uint16_t can_cnt_2;
-float target_speed[7] = {0};                 // 实测最大空载转速320rpm
-float target_speed_can_2[7] = {0};           // 实测最大空载转速320rpm
 
-
-uint8_t can_flag = 0;
-double step = 9158 / 660;
-double r;
-double target_v;
-int16_t target_int1;
-int16_t target_int2; // 用于叠加旋转和直行
-double target_curl;
-float yuntai_step = 60 * (1024 - 364);
-
-// 拨盘
-float time = 100;   // 时间
-float time_count;   // 时间计数值
-uint8_t flag_shoot; // 标志位
-float round_shoot;  // 转动圈数
-float down;
-float up;
-
-// Yaw轴
-int16_t target_angle = 4096;
-int16_t err_angle;
-int16_t max_yaw_speed;
-float small;
-float angle_limit = 8191; // 转角的最大值
-
-uint8_t rx_data[8];
 /* USER CODE END 0 */
 
 /**
@@ -251,6 +221,9 @@ void Error_Handler(void)
   __disable_irq();
   while (1)
   {
+    LEDR_ON();
+    LEDB_ON();
+    LEDG_ON();
   }
   /* USER CODE END Error_Handler_Debug */
 }

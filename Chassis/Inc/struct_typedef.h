@@ -115,8 +115,7 @@ typedef __packed struct
 typedef struct
 {
     fp32 yaw;
-    fp32 pitch;
-    fp32 roll;
+    fp32 yaw_gyro;
 } UP_C_angle_t;
 
 #endif

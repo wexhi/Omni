@@ -5,7 +5,6 @@
 #include <string.h>
 #include "miniPC_process.h"
 
-static Vision_Recv_s *vision_recv_data; // 视觉接收数据指针,初始化时返回
 static attitude_t *attitude_data;       // 姿态数据指针
 extern Vision_Recv_s recv;
 // extern fp32 INS_angle[3];
@@ -50,14 +49,14 @@ static void ExchangInit()
 		},
 
 	};
-	vision_recv_data = VisionInit(&vision_init_config);
+	VisionInit(&vision_init_config);
 }
 
 //================================================上C向下C发送数据================================================//
 static void Up_send_to_down()
 {
 	INS_angle_send[0] = attitude_data->Yaw * 100;
-	INS_angle_send[1] = attitude_data->Roll * 100;
+	INS_angle_send[1] = (int16_t)(attitude_data->Gyro[2] * 2000);
 	INS_angle_send[3] = yaw_send * 100;
 
 	ins_buf[0] = (INS_angle_send[0] >> 8) & 0xff;

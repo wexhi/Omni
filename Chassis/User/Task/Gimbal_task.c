@@ -16,7 +16,7 @@ extern RC_ctrl_t rc_ctrl;       // 遥控器信息结构体
 static void Gimbal_Init();           // 云台电机的初始化
 static void mode_select();           // 模式选择
 static void gimbal_current_give();   // 云台电机的任务
-static void RC_Yaw_speed();          // 遥控器控制云台电机
+static void RC_Stop();               // 遥控器控制云台电机
 static void RC_Yaw_control();        // 锁云台模式
 static void detel_calc(fp32 *angle); // 云台角度计算，防止角度突变
 
@@ -38,13 +38,13 @@ void Gimbal_task(void const *pvParameters)
 static void Gimbal_Init()
 {
     // 初始化pid参数
-    gimbal_Yaw.pid_parameter[0] = 15, gimbal_Yaw.pid_parameter[1] = 0, gimbal_Yaw.pid_parameter[2] = 0;
-    gimbal_Yaw.pid_angle_parameter[0] = 50, gimbal_Yaw.pid_angle_parameter[1] = 0.04, gimbal_Yaw.pid_angle_parameter[2] = 300;
+    gimbal_Yaw.pid_parameter[0] = 80, gimbal_Yaw.pid_parameter[1] = 0.5, gimbal_Yaw.pid_parameter[2] = 0;
+    gimbal_Yaw.pid_angle_parameter[0] = 9, gimbal_Yaw.pid_angle_parameter[1] = 0, gimbal_Yaw.pid_angle_parameter[2] = 200;
     gimbal_Yaw.angle_target = 0;
 
     // 初始化pid结构体
-    pid_init(&gimbal_Yaw.pid, gimbal_Yaw.pid_parameter, 30000, 10000);
-    pid_init(&gimbal_Yaw.pid_angle, gimbal_Yaw.pid_angle_parameter, 30000, 10000);
+    pid_init(&gimbal_Yaw.pid, gimbal_Yaw.pid_parameter, 20000, 10000);
+    pid_init(&gimbal_Yaw.pid_angle, gimbal_Yaw.pid_angle_parameter, 20000, 10000);
 }
 
 /**
@@ -54,7 +54,7 @@ static void Gimbal_Init()
 static void mode_select()
 {
     if (rc_ctrl.rc.s[0] == 1)
-        RC_Yaw_speed(); // 速度模式
+        RC_Stop(); // 停止模式
     else
         RC_Yaw_control(); // 锁云台模式
 }
@@ -65,25 +65,30 @@ static void mode_select()
  */
 static void gimbal_current_give()
 {
-    gimbal_Yaw.motor_info.set_current = pid_calc(&gimbal_Yaw.pid, gimbal_Yaw.motor_info.rotor_speed, gimbal_Yaw.speed_target);
-    set_motor_current_gimbal(0, 0, 0, gimbal_Yaw.motor_info.set_current, 0);
+    gimbal_Yaw.motor_info.set_current = pid_calc(&gimbal_Yaw.pid, -57.3f * UP_C_angle.yaw_gyro, gimbal_Yaw.speed_target);
+    if (rc_ctrl.rc.s[0] == 1)
+        set_motor_current_gimbal(0, 0, 0, 0, 0);
+    else
+        set_motor_current_gimbal(0, 0, 0, gimbal_Yaw.motor_info.set_current, 0);
 }
 
 /**
- * @brief 速度模式
+ * @brief 停止模式，更新角度目标
  *
  */
-static void RC_Yaw_speed()
+static void RC_Stop()
 {
-    if (rc_ctrl.rc.ch[0] >= -660 && rc_ctrl.rc.ch[0] <= 660)
-    {
-        gimbal_Yaw.speed_target = -rc_ctrl.rc.ch[0] / 660.0 * MAX_SPEED;
-        gimbal_Yaw.angle_target = UP_C_angle.yaw; // 保证切换模式后角度不突变
-    }
-    else
-    {
-        gimbal_Yaw.speed_target = 0;
-    }
+    // if (rc_ctrl.rc.ch[0] >= -660 && rc_ctrl.rc.ch[0] <= 660)
+    // {
+    //     gimbal_Yaw.speed_target = -rc_ctrl.rc.ch[0] / 660.0 * MAX_SPEED;
+    //     gimbal_Yaw.angle_target = UP_C_angle.yaw; // 保证切换模式后角度不突变
+    // }
+    // else
+    // {
+    // gimbal_Yaw.speed_target = 0;
+    // }
+    gimbal_Yaw.angle_target = UP_C_angle.yaw; // 保证切换模式后角度不突变
+    set_motor_current_gimbal(0, 0, 0, 0, 0);
 }
 
 /**
@@ -95,11 +100,11 @@ static void RC_Yaw_control()
 {
     if (rc_ctrl.rc.ch[0] >= -660 && rc_ctrl.rc.ch[0] <= 660) // 遥控器YAW轴控制
     {
-        gimbal_Yaw.angle_target += rc_ctrl.rc.ch[0] / 660.0 * (-0.2) - // 遥控器控制
-                                   (rc_ctrl.mouse.x / 16384.00 * 50);  // 鼠标控制
-
-        if (rc_ctrl.mouse.press_r && is_track) // 鼠标右键按下且识别到敌方装甲时，云台YAW轴目标为自瞄目标
+        if (is_track) // if (rc_ctrl.mouse.press_r && is_track)鼠标右键按下且识别到敌方装甲时，云台YAW轴目标为自瞄目标
             gimbal_Yaw.angle_target = yaw_aim;
+        else
+            gimbal_Yaw.angle_target += rc_ctrl.rc.ch[0] / 660.0 * (-0.6) - // 遥控器控制
+                                       (rc_ctrl.mouse.x / 16384.00 * 50);  // 鼠标控制
 
         detel_calc(&gimbal_Yaw.angle_target);                                                                          // 防止角度突变
         gimbal_Yaw.err_angle = gimbal_Yaw.angle_target - UP_C_angle.yaw;                                               // 计算角度误差

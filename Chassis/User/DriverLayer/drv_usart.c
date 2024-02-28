@@ -11,7 +11,7 @@ extern DMA_HandleTypeDef hdma_usart6_tx;
 #define USART3_RX_BUF_LEN			(USART3_RX_DATA_FRAME_LEN + 6u)	// 串口3接收缓冲区长度
 #define USART6_RX_BUF_LEN   (200)
 uint8_t usart3_dma_rxbuf[2][USART3_RX_BUF_LEN];
-volatile uint8_t judge_dma_buffer[2][USART6_RX_BUF_LEN] ={0}  ;
+uint8_t judge_dma_buffer[2][USART6_RX_BUF_LEN] ={0}  ;
 uint8_t judge_receive_length=0;
 
 void USART3_Init(void)

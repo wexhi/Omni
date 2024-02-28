@@ -295,7 +295,7 @@ extern JUDGE_MODULE_DATA Judge_Hero;
 
 
 
-void JUDGE_Receive(volatile uint8_t *databuffer,uint8_t length);
+void JUDGE_Receive(uint8_t *databuffer,uint8_t length);
 
 
 

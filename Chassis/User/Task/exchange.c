@@ -21,7 +21,7 @@ void exchange_task()
 
 		// 接收并解算上C的陀螺仪数据
 		UP_C_angle.yaw = up_angle[0] / 100.0f;
-		UP_C_angle.roll = up_angle[1] / 100.0f;
+		UP_C_angle.yaw_gyro = up_angle[1] / 2000.0f;
 
 		// 接收并解算上C的云台YAW轴目标，用于自瞄
 		yaw_aim = aim_target / 100.0f;

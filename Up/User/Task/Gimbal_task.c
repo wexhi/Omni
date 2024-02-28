@@ -8,9 +8,9 @@
 #define MAX_ANGLE 193
 #define MIN_ANGLE 160
 
-gimbal_t gimbal_Pitch; // 云台电机信息结构体
+gimbal_t gimbal_Pitch;             // 云台电机信息结构体
 static attitude_t *gimba_IMU_data; // 云台IMU数据指针
-extern RC_ctrl_t rc_ctrl; // 遥控器信息结构体
+extern RC_ctrl_t rc_ctrl;          // 遥控器信息结构体
 extern Vision_Recv_s recv;
 
 // 云台电机的初始化
@@ -18,8 +18,6 @@ static void Gimbal_loop_Init();
 
 // 遥控器控制云台电机
 static void Hum_Pitch_control();
-// 自瞄控制云台电机
-static void Auto_Pitch_control();
 
 // 云台电机的任务
 static void gimbal_current_give();
@@ -67,8 +65,10 @@ static void Hum_Pitch_control()
     // 把头装上再写吧
     if (rc_ctrl.rc.ch[1] >= -660 && rc_ctrl.rc.ch[1] <= 660)
     {
-        gimbal_Pitch.angle_target += rc_ctrl.rc.ch[1] / 660.0 * 0.25 + (rc_ctrl.mouse.y / 16384.00 * 80);
-        Auto_Pitch_control();
+        if (recv.is_tracking) // if (rc_ctrl.mouse.press_r && recv.is_tracking)
+            gimbal_Pitch.angle_target = recv.pitch;
+        else
+            gimbal_Pitch.angle_target += rc_ctrl.rc.ch[1] / 660.0 * 0.25 + (rc_ctrl.mouse.y / 16384.00 * 80);
         Angle_Limit(&gimbal_Pitch.angle_target);
 
         gimbal_Pitch.err_angle = gimbal_Pitch.angle_target - gimba_IMU_data->Pitch;
@@ -79,18 +79,6 @@ static void Hum_Pitch_control()
     else
     {
         gimbal_Pitch.speed_target = 0;
-    }
-}
-
-static void Auto_Pitch_control()
-{
-    if (rc_ctrl.mouse.press_r && recv.is_tracking)
-    {
-        gimbal_Pitch.angle_target = recv.pitch;
-    }
-    else
-    {
-        return;
     }
 }
 

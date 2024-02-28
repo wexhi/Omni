@@ -1,3 +1,5 @@
+#include "cmsis_os.h"
+
 void exchange_task();
 typedef struct INS_DATA
 {

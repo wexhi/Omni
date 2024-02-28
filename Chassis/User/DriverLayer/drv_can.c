@@ -21,7 +21,6 @@ int16_t aim_target;
 uint8_t is_track = 0;
 float powerdata[4];
 uint16_t pPowerdata[8];
-uint16_t setpower = 5500;
 
 void CAN1_Init(void)
 {

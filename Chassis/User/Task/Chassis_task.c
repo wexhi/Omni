@@ -6,7 +6,8 @@
 #include "arm_math.h"
 #include "judge.h"
 
-#define RC_OFFSET 3000 / 660
+#define CHASSIS_MAX_SPEED 3000
+#define RC_OFFSET CHASSIS_MAX_SPEED / 660
 #define KEY_MAX 7000
 #define WZ_MAX 4000
 #define ANGLE_VALVE 5
@@ -14,12 +15,10 @@
 #define KEY_START_OFFSET 1
 #define KEY_STOP_OFFSET 2
 
-chassis_t chassis;                   // 底盘信息结构体
-pid_struct_t supercap_pid;           // 超级电容PID结构体
-motor_info_t motor_info_chassis[10]; // 电机信息结构体
-fp32 superpid[3] = {120, 0.1, 0};    // 超级电容PID参数
-int8_t chassis_mode;                 // 底盘模式
-uint8_t rc[18];                      // 遥控器数据
+chassis_t chassis;                // 底盘信息结构体
+pid_struct_t supercap_pid;        // 超级电容PID结构体
+fp32 superpid[3] = {120, 0.1, 0}; // 超级电容PID参数
+int8_t chassis_mode;              // 底盘模式
 // 功率限制算法的变量定义
 float Watch_Power_Max;                                                 // 限制值
 float Watch_Power;                                                     // 实时功率
@@ -194,13 +193,14 @@ static void Motor_Speed_limiting(volatile int16_t *motor_speed, int16_t limit_sp
 static void chassis_current_give()
 {
 
+  Motor_Speed_limiting(chassis.speed_target, CHASSIS_MAX_SPEED); // 限制最大期望速度，输入参数是限制速度值(同比缩放)
   uint8_t i = 0;
 
   for (i = 0; i < 4; i++)
   {
     chassis.motor_info[i].set_current = pid_calc(&chassis.pid[i], chassis.motor_info[i].rotor_speed, chassis.speed_target[i]);
   }
-  Chassis_Power_Limit(8000); // 限制底盘功率
+  Chassis_Power_Limit(CHASSIS_MAX_SPEED * 4); // 限制底盘功率
   set_motor_current_chassis(0, chassis.motor_info[0].set_current, chassis.motor_info[1].set_current, chassis.motor_info[2].set_current, chassis.motor_info[3].set_current);
 }
 
@@ -233,8 +233,17 @@ static void chassis_follow_gimbal()
     chassis.Wz = -WZ_MAX;
 
   // 从遥控器获取控制输入
-  chassis.Vx = rc_ctrl.rc.ch[3] * RC_OFFSET; // 前后输入
-  chassis.Vy = rc_ctrl.rc.ch[2] * RC_OFFSET; // 左右输入
+
+  if (chassis.Wz > WZ_MAX / 10 || chassis.Wz < -WZ_MAX / 10) // 旋转速度限制
+  {
+    chassis.Vx = rc_ctrl.rc.ch[3] * RC_OFFSET / 5; // 前后输入
+    chassis.Vy = rc_ctrl.rc.ch[2] * RC_OFFSET / 5; // 左右输入
+  }
+  else
+  {
+    chassis.Vx = rc_ctrl.rc.ch[3] * RC_OFFSET; // 前后输入
+    chassis.Vy = rc_ctrl.rc.ch[2] * RC_OFFSET; // 左右输入
+  }
 }
 
 /**
