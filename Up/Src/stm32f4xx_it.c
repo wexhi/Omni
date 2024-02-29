@@ -416,6 +416,19 @@ void USART1_IRQHandler(void)
       {
         yaw_send = recv.yaw;
       }
+
+      if(recv.pitch > 0)
+      {
+        recv.pitch = -(recv.pitch - 180);
+      }
+      else if(recv.pitch < 0)
+      {
+        recv.pitch = -(recv.pitch + 180);
+      }
+      else
+      {
+        recv.pitch = 179;
+      }
     }
     // Rx_len = 8 - temp;
     //  JY901_Process();

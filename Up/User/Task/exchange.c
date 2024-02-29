@@ -6,6 +6,7 @@
 #include "miniPC_process.h"
 
 static attitude_t *attitude_data;       // 姿态数据指针
+static float pitch_angle = 0;           // 云台pitch轴角度
 extern Vision_Recv_s recv;
 // extern fp32 INS_angle[3];
 int16_t INS_angle_send[4];
@@ -21,8 +22,20 @@ void exchange_task()
 	for (;;)
 	{
 		Up_send_to_down();
-		// VisionSetAltitude(INS_angle[0], INS_angle[2] + 180, INS_angle[1]);
-		VisionSetAltitude(attitude_data->Yaw, attitude_data->Pitch + 180, attitude_data->Roll);
+		pitch_angle = attitude_data->Pitch;
+		if(pitch_angle > -180 && pitch_angle < -140)
+		{
+			pitch_angle = -(pitch_angle + 180);
+		}
+		else if(pitch_angle > 140 && pitch_angle < 180)
+		{
+			pitch_angle = -(pitch_angle - 180);
+		}
+		else
+		{
+			pitch_angle = 0.0;
+		}
+		VisionSetAltitude(attitude_data->Yaw, pitch_angle, attitude_data->Roll);
 		VisionSend();
 		osDelay(1);
 	}
