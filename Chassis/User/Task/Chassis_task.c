@@ -9,11 +9,11 @@
 #define CHASSIS_MAX_SPEED 3000
 #define RC_OFFSET CHASSIS_MAX_SPEED / 660
 #define KEY_MAX 7000
-#define WZ_MAX 4000
+#define WZ_MAX 3000
 #define ANGLE_VALVE 5
 #define ANGLE_WEIGHT 60
-#define KEY_START_OFFSET 1
-#define KEY_STOP_OFFSET 2
+#define KEY_START_OFFSET 10
+#define KEY_STOP_OFFSET 20
 
 chassis_t chassis;                // 底盘信息结构体
 pid_struct_t supercap_pid;        // 超级电容PID结构体
@@ -215,6 +215,12 @@ static void GimbalMove(void)
   chassis.Vy = rc_ctrl.rc.ch[2] * RC_OFFSET + key_y_fast - key_y_slow; // 左右输入
   chassis.Wz = rc_ctrl.rc.ch[4] * RC_OFFSET + key_Wz;                  // 旋转输入
 
+  if (chassis.Wz > WZ_MAX / 10) // 旋转速度限制
+  {
+    chassis.Vx = chassis.Vx / 2;
+    chassis.Vy = chassis.Vy / 2;
+  }
+
   rotate(); // 旋转矩阵
 }
 
@@ -233,17 +239,8 @@ static void chassis_follow_gimbal()
     chassis.Wz = -WZ_MAX;
 
   // 从遥控器获取控制输入
-
-  if (chassis.Wz > WZ_MAX / 10 || chassis.Wz < -WZ_MAX / 10) // 旋转速度限制
-  {
-    chassis.Vx = rc_ctrl.rc.ch[3] * RC_OFFSET / 5; // 前后输入
-    chassis.Vy = rc_ctrl.rc.ch[2] * RC_OFFSET / 5; // 左右输入
-  }
-  else
-  {
-    chassis.Vx = rc_ctrl.rc.ch[3] * RC_OFFSET; // 前后输入
-    chassis.Vy = rc_ctrl.rc.ch[2] * RC_OFFSET; // 左右输入
-  }
+  chassis.Vx = rc_ctrl.rc.ch[3] * RC_OFFSET; // 前后输入
+  chassis.Vy = rc_ctrl.rc.ch[2] * RC_OFFSET; // 左右输入
 }
 
 /**
