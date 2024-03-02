@@ -8,12 +8,12 @@
 
 #define CHASSIS_MAX_SPEED 3000
 #define RC_OFFSET CHASSIS_MAX_SPEED / 660
-#define KEY_MAX 7000
+#define KEY_MAX 3000
 #define WZ_MAX 3000
 #define ANGLE_VALVE 5
 #define ANGLE_WEIGHT 60
-#define KEY_START_OFFSET 10
-#define KEY_STOP_OFFSET 20
+#define KEY_START_OFFSET 15
+#define KEY_STOP_OFFSET 30
 
 chassis_t chassis;                // 底盘信息结构体
 pid_struct_t supercap_pid;        // 超级电容PID结构体
