@@ -11,36 +11,31 @@
 gimbal_t gimbal_Pitch;             // 云台电机信息结构体
 static attitude_t *gimba_IMU_data; // 云台IMU数据指针
 extern RC_ctrl_t rc_ctrl;          // 遥控器信息结构体
-extern Vision_Recv_s recv;
+extern Vision_Recv_s recv;         // 视觉接收信息结构体
 
-// 云台电机的初始化
-static void Gimbal_loop_Init();
-
-// 遥控器控制云台电机
-static void Hum_Pitch_control();
-
-// 云台电机的任务
-static void gimbal_current_give();
-
-static void Angle_Limit(fp32 *angle);
-static void detel_calc2(fp32 *angle);
+static void Gimbal_Init();            // 云台电机的初始化
+static void Pitch_control();          // 遥控器控制云台电机
+static void gimbal_current_give();    // 云台电机的任务
+static void Angle_Limit(fp32 *angle); // 限制角度
+static void detel_calc2(fp32 *angle); // 角度差计算
 
 void Gimbal_task(void const *pvParameters)
 {
-    // osDelay(10000);
     gimba_IMU_data = INS_Init(); // IMU先初始化,获取姿态数据指针赋给yaw电机的其他数据来源
-    Gimbal_loop_Init();
+    Gimbal_Init();
     for (;;)
     {
-        Hum_Pitch_control();
-
+        Pitch_control();
         gimbal_current_give();
         osDelay(1);
     }
 }
 
-// 云台电机的初始化
-static void Gimbal_loop_Init()
+/**
+ * @brief 云台Pitch轴电机的初始化
+ *
+ */
+static void Gimbal_Init()
 {
     // 初始化pid参数
     gimbal_Pitch.pid_parameter[0] = 80, gimbal_Pitch.pid_parameter[1] = 0, gimbal_Pitch.pid_parameter[2] = 0;
@@ -52,17 +47,22 @@ static void Gimbal_loop_Init()
     pid_init(&gimbal_Pitch.pid_angle, gimbal_Pitch.pid_angle_parameter, 30000, 30000);
 }
 
-// 给电流
+/**
+ * @brief 云台电机PID计算并使能电机
+ *
+ */
 static void gimbal_current_give()
 {
     gimbal_Pitch.motor_info.set_current = pid_calc(&gimbal_Pitch.pid, gimbal_Pitch.motor_info.rotor_speed, gimbal_Pitch.speed_target);
     set_curruent(MOTOR_6020_0, hcan1, 0, 0, gimbal_Pitch.motor_info.set_current, 0);
 }
 
-static void Hum_Pitch_control()
+/**
+ * @brief 遥控器控制云台电机
+ *
+ */
+static void Pitch_control()
 {
-    // Pitch轴
-    // 把头装上再写吧
     if (rc_ctrl.rc.ch[1] >= -660 && rc_ctrl.rc.ch[1] <= 660)
     {
         if (recv.is_tracking) // if (rc_ctrl.mouse.press_r && recv.is_tracking)
@@ -82,22 +82,26 @@ static void Hum_Pitch_control()
     }
 }
 
+/**
+ * @brief 限制角度
+ *
+ * @param angle 需要限制的角度
+ */
 static void Angle_Limit(fp32 *angle)
 {
     if (*angle <= MIN_ANGLE && *angle >= 0)
-    {
         *angle = MIN_ANGLE;
-    }
     else if (*angle >= MAX_ANGLE)
-    {
         *angle = MAX_ANGLE;
-    }
 }
 
+/**
+ * @brief 角度差计算
+ *
+ * @param angle 需要计算的角度
+ */
 static void detel_calc2(fp32 *angle)
 {
     if (*angle > 180)
-    {
         *angle -= 360;
-    }
 }

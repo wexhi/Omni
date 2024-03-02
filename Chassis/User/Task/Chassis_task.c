@@ -250,7 +250,7 @@ static void chassis_follow_gimbal()
  */
 static void get_UpDown_Err()
 {
-  if (rc_ctrl.rc.s[0] == 1) // 修正IMU误差
+  if (rc_ctrl.rc.s[0] == 1 || x_flag) // 修正IMU误差
     chassis.imu_err = INS.Yaw - UP_C_angle.yaw;
   else
     chassis.err_angle = INS.Yaw - UP_C_angle.yaw - chassis.imu_err; // 获取上下C板角度差

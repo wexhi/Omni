@@ -13,7 +13,7 @@ shooter_t shooter; // 发射机构信息结构体
 // 电机0为拨盘电机，电机1、2为摩擦轮电机，电机3原为弹舱电机，现为备用电机
 
 extern RC_ctrl_t rc_ctrl; // 遥控器信息结构体
-static uint8_t friction_flag;
+static uint8_t friction_flag; // 摩擦轮电机开关
 static int16_t key_dial_speed; // 键盘控制拨盘电机的速度
 
 static void Shooter_Inint();         // 发射机构的初始化
@@ -68,32 +68,32 @@ static void model_choice(void)
     }
     else
     {
+        // 停止
         shooter.friction_speed_target[0] = 0;
         shooter.friction_speed_target[1] = 0;
         shooter.dial_speed_target = 0;
         shooter.bay_speed_target = 0;
-        // 停止
     }
 }
 
 // 拨盘电机控制
 static void dial_control(void)
 {
-    if (rc_ctrl.rc.s[1] == 1 || rc_ctrl.mouse.press_l == 1)
+    if (rc_ctrl.rc.s[1] == 1 || rc_ctrl.mouse.press_l == 1) // 鼠标左键按下发弹
     {
         LEDR_ON();
         LEDB_OFF();
         LEDG_OFF();
         shooter.dial_speed_target = -MAX_DIAL_SPEED;
     }
-    else if (f_flag)
+    else if (f_flag) // 按下f键，拨盘电机反转
     {
         LEDR_OFF();
         LEDB_ON();
         LEDG_OFF();
         shooter.dial_speed_target = key_dial_speed;
     }
-    else
+    else // 其他情况，拨盘电机停转
     {
         LEDR_OFF();
         LEDB_OFF();
@@ -113,50 +113,32 @@ static void friction_control(void)
 static void bay_control(void)
 {
     if (rc_ctrl.rc.s[1] == 2 && !friction_flag)
-    {
         __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 500); // 500 关
-    }
     else
-    {
-        __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 500); // 2100
-    }
+        __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 500); // 2100 开
 }
 
 // 给电流
 static void shooter_current_given(void)
 {
-    shooter.motor_info[0].set_current = pid_calc(&shooter.pid_dial, shooter.motor_info[0].rotor_speed, shooter.dial_speed_target); // 拨盘电机
-    // shooter.motor_info[1].set_current = pid_calc(&shooter.pid_bay, shooter.motor_info[1].rotor_speed, shooter.bay_speed_target);              // 弹舱电机
+    shooter.motor_info[0].set_current = pid_calc(&shooter.pid_dial, shooter.motor_info[0].rotor_speed, shooter.dial_speed_target);            // 拨盘电机
     shooter.motor_info[1].set_current = pid_calc(&shooter.pid_friction, shooter.motor_info[1].rotor_speed, shooter.friction_speed_target[0]); // 摩擦轮电机
     shooter.motor_info[2].set_current = pid_calc(&shooter.pid_friction, shooter.motor_info[2].rotor_speed, shooter.friction_speed_target[1]); // 摩擦轮电机
     set_curruent(MOTOR_3508_0, hcan1, shooter.motor_info[0].set_current, shooter.motor_info[1].set_current, shooter.motor_info[2].set_current, 0);
-    // set_motor_current_shoot(0, shooter.motor_info[0].set_current, shooter.motor_info[1].set_current, shooter.motor_info[2].set_current, 0);
 }
 
 static void GetKeyBoard()
 {
-    if (q_flag)
-    {
+    if (q_flag) // 摩擦轮电机动
         friction_flag = 1;
-    }
-    else if (e_flag)
-    {
+    else if (e_flag) // 摩擦轮电机停
         friction_flag = 0;
-    }
-    if (f_flag)
-    {
+    if (f_flag) // 拨盘电机反转，防止卡弹
         key_dial_speed += KEY_ENTER_OFFSET;
-    }
     else
-    {
         key_dial_speed -= KEY_SLOW_OFFSET;
-    }
     if (key_dial_speed > MAX_DIAL_SPEED / 2)
-    {
         key_dial_speed = MAX_DIAL_SPEED / 2;
-    }
-    else if (key_dial_speed < 0)
-    {
+    else if (key_dial_speed < 0) // 防止溢出
         key_dial_speed = 0;
-    }
 }

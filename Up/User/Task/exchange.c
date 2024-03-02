@@ -5,16 +5,18 @@
 #include <string.h>
 #include "miniPC_process.h"
 
-static attitude_t *attitude_data;       // 姿态数据指针
-static float pitch_angle = 0;           // 云台pitch轴角度
-extern Vision_Recv_s recv;
-// extern fp32 INS_angle[3];
+static attitude_t *attitude_data; // 姿态数据指针
+static float pitch_angle = 0;	  // 云台pitch轴角度
 int16_t INS_angle_send[4];
 uint8_t ins_buf[8];
+
 extern float yaw_send;
 extern uint8_t is_tracking;
-static void ExchangInit();
-static void Up_send_to_down();
+extern Vision_Recv_s recv;
+
+static void ExchangInit();		  // 上下位机通信初始化
+static void VisionAngleProcess(); // 视觉角度处理
+static void Up_send_to_down();	  // 上C向下C发送数据
 
 void exchange_task()
 {
@@ -22,25 +24,17 @@ void exchange_task()
 	for (;;)
 	{
 		Up_send_to_down();
-		pitch_angle = attitude_data->Pitch;
-		if(pitch_angle > -180 && pitch_angle < -140)
-		{
-			pitch_angle = -(pitch_angle + 180);
-		}
-		else if(pitch_angle > 140 && pitch_angle < 180)
-		{
-			pitch_angle = -(pitch_angle - 180);
-		}
-		else
-		{
-			pitch_angle = 0.0;
-		}
+		VisionAngleProcess();
 		VisionSetAltitude(attitude_data->Yaw, pitch_angle, attitude_data->Roll);
 		VisionSend();
 		osDelay(1);
 	}
 }
 
+/**
+ * @brief 上下位机通信初始化
+ *
+ */
 static void ExchangInit()
 {
 	attitude_data = INS_Init();
@@ -63,6 +57,21 @@ static void ExchangInit()
 
 	};
 	VisionInit(&vision_init_config);
+}
+
+/**
+ * @brief 视觉角度处理
+ *
+ */
+static void VisionAngleProcess()
+{
+	pitch_angle = attitude_data->Pitch;
+	if (pitch_angle > -180 && pitch_angle < -140)
+		pitch_angle = -(pitch_angle + 180);
+	else if (pitch_angle > 140 && pitch_angle < 180)
+		pitch_angle = -(pitch_angle - 180);
+	else
+		pitch_angle = 0.0f;
 }
 
 //================================================上C向下C发送数据================================================//
