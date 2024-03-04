@@ -3,6 +3,7 @@
 #include "INS_task.h"
 #include "exchange.h"
 #include "drv_can.h"
+#include "miniPC_process.h"
 #include "stm32f4xx_it.h"
 #define MAX_SPEED 200
 #define MAX_ANGLE 193
@@ -11,7 +12,7 @@
 gimbal_t gimbal_Pitch;             // 云台电机信息结构体
 static attitude_t *gimba_IMU_data; // 云台IMU数据指针
 extern RC_ctrl_t rc_ctrl;          // 遥控器信息结构体
-extern Vision_Recv_s recv;         // 视觉接收信息结构体
+extern Vision_Recv_s* recv;         // 视觉接收信息结构体
 
 static void Gimbal_Init();            // 云台电机的初始化
 static void Pitch_control();          // 遥控器控制云台电机
@@ -65,8 +66,8 @@ static void Pitch_control()
 {
     if (rc_ctrl.rc.ch[1] >= -660 && rc_ctrl.rc.ch[1] <= 660)
     {
-        if (recv.is_tracking) // if (rc_ctrl.mouse.press_r && recv.is_tracking)
-            gimbal_Pitch.angle_target = recv.pitch;
+        if (recv->is_tracking) // if (rc_ctrl.mouse.press_r && recv.is_tracking)
+            gimbal_Pitch.angle_target = recv->pitch;
         else
             gimbal_Pitch.angle_target += rc_ctrl.rc.ch[1] / 660.0 * 0.25 + (rc_ctrl.mouse.y / 16384.00 * 80);
         Angle_Limit(&gimbal_Pitch.angle_target);

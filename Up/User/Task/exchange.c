@@ -5,14 +5,14 @@
 #include <string.h>
 #include "miniPC_process.h"
 
+Vision_Recv_s *recv;
 static attitude_t *attitude_data; // 姿态数据指针
-static float pitch_angle = 0;	  // 云台pitch轴角度
-int16_t INS_angle_send[4];
-uint8_t ins_buf[8];
+static float pitch_angle;		  // 云台pitch轴角度
+static int16_t INS_angle_send[4];
+static uint8_t ins_buf[8];
 
 extern float yaw_send;
 extern uint8_t is_tracking;
-extern Vision_Recv_s recv;
 
 static void ExchangInit();		  // 上下位机通信初始化
 static void VisionAngleProcess(); // 视觉角度处理
@@ -56,7 +56,7 @@ static void ExchangInit()
 		},
 
 	};
-	VisionInit(&vision_init_config);
+	recv = VisionInit(&vision_init_config);
 }
 
 /**

@@ -36,27 +36,6 @@
             "folders": []
           },
           {
-            "name": "Components",
-            "files": [
-              {
-                "path": "../Components/Algorithm/QuaternionEKF.c"
-              },
-              {
-                "path": "../Components/Devices/BMI088driver.c"
-              },
-              {
-                "path": "../Components/Devices/BMI088Middleware.c"
-              },
-              {
-                "path": "../Components/kalman_filter.c"
-              },
-              {
-                "path": "../Components/user_lib.c"
-              }
-            ],
-            "folders": []
-          },
-          {
             "name": "MDK-ARM",
             "files": [
               {
@@ -351,6 +330,9 @@
           },
           {
             "path": "../User/PotocaLayer/rc_potocal.c"
+          },
+          {
+            "path": "../User/robot_def.c"
           }
         ],
         "folders": []
@@ -371,7 +353,7 @@
         "<virtual_root>/Middlewares/ST/STM32_USB_Device_Library/Core/Class",
         "<virtual_root>/Application/Applications/pid_imu.c",
         "<virtual_root>/Application/Applications",
-        "<virtual_root>/USER/robot_def.c"
+        "<virtual_root>/Application/Components"
       ],
       "toolchain": "AC5",
       "compileConfig": {

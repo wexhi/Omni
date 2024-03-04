@@ -37,8 +37,6 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 
-Vision_Recv_s recv;
-extern uint8_t rx_buff_sj[12];
 // Vision_Recv_s *recv;
 /* USER CODE END PD */
 
