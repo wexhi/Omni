@@ -7,20 +7,8 @@
 extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;
 extern RC_ctrl_t rc_ctrl;
-uint16_t can_cnt_1 = 0;
-
-extern gimbal_t gimbal_Yaw, gimbal_Pitch;
-extern chassis_t chassis;
+extern gimbal_t gimbal_Pitch;
 extern shooter_t shooter;
-
-float powerdata[4];
-uint16_t pPowerdata[8];
-
-uint16_t rc_flag = 0;
-uint16_t rc_tmp[5];
-int16_t mouse_x;
-
-uint16_t setpower = 5500;
 
 void CAN1_Init(void)
 {
@@ -140,18 +128,6 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
 
       // 接收底盘imu的Pitch数据(用来检测上下坡限位)
       // Down_pitch = (rx_data[5] << 8) | rx_data[6];
-    }
-
-    if (rx_header.StdId == 0x211)
-    {
-
-      extern float powerdata[4];
-      uint16_t *pPowerdata = (uint16_t *)rx_data;
-
-      powerdata[0] = (float)pPowerdata[0] / 100.f; // 输入电压
-      powerdata[1] = (float)pPowerdata[1] / 100.f; // 电容电压
-      powerdata[2] = (float)pPowerdata[2] / 100.f; // 输入电流
-      powerdata[3] = (float)pPowerdata[3] / 100.f; // P
     }
   }
 }

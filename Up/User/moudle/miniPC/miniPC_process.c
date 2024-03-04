@@ -3,7 +3,7 @@
 #include "robot_def.h"
 
 static Vision_Instance *vision_instance; // 用于和视觉通信的串口实例
-static uint8_t *vis_recv_buff;
+static uint8_t *vis_recv_buff __attribute__((unused));
 
 float yaw_send = 0;
 uint8_t is_tracking = 0;
@@ -148,7 +148,7 @@ Vision_Recv_s *VisionInit(Vision_Init_Config_s *init_config)
     vision_instance = (Vision_Instance *)malloc(sizeof(Vision_Instance));
     memset(vision_instance, 0, sizeof(Vision_Instance));
 
-    init_config->usart_config.module_callback = NULL;
+    init_config->usart_config.module_callback = DecodeVision;
 
     vision_instance->usart = USARTRegister(&init_config->usart_config);
     vision_instance->recv_data = VisionRecvRegister(&init_config->recv_config);
@@ -194,13 +194,16 @@ Vision_Recv_s *VisionInit(Vision_Init_Config_s *init_config)
     return vision_instance->recv_data;
 }
 
+/**
+ * @brief 发送函数
+ *
+ * @param send 待发送数据
+ *
+ */
 void VisionSend()
 {
     static uint8_t send_buff[VISION_SEND_SIZE];
-    // TODO: code to set flag_register
     SendProcess(vision_instance->send_data, send_buff);
-
-    // 将数据转化为seasky协议的数据包
     USBTransmit(send_buff, VISION_SEND_SIZE);
 }
 
