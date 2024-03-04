@@ -178,96 +178,96 @@
               }
             ],
             "folders": []
-          }
-        ]
-      },
-      {
-        "name": "Middlewares",
-        "files": [],
-        "folders": [
-          {
-            "name": "FreeRTOS",
-            "files": [
-              {
-                "path": "../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c"
-              },
-              {
-                "path": "../Middlewares/Third_Party/FreeRTOS/Source/croutine.c"
-              },
-              {
-                "path": "../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c"
-              },
-              {
-                "path": "../Middlewares/Third_Party/FreeRTOS/Source/list.c"
-              },
-              {
-                "path": "../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c"
-              },
-              {
-                "path": "../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c"
-              },
-              {
-                "path": "../Middlewares/Third_Party/FreeRTOS/Source/queue.c"
-              },
-              {
-                "path": "../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c"
-              },
-              {
-                "path": "../Middlewares/Third_Party/FreeRTOS/Source/tasks.c"
-              },
-              {
-                "path": "../Middlewares/Third_Party/FreeRTOS/Source/timers.c"
-              }
-            ],
-            "folders": []
           },
           {
-            "name": "ST",
+            "name": "Middlewares",
             "files": [],
             "folders": [
               {
-                "name": "STM32_USB_Device_Library",
+                "name": "FreeRTOS",
+                "files": [
+                  {
+                    "path": "../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c"
+                  },
+                  {
+                    "path": "../Middlewares/Third_Party/FreeRTOS/Source/croutine.c"
+                  },
+                  {
+                    "path": "../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c"
+                  },
+                  {
+                    "path": "../Middlewares/Third_Party/FreeRTOS/Source/list.c"
+                  },
+                  {
+                    "path": "../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c"
+                  },
+                  {
+                    "path": "../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c"
+                  },
+                  {
+                    "path": "../Middlewares/Third_Party/FreeRTOS/Source/queue.c"
+                  },
+                  {
+                    "path": "../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c"
+                  },
+                  {
+                    "path": "../Middlewares/Third_Party/FreeRTOS/Source/tasks.c"
+                  },
+                  {
+                    "path": "../Middlewares/Third_Party/FreeRTOS/Source/timers.c"
+                  }
+                ],
+                "folders": []
+              },
+              {
+                "name": "ST",
                 "files": [],
                 "folders": [
                   {
-                    "name": "Class",
+                    "name": "STM32_USB_Device_Library",
                     "files": [],
                     "folders": [
                       {
-                        "name": "CDC",
+                        "name": "Class",
+                        "files": [],
+                        "folders": [
+                          {
+                            "name": "CDC",
+                            "files": [],
+                            "folders": [
+                              {
+                                "name": "Src",
+                                "files": [
+                                  {
+                                    "path": "../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c"
+                                  }
+                                ],
+                                "folders": []
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Core",
                         "files": [],
                         "folders": [
                           {
                             "name": "Src",
                             "files": [
                               {
-                                "path": "../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c"
+                                "path": "../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c"
+                              },
+                              {
+                                "path": "../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c"
+                              },
+                              {
+                                "path": "../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c"
                               }
                             ],
                             "folders": []
                           }
                         ]
-                      }
-                    ]
-                  },
-                  {
-                    "name": "Core",
-                    "files": [],
-                    "folders": [
-                      {
-                        "name": "Src",
-                        "files": [
-                          {
-                            "path": "../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c"
-                          },
-                          {
-                            "path": "../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c"
-                          },
-                          {
-                            "path": "../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c"
-                          }
-                        ],
-                        "folders": []
                       }
                     ]
                   }
@@ -281,6 +281,9 @@
         "name": "RTOS TASK",
         "files": [
           {
+            "path": "../User/robot_def.c"
+          },
+          {
             "path": "../User/Task/exchange.c"
           },
           {
@@ -291,15 +294,6 @@
           },
           {
             "path": "../User/Task/Shoot_task.c"
-          }
-        ],
-        "folders": []
-      },
-      {
-        "name": "USER",
-        "files": [
-          {
-            "path": "../User/robot_def.c"
           }
         ],
         "folders": []
@@ -329,7 +323,9 @@
         "<virtual_root>/USER/rc_potocal.c",
         "<virtual_root>/USER/pid.c",
         "<virtual_root>/USER/drv_can.c",
-        "<virtual_root>/USER/CRC.c"
+        "<virtual_root>/USER/CRC.c",
+        "<virtual_root>/USER/robot_def.c",
+        "<virtual_root>/USER"
       ],
       "toolchain": "AC5",
       "compileConfig": {
