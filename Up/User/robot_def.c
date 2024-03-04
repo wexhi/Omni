@@ -10,7 +10,6 @@
 #include "ins_task.h"
 #include "drv_can.h"
 #include "drv_usart.h"
-#include "bsp_delay.h"
 #include "bsp_init.h"
 
 osThreadId super_capHandle;
