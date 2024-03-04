@@ -12,7 +12,6 @@
 #include "drv_usart.h"
 #include "bsp_init.h"
 
-osThreadId super_capHandle;
 osThreadId Gimbal_taskHandle;
 osThreadId shoot_taskHandle;
 osThreadId insTaskHandle;
