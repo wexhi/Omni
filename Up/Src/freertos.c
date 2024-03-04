@@ -54,11 +54,7 @@
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
 // osThreadId Chassis_taskHandle;
-osThreadId super_capHandle;
-osThreadId Gimbal_taskHandle;
-osThreadId shoot_taskHandle;
-osThreadId insTaskHandle;
-osThreadId exchangeTaskHandle;
+
 /* USER CODE END Variables */
 osThreadId defaultTaskHandle;
 
@@ -137,17 +133,7 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
-  osThreadDef(instask, StartINSTASK, osPriorityRealtime, 0, 1024);
-  insTaskHandle = osThreadCreate(osThread(instask), NULL); // 由于是阻塞读取传感器,为姿态解算设置较高优先级,确保�?1khz的频率执�?
 
-  osThreadDef(exchangeTask, exchange_task, osPriorityNormal, 0, 128);
-  exchangeTaskHandle = osThreadCreate(osThread(exchangeTask), NULL);
-
-  osThreadDef(GimbalTask, Gimbal_task, osPriorityRealtime, 0, 512);
-  Gimbal_taskHandle = osThreadCreate(osThread(GimbalTask), NULL);
-
-  osThreadDef(shootTask, Shoot_task, osPriorityNormal, 0, 256);
-  shoot_taskHandle = osThreadCreate(osThread(shootTask), NULL);
   /* USER CODE END RTOS_THREADS */
 
 }
@@ -164,29 +150,13 @@ void StartDefaultTask(void const * argument)
   /* init code for USB_DEVICE */
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN StartDefaultTask */
-  // HAL_GPIO_WritePin(GPIOH, GPIO_PIN_11, GPIO_PIN_SET);
-  // HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_SET);
-  // uint8_t TIM1_flag = 1; // ï¿½ï¿½Öªï¿½ï¿½bug // è¿™ä¸œè¥¿æœ�?�ä�??ä¹ˆç”¨å�?�Šï¼�?
-  /* Infinite loop */
-  for (;;)
-  {
-    osDelay(1);
-  }
+  osThreadTerminate(NULL); // 避免空置和切换占用cpu
   /* USER CODE END StartDefaultTask */
 }
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
-__attribute__((noreturn)) void StartINSTASK(void const *argument)
-{
-  INS_Init();                                  // 确保BMI088被正确初始化.
-  for (;;)
-  {
-    // 1kHz
-    INS_Task();
-    osDelay(1);
-  }
-}
+
 /* USER CODE END StartDefaultTask */
 
 /* USER CODE END Application */

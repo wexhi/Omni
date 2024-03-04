@@ -16,7 +16,6 @@ extern RC_ctrl_t rc_ctrl; // 遥控器信息结构体
 static uint8_t friction_flag; // 摩擦轮电机开关
 static int16_t key_dial_speed; // 键盘控制拨盘电机的速度
 
-static void Shooter_Inint();         // 发射机构的初始化
 static void model_choice();          // 模式选择
 static void dial_control();          // 拨盘电机控制
 static void friction_control();      // 摩擦轮电机控制
@@ -36,8 +35,11 @@ void Shoot_task(void const *pvParameters)
 }
 
 // 发射机构的初始化
-static void Shooter_Inint(void)
+void Shooter_Inint(void)
 {
+    HAL_TIM_Base_Start(&htim1);
+    HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+    
     // 初始化pid参数
     shooter.pid_dial_para[0] = 20, shooter.pid_dial_para[1] = 0, shooter.pid_dial_para[2] = 0;
     shooter.pid_friction_para[0] = 30, shooter.pid_friction_para[1] = 0.1, shooter.pid_friction_para[2] = 0;

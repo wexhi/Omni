@@ -12,9 +12,8 @@
 gimbal_t gimbal_Pitch;             // 云台电机信息结构体
 static attitude_t *gimba_IMU_data; // 云台IMU数据指针
 extern RC_ctrl_t rc_ctrl;          // 遥控器信息结构体
-extern Vision_Recv_s* recv;         // 视觉接收信息结构体
+extern Vision_Recv_s *recv;        // 视觉接收信息结构体
 
-static void Gimbal_Init();            // 云台电机的初始化
 static void Pitch_control();          // 遥控器控制云台电机
 static void gimbal_current_give();    // 云台电机的任务
 static void Angle_Limit(fp32 *angle); // 限制角度
@@ -22,8 +21,6 @@ static void detel_calc2(fp32 *angle); // 角度差计算
 
 void Gimbal_task(void const *pvParameters)
 {
-    gimba_IMU_data = INS_Init(); // IMU先初始化,获取姿态数据指针赋给yaw电机的其他数据来源
-    Gimbal_Init();
     for (;;)
     {
         Pitch_control();
@@ -36,8 +33,10 @@ void Gimbal_task(void const *pvParameters)
  * @brief 云台Pitch轴电机的初始化
  *
  */
-static void Gimbal_Init()
+void Gimbal_Init()
 {
+    gimba_IMU_data = INS_Init(); // IMU先初始化,获取姿态数据指针赋给yaw电机的其他数据来源
+
     // 初始化pid参数
     gimbal_Pitch.pid_parameter[0] = 80, gimbal_Pitch.pid_parameter[1] = 0, gimbal_Pitch.pid_parameter[2] = 0;
     gimbal_Pitch.pid_angle_parameter[0] = 10, gimbal_Pitch.pid_angle_parameter[1] = 0.01, gimbal_Pitch.pid_angle_parameter[2] = 0;

@@ -10,4 +10,6 @@
 
 void Shoot_task(void const *pvParameters);
 
+void Shooter_Inint(void);
+
 #endif // !SHOOT_TASK_H__

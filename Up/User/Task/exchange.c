@@ -14,13 +14,12 @@ static uint8_t ins_buf[8];
 extern float yaw_send;
 extern uint8_t is_tracking;
 
-static void ExchangInit();		  // 上下位机通信初始化
+void ExchangInit();		  // 上下位机通信初始化
 static void VisionAngleProcess(); // 视觉角度处理
 static void Up_send_to_down();	  // 上C向下C发送数据
 
 void exchange_task()
 {
-	ExchangInit();
 	for (;;)
 	{
 		Up_send_to_down();
@@ -35,7 +34,7 @@ void exchange_task()
  * @brief 上下位机通信初始化
  *
  */
-static void ExchangInit()
+void ExchangInit()
 {
 	attitude_data = INS_Init();
 
