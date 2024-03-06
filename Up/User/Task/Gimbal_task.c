@@ -7,7 +7,7 @@
 #include "stm32f4xx_it.h"
 #define MAX_SPEED 200
 #define MAX_ANGLE 193
-#define MIN_ANGLE 160
+#define MIN_ANGLE 143
 
 gimbal_t gimbal_Pitch;             // 云台电机信息结构体
 static attitude_t *gimba_IMU_data; // 云台IMU数据指针
@@ -43,8 +43,8 @@ void Gimbal_Init()
     gimbal_Pitch.angle_target = MIN_ANGLE;
 
     // 初始化pid结构体
-    pid_init(&gimbal_Pitch.pid, gimbal_Pitch.pid_parameter, 30000, 30000);
-    pid_init(&gimbal_Pitch.pid_angle, gimbal_Pitch.pid_angle_parameter, 30000, 30000);
+    pid_init(&gimbal_Pitch.pid, gimbal_Pitch.pid_parameter, 30000, 3000);
+    pid_init(&gimbal_Pitch.pid_angle, gimbal_Pitch.pid_angle_parameter, 30000, 3000);
 }
 
 /**

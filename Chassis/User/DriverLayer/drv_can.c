@@ -12,7 +12,7 @@ uint8_t rx_data2[8];
 extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;
 extern RC_ctrl_t rc_ctrl;
-extern gimbal_t gimbal_Yaw, gimbal_Pitch;
+extern gimbal_t gimbal_Yaw;
 extern chassis_t chassis;
 extern shooter_t shooter;
 
