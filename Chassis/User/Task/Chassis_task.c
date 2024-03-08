@@ -6,19 +6,20 @@
 #include "arm_math.h"
 #include "judge.h"
 
-#define CHASSIS_MAX_SPEED 3000
+#define CHASSIS_MAX_SPEED 4000
 #define RC_OFFSET CHASSIS_MAX_SPEED / 660
-#define KEY_MAX 3000
-#define WZ_MAX 3000
+#define KEY_MAX 4000
+#define WZ_MAX 4000
 #define ANGLE_VALVE 5
 #define ANGLE_WEIGHT 60
 #define KEY_START_OFFSET 15
 #define KEY_STOP_OFFSET 30
 
-chassis_t chassis;                // 底盘信息结构体
-pid_struct_t supercap_pid;        // 超级电容PID结构体
-fp32 superpid[3] = {120, 0.1, 0}; // 超级电容PID参数
-int8_t chassis_mode;              // 底盘模式
+chassis_t chassis;                  // 底盘信息结构体
+pid_struct_t supercap_pid;          // 超级电容PID结构体
+fp32 superpid[3] = {120, 0.1, 0};   // 超级电容PID参数
+int8_t chassis_mode;                // 底盘模式
+static attitude_t *chassis_IMU_data; // 底盘IMU数据
 // 功率限制算法的变量定义
 float Watch_Power_Max;                                                 // 限制值
 float Watch_Power;                                                     // 实时功率
@@ -34,7 +35,6 @@ static int16_t key_x_fast, key_y_fast, key_x_slow, key_y_slow, key_Wz; // 键盘
 extern RC_ctrl_t rc_ctrl;            // 遥控器信息结构体
 extern float powerdata[4];           // 电源数据
 extern UP_C_angle_t UP_C_angle;      // 上C的陀螺仪数据
-extern INS_t INS;                    // IMU信息结构体
 extern ext_power_heat_data_t powerd; // 电源数据
 
 static void Chassis_Init();                                                           // 底盘初始化
@@ -72,6 +72,8 @@ void Chassis_task(void const *pvParameters)
  */
 static void Chassis_Init()
 {
+  chassis_IMU_data = INS_Init(); // 底盘IMU初始化
+
   chassis.pid_parameter[0] = 30, chassis.pid_parameter[1] = 0.5, chassis.pid_parameter[2] = 0; // 底盘电机PID参数
 
   for (uint8_t i = 0; i < 4; i++)
@@ -251,9 +253,9 @@ static void chassis_follow_gimbal()
 static void get_UpDown_Err()
 {
   if (rc_ctrl.rc.s[0] == 1 || x_flag) // 修正IMU误差
-    chassis.imu_err = INS.Yaw - UP_C_angle.yaw;
+    chassis.imu_err = chassis_IMU_data->Yaw - UP_C_angle.yaw;
   else
-    chassis.err_angle = INS.Yaw - UP_C_angle.yaw - chassis.imu_err; // 获取上下C板角度差
+    chassis.err_angle = chassis_IMU_data->Yaw - UP_C_angle.yaw - chassis.imu_err; // 获取上下C板角度差
 
   if (chassis.Wz > 60)
     chassis.err_angle -= 0.02f;

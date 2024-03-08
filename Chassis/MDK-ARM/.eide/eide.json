@@ -3,7 +3,9 @@
   "type": "ARM",
   "dependenceList": [],
   "srcDirs": [
-    ".eide/deps"
+    ".eide/deps",
+    "../User/BSP",
+    "../User/moudle"
   ],
   "virtualFolder": {
     "name": "<virtual_root>",
@@ -18,51 +20,6 @@
         "name": "Application",
         "files": [],
         "folders": [
-          {
-            "name": "Applications",
-            "files": [
-              {
-                "path": "../Application/ins_task.c"
-              }
-            ],
-            "folders": []
-          },
-          {
-            "name": "Bsp",
-            "files": [
-              {
-                "path": "../Bsp/bsp_dwt.c"
-              },
-              {
-                "path": "../Bsp/bsp_PWM.c"
-              }
-            ],
-            "folders": []
-          },
-          {
-            "name": "Components",
-            "files": [
-              {
-                "path": "../Components/Algorithm/QuaternionEKF.c"
-              },
-              {
-                "path": "../Components/Controller/controller.c"
-              },
-              {
-                "path": "../Components/Devices/BMI088driver.c"
-              },
-              {
-                "path": "../Components/Devices/BMI088Middleware.c"
-              },
-              {
-                "path": "../Components/kalman_filter.c"
-              },
-              {
-                "path": "../Components/user_lib.c"
-              }
-            ],
-            "folders": []
-          },
           {
             "name": "MDK-ARM",
             "files": [
@@ -255,31 +212,10 @@
             "path": "../User/Task/Gimbal_task.c"
           },
           {
+            "path": "../User/Task/INS_task.c"
+          },
+          {
             "path": "../User/Task/UI_task.c"
-          }
-        ],
-        "folders": []
-      },
-      {
-        "name": "USER",
-        "files": [
-          {
-            "path": "../User/AlgorithmLayer/CRC.c"
-          },
-          {
-            "path": "../User/AlgorithmLayer/pid.c"
-          },
-          {
-            "path": "../User/DriverLayer/drv_can.c"
-          },
-          {
-            "path": "../User/DriverLayer/drv_usart.c"
-          },
-          {
-            "path": "../User/PotocaLayer/judge.c"
-          },
-          {
-            "path": "../User/PotocaLayer/rc_potocal.c"
           }
         ],
         "folders": []
@@ -294,7 +230,10 @@
   },
   "targets": {
     "C_Board_Standard_Robot": {
-      "excludeList": [],
+      "excludeList": [
+        "<virtual_root>/Application/Bsp",
+        "<virtual_root>/USER/CRC.c"
+      ],
       "toolchain": "AC5",
       "compileConfig": {
         "cpuType": "Cortex-M4",
@@ -454,7 +393,17 @@
           "../User/Task",
           "../User/DriverLayer",
           "../User/AlgorithmLayer",
-          "../User/PotocaLayer"
+          "../User/PotocaLayer",
+          "../User/BSP",
+          "../User/moudle",
+          "../User/BSP/CAN",
+          "../User/BSP/DWT",
+          "../User/BSP/USART",
+          "../User/moudle/algorithm",
+          "../User/moudle/imu",
+          "../User/moudle/judge",
+          "../User/moudle/miniPC",
+          "../User/moudle/remote"
         ],
         "libList": [],
         "sourceDirList": [],
