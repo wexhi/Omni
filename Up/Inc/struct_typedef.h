@@ -58,16 +58,6 @@ typedef struct
     float err_angle;             // 云台电机的目标角度
 } gimbal_t;
 
-typedef struct
-{
-    /* data */
-    motor_info_t motor_info[4]; // 电机信息结构体
-    fp32 pid_parameter[3];      // 底盘电机的pid参数
-    pid_struct_t pid[4];        // 底盘电机的pid结构体
-    int16_t speed_target[4];    // 底盘电机的目标速度
-    int16_t Vx, Vy, Wz;         // 底盘电机的目标速度
-} chassis_t;
-
 typedef __packed struct
 {
     __packed struct

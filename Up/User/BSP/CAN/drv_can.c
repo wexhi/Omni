@@ -11,6 +11,9 @@ extern RC_ctrl_t rc_ctrl;
 extern gimbal_t gimbal_Pitch;
 extern shooter_t shooter;
 
+static uint8_t rx_data1[8];
+static uint8_t rx_data2[8];
+
 void CAN1_Init(void)
 {
   CAN_FilterTypeDef can_filter;
@@ -57,57 +60,55 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
 
   if (hcan->Instance == CAN1)
   {
-    uint8_t rx_data[8];
-    HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header, rx_data); // receive can1 data
+    HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header, rx_data1); // receive can1 data
 
     // Pitch云台电机信息接收
     if (rx_header.StdId == GIMBAL_PITCH_ID)
     {
-      process_MotorInfo(&gimbal_Pitch.motor_info, rx_data);
+      process_MotorInfo(&gimbal_Pitch.motor_info, rx_data1);
     }
 
     // 發射機構电机信息接收
     if (rx_header.StdId >= SHOOTER_ID_START && rx_header.StdId <= SHOOTER_ID_END)
     {
-      process_MotorInfo(&shooter.motor_info[rx_header.StdId - SHOOTER_ID_START], rx_data);
+      process_MotorInfo(&shooter.motor_info[rx_header.StdId - SHOOTER_ID_START], rx_data1);
     }
   }
 
   if (hcan->Instance == CAN2)
   {
-    uint8_t rx_data[8];
-    HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header, rx_data); // receive can2 data
+    HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header, rx_data2); // receive can2 data
     // 接收遥控器数据
     if (rx_header.StdId == 0x33) // 双C板传递遥控器信号的接口标识符
     {
-      rc_ctrl.rc.ch[0] = ((rx_data[0] | (rx_data[1] << 8)) & 0x07ff) - 1024;                 //!< Channel 0  中值为1024，最大值1684，最小值364，波动范围：660
-      rc_ctrl.rc.ch[1] = ((((rx_data[1] >> 3) & 0xff) | (rx_data[2] << 5)) & 0x07ff) - 1024; //!< Channel 1
-      rc_ctrl.rc.ch[2] = ((((rx_data[2] >> 6) & 0xff) | (rx_data[3] << 2) |                  //!< Channel 2
-                           (rx_data[4] << 10)) &
+      rc_ctrl.rc.ch[0] = ((rx_data2[0] | (rx_data2[1] << 8)) & 0x07ff) - 1024;                 //!< Channel 0  中值为1024，最大值1684，最小值364，波动范围：660
+      rc_ctrl.rc.ch[1] = ((((rx_data2[1] >> 3) & 0xff) | (rx_data2[2] << 5)) & 0x07ff) - 1024; //!< Channel 1
+      rc_ctrl.rc.ch[2] = ((((rx_data2[2] >> 6) & 0xff) | (rx_data2[3] << 2) |                  //!< Channel 2
+                           (rx_data2[4] << 10)) &
                           0x07ff) -
                          1024;
-      rc_ctrl.rc.ch[3] = ((((rx_data[4] >> 1) & 0xff) | (rx_data[5] << 7)) & 0x07ff) - 1024; //!< Channel 3
-      rc_ctrl.rc.s[0] = ((rx_data[5] >> 4) & 0x0003);                                        // 这是右
-      rc_ctrl.rc.s[1] = ((rx_data[5] >> 4) & 0x000C) >> 2;                                   // 这才是左
-      rc_ctrl.mouse.x = rx_data[6] | (rx_data[7] << 8);                                      //!< Mouse X axis
+      rc_ctrl.rc.ch[3] = ((((rx_data2[4] >> 1) & 0xff) | (rx_data2[5] << 7)) & 0x07ff) - 1024; //!< Channel 3
+      rc_ctrl.rc.s[0] = ((rx_data2[5] >> 4) & 0x0003);                                         // 这是右
+      rc_ctrl.rc.s[1] = ((rx_data2[5] >> 4) & 0x000C) >> 2;                                    // 这才是左
+      rc_ctrl.mouse.x = rx_data2[6] | (rx_data2[7] << 8);                                      //!< Mouse X axis
     }
     if (rx_header.StdId == 0x34) // 双C板传递遥控器信号的接口标识符
     {
-      rc_ctrl.mouse.y = rx_data[0] | (rx_data[1] << 8); //!< Mouse Y axis
-      rc_ctrl.mouse.z = rx_data[2] | (rx_data[3] << 8); //!< Mouse Z axis
-      rc_ctrl.mouse.press_l = rx_data[4];               //!< Mouse Left Is Press ?
-      rc_ctrl.mouse.press_r = rx_data[5];               //!< Mouse Right Is Press ?
-      rc_ctrl.key.v = rx_data[6] | (rx_data[7] << 8);
+      rc_ctrl.mouse.y = rx_data2[0] | (rx_data2[1] << 8); //!< Mouse Y axis
+      rc_ctrl.mouse.z = rx_data2[2] | (rx_data2[3] << 8); //!< Mouse Z axis
+      rc_ctrl.mouse.press_l = rx_data2[4];                //!< Mouse Left Is Press ?
+      rc_ctrl.mouse.press_r = rx_data2[5];                //!< Mouse Right Is Press ?
+      rc_ctrl.key.v = rx_data2[6] | (rx_data2[7] << 8);
 
       // Some flag of keyboard
-      w_flag = (rx_data[6] & 0x01);
-      s_flag = (rx_data[6] & 0x02);
-      a_flag = (rx_data[6] & 0x04);
-      d_flag = (rx_data[6] & 0x08);
-      q_flag = (rx_data[6] & 0x40);
-      e_flag = (rx_data[6] & 0x80);
-      shift_flag = (rx_data[6] & 0x10);
-      ctrl_flag = (rx_data[6] & 0x20);
+      w_flag = (rx_data2[6] & 0x01);
+      s_flag = (rx_data2[6] & 0x02);
+      a_flag = (rx_data2[6] & 0x04);
+      d_flag = (rx_data2[6] & 0x08);
+      q_flag = (rx_data2[6] & 0x40);
+      e_flag = (rx_data2[6] & 0x80);
+      shift_flag = (rx_data2[6] & 0x10);
+      ctrl_flag = (rx_data2[6] & 0x20);
       press_left = rc_ctrl.mouse.press_l;
       press_right = rc_ctrl.mouse.press_r;
       // HAL_GPIO_TogglePin( GPIOH, GPIO_PIN_11);
@@ -122,15 +123,14 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
     }
     if (rx_header.StdId == 0x35) // 双C板传递遥控器信号的接口标识符
     {
-      rc_ctrl.rc.ch[4] = (rx_data[0] | (rx_data[1] << 8)) - 1024; //!< Channel 4
+      rc_ctrl.rc.ch[4] = (rx_data2[0] | (rx_data2[1] << 8)) - 1024; //!< Channel 4
     }
     if (rx_header.StdId == 0x55) // 接收上板数据
     {
-      memcpy(&shooter.shoot_heat_limit, rx_data, 2);
-      memcpy(&shooter.shoot_heat, rx_data + 2, 2);
-      memcpy(&shooter.cooling_value, rx_data + 4, 2);
+      memcpy(&shooter.shoot_heat_limit, rx_data2, 2);
+      memcpy(&shooter.shoot_heat, rx_data2 + 2, 2);
+      memcpy(&shooter.cooling_value, rx_data2 + 4, 2);
     }
-
   }
 }
 

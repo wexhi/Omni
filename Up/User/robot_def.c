@@ -34,7 +34,7 @@ void RobotInit()
     CAN1_Init();
     CAN2_Init();
     // USART6_Init();
-    USART3_Init();
+    // USART3_Init();
     // INS_Init(); // 确保BMI088被正确初始化.
     Shooter_Inint();
     Gimbal_Init();

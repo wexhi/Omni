@@ -2,10 +2,9 @@
 #include "INS_task.h"
 #include "exchange.h"
 
-int16_t Rotate_w;
 
 // IMU
-extern ins_data_t ins_data;
+
 // flag for keyboard
 uint16_t w_flag;
 uint16_t s_flag;
