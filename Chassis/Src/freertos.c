@@ -54,13 +54,6 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
-osThreadId Chassis_taskHandle;
-osThreadId myTask02Handle;
-osThreadId super_capHandle;
-osThreadId UI_taskHandle;
-osThreadId Gimbal_taskHandle;
-osThreadId INSTaskHandle;
-osThreadId exchangeTaskHandle;
 osThreadId defaultTaskHandle;
 /* USER CODE END Variables */
 
@@ -135,49 +128,11 @@ void MX_FREERTOS_Init(void)
   /* Create the thread(s) */
   /* definition and creation of INSTask */
 
-
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
-  osThreadDef(INSTask, StartINSTask, osPriorityRealtime, 0, 2048);
-  INSTaskHandle = osThreadCreate(osThread(INSTask), NULL);
-
   osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
-
-  osThreadDef(Chassistask, Chassis_task, osPriorityNormal, 0, 512); // �����ƶ�����
-  Chassis_taskHandle = osThreadCreate(osThread(Chassistask), NULL);
-
-  osThreadDef(UItask, UI_Task, osPriorityRealtime, 0, 1024);
-  UI_taskHandle = osThreadCreate(osThread(UItask), NULL);
-
-  osThreadDef(exchangeTask, exchange_task, osPriorityNormal, 0, 128);
-  exchangeTaskHandle = osThreadCreate(osThread(exchangeTask), NULL);
-
-  osThreadDef(GimbalTask, Gimbal_task, osPriorityNormal, 0, 512);
-  Gimbal_taskHandle = osThreadCreate(osThread(GimbalTask), NULL);
-
-
   /* USER CODE END RTOS_THREADS */
-}
-
-/* USER CODE BEGIN Header_StartINSTask */
-/**
- * @brief Function implementing the INSTask thread.
- * @param argument: Not used
- * @retval None
- */
-/* USER CODE END Header_StartINSTask */
-void StartINSTask(void const *argument)
-{
-  /* USER CODE BEGIN StartINSTask */
-  INS_Init();
-  /* Infinite loop */
-  for (;;)
-  {
-    INS_Task();
-    osDelay(1);
-  }
-  /* USER CODE END StartINSTask */
 }
 
 /* Private application code --------------------------------------------------*/
@@ -185,14 +140,7 @@ void StartINSTask(void const *argument)
 void StartDefaultTask(void const *argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
-  HAL_GPIO_WritePin(GPIOH, GPIO_PIN_11, GPIO_PIN_SET);
-  HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_SET);
-  // uint8_t TIM1_flag = 1; // ��֪��bug // 这东西有什么用啊？
-  /* Infinite loop */
-  for (;;)
-  {
-    osDelay(1);
-  }
+  osThreadTerminate(NULL); // 避免空置和切换占用cpu
   /* USER CODE END StartDefaultTask */
 }
 /* USER CODE END Application */

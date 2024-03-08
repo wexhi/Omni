@@ -18,6 +18,8 @@ extern chassis_t chassis;
 extern int16_t Drifting_yaw;
 extern uint16_t Down_ins_yaw;
 
+
+void Chassis_Init(void);
 void Chassis_task(void const *pvParameters);
 
 #endif

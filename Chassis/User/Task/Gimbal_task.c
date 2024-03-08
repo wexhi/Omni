@@ -13,7 +13,6 @@ extern uint8_t is_track;        // 是否自瞄
 extern UP_C_angle_t UP_C_angle; // 上C的陀螺仪数据
 extern RC_ctrl_t rc_ctrl;       // 遥控器信息结构体
 
-static void Gimbal_Init();           // 云台电机的初始化
 static void mode_select();           // 模式选择
 static void gimbal_current_give();   // 云台电机的任务
 static void RC_Stop();               // 遥控器控制云台电机
@@ -22,7 +21,6 @@ static void detel_calc(fp32 *angle); // 云台角度计算，防止角度突变
 
 void Gimbal_task(void const *pvParameters)
 {
-    Gimbal_Init(); // 云台电机初始化
     for (;;)
     {
         mode_select();         // 模式选择
@@ -35,7 +33,7 @@ void Gimbal_task(void const *pvParameters)
  * @brief YAW云台任务初始化
  *
  */
-static void Gimbal_Init()
+void Gimbal_Init()
 {
     // 初始化pid参数
     gimbal_Yaw.pid_parameter[0] = 80, gimbal_Yaw.pid_parameter[1] = 0.5, gimbal_Yaw.pid_parameter[2] = 0;
@@ -78,15 +76,6 @@ static void gimbal_current_give()
  */
 static void RC_Stop()
 {
-    // if (rc_ctrl.rc.ch[0] >= -660 && rc_ctrl.rc.ch[0] <= 660)
-    // {
-    //     gimbal_Yaw.speed_target = -rc_ctrl.rc.ch[0] / 660.0 * MAX_SPEED;
-    //     gimbal_Yaw.angle_target = UP_C_angle.yaw; // 保证切换模式后角度不突变
-    // }
-    // else
-    // {
-    // gimbal_Yaw.speed_target = 0;
-    // }
     gimbal_Yaw.angle_target = UP_C_angle.yaw; // 保证切换模式后角度不突变
     set_motor_current_gimbal(0, 0, 0, 0, 0);
 }

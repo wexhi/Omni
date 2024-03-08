@@ -203,6 +203,12 @@
         "name": "RTOS TASK",
         "files": [
           {
+            "path": "../User/robot_def.c"
+          },
+          {
+            "path": "../User/robot_def.h"
+          },
+          {
             "path": "../User/Task/Chassis_task.c"
           },
           {
@@ -403,7 +409,8 @@
           "../User/moudle/imu",
           "../User/moudle/judge",
           "../User/moudle/miniPC",
-          "../User/moudle/remote"
+          "../User/moudle/remote",
+          "../User"
         ],
         "libList": [],
         "sourceDirList": [],

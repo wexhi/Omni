@@ -15,10 +15,10 @@
 #define KEY_START_OFFSET 15
 #define KEY_STOP_OFFSET 30
 
-chassis_t chassis;                  // 底盘信息结构体
-pid_struct_t supercap_pid;          // 超级电容PID结构体
-fp32 superpid[3] = {120, 0.1, 0};   // 超级电容PID参数
-int8_t chassis_mode;                // 底盘模式
+chassis_t chassis;                   // 底盘信息结构体
+pid_struct_t supercap_pid;           // 超级电容PID结构体
+fp32 superpid[3] = {120, 0.1, 0};    // 超级电容PID参数
+int8_t chassis_mode;                 // 底盘模式
 static attitude_t *chassis_IMU_data; // 底盘IMU数据
 // 功率限制算法的变量定义
 float Watch_Power_Max;                                                 // 限制值
@@ -37,7 +37,6 @@ extern float powerdata[4];           // 电源数据
 extern UP_C_angle_t UP_C_angle;      // 上C的陀螺仪数据
 extern ext_power_heat_data_t powerd; // 电源数据
 
-static void Chassis_Init();                                                           // 底盘初始化
 static void Chassis_loop_Init();                                                      // 底盘循环初始化
 static void mode_chooce();                                                            // 模式选择
 static void GimbalMove(void);                                                         // 遥控器控制底盘电机
@@ -52,7 +51,6 @@ static void Chassis_Power_Limit(double Chassis_pidout_target_limit);            
 
 void Chassis_task(void const *pvParameters)
 {
-  Chassis_Init(); // 底盘初始化
 
   for (;;) // 底盘运动任务
   {
@@ -70,7 +68,7 @@ void Chassis_task(void const *pvParameters)
  *
  * @todo 加入超级电容PID参数初始化
  */
-static void Chassis_Init()
+void Chassis_Init()
 {
   chassis_IMU_data = INS_Init(); // 底盘IMU初始化
 
