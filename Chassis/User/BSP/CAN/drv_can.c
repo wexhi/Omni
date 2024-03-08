@@ -14,7 +14,6 @@ extern CAN_HandleTypeDef hcan2;
 extern RC_ctrl_t rc_ctrl;
 extern gimbal_t gimbal_Yaw;
 extern chassis_t chassis;
-extern shooter_t shooter;
 
 int16_t up_angle[2] = {0};
 int16_t aim_target;

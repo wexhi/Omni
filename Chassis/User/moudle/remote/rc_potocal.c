@@ -5,7 +5,6 @@
 int16_t Rotate_w;
 
 // IMU
-extern ins_data_t ins_data;
 // flag for keyboard
 uint16_t w_flag;
 uint16_t s_flag;
@@ -74,8 +73,8 @@ void USART3_rxDataHandler(uint8_t *rxBuf)
 	temp_remote[4] = (Rotate_w & 0xff);
 
 	// 传输下C板的Pitch数据给上C
-	temp_remote[5] = ((int)ins_data.angle[1] >> 8) & 0xff; // 先发高8位
-	temp_remote[6] = (int)ins_data.angle[1] & 0xff;
+	temp_remote[5] = 0; // 先发高8位
+	temp_remote[6] = 0;
 
 	temp_remote[7] = 0;
 

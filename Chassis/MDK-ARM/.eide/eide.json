@@ -219,9 +219,6 @@
           },
           {
             "path": "../User/Task/INS_task.c"
-          },
-          {
-            "path": "../User/Task/UI_task.c"
           }
         ],
         "folders": []
@@ -238,7 +235,9 @@
     "C_Board_Standard_Robot": {
       "excludeList": [
         "<virtual_root>/Application/Bsp",
-        "<virtual_root>/USER/CRC.c"
+        "<virtual_root>/USER/CRC.c",
+        "../User/moudle/judge",
+        "<virtual_root>/RTOS TASK/UI_task.c"
       ],
       "toolchain": "AC5",
       "compileConfig": {
@@ -410,7 +409,8 @@
           "../User/moudle/judge",
           "../User/moudle/miniPC",
           "../User/moudle/remote",
-          "../User"
+          "../User",
+          "../User/moudle/referee"
         ],
         "libList": [],
         "sourceDirList": [],

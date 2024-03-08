@@ -31,8 +31,6 @@
 #include "INS_task.h"
 #include "exchange.h"
 #include "Chassis_task.h"
-#include "super_cap.h"
-#include "UI_task.h"
 #include "Gimbal_task.h"
 #include "stm32f4xx_it.h"
 /* USER CODE END Includes */
@@ -62,7 +60,6 @@ osThreadId defaultTaskHandle;
 
 /* USER CODE END FunctionPrototypes */
 
-void StartINSTask(void const *argument);
 void StartDefaultTask(void const *argument);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 

@@ -122,13 +122,13 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
     if (rx_header.StdId == 0x35) // 双C板传递遥控器信号的接口标识符
     {
       rc_ctrl.rc.ch[4] = (rx_data[0] | (rx_data[1] << 8)) - 1024; //!< Channel 4
-      //================================================底盘数据================================================//
-      // 接收底盘旋转量(用来修正yaw轴，作为前馈控制)
-      // Rotate_w = (rx_data[3] << 8) | rx_data[4];
-
-      // 接收底盘imu的Pitch数据(用来检测上下坡限位)
-      // Down_pitch = (rx_data[5] << 8) | rx_data[6];
     }
+    if (rx_header.StdId == 0x55) // 接收上板数据
+    {
+      shooter.shoot_heat_limit = (rx_data[0] << 8) | rx_data[1];
+      shooter.shoot_heat = (rx_data[2] << 8) | rx_data[3];
+    }
+
   }
 }
 

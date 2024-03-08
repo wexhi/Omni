@@ -15,7 +15,6 @@
 #include "exchange.h"
 #include "Chassis_task.h"
 #include "super_cap.h"
-#include "UI_task.h"
 #include "Gimbal_task.h"
 #include "stm32f4xx_it.h"
 
@@ -42,7 +41,6 @@ void RobotInit()
     BSPInit();
     CAN1_Init();
     CAN2_Init();
-    USART6_Init();
     USART3_Init();
 
     Chassis_Init(); // 底盘初始化
@@ -58,9 +56,6 @@ void OSTaskInit()
 
     osThreadDef(Chassistask, Chassis_task, osPriorityNormal, 0, 512); // �����ƶ�����
     Chassis_taskHandle = osThreadCreate(osThread(Chassistask), NULL);
-
-    osThreadDef(UItask, UI_Task, osPriorityRealtime, 0, 1024);
-    UI_taskHandle = osThreadCreate(osThread(UItask), NULL);
 
     osThreadDef(exchangeTask, exchange_task, osPriorityNormal, 0, 128);
     exchangeTaskHandle = osThreadCreate(osThread(exchangeTask), NULL);

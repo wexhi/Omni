@@ -1,14 +1,11 @@
 #include "Gimbal_task.h"
 #include "cmsis_os.h"
-#include "INS_task.h"
 #include "exchange.h"
 #include "drv_can.h"
 #define MAX_SPEED 200 // YAW云台电机在速度模式下最大速度
 
-gimbal_t gimbal_Yaw; // 云台电机信息结构体
-float yaw_aim;       // 云台YAW轴目标，用于自瞄
-
-extern INS_t INS;               // IMU信息结构体
+gimbal_t gimbal_Yaw;            // 云台电机信息结构体
+float yaw_aim;                  // 云台YAW轴目标，用于自瞄
 extern uint8_t is_track;        // 是否自瞄
 extern UP_C_angle_t UP_C_angle; // 上C的陀螺仪数据
 extern RC_ctrl_t rc_ctrl;       // 遥控器信息结构体
@@ -36,8 +33,8 @@ void Gimbal_task(void const *pvParameters)
 void Gimbal_Init()
 {
     // 初始化pid参数
-    gimbal_Yaw.pid_parameter[0] = 80, gimbal_Yaw.pid_parameter[1] = 0.5, gimbal_Yaw.pid_parameter[2] = 0;
-    gimbal_Yaw.pid_angle_parameter[0] = 9, gimbal_Yaw.pid_angle_parameter[1] = 0, gimbal_Yaw.pid_angle_parameter[2] = 200;
+    gimbal_Yaw.pid_parameter[0] = 100, gimbal_Yaw.pid_parameter[1] = 0.5, gimbal_Yaw.pid_parameter[2] = 0;
+    gimbal_Yaw.pid_angle_parameter[0] = 12, gimbal_Yaw.pid_angle_parameter[1] = 0, gimbal_Yaw.pid_angle_parameter[2] = 200;
     gimbal_Yaw.angle_target = 0;
 
     // 初始化pid结构体

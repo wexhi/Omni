@@ -4,7 +4,8 @@
 #include "exchange.h"
 #include "drv_can.h"
 #include "arm_math.h"
-#include "judge.h"
+#include "rm_referee.h"
+#include "referee_protocol.h"
 
 #define CHASSIS_MAX_SPEED 4000
 #define RC_OFFSET CHASSIS_MAX_SPEED / 660
@@ -20,10 +21,11 @@ pid_struct_t supercap_pid;           // 超级电容PID结构体
 fp32 superpid[3] = {120, 0.1, 0};    // 超级电容PID参数
 int8_t chassis_mode;                 // 底盘模式
 static attitude_t *chassis_IMU_data; // 底盘IMU数据
+static referee_info_t *referee_data; // 用于获取裁判系统的数据
 // 功率限制算法的变量定义
 float Watch_Power_Max;                                                 // 限制值
 float Watch_Power;                                                     // 实时功率
-float Watch_Buffer;                                                    // 缓冲能量值
+uint16_t Watch_Buffer;                                                    // 缓冲能量值
 double Chassis_pidout;                                                 // 输出值
 double Chassis_pidout_target;                                          // 目标值
 static double Scaling1 = 0, Scaling2 = 0, Scaling3 = 0, Scaling4 = 0;  // 比例
@@ -51,7 +53,6 @@ static void Chassis_Power_Limit(double Chassis_pidout_target_limit);            
 
 void Chassis_task(void const *pvParameters)
 {
-
   for (;;) // 底盘运动任务
   {
     Chassis_loop_Init();             // 获取上下C板角度差
@@ -70,9 +71,11 @@ void Chassis_task(void const *pvParameters)
  */
 void Chassis_Init()
 {
-  chassis_IMU_data = INS_Init(); // 底盘IMU初始化
+  chassis_IMU_data = INS_Init();       // 底盘IMU初始化
+  referee_data = RefereeInit(&huart6); // 裁判系统初始化
 
-  chassis.pid_parameter[0] = 30, chassis.pid_parameter[1] = 0.5, chassis.pid_parameter[2] = 0; // 底盘电机PID参数
+  chassis.pid_parameter[0] = 30,
+  chassis.pid_parameter[1] = 0.5, chassis.pid_parameter[2] = 0; // 底盘电机PID参数
 
   for (uint8_t i = 0; i < 4; i++)
   {
@@ -338,8 +341,8 @@ static void Chassis_Power_Limit(double Chassis_pidout_target_limit)
   // 819.2/A，假设最大功率为120W，那么能够通过的最大电流为5A，取一个保守值：800.0 * 5 = 4000
 
   Watch_Power_Max = Klimit;
-  Watch_Power = powerd.chassis_power;
-  Watch_Buffer = 60; // powerd.chassis_power_buffer
+  Watch_Power = referee_data->PowerHeatData.chassis_power; // powerd.chassis_power
+  Watch_Buffer = referee_data->PowerHeatData.chassis_power_buffer;                                       // powerd.chassis_power_buffer
   // Hero_chassis_power_buffer;//限制值，功率值，缓冲能量值，初始值是1，0，0
   // get_chassis_power_and_buffer(&Power, &Power_Buffer, &Power_Max);//通过裁判系统和编码器值获取（限制值，实时功率，实时缓冲能量）
 

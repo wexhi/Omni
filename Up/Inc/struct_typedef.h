@@ -53,9 +53,9 @@ typedef struct
     fp32 pid_angle_parameter[3]; // 云台电机的pid参数
     pid_struct_t pid;            // 云台电机的pid结构体
     pid_struct_t pid_angle;      // 云台电机的pid结构体
-    float speed_target;           // 云台电机的目标速度
-    float angle_target;           // 云台电机的目标角度
-    float err_angle;              // 云台电机的目标角度
+    float speed_target;          // 云台电机的目标速度
+    float angle_target;          // 云台电机的目标角度
+    float err_angle;             // 云台电机的目标角度
 } gimbal_t;
 
 typedef struct
@@ -67,25 +67,6 @@ typedef struct
     int16_t speed_target[4];    // 底盘电机的目标速度
     int16_t Vx, Vy, Wz;         // 底盘电机的目标速度
 } chassis_t;
-
-typedef struct
-{
-    /* data */
-    motor_info_t motor_info[4]; // 电机信息结构体
-
-    fp32 pid_dial_para[3];     // 拨盘电机的pid参数
-    fp32 pid_friction_para[3]; // 摩擦轮电机的pid参数
-    fp32 pid_bay_para[3];      // 弹舱电机的pid参数
-
-    pid_struct_t pid_dial;     // 拨盘电机的pid结构体
-    pid_struct_t pid_friction; // 摩擦轮电机的pid结构体
-    pid_struct_t pid_bay;      // 弹舱电机的pid结构体
-
-    int16_t dial_speed_target;        // 拨盘电机的目标速度
-    int16_t friction_speed_target[2]; // 摩擦轮电机的目标速度
-    int16_t bay_speed_target;         // 弹舱电机的目标速度
-
-} shooter_t;
 
 typedef __packed struct
 {
