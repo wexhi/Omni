@@ -342,7 +342,7 @@ static void Chassis_Power_Limit(double Chassis_pidout_target_limit)
 
   Watch_Power_Max = Klimit;
   Watch_Power = referee_data->PowerHeatData.chassis_power; // powerd.chassis_power
-  Watch_Buffer = referee_data->PowerHeatData.chassis_power_buffer;                                       // powerd.chassis_power_buffer
+  Watch_Buffer = referee_data->PowerHeatData.buffer_energy; // powerd.chassis_power_buffer
   // Hero_chassis_power_buffer;//限制值，功率值，缓冲能量值，初始值是1，0，0
   // get_chassis_power_and_buffer(&Power, &Power_Buffer, &Power_Max);//通过裁判系统和编码器值获取（限制值，实时功率，实时缓冲能量）
 

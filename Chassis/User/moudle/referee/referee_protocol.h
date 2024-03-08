@@ -75,6 +75,8 @@ typedef enum
 	ID_event_data = 0x0101,				   // 场地事件数据
 	ID_supply_projectile_action = 0x0102,  // 场地补给站动作标识数据
 	ID_supply_projectile_booking = 0x0103, // 场地补给站预约子弹数据
+	ID_game_warning = 0x0104,			   // 裁判警告信息
+	ID_dart_info = 0x0105,				   // 飞镖发射数据
 	ID_game_robot_state = 0x0201,		   // 机器人状态数据
 	ID_power_heat_data = 0x0202,		   // 实时功率热量数据
 	ID_game_robot_pos = 0x0203,			   // 机器人位置数据
@@ -88,13 +90,15 @@ typedef enum
 /* 命令码数据段长,根据官方协议来定义长度，还有自定义数据长度 */
 typedef enum
 {
-	LEN_game_state = 3,							 // 0x0001
+	LEN_game_state = 11,						 // 0x0001
 	LEN_game_result = 1,						 // 0x0002
-	LEN_game_robot_HP = 2,						 // 0x0003
+	LEN_game_robot_HP = 32,						 // 0x0003
 	LEN_event_data = 4,							 // 0x0101
 	LEN_supply_projectile_action = 4,			 // 0x0102
-	LEN_game_robot_state = 27,					 // 0x0201
-	LEN_power_heat_data = 14,					 // 0x0202
+	LEN_game_warning = 3,						 // 0x0104
+	LEN_dart_info = 3,							 // 0x0105
+	LEN_game_robot_state = 13,					 // 0x0201
+	LEN_power_heat_data = 16,					 // 0x0202
 	LEN_game_robot_pos = 16,					 // 0x0203
 	LEN_buff_musk = 1,							 // 0x0204
 	LEN_aerial_robot_energy = 1,				 // 0x0205
@@ -113,6 +117,7 @@ typedef struct
 	uint8_t game_type : 4;
 	uint8_t game_progress : 4;
 	uint16_t stage_remain_time;
+	uint64_t SyncTimeStamp;
 } ext_game_state_t;
 
 /* ID: 0x0002  Byte:  1    比赛结果数据 */
@@ -157,37 +162,46 @@ typedef struct
 	uint8_t supply_projectile_num;
 } ext_supply_projectile_action_t;
 
-/* ID: 0X0201  Byte: 27    机器人状态数据 */
+/* ID: 0x0104  Byte:  3    裁判警告数据  */
 typedef struct
 {
-	uint8_t robot_id;						// 本机器人ID
-	uint8_t robot_level;					// 机器人等级
-	uint16_t remain_HP;						// 剩余血量
-	uint16_t max_HP;						// 最大血量
-	uint16_t shooter_id1_17mm_cooling_rate; // 机器人枪口每秒冷却值
-	uint16_t shooter_id1_17mm_cooling_limit; // 机器人枪口热量上限
-	uint16_t shooter_id1_17mm_speed_limit;
-	uint16_t shooter_id2_17mm_cooling_rate;
-	uint16_t shooter_id2_17mm_cooling_limit;
-	uint16_t shooter_id2_17mm_speed_limit;
-	uint16_t shooter_id1_42mm_cooling_rate;
-	uint16_t shooter_id1_42mm_cooling_limit;
-	uint16_t shooter_id1_42mm_speed_limit;
+	uint8_t level;
+	uint8_t offending_robot_id;
+	uint8_t count;
+} referee_warning_t;
+
+/* ID: 0x0105  Byte:  3    飞镖发射相关数据 */
+typedef struct
+{
+	uint8_t dart_remaining_time;
+	uint16_t dart_info;
+} dart_info_t;
+
+/* ID: 0X0201  Byte: 13    机器人状态数据 */
+typedef struct
+{
+	uint8_t robot_id;
+	uint8_t robot_level;
+	uint16_t current_HP;
+	uint16_t maximum_HP;
+	uint16_t shooter_barrel_cooling_value;
+	uint16_t shooter_barrel_heat_limit;
 	uint16_t chassis_power_limit;
-	uint8_t mains_power_gimbal_output : 1;
-	uint8_t mains_power_chassis_output : 1;
-	uint8_t mains_power_shooter_output : 1;
+	uint8_t power_management_gimbal_output : 1;
+	uint8_t power_management_chassis_output : 1;
+	uint8_t power_management_shooter_output : 1;
 } ext_game_robot_state_t;
 
-/* ID: 0X0202  Byte: 14    实时功率热量数据 */
+/* ID: 0X0202  Byte: 16    实时功率热量数据 */
 typedef struct
 {
-	uint16_t chassis_volt;
+	uint16_t chassis_voltage;
 	uint16_t chassis_current;
-	float chassis_power;		   // 瞬时功率
-	uint16_t chassis_power_buffer; // 60焦耳缓冲能量
-	uint16_t shooter_heat0;		   // 17mm
-	uint16_t shooter_heat1;
+	float chassis_power; // 瞬时功率
+	uint16_t buffer_energy; // 缓冲能量 
+	uint16_t shooter_17mm_1_barrel_heat; // 17mm枪口1热量
+	uint16_t shooter_17mm_2_barrel_heat;
+	uint16_t shooter_42mm_barrel_heat;
 } ext_power_heat_data_t;
 
 /* ID: 0x0203  Byte: 16    机器人位置数据 */

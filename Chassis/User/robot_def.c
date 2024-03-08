@@ -45,6 +45,7 @@ void RobotInit()
 
     Chassis_Init(); // 底盘初始化
     Gimbal_Init();  // 云台电机初始化
+    ExchangInit();  // 交换机初始化
     OSTaskInit();
     __enable_irq();
 }

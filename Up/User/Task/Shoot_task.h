@@ -27,6 +27,7 @@ typedef struct
 
     uint16_t shoot_heat;       // 发射机构的热量
     uint16_t shoot_heat_limit; // 发射机构的热量限制
+    uint16_t cooling_value;    // 发射机构的冷却值
     uint8_t shoot_type;        // 发射模式
 } shooter_t;
 

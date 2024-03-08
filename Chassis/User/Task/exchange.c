@@ -39,15 +39,11 @@ static void SendToUP()
 {
 	// 发送数据到上C
 	// 发送热量上限
-	tx_data[0] = (uint8_t)(referee_data2up->GameRobotState.shooter_id1_17mm_cooling_limit >> 8) & 0xff;
-	tx_data[1] = (uint8_t)(referee_data2up->GameRobotState.shooter_id1_17mm_cooling_limit >> 8);
+	memcpy(tx_data, &referee_data2up->GameRobotState.shooter_barrel_heat_limit, 2);
 	// 发送17mm枪口热量
-	tx_data[2] = (uint8_t)(referee_data2up->PowerHeatData.shooter_heat0 >> 8) & 0xff;
-	tx_data[3] = (uint8_t)(referee_data2up->PowerHeatData.shooter_heat0 >> 8);
-	// 发送射击模式
-	tx_data[4] = referee_data2up->ShootData.shooter_id;
-	// 保留位
-	tx_data[5] = 0; tx_data[6] = 0; tx_data[7] = 0;
+	memcpy(tx_data + 2, &referee_data2up->PowerHeatData.shooter_17mm_1_barrel_heat, 2);
+	// 热量回复
+	memcpy(tx_data + 4, &referee_data2up->GameRobotState.shooter_barrel_cooling_value, 2);
 
 	can_remote(tx_data, 0x55); // 发送数据到上C
 }

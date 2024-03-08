@@ -26,14 +26,23 @@
             "*.c++": "cpp",
             "*.cpp": "cpp",
             "*.cxx": "cpp",
-            "*.cc": "cpp"
+            "*.cc": "cpp",
+            "atomic": "c",
+            "compare": "c",
+            "cstddef": "c",
+            "limits": "c",
+            "memory": "c",
+            "type_traits": "c",
+            "xmemory": "c",
+            "xstring": "c",
+            "xutility": "c"
         },
         "[yaml]": {
             "editor.insertSpaces": true,
             "editor.tabSize": 4,
             "editor.autoIndent": "advanced"
         },
-        "cortex-debug.variableUseNaturalFormat": true,
+        "cortex-debug.variableUseNaturalFormat": false,
         "commentTranslate.hover.variable": true,
         "commentTranslate.hover.string": true,
         "commentTranslate.targetLanguage": "zh-CN",

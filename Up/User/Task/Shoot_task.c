@@ -4,8 +4,8 @@
 #include "exchange.h"
 #include "drv_can.h"
 
-#define MAX_DIAL_SPEED 500
-#define MAX_FRICTION_SPEED 8000
+#define MAX_DIAL_SPEED 2000
+#define MAX_FRICTION_SPEED 7600
 #define KEY_ENTER_OFFSET 10
 #define KEY_SLOW_OFFSET 100
 
@@ -81,7 +81,8 @@ static void model_choice(void)
 // 拨盘电机控制
 static void dial_control(void)
 {
-    if (rc_ctrl.rc.s[1] == 1 || rc_ctrl.mouse.press_l == 1) // 鼠标左键按下发弹
+    if (rc_ctrl.rc.s[1] == 1 || rc_ctrl.mouse.press_l == 1 
+    && shooter.shoot_heat_limit > shooter.shoot_heat + 0.8 * shooter.cooling_value) // 鼠标左键按下发弹
     {
         LEDR_ON();
         LEDB_OFF();
@@ -117,7 +118,7 @@ static void bay_control(void)
     if (rc_ctrl.rc.s[1] == 2 && !friction_flag)
         __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 500); // 500 关
     else
-        __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 500); // 2100 开
+        __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 2100); // 2100 开
 }
 
 // 给电流

@@ -1,4 +1,5 @@
 #include "drv_can.h"
+#include "string.h"
 #define SHOOTER_ID_START 0x201
 #define SHOOTER_ID_END 0x203
 #define GIMBAL_PITCH_ID 0x207
@@ -125,8 +126,9 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
     }
     if (rx_header.StdId == 0x55) // 接收上板数据
     {
-      shooter.shoot_heat_limit = (rx_data[0] << 8) | rx_data[1];
-      shooter.shoot_heat = (rx_data[2] << 8) | rx_data[3];
+      memcpy(&shooter.shoot_heat_limit, rx_data, 2);
+      memcpy(&shooter.shoot_heat, rx_data + 2, 2);
+      memcpy(&shooter.cooling_value, rx_data + 4, 2);
     }
 
   }

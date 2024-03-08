@@ -68,6 +68,12 @@ static void JudgeReadData(uint8_t *buff)
 				case ID_supply_projectile_action: // 0x0102
 					memcpy(&referee_info.SupplyProjectileAction, (buff + DATA_Offset), LEN_supply_projectile_action);
 					break;
+				case ID_game_warning: // 0x0104
+					memcpy(&referee_info.GameWarning, (buff + DATA_Offset), LEN_game_warning);
+					break;
+				case ID_dart_info: // 0x0105
+					memcpy(&referee_info.DartInfo, (buff + DATA_Offset), LEN_dart_info);
+					break;
 				case ID_game_robot_state: // 0x0201
 					memcpy(&referee_info.GameRobotState, (buff + DATA_Offset), LEN_game_robot_state);
 					break;
