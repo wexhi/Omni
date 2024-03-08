@@ -200,7 +200,7 @@ static void chassis_current_give()
   {
     chassis.motor_info[i].set_current = pid_calc(&chassis.pid[i], chassis.motor_info[i].rotor_speed, chassis.speed_target[i]);
   }
-  // Chassis_Power_Limit(CHASSIS_MAX_SPEED * 4); // 限制底盘功率
+  Chassis_Power_Limit(CHASSIS_MAX_SPEED * 4); // 限制底盘功率
   set_motor_current_chassis(0, chassis.motor_info[0].set_current, chassis.motor_info[1].set_current, chassis.motor_info[2].set_current, chassis.motor_info[3].set_current);
 }
 
@@ -254,6 +254,11 @@ static void get_UpDown_Err()
     chassis.imu_err = INS.Yaw - UP_C_angle.yaw;
   else
     chassis.err_angle = INS.Yaw - UP_C_angle.yaw - chassis.imu_err; // 获取上下C板角度差
+
+  if (chassis.Wz > 60)
+    chassis.err_angle -= 0.02f;
+  if (chassis.Wz < -60)
+    chassis.err_angle += 0.02f;
 
   // 越界处理,保证转动方向不变
   if (chassis.err_angle < -180) //	越界时：180 -> -180
