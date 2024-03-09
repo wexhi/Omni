@@ -207,6 +207,7 @@ void Error_Handler(void)
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
   __disable_irq();
+  HAL_NVIC_SystemReset();
   while (1)
   {
   }

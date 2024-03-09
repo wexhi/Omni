@@ -30,7 +30,7 @@
 typedef enum
 {
     PID_IMPROVE_NONE = 0x00000000,                // 0000 0000
-    PID_Integral_Limit = 0x0000000,               // 0000 0001
+    PID_Integral_Limit = 0x0000001,               // 0000 0001
     PID_Derivative_On_Measurement = 0x00000010,   // 0000 0010
     PID_Trapezoid_Intergral = 0x00000100,         // 0000 0100
     PID_Proportional_On_Measurement = 0x00001000, // 0000 1000

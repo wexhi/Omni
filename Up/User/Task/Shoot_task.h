@@ -6,6 +6,7 @@
 #include "drv_can.h"
 #include "rc_potocal.h"
 #include "main.h"
+#include "tim.h"
 #include "gpio.h"
 
 typedef struct

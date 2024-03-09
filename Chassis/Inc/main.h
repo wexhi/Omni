@@ -55,11 +55,6 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 
-
-//宏定义
-#define MOTOR_MAX_NUM 7		//最大数据字节数
-#define LIMIT_MIN_MAX(x,min,max) (x) = (((x)<=(min))?(min):(((x)>=(max))?(max):(x)))		//越界则赋边界值
-
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

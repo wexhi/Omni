@@ -29,7 +29,7 @@ const float xb[3] = {1, 0, 0};
 const float yb[3] = {0, 1, 0};
 const float zb[3] = {0, 0, 1};
 
-// 用于获取两次采样之间的时间间隔
+// 用于获取两�?�采样之间的时间间隔
 static uint32_t INS_DWT_Count = 0;
 static float dt = 0, t = 0;
 static float RefTemp = 40; // 恒温设定温度
@@ -51,13 +51,13 @@ static void IMU_Temperature_Ctrl(void)
     IMUPWMSet(float_constrain(float_rounding(TempCtrl.Output), 0, UINT32_MAX));
 }
 
-// 使用加速度计的数据初始化Roll和Pitch,而Yaw置0,这样可以避免在初始时候的姿态估计误差
+// 使用加速度计的数据初�?�化Roll和Pitch,而Yaw�?0,这样�?以避免在初�?�时候的姿态估计�??�?
 static void InitQuaternion(float *init_q4)
 {
     float acc_init[3] = {0};
-    float gravity_norm[3] = {0, 0, 1}; // 导航系重力加速度矢量,归一化后为(0,0,1)
-    float axis_rot[3] = {0};           // 旋转轴
-    // 读取100次加速度计数据,取平均值作为初始值
+    float gravity_norm[3] = {0, 0, 1}; // 导航系重力加速度矢量,归一化后�?(0,0,1)
+    float axis_rot[3] = {0};           // 旋转�?
+    // 读取100次加速度计数�?,取平均值作为初始�?
     for (uint8_t i = 0; i < 100; ++i)
     {
         BMI088_Read(&BMI088);
@@ -69,13 +69,13 @@ static void InitQuaternion(float *init_q4)
     for (uint8_t i = 0; i < 3; ++i)
         acc_init[i] /= 100;
     Norm3d(acc_init);
-    // 计算原始加速度矢量和导航系重力加速度矢量的夹角
+    // 计算原�?�加速度矢量和�?�航系重力加速度矢量的夹�?
     float angle = acosf(Dot3d(acc_init, gravity_norm));
     Cross3d(acc_init, gravity_norm, axis_rot);
     Norm3d(axis_rot);
     init_q4[0] = cosf(angle / 2.0f);
     for (uint8_t i = 0; i < 2; ++i)
-        init_q4[i + 1] = axis_rot[i] * sinf(angle / 2.0f); // 轴角公式,第三轴为0(没有z轴分量)
+        init_q4[i + 1] = axis_rot[i] * sinf(angle / 2.0f); // 轴�?�公�?,�?三轴�?0(没有z轴分�?)
 }
 
 attitude_t *INS_Init(void)
@@ -107,16 +107,16 @@ attitude_t *INS_Init(void)
                                 .Kp = 1000,
                                 .Ki = 20,
                                 .Kd = 0,
-                                .Improve = 0x01}; // enable integratiaon limit
+                                .Improve = PID_Integral_Limit}; // enable integratiaon limit
     PIDInit(&TempCtrl, &config);
 
     // noise of accel is relatively big and of high freq,thus lpf is used
     INS.AccelLPF = 0.0085;
     DWT_GetDeltaT(&INS_DWT_Count);
-    return (attitude_t *)&INS.Gyro; // @todo: 这里偷懒了,不要这样做! 修改INT_t结构体可能会导致异常,待修复.
+    return (attitude_t *)&INS.Gyro; // @todo: 这里偷懒�?,不�?�这样做! �?改INT_t结构体可能会导致异常,待修�?.
 }
 
-/* 注意以1kHz的频率运行此任务 */
+/* 注意�?1kHz的�?�率运�?��?�任�? */
 void INS_Task(void)
 {
     static uint32_t count = 0;
@@ -137,31 +137,31 @@ void INS_Task(void)
         INS.Gyro[Y] = BMI088.Gyro[Y];
         INS.Gyro[Z] = BMI088.Gyro[Z];
 
-        // demo function,用于修正安装误差,可以不管,本demo暂时没用
+        // demo function,用于�?正安装�??�?,�?以不�?,本demo暂时没用
         IMU_Param_Correction(&IMU_Param, INS.Gyro, INS.Accel);
 
-        // 计算重力加速度矢量和b系的XY两轴的夹角,可用作功能扩展,本demo暂时没用
+        // 计算重力加速度矢量和b系的XY两轴的夹�?,�?用作功能扩展,本demo暂时没用
         // INS.atanxz = -atan2f(INS.Accel[X], INS.Accel[Z]) * 180 / PI;
         // INS.atanyz = atan2f(INS.Accel[Y], INS.Accel[Z]) * 180 / PI;
 
-        // 核心函数,EKF更新四元数
+        // 核心函数,EKF更新四元�?
         IMU_QuaternionEKF_Update(INS.Gyro[X], INS.Gyro[Y], INS.Gyro[Z], INS.Accel[X], INS.Accel[Y], INS.Accel[Z], dt);
 
         memcpy(INS.q, QEKF_INS.q, sizeof(QEKF_INS.q));
 
-        // 机体系基向量转换到导航坐标系，本例选取惯性系为导航系
+        // 机体系基向量�?换到导航坐标系，�?例选取�?性系为�?�航�?
         BodyFrameToEarthFrame(xb, INS.xn, INS.q);
         BodyFrameToEarthFrame(yb, INS.yn, INS.q);
         BodyFrameToEarthFrame(zb, INS.zn, INS.q);
 
-        // 将重力从导航坐标系n转换到机体系b,随后根据加速度计数据计算运动加速度
+        // 将重力从导航坐标系n�?换到机体系b,随后根据加速度计数�?计算运动加速度
         float gravity_b[3];
         EarthFrameToBodyFrame(gravity, gravity_b, INS.q);
-        for (uint8_t i = 0; i < 3; ++i) // 同样过一个低通滤波
+        for (uint8_t i = 0; i < 3; ++i) // 同样过一�?低通滤�?
         {
             INS.MotionAccel_b[i] = (INS.Accel[i] - gravity_b[i]) * dt / (INS.AccelLPF + dt) + INS.MotionAccel_b[i] * INS.AccelLPF / (INS.AccelLPF + dt);
         }
-        BodyFrameToEarthFrame(INS.MotionAccel_b, INS.MotionAccel_n, INS.q); // 转换回导航系n
+        BodyFrameToEarthFrame(INS.MotionAccel_b, INS.MotionAccel_n, INS.q); // �?换回导航系n
 
         INS.Yaw = QEKF_INS.Yaw;
         INS.Pitch = QEKF_INS.Pitch;
@@ -181,7 +181,7 @@ void INS_Task(void)
 
     if ((count++ % 1000) == 0)
     {
-        // 1Hz 可以加入monitor函数,检查IMU是否正常运行/离线
+        // 1Hz �?以加�?monitor函数,检�?IMU�?否�?�常运�??/离线
     }
 }
 
@@ -228,7 +228,7 @@ void EarthFrameToBodyFrame(const float *vecEF, float *vecBF, float *q)
 }
 
 /**
- * @brief reserved.用于修正IMU安装误差与标度因数误差,即陀螺仪轴和云台轴的安装偏移
+ * @brief reserved.用于�?�?IMU安�?��??�?与标度因数�??�?,即陀螺仪轴和云台轴的安�?�偏�?
  *
  *
  * @param param IMU参数

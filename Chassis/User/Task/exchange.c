@@ -8,8 +8,8 @@ extern int16_t aim_target;	// 上C的云台YAW轴目标，用于自瞄
 extern float yaw_aim;		// 云台YAW轴目标，用于自瞄
 
 static referee_info_t *referee_data2up; // 用于获取裁判系统的数据
-static uint8_t tx_data[8];			 // 用于发送数据
-UP_C_angle_t UP_C_angle;			 // 上C的陀螺仪数据
+static uint8_t tx_data[8];				// 用于发送数据
+UP_C_angle_t UP_C_angle;				// 上C的陀螺仪数据
 
 static void SendToUP(); // 发送数据到上C
 

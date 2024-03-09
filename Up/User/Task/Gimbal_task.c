@@ -38,8 +38,8 @@ void Gimbal_Init()
     gimba_IMU_data = INS_Init(); // IMU先初始化,获取姿态数据指针赋给yaw电机的其他数据来源
 
     // 初始化pid参数
-    gimbal_Pitch.pid_parameter[0] = 70, gimbal_Pitch.pid_parameter[1] = 0, gimbal_Pitch.pid_parameter[2] = 0;
-    gimbal_Pitch.pid_angle_parameter[0] = 10, gimbal_Pitch.pid_angle_parameter[1] = 0.01, gimbal_Pitch.pid_angle_parameter[2] = 3;
+    gimbal_Pitch.pid_parameter[0] = 80, gimbal_Pitch.pid_parameter[1] = 0, gimbal_Pitch.pid_parameter[2] = 0;
+    gimbal_Pitch.pid_angle_parameter[0] = 10, gimbal_Pitch.pid_angle_parameter[1] = 0, gimbal_Pitch.pid_angle_parameter[2] = 3;
     gimbal_Pitch.angle_target = MIN_ANGLE;
 
     // 初始化pid结构体

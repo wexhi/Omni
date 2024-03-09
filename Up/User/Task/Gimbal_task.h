@@ -6,6 +6,7 @@
 #include "drv_can.h"
 #include "rc_potocal.h"
 #include "main.h"
+#include "can.h"
 #include "gpio.h"
 
 /**

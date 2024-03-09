@@ -30,7 +30,6 @@
 #include "arm_math.h"
 #include "ins_task.h"
 #include "exchange.h"
-#include "super_cap.h"
 #include "Gimbal_task.h"
 #include "Shoot_task.h"
 #include "stm32f4xx_it.h"

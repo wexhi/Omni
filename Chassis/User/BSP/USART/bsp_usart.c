@@ -77,8 +77,6 @@ void USARTSend(USART_Instance *_instance, uint8_t *send_buf, uint16_t send_size,
             HAL_UART_Transmit_DMA(_instance->usart_handle, send_buf, send_size);
             break;
         default:
-            while (1)
-                ; // illegal mode! check your code context! 检查定义instance的代码上下文,可能出现指针越界
             break;
     }
 }

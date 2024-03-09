@@ -55,54 +55,6 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 
-// 宏定义
-#define MOTOR_MAX_NUM 7                                                                            // 最大数据字节数
-#define LIMIT_MIN_MAX(x, min, max) (x) = (((x) <= (min)) ? (min) : (((x) >= (max)) ? (max) : (x))) // 越界则赋边界值
-#define FEEDBACK_ID_BASE 0x201
-#define FEEDBACK_ID_BASE_6020 0x205
-#define CAN_CONTROL_ID_BASE 0x200
-#define CAN_CONTROL_ID_EXTEND 0x1ff
-  extern UART_HandleTypeDef huart3;
-  extern DMA_HandleTypeDef hdma_usart3_rx;
-  // 全局变量
-  extern uint16_t can_cnt_1;
-  extern uint16_t can_cnt_2;
-  extern float target_speed[7]; // 实测最大空载转速320rpm
-  extern float target_speed_can_2[7];
-  extern uint8_t can_flag;
-  extern double step;
-  extern double r;
-  extern double target_v;
-  extern int16_t target_int1;
-  extern int16_t target_int2; // 用于叠加旋转和直行
-  extern double target_curl;
-  extern float yuntai_step;
-  extern CAN_HandleTypeDef hcan1;
-  extern CAN_HandleTypeDef hcan2;
-  // 拨盘
-  extern float time;
-  extern float time_count;
-  extern uint8_t flag_shoot;
-  extern float round_shoot;
-  extern float down;
-  extern float up;
-  // 定时器声明
-  extern TIM_HandleTypeDef htim1;
-  extern TIM_HandleTypeDef htim2;
-  extern TIM_HandleTypeDef htim8;
-  extern TIM_HandleTypeDef htim9;
-// Yaw轴
-#define yaw_front 4096
-#define yaw_L 30.0f
-#define tyro 3.1415f * 7.5f
-  extern int16_t target_angle;
-  extern int16_t err_angle;
-  extern int16_t max_yaw_speed;
-  extern float small;
-  extern float angle_limit;
-
-  extern uint8_t rx_data[8];
-
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

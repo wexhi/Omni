@@ -106,7 +106,7 @@ attitude_t *INS_Init(void)
                                 .Kp = 1000,
                                 .Ki = 20,
                                 .Kd = 0,
-                                .Improve = 0x01}; // enable integratiaon limit
+                                .Improve = PID_Integral_Limit}; // enable integratiaon limit
     PIDInit(&TempCtrl, &config);
 
     // noise of accel is relatively big and of high freq,thus lpf is used
