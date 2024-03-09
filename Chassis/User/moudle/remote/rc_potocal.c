@@ -1,8 +1,9 @@
 #include "rc_potocal.h"
 #include "INS_task.h"
 #include "exchange.h"
+#include "rm_referee.h"
 
-int16_t Rotate_w;
+extern referee_info_t *referee_data2up; // 用于获取裁判系统的数据
 
 // IMU
 // flag for keyboard
@@ -65,18 +66,12 @@ void USART3_rxDataHandler(uint8_t *rxBuf)
 
 	temp_remote[0] = rxBuf[16];
 	temp_remote[1] = rxBuf[17];
-	temp_remote[2] = rxBuf[18];
 
-	// crul_w用来传递底盘旋转量
-	Rotate_w = (chassis.motor_info[0].rotor_speed + chassis.motor_info[1].rotor_speed + chassis.motor_info[2].rotor_speed + chassis.motor_info[3].rotor_speed) / (4 * 19);
-	temp_remote[3] = ((Rotate_w >> 8) & 0xff); // 先发高8位
-	temp_remote[4] = (Rotate_w & 0xff);
-
-	// 传输下C板的Pitch数据给上C
-	temp_remote[5] = 0; // 先发高8位
-	temp_remote[6] = 0;
-
-	temp_remote[7] = 0;
+	memcpy(temp_remote + 2, &referee_data2up->GameRobotState.shooter_barrel_heat_limit, 2);
+	// 发送17mm枪口热量
+	memcpy(temp_remote + 4, &referee_data2up->PowerHeatData.shooter_17mm_1_barrel_heat, 2);
+	// 热量回复
+	memcpy(temp_remote + 6, &referee_data2up->GameRobotState.shooter_barrel_cooling_value, 2);
 
 	can_remote(temp_remote, 0x35);
 

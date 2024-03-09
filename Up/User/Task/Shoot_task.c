@@ -82,7 +82,7 @@ static void model_choice(void)
 static void dial_control(void)
 {
     if (rc_ctrl.rc.s[1] == 1 || rc_ctrl.mouse.press_l == 1 
-    && shooter.shoot_heat_limit > shooter.shoot_heat + 0.8 * shooter.cooling_value) // 鼠标左键按下发弹
+    && shooter.shoot_heat_limit > shooter.shoot_heat + 1.2 * shooter.cooling_value) // 鼠标左键按下发弹
     {
         LEDR_ON();
         LEDB_OFF();
