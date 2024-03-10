@@ -6,7 +6,7 @@
 #include "miniPC_process.h"
 #include "stm32f4xx_it.h"
 #define MAX_SPEED 200
-#define MAX_ANGLE 193
+#define MAX_ANGLE 200
 #define MIN_ANGLE 160
 
 gimbal_t gimbal_Pitch;             // 云台电机信息结构体
@@ -68,7 +68,7 @@ static void Pitch_control()
         if (recv->is_tracking && rc_ctrl.mouse.press_r) // if (rc_ctrl.mouse.press_r && recv.is_tracking)
             gimbal_Pitch.angle_target = recv->pitch;
         else
-            gimbal_Pitch.angle_target += rc_ctrl.rc.ch[1] / 660.0 * 0.25 + (rc_ctrl.mouse.y / 16384.00 * 80);
+            gimbal_Pitch.angle_target += rc_ctrl.rc.ch[1] / 660.0 * 0.25 + (rc_ctrl.mouse.y / 16384.00 * 70);
         Angle_Limit(&gimbal_Pitch.angle_target);
 
         gimbal_Pitch.err_angle = gimbal_Pitch.angle_target - gimba_IMU_data->Pitch;
