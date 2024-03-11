@@ -1,6 +1,7 @@
 /**
  * @file rm_referee.C
  * @author kidneygood (you@domain.com)
+ * @author modified by wexhi
  * @brief
  * @version 0.1
  * @date 2022-11-18
@@ -95,6 +96,13 @@ static void JudgeReadData(uint8_t *buff)
 				case ID_shoot_data: // 0x0207
 					memcpy(&referee_info.ShootData, (buff + DATA_Offset), LEN_shoot_data);
 					break;
+				case ID_projectile_allowance: // 0x0208
+					memcpy(&referee_info.ProjectileAllowance, (buff + DATA_Offset), LEN_projectile_allowance);
+					break;
+				case ID_rfid_status: // 0x0209
+					memcpy(&referee_info.RFIDStatus, (buff + DATA_Offset), LEN_rfid_status);
+					break;
+				// @todo 本demo未添加哨兵、飞镖、雷达的裁判系统数据解析
 				case ID_student_interactive: // 0x0301   syhtodo接收代码未测试
 					memcpy(&referee_info.ReceiveData, (buff + DATA_Offset), LEN_receive_data);
 					break;

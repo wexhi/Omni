@@ -14,7 +14,7 @@ static uint8_t ins_buf[8];
 extern float yaw_send;
 extern uint8_t is_tracking;
 
-void ExchangInit();		  // 上下位机通信初始化
+void ExchangInit();				  // 上下位机通信初始化
 static void VisionAngleProcess(); // 视觉角度处理
 static void Up_send_to_down();	  // 上C向下C发送数据
 
@@ -84,8 +84,6 @@ static void Up_send_to_down()
 	ins_buf[1] = INS_angle_send[0] >> 8;
 	ins_buf[2] = (INS_angle_send[1] >> 8) & 0xff;
 	ins_buf[3] = INS_angle_send[1] >> 8;
-	// ins_buf[4] = (INS_angle_send[4] >> 8) & 0xff;
-	// ins_buf[5] = INS_angle_send[5] >> 8;
 	ins_buf[4] = is_tracking;
 	ins_buf[5] = is_tracking;
 	ins_buf[6] = (INS_angle_send[3] >> 8) & 0xff;

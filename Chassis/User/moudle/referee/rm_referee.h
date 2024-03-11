@@ -39,6 +39,8 @@ typedef struct
 	aerial_robot_energy_t AerialRobotEnergy;			   // 0x0205
 	ext_robot_hurt_t RobotHurt;							   // 0x0206
 	ext_shoot_data_t ShootData;							   // 0x0207
+	projectile_allowance_t ProjectileAllowance;			   // 0x0208
+	rfid_status_t RFIDStatus;							   // 0x0209
 
 	// 自定义交互数据的接收
 	Communicate_ReceiveData_t ReceiveData;
