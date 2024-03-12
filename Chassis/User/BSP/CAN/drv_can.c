@@ -86,25 +86,13 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
     HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header2, rx_data2); // receive can2 data
 
     // 接收上C板陀螺仪数据
-    if (rx_header2.StdId == 0x55) // 上C向下C传IMU数据
+    if (rx_header2.StdId == 0xA5) // 上C向下C传IMU数据
     {
       up_angle[0] = (rx_data2[0] << 8) | rx_data2[1];
       up_angle[1] = (rx_data2[2] << 8) | rx_data2[3];
       is_track = rx_data2[4];
       aim_target = (rx_data2[6] << 8) | rx_data2[7];
     }
-
-    // if (rx_header2.StdId == 0x211)
-    // {
-
-    //   extern float powerdata[4];
-    //   uint16_t *pPowerdata = (uint16_t *)rx_data2;
-
-    //   powerdata[0] = (float)pPowerdata[0] / 100.f; // 输入电压
-    //   powerdata[1] = (float)pPowerdata[1] / 100.f; // 电容电压
-    //   powerdata[2] = (float)pPowerdata[2] / 100.f; // 输入电流
-    //   powerdata[3] = (float)pPowerdata[3] / 100.f; // P
-    // }
   }
 }
 
@@ -116,7 +104,9 @@ void can_remote(uint8_t sbus_buf[], uint8_t can_send_id) // 调用can来发送�
   tx_header.IDE = CAN_ID_STD;    // 标准帧
   tx_header.RTR = CAN_RTR_DATA;  // 数据帧
   tx_header.DLC = 8;             // 发送数据长度（字节）
-
+  while (HAL_CAN_GetTxMailboxesFreeLevel(&hcan2) == 0) // 等待邮箱空闲
+  {
+  }
   HAL_CAN_AddTxMessage(&hcan2, &tx_header, sbus_buf, (uint32_t *)CAN_TX_MAILBOX0);
 }
 

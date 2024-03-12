@@ -65,7 +65,7 @@ static void Pitch_control()
 {
     if (rc_ctrl.rc.ch[1] >= -660 && rc_ctrl.rc.ch[1] <= 660)
     {
-        if (recv->is_tracking && rc_ctrl.mouse.press_r) // if (rc_ctrl.mouse.press_r && recv.is_tracking)
+        if (recv->is_tracking && rc_ctrl.rc.s[1] == 3) // if (rc_ctrl.mouse.press_r && recv.is_tracking)
             gimbal_Pitch.angle_target = recv->pitch;
         else
             gimbal_Pitch.angle_target += rc_ctrl.rc.ch[1] / 660.0 * 0.25 + (rc_ctrl.mouse.y / 16384.00 * 70);

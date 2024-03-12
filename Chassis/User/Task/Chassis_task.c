@@ -7,9 +7,9 @@
 #include "rm_referee.h"
 #include "referee_protocol.h"
 
-#define CHASSIS_MAX_SPEED 4000
+#define CHASSIS_MAX_SPEED 5000
 #define RC_OFFSET CHASSIS_MAX_SPEED / 660
-#define KEY_MAX 4000
+#define KEY_MAX 5000
 #define WZ_MAX 4000
 #define ANGLE_VALVE 5
 #define ANGLE_WEIGHT 60

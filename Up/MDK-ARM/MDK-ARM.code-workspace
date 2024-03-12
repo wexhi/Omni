@@ -33,7 +33,7 @@
             "editor.tabSize": 4,
             "editor.autoIndent": "advanced"
         },
-        "cortex-debug.variableUseNaturalFormat": true,
+        "cortex-debug.variableUseNaturalFormat": false,
         "commentTranslate.hover.variable": true,
         "commentTranslate.hover.string": true,
         "commentTranslate.targetLanguage": "zh-CN",

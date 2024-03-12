@@ -8,7 +8,7 @@
 Vision_Recv_s *recv;
 static attitude_t *attitude_data; // 姿态数据指针
 static float pitch_angle;		  // 云台pitch轴角度
-static int16_t INS_angle_send[4];
+static int16_t INS_angle_send[3];
 static uint8_t ins_buf[8];
 
 extern float yaw_send;
@@ -78,15 +78,15 @@ static void Up_send_to_down()
 {
 	INS_angle_send[0] = attitude_data->Yaw * 100;
 	INS_angle_send[1] = (int16_t)(attitude_data->Gyro[2] * 2000);
-	INS_angle_send[3] = yaw_send * 100;
+	INS_angle_send[2] = yaw_send * 100;
 
 	ins_buf[0] = (INS_angle_send[0] >> 8) & 0xff;
 	ins_buf[1] = INS_angle_send[0] >> 8;
 	ins_buf[2] = (INS_angle_send[1] >> 8) & 0xff;
 	ins_buf[3] = INS_angle_send[1] >> 8;
 	ins_buf[4] = is_tracking;
-	ins_buf[5] = is_tracking;
-	ins_buf[6] = (INS_angle_send[3] >> 8) & 0xff;
-	ins_buf[7] = INS_angle_send[3] >> 8;
-	can_remote(ins_buf, 0x55);
+	ins_buf[5] = 6;
+	ins_buf[6] = (INS_angle_send[2] >> 8) & 0xff;;
+	ins_buf[7] = INS_angle_send[2] >> 8;
+	can_remote(ins_buf, 0xA5);
 }

@@ -33,8 +33,8 @@ void Gimbal_task(void const *pvParameters)
 void Gimbal_Init()
 {
     // 初始化pid参数
-    gimbal_Yaw.pid_parameter[0] = 100, gimbal_Yaw.pid_parameter[1] = 0.5, gimbal_Yaw.pid_parameter[2] = 0;
-    gimbal_Yaw.pid_angle_parameter[0] = 12, gimbal_Yaw.pid_angle_parameter[1] = 0, gimbal_Yaw.pid_angle_parameter[2] = 200;
+    gimbal_Yaw.pid_parameter[0] = 100, gimbal_Yaw.pid_parameter[1] = 0.15, gimbal_Yaw.pid_parameter[2] = 0;
+    gimbal_Yaw.pid_angle_parameter[0] = 11.6, gimbal_Yaw.pid_angle_parameter[1] = 0, gimbal_Yaw.pid_angle_parameter[2] = 180;
     gimbal_Yaw.angle_target = 0;
 
     // 初始化pid结构体
@@ -86,7 +86,7 @@ static void RC_Yaw_control()
 {
     if (rc_ctrl.rc.ch[0] >= -660 && rc_ctrl.rc.ch[0] <= 660) // 遥控器YAW轴控制
     {
-        if (is_track && rc_ctrl.mouse.press_r) // if (rc_ctrl.mouse.press_r && is_track)鼠标右键按下且识别到敌方装甲时，云台YAW轴目标为自瞄目标
+        if (is_track && rc_ctrl.rc.s[1] == 3) // if (rc_ctrl.mouse.press_r && is_track)鼠标右键按下且识别到敌方装甲时，云台YAW轴目标为自瞄目标
             gimbal_Yaw.angle_target = yaw_aim;
         else
             gimbal_Yaw.angle_target += rc_ctrl.rc.ch[0] / 660.0 * (-0.6) - // 遥控器控制
