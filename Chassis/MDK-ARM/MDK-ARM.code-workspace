@@ -35,7 +35,8 @@
             "type_traits": "c",
             "xmemory": "c",
             "xstring": "c",
-            "xutility": "c"
+            "xutility": "c",
+            "cstdlib": "c"
         },
         "[yaml]": {
             "editor.insertSpaces": true,

@@ -31,6 +31,7 @@ typedef struct
     fp32 Kp;
     fp32 Ki;
     fp32 Kd;
+    fp32 alpha; // 低通滤波参数
 
     fp32 max_out;
     fp32 max_iout;
@@ -39,6 +40,7 @@ typedef struct
     fp32 fdb;
 
     fp32 out;
+    fp32 last_out;
     fp32 Pout;
     fp32 Iout;
     fp32 Dout;

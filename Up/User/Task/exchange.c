@@ -85,8 +85,8 @@ static void Up_send_to_down()
 	ins_buf[2] = (INS_angle_send[1] >> 8) & 0xff;
 	ins_buf[3] = INS_angle_send[1] >> 8;
 	ins_buf[4] = is_tracking;
-	ins_buf[5] = 6;
-	ins_buf[6] = (INS_angle_send[2] >> 8) & 0xff;;
+	ins_buf[5] = yaw_send;
+	ins_buf[6] = (INS_angle_send[2] >> 8) & 0xff;
 	ins_buf[7] = INS_angle_send[2] >> 8;
 	can_remote(ins_buf, 0xA5);
 }
