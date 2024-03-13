@@ -506,7 +506,8 @@
           "../User",
           "../User/moudle/judge",
           "../User/moudle/remote",
-          "../User/BSP/CAN"
+          "../User/BSP/CAN",
+          "../User/moudle/daemon"
         ],
         "libList": [],
         "sourceDirList": [],

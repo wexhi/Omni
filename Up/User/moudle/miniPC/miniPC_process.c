@@ -1,9 +1,11 @@
 #include "miniPC_process.h"
 #include "string.h"
 #include "robot_def.h"
+#include "daemon.h"
 
 static Vision_Instance *vision_instance; // 用于和视觉通信的串口实例
 static uint8_t *vis_recv_buff __attribute__((unused));
+static Daemon_Instance *vision_daemon_instance;
 
 float yaw_send = 0;
 uint8_t is_tracking = 0;
@@ -45,6 +47,7 @@ static void RecvProcess(Vision_Recv_s *recv, uint8_t *rx_buff)
  */
 static void DecodeVision(void)
 {
+    DaemonReload(vision_daemon_instance); // 喂狗
 #ifdef VISION_USE_VCP
     if (vis_recv_buff[0] == vision_instance->recv_data->header)
     {
@@ -59,6 +62,20 @@ static void DecodeVision(void)
         RecvProcess(vision_instance->recv_data, vision_instance->usart->recv_buff);
     }
 #endif
+}
+
+/**
+ * @brief 离线回调函数,将在daemon.c中被daemon task调用
+ * @attention 由于HAL库的设计问题,串口开启DMA接收之后同时发送有概率出现__HAL_LOCK()导致的死锁,使得无法
+ *            进入接收中断.通过daemon判断数据更新,重新调用服务启动函数以解决此问题.
+ *
+ * @param id vision_usart_instance的地址,此处没用.
+ */
+static void VisionOfflineCallback(void *id)
+{
+#ifdef VISION_USE_UART
+    USARTServiceInit(vision_instance->usart);
+#endif // !VISION_USE_UART
 }
 
 /**
@@ -88,7 +105,7 @@ static void SendProcess(Vision_Send_s *send, uint8_t *tx_buff)
     tx_buff[0] = send->header;
     tx_buff[1] = send->detect_color;
     tx_buff[2] = send->reset_tracker;
-    tx_buff[3] = send->is_shoot;
+    tx_buff[3] = is_tracking;
 
     /* 使用memcpy发送浮点型小数 */
     memcpy(&tx_buff[4], &send->roll, 4);
@@ -153,6 +170,16 @@ Vision_Recv_s *VisionInit(Vision_Init_Config_s *init_config)
     vision_instance->usart = USARTRegister(&init_config->usart_config);
     vision_instance->recv_data = VisionRecvRegister(&init_config->recv_config);
     vision_instance->send_data = VisionSendRegister(&init_config->send_config);
+#ifdef VISION_USED // 因为目前没上nuc自供电，所以在此添加宏定义确保程序稳定
+    // 为master process注册daemon,用于判断视觉通信是否离线
+    Daemon_Init_Config_s daemon_conf = {
+        .callback = VisionOfflineCallback, // 离线时调用的回调函数,会重启串口接收
+        .owner_id = NULL,
+        .reload_count = 5, // 50ms
+    };
+    vision_daemon_instance = DaemonRegister(&daemon_conf);
+#endif
+
     return vision_instance->recv_data;
 }
 

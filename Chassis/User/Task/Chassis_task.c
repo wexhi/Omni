@@ -5,6 +5,8 @@
 #include "drv_can.h"
 #include "arm_math.h"
 #include "rm_referee.h"
+#include "referee_UI.h"
+#include "referee_task.h"
 #include "referee_protocol.h"
 
 #define CHASSIS_MAX_SPEED 5000
@@ -16,16 +18,15 @@
 #define KEY_START_OFFSET 15
 #define KEY_STOP_OFFSET 30
 
-chassis_t chassis;                   // 底盘信息结构体
-pid_struct_t supercap_pid;           // 超级电容PID结构体
-fp32 superpid[3] = {120, 0.1, 0};    // 超级电容PID参数
-int8_t chassis_mode;                 // 底盘模式
-static attitude_t *chassis_IMU_data; // 底盘IMU数据
-static referee_info_t *referee_data; // 用于获取裁判系统的数据
+chassis_t chassis;                         // 底盘信息结构体
+pid_struct_t supercap_pid;                 // 超级电容PID结构体
+static Referee_Interactive_info_t ui_data; // UI数据，将底盘中的数据传入此结构体的对应变量中，UI会自动检测是否变化，对应显示UI
+static attitude_t *chassis_IMU_data;       // 底盘IMU数据
+static referee_info_t *referee_data;       // 用于获取裁判系统的数据
 // 功率限制算法的变量定义
 float Watch_Power_Max;                                                 // 限制值
 float Watch_Power;                                                     // 实时功率
-uint16_t Watch_Buffer;                                                    // 缓冲能量值
+uint16_t Watch_Buffer;                                                 // 缓冲能量值
 double Chassis_pidout;                                                 // 输出值
 double Chassis_pidout_target;                                          // 目标值
 static double Scaling1 = 0, Scaling2 = 0, Scaling3 = 0, Scaling4 = 0;  // 比例
@@ -71,8 +72,8 @@ void Chassis_task(void const *pvParameters)
  */
 void Chassis_Init()
 {
-  chassis_IMU_data = INS_Init();       // 底盘IMU初始化
-  referee_data = RefereeInit(&huart6); // 裁判系统初始化
+  chassis_IMU_data = INS_Init();               // 底盘IMU初始化
+  referee_data = UITaskInit(&huart6, &ui_data); // 裁判系统初始化
 
   chassis.pid_parameter[0] = 30,
   chassis.pid_parameter[1] = 0.5, chassis.pid_parameter[2] = 0; // 底盘电机PID参数
@@ -81,8 +82,6 @@ void Chassis_Init()
   {
     pid_init(&chassis.pid[i], chassis.pid_parameter, 16384, 16384); // 底盘电机PID参数初始化
   }
-  pid_init(&supercap_pid, superpid, 3000, 3000); // 超级电容PID参数初始化
-
   chassis.Vx = 0, chassis.Vy = 0, chassis.Wz = 0; // 底盘速度清零
   chassis.imu_err = 0;                            // IMU误差清零
 }
@@ -341,7 +340,7 @@ static void Chassis_Power_Limit(double Chassis_pidout_target_limit)
   // 819.2/A，假设最大功率为120W，那么能够通过的最大电流为5A，取一个保守值：800.0 * 5 = 4000
 
   Watch_Power_Max = Klimit;
-  Watch_Power = referee_data->PowerHeatData.chassis_power; // powerd.chassis_power
+  Watch_Power = referee_data->PowerHeatData.chassis_power;  // powerd.chassis_power
   Watch_Buffer = referee_data->PowerHeatData.buffer_energy; // powerd.chassis_power_buffer
   // Hero_chassis_power_buffer;//限制值，功率值，缓冲能量值，初始值是1，0，0
   // get_chassis_power_and_buffer(&Power, &Power_Buffer, &Power_Max);//通过裁判系统和编码器值获取（限制值，实时功率，实时缓冲能量）

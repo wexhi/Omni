@@ -7,6 +7,7 @@
 #include "Shoot_task.h"
 #include "Gimbal_task.h"
 #include "exchange.h"
+#include "daemon.h"
 #include "ins_task.h"
 #include "drv_can.h"
 #include "drv_usart.h"
@@ -16,9 +17,11 @@ osThreadId Gimbal_taskHandle;
 osThreadId shoot_taskHandle;
 osThreadId insTaskHandle;
 osThreadId exchangeTaskHandle;
+osThreadId daemonTaskHandle;
 
 void OSTaskInit();
 void StartINSTASK(void const *argument);
+void StartDAEMONTASK(void const *argument);
 
 /**
  * @brief 机器人初始化,请在开启rtos之前调用.这也是唯一需要放入main函数的函数
@@ -33,9 +36,6 @@ void RobotInit()
     BSPInit();
     CAN1_Init();
     CAN2_Init();
-    // USART6_Init();
-    // USART3_Init();
-    // INS_Init(); // 确保BMI088被正确初始化.
     Shooter_Inint();
     Gimbal_Init();
     ExchangInit(); // 上下位机通信初始化
@@ -61,6 +61,9 @@ void OSTaskInit()
 
     osThreadDef(shootTask, Shoot_task, osPriorityNormal, 0, 256);
     shoot_taskHandle = osThreadCreate(osThread(shootTask), NULL);
+
+    osThreadDef(daemontask, StartDAEMONTASK, osPriorityNormal, 0, 128);
+    daemonTaskHandle = osThreadCreate(osThread(daemontask), NULL);
 }
 
 __attribute__((noreturn)) void StartINSTASK(void const *argument)
@@ -71,5 +74,15 @@ __attribute__((noreturn)) void StartINSTASK(void const *argument)
         // 1kHz
         INS_Task();
         osDelay(1);
+    }
+}
+
+__attribute__((noreturn)) void StartDAEMONTASK(void const *argument)
+{
+    for (;;)
+    {
+        // 100Hz
+        DaemonTask();
+        osDelay(10);
     }
 }
