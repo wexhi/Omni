@@ -410,7 +410,8 @@
           "../User/moudle/miniPC",
           "../User/moudle/remote",
           "../User",
-          "../User/moudle/referee"
+          "../User/moudle/referee",
+          "../User/moudle/daemon"
         ],
         "libList": [],
         "sourceDirList": [],

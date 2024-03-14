@@ -16,6 +16,7 @@
 #include "Chassis_task.h"
 #include "Gimbal_task.h"
 #include "referee_task.h"
+#include "daemon.h"
 #include "stm32f4xx_it.h"
 
 osThreadId Chassis_taskHandle;
@@ -23,10 +24,12 @@ osThreadId uiTaskHandle;
 osThreadId Gimbal_taskHandle;
 osThreadId insTaskHandle;
 osThreadId exchangeTaskHandle;
+osThreadId daemonTaskHandle;
 
 void OSTaskInit();
 void StartINSTASK(void const *argument);
 void StartUITASK(void const *argument);
+void StartDAEMONTASK(void const *argument);
 
 /**
  * @brief 机器人初始化,请在开启rtos之前调用.这也是唯一需要放入main函数的函数
@@ -66,6 +69,9 @@ void OSTaskInit()
 
     osThreadDef(uitask, StartUITASK, osPriorityNormal, 0, 512);
     uiTaskHandle = osThreadCreate(osThread(uitask), NULL);
+
+    osThreadDef(daemontask, StartDAEMONTASK, osPriorityNormal, 0, 128);
+    daemonTaskHandle = osThreadCreate(osThread(daemontask), NULL);
 }
 
 __attribute__((noreturn)) void StartINSTASK(void const *argument)
@@ -87,5 +93,15 @@ __attribute__((noreturn)) void StartUITASK(void const *argument)
         // 每给裁判系统发送一包数据会挂起一次,详见UITask函数的refereeSend()
         UITask();
         osDelay(1); // 即使没有任何UI需要刷新,也挂起一次,防止卡在UITask中无法切换
+    }
+}
+
+__attribute__((noreturn)) void StartDAEMONTASK(void const *argument)
+{
+    for (;;)
+    {
+        // 100Hz
+        DaemonTask();
+        osDelay(10);
     }
 }
