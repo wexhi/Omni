@@ -13,6 +13,7 @@
 #include "rm_referee.h"
 #include "referee_UI.h"
 #include "string.h"
+#include "rc_potocal.h"
 #include "cmsis_os.h"
 
 static Referee_Interactive_info_t *Interactive_data; // UI绘制需要的机器人状态数据
@@ -49,14 +50,15 @@ referee_info_t *UITaskInit(UART_HandleTypeDef *referee_usart_handle, Referee_Int
 
 void UITask()
 {
-    RobotModeTest(Interactive_data); // 测试用函数，实现模式自动变化,用于检查该任务和裁判系统是否连接正常
+    if (v_flag)
+        MyUIInit();
     MyUIRefresh(referee_recv_info, Interactive_data);
 }
 
 static Graph_Data_t UI_shoot_line[10]; // 射击准线
 static Graph_Data_t UI_Energy[3];      // 电容能量条
-static String_Data_t UI_State_sta[6];  // 机器人状态,静态只需画一次
-static String_Data_t UI_State_dyn[6];  // 机器人状态,动态先add才能change
+static String_Data_t UI_State_sta[7];  // 机器人状态,静态只需画一次
+static String_Data_t UI_State_dyn[7];  // 机器人状态,动态先add才能change
 static uint32_t shoot_line_location[10] = {540, 960, 490, 515, 565};
 
 void MyUIInit()
@@ -88,7 +90,8 @@ void MyUIInit()
     UICharRefresh(&referee_recv_info->referee_id, UI_State_sta[3]);
     UICharDraw(&UI_State_sta[4], "ss4", UI_Graph_ADD, 8, UI_Color_Pink, 15, 2, 150, 550, "lid:");
     UICharRefresh(&referee_recv_info->referee_id, UI_State_sta[4]);
-
+    UICharDraw(&UI_State_sta[6], "ss6", UI_Graph_ADD, 8, UI_Color_Main, 15, 2, 150, 800, "level:");
+    UICharRefresh(&referee_recv_info->referee_id, UI_State_sta[6]);
     // 绘制车辆状态标志，动态
     // 由于初始化时xxx_last_mode默认为0，所以此处对应UI也应该设为0时对应的UI，防止模式不变的情况下无法置位flag，导致UI无法刷新
     UICharDraw(&UI_State_dyn[0], "sd0", UI_Graph_ADD, 8, UI_Color_Main, 15, 2, 270, 750, "zeroforce");
@@ -106,7 +109,7 @@ void MyUIInit()
     UICharDraw(&UI_State_sta[5], "ss5", UI_Graph_ADD, 7, UI_Color_Green, 18, 2, 620, 230, "Power:");
     UICharRefresh(&referee_recv_info->referee_id, UI_State_sta[5]);
     // 能量条框
-    UIRectangleDraw(&UI_Energy[0], "ss6", UI_Graph_ADD, 7, UI_Color_Green, 2, 720, 140, 1220, 180);
+    UIRectangleDraw(&UI_Energy[0], "ss7", UI_Graph_ADD, 7, UI_Color_Green, 2, 720, 140, 1220, 180);
     UIGraphRefresh(&referee_recv_info->referee_id, 1, UI_Energy[0]);
 
     // 底盘功率显示,动态
@@ -114,6 +117,9 @@ void MyUIInit()
     // 能量条初始状态
     UILineDraw(&UI_Energy[2], "sd6", UI_Graph_ADD, 8, UI_Color_Pink, 30, 720, 160, 1020, 160);
     UIGraphRefresh(&referee_recv_info->referee_id, 2, UI_Energy[1], UI_Energy[2]);
+    // 等级显示，动态
+    UICharDraw(&UI_State_dyn[6], "sd7", UI_Graph_ADD, 8, UI_Color_Main, 21, 2, 270, 800, "1");
+    UICharRefresh(&referee_recv_info->referee_id, UI_State_dyn[6]);
 }
 
 // 测试用函数，实现模式自动变化,用于检查该任务和裁判系统是否连接正常
@@ -171,6 +177,34 @@ static void RobotModeTest(Referee_Interactive_info_t *_Interactive_data) // 测�
     default:
         break;
     }
+}
+
+static char *UIGetLevel()
+{
+    switch (referee_recv_info->GameRobotState.robot_level)
+    {
+    case 1:
+        return "1";
+    case 2:
+        return "2";
+    case 3:
+        return "3";
+    case 4:
+        return "4";
+    case 5:
+        return "5";
+    case 6:
+        return "6";
+    case 7:
+        return "7";
+    case 8:
+        return "8";
+    case 9:
+        return "9";
+    case 10:
+        return "10";
+    }
+    return "0";
 }
 
 static void MyUIRefresh(referee_info_t *referee_recv_info, Referee_Interactive_info_t *_Interactive_data)
@@ -251,6 +285,14 @@ static void MyUIRefresh(referee_info_t *referee_recv_info, Referee_Interactive_i
         UIGraphRefresh(&referee_recv_info->referee_id, 2, UI_Energy[1], UI_Energy[2]);
         _Interactive_data->Referee_Interactive_Flag.Power_flag = 0;
     }
+
+    // level
+    if (_Interactive_data->Referee_Interactive_Flag.level_flag == 1)
+    {
+        UICharDraw(&UI_State_dyn[6], "sd7", UI_Graph_Change, 8, UI_Color_Main, 15, 2, 270, 800, UIGetLevel());
+        UICharRefresh(&referee_recv_info->referee_id, UI_State_dyn[6]);
+        _Interactive_data->Referee_Interactive_Flag.level_flag = 0;
+    }
 }
 
 /**
@@ -295,5 +337,12 @@ static void UIChangeCheck(Referee_Interactive_info_t *_Interactive_data)
     {
         _Interactive_data->Referee_Interactive_Flag.Power_flag = 1;
         _Interactive_data->Chassis_last_Power_Data.chassis_power_mx = _Interactive_data->Chassis_Power_Data.chassis_power_mx;
+    }
+
+    _Interactive_data->level = referee_recv_info->GameRobotState.robot_level;
+    if (_Interactive_data->level != _Interactive_data->level_last)
+    {
+        _Interactive_data->Referee_Interactive_Flag.level_flag = 1;
+        _Interactive_data->level_last = _Interactive_data->level;
     }
 }

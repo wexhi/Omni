@@ -1,4 +1,5 @@
 #include "Chassis_task.h"
+#include "robot_def.h"
 #include "cmsis_os.h"
 #include "INS_task.h"
 #include "exchange.h"
@@ -23,6 +24,8 @@ pid_struct_t supercap_pid;                 // 超级电容PID结构体
 static Referee_Interactive_info_t ui_data; // UI数据，将底盘中的数据传入此结构体的对应变量中，UI会自动检测是否变化，对应显示UI
 static attitude_t *chassis_IMU_data;       // 底盘IMU数据
 static referee_info_t *referee_data;       // 用于获取裁判系统的数据
+/******裁判系统自定义UI数据*****/
+
 // 功率限制算法的变量定义
 float Watch_Power_Max;                                                 // 限制值
 float Watch_Power;                                                     // 实时功率
@@ -51,6 +54,7 @@ static void get_UpDown_Err();                                                   
 static void rotate();                                                                 // 旋转矩阵
 static void key_control(void);                                                        // 键盘控制函数
 static void Chassis_Power_Limit(double Chassis_pidout_target_limit);                  // 底盘功率限制
+static void GetRoboState(void);                                                       // 用于判断机器人状态
 
 void Chassis_task(void const *pvParameters)
 {
@@ -59,6 +63,7 @@ void Chassis_task(void const *pvParameters)
     Chassis_loop_Init();             // 获取上下C板角度差
     get_UpDown_Err();                // 获取上下C板角度差
     mode_chooce();                   // 模式选择
+    GetRoboState();                  // 自定义UI模式显示
     chassis_motol_speed_calculate(); // 运动解算
     chassis_current_give();          // 电机电流控制
     osDelay(1);
@@ -72,7 +77,7 @@ void Chassis_task(void const *pvParameters)
  */
 void Chassis_Init()
 {
-  chassis_IMU_data = INS_Init();               // 底盘IMU初始化
+  chassis_IMU_data = INS_Init();                // 底盘IMU初始化
   referee_data = UITaskInit(&huart6, &ui_data); // 裁判系统初始化
 
   chassis.pid_parameter[0] = 30,
@@ -403,5 +408,47 @@ static void Chassis_Power_Limit(double Chassis_pidout_target_limit)
     chassis.motor_info[1].set_current = Scaling2 * (Chassis_pidout_max * Klimit) * Plimit;
     chassis.motor_info[2].set_current = Scaling3 * (Chassis_pidout_max * Klimit) * Plimit;
     chassis.motor_info[3].set_current = Scaling4 * (Chassis_pidout_max * Klimit) * Plimit; /*同比缩放电流*/
+  }
+}
+
+/**
+ * @brief Get the Robo State object
+ *
+ * @todo 当前把此函数当作所有命令的更新处，后续会专门移植
+ */
+static void GetRoboState(void)
+{
+  // 判断摩擦轮以及弹舱盖
+  if (q_flag) // 摩擦轮电机动
+  {
+    ui_data.friction_mode = FRICTION_ON;
+    ui_data.lid_mode = LID_CLOSE;
+  }
+  else if (e_flag) // 摩擦轮电机停
+  {
+    ui_data.friction_mode = FRICTION_OFF;
+    ui_data.lid_mode = LID_OPEN;
+  }
+  // 判断是否发弹
+  if (rc_ctrl.mouse.press_l &&
+      ui_data.friction_mode == FRICTION_ON)
+    ui_data.shoot_mode = SHOOT_ON;
+  else
+    ui_data.shoot_mode = SHOOT_OFF;
+  // 判断底盘以及云台的模式
+  if (rc_ctrl.rc.s[0] == 1) // 右侧拨杆向上
+  {
+    ui_data.chassis_mode = CHASSIS_ZERO_FORCE;
+    ui_data.gimbal_mode = GIMBAL_ZERO_FORCE;
+  }
+  if (rc_ctrl.rc.s[0] == 2) // 右侧拨杆向下
+  {
+    ui_data.chassis_mode = CHASSIS_FOLLOW_GIMBAL_YAW;
+    ui_data.gimbal_mode = GIMBAL_GYRO_MODE;
+  }
+  if (rc_ctrl.rc.s[0] == 3) // 右侧拨杆中间
+  {
+    ui_data.chassis_mode = CHASSIS_NO_FOLLOW;
+    ui_data.gimbal_mode = GIMBAL_GYRO_MODE;
   }
 }
