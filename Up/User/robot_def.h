@@ -15,7 +15,7 @@
 // #define VISION_USE_VCP // 使用虚拟串口发送视觉数据
 #define VISION_USE_UART // 使用串口发送视觉数据
 
-// #define VISION_USED // 使用视觉模块
+#define VISION_USED // 使用视觉模块
 
 /**
  * @brief 机器人初始化,请在开启rtos之前调用.这也是唯一需要放入main函数的函数

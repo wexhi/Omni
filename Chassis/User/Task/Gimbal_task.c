@@ -86,7 +86,7 @@ static void RC_Yaw_control()
 {
     if (rc_ctrl.rc.ch[0] >= -660 && rc_ctrl.rc.ch[0] <= 660) // 遥控器YAW轴控制
     {
-        if (is_track && rc_ctrl.rc.s[1] == 3) // if (rc_ctrl.mouse.press_r && is_track)鼠标右键按下且识别到敌方装甲时，云台YAW轴目标为自瞄目标
+        if (is_track && (rc_ctrl.rc.s[1] == 3 || rc_ctrl.mouse.press_r)) // if (rc_ctrl.mouse.press_r && is_track)鼠标右键按下且识别到敌方装甲时，云台YAW轴目标为自瞄目标
             gimbal_Yaw.angle_target = yaw_aim;
         else
             gimbal_Yaw.angle_target += rc_ctrl.rc.ch[0] / 660.0 * (-0.6) - // 遥控器控制

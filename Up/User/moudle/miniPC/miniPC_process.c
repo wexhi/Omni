@@ -32,13 +32,7 @@ static void RecvProcess(Vision_Recv_s *recv, uint8_t *rx_buff)
         yaw_send = recv->yaw;
 
     is_tracking = recv->is_tracking;
-
-    if (recv->pitch > 0)
-        recv->pitch = -recv->pitch + 180;
-    else if (recv->pitch < 0)
-        recv->pitch = -recv->pitch - 180;
-    else
-        recv->pitch = 179;
+    recv->pitch = -recv->pitch + 180;
 }
 
 /**

@@ -19,6 +19,7 @@
 static Referee_Interactive_info_t *Interactive_data; // UI绘制需要的机器人状态数据
 static referee_info_t *referee_recv_info;            // 接收到的裁判系统数据
 uint8_t UI_Seq;                                      // 包序号，供整个referee文件使用
+extern uint8_t is_track;                             // 是否自瞄
 // @todo 不应该使用全局变量
 
 /**
@@ -72,8 +73,10 @@ void MyUIInit()
     UIDelete(&referee_recv_info->referee_id, UI_Data_Del_ALL, 0); // 清空UI
 
     // 绘制发射基准线
-    UILineDraw(&UI_shoot_line[0], "sl0", UI_Graph_ADD, 7, UI_Color_White, 3, 710, shoot_line_location[0], 1210, shoot_line_location[0]);
-    UILineDraw(&UI_shoot_line[1], "sl1", UI_Graph_ADD, 7, UI_Color_White, 3, shoot_line_location[1], 340, shoot_line_location[1], 740);
+    // 此线修改为动态,用于识别自瞄是否识别
+    UILineDraw(&UI_shoot_line[0], "sl0", UI_Graph_ADD, 8, UI_Color_White, 3, 710, shoot_line_location[0], 1210, shoot_line_location[0]);
+    UILineDraw(&UI_shoot_line[1], "sl1", UI_Graph_ADD, 8, UI_Color_White, 3, shoot_line_location[1], 340, shoot_line_location[1], 740);
+
     UILineDraw(&UI_shoot_line[2], "sl2", UI_Graph_ADD, 7, UI_Color_Yellow, 2, 810, shoot_line_location[2], 1110, shoot_line_location[2]);
     UILineDraw(&UI_shoot_line[3], "sl3", UI_Graph_ADD, 7, UI_Color_Yellow, 2, 810, shoot_line_location[3], 1110, shoot_line_location[3]);
     UILineDraw(&UI_shoot_line[4], "sl4", UI_Graph_ADD, 7, UI_Color_Yellow, 2, 810, shoot_line_location[4], 1110, shoot_line_location[4]);
@@ -292,6 +295,14 @@ static void MyUIRefresh(referee_info_t *referee_recv_info, Referee_Interactive_i
         UIGraphRefresh(&referee_recv_info->referee_id, 2, UI_Energy[1], UI_Energy[2]);
         _Interactive_data->Referee_Interactive_Flag.Power_flag = 0;
     }
+    // is_tracking
+    if (_Interactive_data->Referee_Interactive_Flag.tracking_flag == 1)
+    {
+        UILineDraw(&UI_shoot_line[0], "sl0", UI_Graph_Change, 8, _Interactive_data->is_tracking ? UI_Color_Pink : UI_Color_White, 3, 710, shoot_line_location[0], 1210, shoot_line_location[0]);
+        UILineDraw(&UI_shoot_line[1], "sl1", UI_Graph_Change, 8, _Interactive_data->is_tracking == 1 ? UI_Color_Pink : UI_Color_White, 3, shoot_line_location[1], 340, shoot_line_location[1], 740);
+        UIGraphRefresh(&referee_recv_info->referee_id, 2, UI_shoot_line[0], UI_shoot_line[1]);
+        _Interactive_data->Referee_Interactive_Flag.tracking_flag = 0;
+    }
 }
 
 /**
@@ -343,5 +354,12 @@ static void UIChangeCheck(Referee_Interactive_info_t *_Interactive_data)
     {
         _Interactive_data->Referee_Interactive_Flag.level_flag = 1;
         _Interactive_data->level_last = _Interactive_data->level;
+    }
+
+    _Interactive_data->is_tracking = is_track;
+    if (_Interactive_data->is_tracking != _Interactive_data->is_tracking_last)
+    {
+        _Interactive_data->Referee_Interactive_Flag.tracking_flag = 1;
+        _Interactive_data->is_tracking_last = _Interactive_data->is_tracking;
     }
 }
