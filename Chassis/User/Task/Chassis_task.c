@@ -10,13 +10,13 @@
 #include "referee_task.h"
 #include "referee_protocol.h"
 
-#define CHASSIS_MAX_SPEED 5000
+#define CHASSIS_MAX_SPEED 6000
 #define RC_OFFSET CHASSIS_MAX_SPEED / 660
-#define KEY_MAX 5000
+#define KEY_MAX 6000
 #define WZ_MAX 4000
 #define ANGLE_VALVE 5
 #define ANGLE_WEIGHT 60
-#define KEY_START_OFFSET 15
+#define KEY_START_OFFSET 16
 #define KEY_STOP_OFFSET 30
 
 chassis_t chassis;                         // 底盘信息结构体
