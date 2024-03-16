@@ -3,7 +3,6 @@
 #include "struct_typedef.h"
 #include "pid.h"
 #include "drv_can.h"
-#include "rc_potocal.h"
 #include "main.h"
 #include "gpio.h"
 typedef enum
@@ -26,8 +25,6 @@ typedef struct
     fp32 err_angle_rad;         // 下板与上板的角度差(弧度制)
     fp32 imu_err;               // 修正陀螺仪漂移量
 } chassis_t;
-
-extern chassis_t chassis;
 
 void Chassis_Init(void);
 void Chassis_task(void const *pvParameters);

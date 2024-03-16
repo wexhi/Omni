@@ -6,10 +6,8 @@
 
 #include "bsp_dwt.h"
 #include "drv_can.h"
-#include "drv_usart.h"
 #include "bsp_init.h"
 #include "robot_def.h"
-#include "rc_potocal.h"
 #include "arm_math.h"
 #include "INS_task.h"
 #include "exchange.h"
@@ -44,7 +42,6 @@ void RobotInit()
     BSPInit();
     CAN1_Init();
     CAN2_Init();
-    USART3_Init();
 
     Chassis_Init(); // 底盘初始化
     Gimbal_Init();  // 云台电机初始化

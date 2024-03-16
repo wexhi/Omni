@@ -2,13 +2,14 @@
 #include "cmsis_os.h"
 #include "exchange.h"
 #include "drv_can.h"
+#include "remote_control.h"
 #define MAX_SPEED 200 // YAW云台电机在速度模式下最大速度
 
 gimbal_t gimbal_Yaw;            // 云台电机信息结构体
 float yaw_aim;                  // 云台YAW轴目标，用于自瞄
 extern uint8_t is_track;        // 是否自瞄
 extern UP_C_angle_t UP_C_angle; // 上C的陀螺仪数据
-extern RC_ctrl_tS rc_ctrl;       // 遥控器信息结构体
+static RC_ctrl_t *rc_data;       // 遥控器信息结构体
 
 static void mode_select();           // 模式选择
 static void gimbal_current_give();   // 云台电机的任务
@@ -32,6 +33,7 @@ void Gimbal_task(void const *pvParameters)
  */
 void Gimbal_Init()
 {
+    rc_data = RemoteControlInit(&huart3);
     // 初始化pid参数
     gimbal_Yaw.pid_parameter[0] = 100, gimbal_Yaw.pid_parameter[1] = 0.1, gimbal_Yaw.pid_parameter[2] = 0;
     gimbal_Yaw.pid_angle_parameter[0] = 11.6, gimbal_Yaw.pid_angle_parameter[1] = 0, gimbal_Yaw.pid_angle_parameter[2] = 30;
@@ -48,7 +50,7 @@ void Gimbal_Init()
  */
 static void mode_select()
 {
-    if (rc_ctrl.rc.s[0] == 1)
+    if (switch_is_up(rc_data[TEMP].rc.switch_right))
         RC_Stop(); // 停止模式
     else
         RC_Yaw_control(); // 锁云台模式
@@ -61,7 +63,7 @@ static void mode_select()
 static void gimbal_current_give()
 {
     gimbal_Yaw.motor_info.set_current = pid_calc(&gimbal_Yaw.pid, -57.3f * UP_C_angle.yaw_gyro, gimbal_Yaw.speed_target);
-    if (rc_ctrl.rc.s[0] == 1)
+    if (switch_is_up(rc_data[TEMP].rc.switch_right))
         set_motor_current_gimbal(0, 0, 0, 0, 0);
     else
         set_motor_current_gimbal(0, 0, 0, gimbal_Yaw.motor_info.set_current, 0);
@@ -84,13 +86,13 @@ static void RC_Stop()
  */
 static void RC_Yaw_control()
 {
-    if (rc_ctrl.rc.ch[0] >= -660 && rc_ctrl.rc.ch[0] <= 660) // 遥控器YAW轴控制
+    if (rc_data[TEMP].rc.rocker_r_ >= -660 && rc_data[TEMP].rc.rocker_r_ <= 660) // 遥控器YAW轴控制
     {
-        if (is_track && (rc_ctrl.rc.s[1] == 3 || rc_ctrl.mouse.press_r)) // if (rc_ctrl.mouse.press_r && is_track)鼠标右键按下且识别到敌方装甲时，云台YAW轴目标为自瞄目标
+        if (is_track && (switch_is_mid(rc_data[TEMP].rc.switch_left) == 3 || rc_data[TEMP].mouse.press_r)) // if (rc_ctrl.mouse.press_r && is_track)鼠标右键按下且识别到敌方装甲时，云台YAW轴目标为自瞄目标
             gimbal_Yaw.angle_target = yaw_aim;
         else
-            gimbal_Yaw.angle_target += rc_ctrl.rc.ch[0] / 660.0 * (-0.6) - // 遥控器控制
-                                       (rc_ctrl.mouse.x / 16384.00 * 50);  // 鼠标控制
+            gimbal_Yaw.angle_target += rc_data[TEMP].rc.rocker_r_ / 660.0 * (-0.6) - // 遥控器控制
+                                       (rc_data[TEMP].mouse.x / 16384.00 * 50);        // 鼠标控制
 
         detel_calc(&gimbal_Yaw.angle_target);                                                                          // 防止角度突变
         gimbal_Yaw.err_angle = gimbal_Yaw.angle_target - UP_C_angle.yaw;                                               // 计算角度误差

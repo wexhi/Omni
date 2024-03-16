@@ -240,7 +240,8 @@
         "<virtual_root>/Application/Bsp",
         "<virtual_root>/USER/CRC.c",
         "../User/moudle/judge",
-        "<virtual_root>/RTOS TASK/UI_task.c"
+        "<virtual_root>/RTOS TASK/UI_task.c",
+        "../User/moudle/remote/rc_potocal.c"
       ],
       "toolchain": "AC5",
       "compileConfig": {

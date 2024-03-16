@@ -5,6 +5,7 @@
 #include "string.h"
 #include "stdlib.h"
 #include "daemon.h"
+#include "rm_referee.h"
 
 #define REMOTE_CONTROL_FRAME_SIZE 18u // 遥控器接收的buffer大小
 
@@ -27,6 +28,8 @@ static void RectifyRCjoystick()
             *(&rc_ctrl[TEMP].rc.rocker_l_ + i) = 0;
 }
 
+static uint8_t temp_remote[8];
+extern referee_info_t *referee_data2up; // 用于获取裁判系统的数据
 /**
  * @brief 遥控器数据解析
  *
@@ -41,6 +44,26 @@ static void sbus_to_rc(const uint8_t *sbus_buf)
     rc_ctrl[TEMP].rc.rocker_l1 = (((sbus_buf[4] >> 1) | (sbus_buf[5] << 7)) & 0x07ff) - RC_CH_VALUE_OFFSET;                       //!< Channel 3
     rc_ctrl[TEMP].rc.dial = ((sbus_buf[16] | (sbus_buf[17] << 8)) & 0x07FF) - RC_CH_VALUE_OFFSET;                                 // 左侧拨轮
     RectifyRCjoystick();
+
+    // CAN发送
+    for (int i = 0; i <= 7; i++)
+    {
+        temp_remote[i] = sbus_buf[i]; // volatile const uint8_t和uint8_t不一样不能直接带入can_remote这个函数
+    }
+    can_remote(temp_remote, 0x33);
+    for (int i = 8; i <= 15; i++)
+    {
+        temp_remote[i - 8] = sbus_buf[i]; // volatile const uint8_t和uint8_t不一样不能直接带入can_remote这个函数
+    }
+    can_remote(temp_remote, 0x34);
+    temp_remote[0] = sbus_buf[16];
+    temp_remote[1] = sbus_buf[17];
+    memcpy(temp_remote + 2, &referee_data2up->GameRobotState.shooter_barrel_heat_limit, 2);
+    // 发送17mm枪口热量
+    memcpy(temp_remote + 4, &referee_data2up->PowerHeatData.shooter_17mm_1_barrel_heat, 2);
+    // 热量回复
+    memcpy(temp_remote + 6, &referee_data2up->GameRobotState.shooter_barrel_cooling_value, 2);
+    can_remote(temp_remote, 0x35);
 
     // 开关,0左1右
     rc_ctrl[TEMP].rc.switch_right = ((sbus_buf[5] >> 4) & 0x0003);     //!< Switch right

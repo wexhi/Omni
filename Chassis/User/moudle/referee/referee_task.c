@@ -13,11 +13,12 @@
 #include "rm_referee.h"
 #include "referee_UI.h"
 #include "string.h"
-#include "rc_potocal.h"
+#include "remote_control.h"
 #include "cmsis_os.h"
 
 static Referee_Interactive_info_t *Interactive_data; // UI绘制需要的机器人状态数据
 static referee_info_t *referee_recv_info;            // 接收到的裁判系统数据
+static RC_ctrl_t *rc_data;
 uint8_t UI_Seq;                                      // 包序号，供整个referee文件使用
 extern uint8_t is_track;                             // 是否自瞄
 // @todo 不应该使用全局变量
@@ -45,13 +46,14 @@ referee_info_t *UITaskInit(UART_HandleTypeDef *referee_usart_handle, Referee_Int
 {
     referee_recv_info = RefereeInit(referee_usart_handle); // 初始化裁判系统的串口,并返回裁判系统反馈数据指针
     Interactive_data = UI_data;                            // 获取UI绘制需要的机器人状态数据
+    rc_data = RemoteControlInit(&huart3);
     referee_recv_info->init_flag = 1;
     return referee_recv_info;
 }
 
 void UITask()
 {
-    if (v_flag)
+    if (rc_data[TEMP].key[KEY_PRESS].v)
         MyUIInit();
     MyUIRefresh(referee_recv_info, Interactive_data);
 }

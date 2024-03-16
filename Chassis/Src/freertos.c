@@ -26,13 +26,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "rc_potocal.h"
-#include "arm_math.h"
-#include "INS_task.h"
-#include "exchange.h"
-#include "Chassis_task.h"
-#include "Gimbal_task.h"
-#include "stm32f4xx_it.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
