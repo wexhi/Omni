@@ -95,7 +95,7 @@ typedef struct
     float pitch;
     uint16_t checksum;
 } Vision_Recv_s;
-#pragma pack() // 取消1字节对齐
+
 /* stm32 -> minipc (发送结构体) */
 typedef struct
 {
@@ -109,6 +109,7 @@ typedef struct
     uint16_t checksum;     // crc16校验位 https://blog.csdn.net/ydyuse/article/details/105395368
     uint8_t tail;          // 尾帧校验位
 } Vision_Send_s;
+#pragma pack() // 取消1字节对齐
 /* 视觉通信模块实例 */
 typedef struct
 {

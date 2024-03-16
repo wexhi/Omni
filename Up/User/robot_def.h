@@ -12,8 +12,8 @@
 #ifndef ROBOT_DEF_H
 #define ROBOT_DEF_H
 
-// #define VISION_USE_VCP // 使用虚拟串口发送视觉数据
-#define VISION_USE_UART // 使用串口发送视觉数据
+#define VISION_USE_VCP // 使用虚拟串口发送视觉数据
+// #define VISION_USE_UART // 使用串口发送视觉数据
 
 #define VISION_USED // 使用视觉模块
 

@@ -1,12 +1,14 @@
 #include "miniPC_process.h"
 #include "string.h"
 #include "robot_def.h"
+#include "crc_ref.h"
 #include "daemon.h"
 
 static Vision_Instance *vision_instance; // 用于和视觉通信的串口实例
 static uint8_t *vis_recv_buff __attribute__((unused));
 static Daemon_Instance *vision_daemon_instance;
-
+// 全局变量区
+extern uint16_t CRC_INIT;
 float yaw_send = 0;
 uint8_t is_tracking = 0;
 /**
@@ -107,6 +109,7 @@ static void SendProcess(Vision_Send_s *send, uint8_t *tx_buff)
     memcpy(&tx_buff[12], &send->pitch, 4);
 
     /* 发送校验位 */
+    send->checksum = Get_CRC16_Check_Sum(&tx_buff[0], VISION_SEND_SIZE - 3u, CRC_INIT);
     memcpy(&tx_buff[16], &send->checksum, 2);
     memcpy(&tx_buff[18], &send->tail, 1);
 }
@@ -164,7 +167,6 @@ Vision_Recv_s *VisionInit(Vision_Init_Config_s *init_config)
     vision_instance->usart = USARTRegister(&init_config->usart_config);
     vision_instance->recv_data = VisionRecvRegister(&init_config->recv_config);
     vision_instance->send_data = VisionSendRegister(&init_config->send_config);
-#ifdef VISION_USED // 因为目前没上nuc自供电，所以在此添加宏定义确保程序稳定
     // 为master process注册daemon,用于判断视觉通信是否离线
     Daemon_Init_Config_s daemon_conf = {
         .callback = VisionOfflineCallback, // 离线时调用的回调函数,会重启串口接收
@@ -172,7 +174,6 @@ Vision_Recv_s *VisionInit(Vision_Init_Config_s *init_config)
         .reload_count = 5, // 50ms
     };
     vision_daemon_instance = DaemonRegister(&daemon_conf);
-#endif
 
     return vision_instance->recv_data;
 }
@@ -211,7 +212,13 @@ Vision_Recv_s *VisionInit(Vision_Init_Config_s *init_config)
     vis_recv_buff = USBInit(conf);
     vision_instance->recv_data = VisionRecvRegister(&init_config->recv_config);
     vision_instance->send_data = VisionSendRegister(&init_config->send_config);
-
+    // 为master process注册daemon,用于判断视觉通信是否离线
+    Daemon_Init_Config_s daemon_conf = {
+        .callback = VisionOfflineCallback, // 离线时调用的回调函数,会重启串口接收
+        .owner_id = NULL,
+        .reload_count = 5, // 50ms
+    };
+    vision_daemon_instance = DaemonRegister(&daemon_conf);
     return vision_instance->recv_data;
 }
 
