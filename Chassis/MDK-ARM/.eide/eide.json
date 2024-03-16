@@ -219,6 +219,9 @@
           },
           {
             "path": "../User/Task/INS_task.c"
+          },
+          {
+            "path": "../User/Task/robot_cmd.c"
           }
         ],
         "folders": []

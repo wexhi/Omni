@@ -8,7 +8,7 @@ gimbal_t gimbal_Yaw;            // 云台电机信息结构体
 float yaw_aim;                  // 云台YAW轴目标，用于自瞄
 extern uint8_t is_track;        // 是否自瞄
 extern UP_C_angle_t UP_C_angle; // 上C的陀螺仪数据
-extern RC_ctrl_t rc_ctrl;       // 遥控器信息结构体
+extern RC_ctrl_tS rc_ctrl;       // 遥控器信息结构体
 
 static void mode_select();           // 模式选择
 static void gimbal_current_give();   // 云台电机的任务

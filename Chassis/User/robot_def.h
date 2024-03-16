@@ -52,11 +52,11 @@ typedef enum
 
 typedef enum
 {
-    LOAD_STOP = 0,  // 停止发射
-    LOAD_REVERSE,   // 反转
-    LOAD_1_BULLET,  // 单发
-    LOAD_3_BULLET,  // 三发
-    LOAD_BURSTFIRE, // 连发
+    LOAD_STOP = 0, // 停止发射
+    LOAD_REVERSE,  // 反转
+    LOAD_SLOW,     // 慢速
+    LOAD_MIDLE,    // 中速
+    LOAD_FAST,     // 快速
 } loader_mode_e;
 
 // 功率限制,从裁判系统获取,是否有必要保留?

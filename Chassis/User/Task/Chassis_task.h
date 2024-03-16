@@ -14,10 +14,20 @@ typedef enum
     CHAS_LB,
 } chassis_motor_cnt_t;
 
-extern chassis_t chassis;
-extern int16_t Drifting_yaw;
-extern uint16_t Down_ins_yaw;
+typedef struct
+{
+    /* data */
+    motor_info_t motor_info[4]; // 电机信息结构体
+    fp32 pid_parameter[3];      // 底盘电机的pid参数
+    pid_struct_t pid[4];        // 底盘电机的pid结构体
+    int16_t speed_target[4];    // 底盘电机的目标速度
+    int16_t Vx, Vy, Wz;         // 底盘电机的目标速度
+    fp32 err_angle;             // 下板与上板的角度差
+    fp32 err_angle_rad;         // 下板与上板的角度差(弧度制)
+    fp32 imu_err;               // 修正陀螺仪漂移量
+} chassis_t;
 
+extern chassis_t chassis;
 
 void Chassis_Init(void);
 void Chassis_task(void const *pvParameters);

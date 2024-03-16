@@ -38,7 +38,7 @@ float Plimit = 0;                                                      // 约束
 float Chassis_pidout_max;                                              // 输出值限制
 static int16_t key_x_fast, key_y_fast, key_x_slow, key_y_slow, key_Wz; // 键盘控制变量
 
-extern RC_ctrl_t rc_ctrl;            // 遥控器信息结构体
+extern RC_ctrl_tS rc_ctrl;            // 遥控器信息结构体
 extern float powerdata[4];           // 电源数据
 extern UP_C_angle_t UP_C_angle;      // 上C的陀螺仪数据
 extern ext_power_heat_data_t powerd; // 电源数据

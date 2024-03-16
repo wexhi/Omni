@@ -5,6 +5,28 @@
 #include "main.h"
 #include "chassis_task.h"
 
+typedef __packed struct
+{
+    __packed struct
+    {
+        int16_t ch[5];
+        char s[2];
+    } rc;
+    __packed struct
+    {
+        int16_t x;
+        int16_t y;
+        int16_t z;
+        uint8_t press_l;
+        uint8_t press_r;
+    } mouse;
+    __packed struct
+    {
+        uint16_t v;
+    } key;
+
+} RC_ctrl_tS;
+
 void USART3_rxDataHandler(uint8_t *rxBuf);
 
 extern uint16_t w_flag;
