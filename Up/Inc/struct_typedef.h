@@ -25,59 +25,5 @@ typedef struct
     uint8_t temp;           // 电机温度
 } motor_info_t;
 
-typedef struct
-{
-
-    fp32 Kp;
-    fp32 Ki;
-    fp32 Kd;
-
-    fp32 max_out;
-    fp32 max_iout;
-
-    fp32 set;
-    fp32 fdb;
-
-    fp32 out;
-    fp32 Pout;
-    fp32 Iout;
-    fp32 Dout;
-    fp32 Dbuf[3];
-    fp32 error[3];
-
-} pid_struct_t;
-typedef struct
-{
-    motor_info_t motor_info;     // 电机信息结构体
-    fp32 pid_parameter[3];       // 云台电机的pid参数
-    fp32 pid_angle_parameter[3]; // 云台电机的pid参数
-    pid_struct_t pid;            // 云台电机的pid结构体
-    pid_struct_t pid_angle;      // 云台电机的pid结构体
-    float speed_target;          // 云台电机的目标速度
-    float angle_target;          // 云台电机的目标角度
-    float err_angle;             // 云台电机的目标角度
-} gimbal_t;
-
-typedef __packed struct
-{
-    __packed struct
-    {
-        int16_t ch[5];
-        char s[2];
-    } rc;
-    __packed struct
-    {
-        int16_t x;
-        int16_t y;
-        int16_t z;
-        uint8_t press_l;
-        uint8_t press_r;
-    } mouse;
-    __packed struct
-    {
-        uint16_t v;
-    } key;
-
-} RC_ctrl_t;
 
 #endif

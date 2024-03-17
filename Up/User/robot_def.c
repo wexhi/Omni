@@ -10,7 +10,6 @@
 #include "daemon.h"
 #include "ins_task.h"
 #include "drv_can.h"
-#include "drv_usart.h"
 #include "bsp_init.h"
 
 osThreadId Gimbal_taskHandle;

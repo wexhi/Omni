@@ -4,7 +4,6 @@
 #include "struct_typedef.h"
 #include "Gimbal_task.h"
 #include "Shoot_task.h"
-#include "rc_potocal.h"
 
 #define MOTOR_2006_0 0x200
 #define MOTOR_2006_1 0x1ff

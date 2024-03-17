@@ -1,5 +1,6 @@
 #include "drv_can.h"
 #include "string.h"
+#include "remote_control.h"
 #define SHOOTER_ID_START 0x201
 #define SHOOTER_ID_END 0x203
 #define GIMBAL_PITCH_ID 0x207
@@ -13,7 +14,7 @@ extern shooter_t shooter;
 
 static uint8_t rx_data1[8];
 static uint8_t rx_data2[8];
-
+uint8_t sbus_buf[18u];
 void CAN1_Init(void)
 {
   CAN_FilterTypeDef can_filter;
@@ -81,49 +82,16 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) // 接受中断�
     // 接收遥控器数据
     if (rx_header.StdId == 0x33) // 双C板传递遥控器信号的接口标识符
     {
-      rc_ctrl.rc.ch[0] = ((rx_data2[0] | (rx_data2[1] << 8)) & 0x07ff) - 1024;                 //!< Channel 0  中值为1024，最大值1684，最小值364，波动范围：660
-      rc_ctrl.rc.ch[1] = ((((rx_data2[1] >> 3) & 0xff) | (rx_data2[2] << 5)) & 0x07ff) - 1024; //!< Channel 1
-      rc_ctrl.rc.ch[2] = ((((rx_data2[2] >> 6) & 0xff) | (rx_data2[3] << 2) |                  //!< Channel 2
-                           (rx_data2[4] << 10)) &
-                          0x07ff) -
-                         1024;
-      rc_ctrl.rc.ch[3] = ((((rx_data2[4] >> 1) & 0xff) | (rx_data2[5] << 7)) & 0x07ff) - 1024; //!< Channel 3
-      rc_ctrl.rc.s[0] = ((rx_data2[5] >> 4) & 0x0003);                                         // 这是右
-      rc_ctrl.rc.s[1] = ((rx_data2[5] >> 4) & 0x000C) >> 2;                                    // 这才是左
-      rc_ctrl.mouse.x = rx_data2[6] | (rx_data2[7] << 8);                                      //!< Mouse X axis
+      memcpy(sbus_buf, rx_data2, 8);
     }
     if (rx_header.StdId == 0x34) // 双C板传递遥控器信号的接口标识符
     {
-      rc_ctrl.mouse.y = rx_data2[0] | (rx_data2[1] << 8); //!< Mouse Y axis
-      rc_ctrl.mouse.z = rx_data2[2] | (rx_data2[3] << 8); //!< Mouse Z axis
-      rc_ctrl.mouse.press_l = rx_data2[4];                //!< Mouse Left Is Press ?
-      rc_ctrl.mouse.press_r = rx_data2[5];                //!< Mouse Right Is Press ?
-      rc_ctrl.key.v = rx_data2[6] | (rx_data2[7] << 8);
-
-      // Some flag of keyboard
-      w_flag = (rx_data2[6] & 0x01);
-      s_flag = (rx_data2[6] & 0x02);
-      a_flag = (rx_data2[6] & 0x04);
-      d_flag = (rx_data2[6] & 0x08);
-      q_flag = (rx_data2[6] & 0x40);
-      e_flag = (rx_data2[6] & 0x80);
-      shift_flag = (rx_data2[6] & 0x10);
-      ctrl_flag = (rx_data2[6] & 0x20);
-      press_left = rc_ctrl.mouse.press_l;
-      press_right = rc_ctrl.mouse.press_r;
-      // HAL_GPIO_TogglePin( GPIOH, GPIO_PIN_11);
-      r_flag = rc_ctrl.key.v & (0x00 | 0x01 << 8);
-      f_flag = rc_ctrl.key.v & (0x00 | 0x02 << 8);
-      g_flag = rc_ctrl.key.v & (0x00 | 0x04 << 8);
-      z_flag = rc_ctrl.key.v & (0x00 | 0x08 << 8);
-      x_flag = rc_ctrl.key.v & (0x00 | 0x10 << 8);
-      c_flag = rc_ctrl.key.v & (0x00 | 0x20 << 8);
-      v_flag = rc_ctrl.key.v & (0x00 | 0x40 << 8);
-      b_flag = rc_ctrl.key.v & (0x00 | 0x80 << 8);
+      memcpy(sbus_buf + 8, rx_data2, 8);
     }
     if (rx_header.StdId == 0x35) // 双C板传递遥控器信号的接口标识符
     {
-      rc_ctrl.rc.ch[4] = (rx_data2[0] | (rx_data2[1] << 8)) - 1024; //!< Channel 4
+      memcpy(sbus_buf + 16, rx_data2, 2);
+      sbus_to_rc(sbus_buf);
       memcpy(&shooter.shoot_heat_limit, rx_data2 + 2, 2);
       memcpy(&shooter.shoot_heat, rx_data2 + 4, 2);
       memcpy(&shooter.cooling_value, rx_data2 + 6, 2);
@@ -251,10 +219,10 @@ void can_remote(uint8_t sbus_buf[], uint8_t can_send_id) // 调用can来发送�
 {
   CAN_TxHeaderTypeDef tx_header;
 
-  tx_header.StdId = can_send_id;                                      // 如果id_range==0则等于0x1ff,id_range==1则等于0x2ff（ID号）
-  tx_header.IDE = CAN_ID_STD;                                         // 标准帧
-  tx_header.RTR = CAN_RTR_DATA;                                       // 数据帧
-  tx_header.DLC = 8;                                                  // 发送数据长度（字节）
+  tx_header.StdId = can_send_id;                       // 如果id_range==0则等于0x1ff,id_range==1则等于0x2ff（ID号）
+  tx_header.IDE = CAN_ID_STD;                          // 标准帧
+  tx_header.RTR = CAN_RTR_DATA;                        // 数据帧
+  tx_header.DLC = 8;                                   // 发送数据长度（字节）
   while (HAL_CAN_GetTxMailboxesFreeLevel(&hcan2) == 0) // 等待邮箱空闲
   {
   }
