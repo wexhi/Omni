@@ -32,7 +32,7 @@ void Shoot_task(void const *pvParameters)
     for (;;)
     {
         model_choice();
-        shooter_current_given(); // 发射的时候再打开
+        // shooter_current_given(); // 发射的时候再打开
         osDelay(1);
     }
 }
@@ -119,7 +119,7 @@ static void friction_control(void)
 // 弹舱电机控制
 static void bay_control(void)
 {
-    if (switch_is_mid(rc_ctrl[TEMP].rc.switch_left) && !friction_flag)
+    if (!friction_flag && switch_is_down(rc_ctrl[TEMP].rc.switch_left)) // 摩擦轮电机停转或者发射
         __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 500); // 500 关
     else
         __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 2100); // 2100 开

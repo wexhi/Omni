@@ -16,7 +16,7 @@ Shoot_Ctrl_Cmd_s shoot_cmd_send;     // 发射控制量
 
 void RobotCMDInit()
 {
-    rc_data = RemoteControlInit(&huart3); // 修改为对应串口,注意如果是自研板dbus协议串口需选用添加了反相器的那个
+    // rc_data = RemoteControlInit(&huart3); // 修改为对应串口,注意如果是自研板dbus协议串口需选用添加了反相器的那个
 }
 
 /**

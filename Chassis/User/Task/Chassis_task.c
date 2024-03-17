@@ -38,8 +38,8 @@ float Klimit = 1;                                                      // 限制
 float Plimit = 0;                                                      // 约束比例
 float Chassis_pidout_max;                                              // 输出值限制
 static int16_t key_x_fast, key_y_fast, key_x_slow, key_y_slow, key_Wz; // 键盘控制变量
-static RC_ctrl_t *rc_data;                                             // 遥控器信息结构体
 
+extern RC_ctrl_t rc_ctrl[2];         // 遥控器数据
 extern float powerdata[4];           // 电源数据
 extern UP_C_angle_t UP_C_angle;      // 上C的陀螺仪数据
 extern ext_power_heat_data_t powerd; // 电源数据
@@ -79,7 +79,7 @@ void Chassis_task(void const *pvParameters)
 void Chassis_Init()
 {
   chassis_IMU_data = INS_Init();                // 底盘IMU初始化
-  rc_data = RemoteControlInit(&huart3);         // 修改为对应串口,注意如果是自研板dbus协议串口需选用添加了反相器的那个
+  RemoteControlInit(&huart3);                   // 修改为对应串口,注意如果是自研板dbus协议串口需选用添加了反相器的那个
   referee_data = UITaskInit(&huart6, &ui_data); // 裁判系统初始化
 
   chassis.pid_parameter[0] = 30,
@@ -120,33 +120,27 @@ static void mode_chooce()
   // chanel 3 up max==660,down max==-660
   // chanel 4 The remote control does not have this channel
 
-  if (switch_is_up(rc_data[TEMP].rc.switch_right)) // 右侧拨杆向上
+  if (switch_is_up(rc_ctrl[TEMP].rc.switch_right)) // 右侧拨杆向上
   {
     LEDB_ON(); // BLUE LED
     LEDR_OFF();
     LEDG_OFF();
     Chassis_loop_Init(); // 底盘速度清零
   }
-  else if (switch_is_down(rc_data[TEMP].rc.switch_right)) // 右侧拨杆向下
+  else if (switch_is_down(rc_ctrl[TEMP].rc.switch_right)) // 右侧拨杆向下
   {
     LEDG_ON(); // GREEN LED
     LEDR_OFF();
     LEDB_OFF();
     chassis_follow_gimbal(); // 底盘跟随云台
   }
-  else if (switch_is_mid(rc_data[TEMP].rc.switch_right)) // 右侧拨杆中间
+  else if (switch_is_mid(rc_ctrl[TEMP].rc.switch_right)) // 右侧拨杆中间
   {
     LEDR_ON(); // RED LED
     LEDB_OFF();
     LEDG_OFF();
     key_control(); // 键盘控制
     GimbalMove();  // 遥控器控制底盘
-  }
-  else
-  {
-    LEDR_OFF();
-    LEDB_OFF();
-    LEDG_OFF();
   }
 }
 
@@ -220,9 +214,9 @@ static void chassis_current_give()
 static void GimbalMove(void)
 {
   // 从遥控器和键盘获取控制输入
-  chassis.Vx = rc_data[TEMP].rc.rocker_l1 * RC_OFFSET + key_x_fast - key_x_slow; // 前后输入
-  chassis.Vy = rc_data[TEMP].rc.rocker_l_ * RC_OFFSET + key_y_fast - key_y_slow; // 左右输入
-  chassis.Wz = rc_data[TEMP].rc.dial * RC_OFFSET + key_Wz;                       // 旋转输入
+  chassis.Vx = rc_ctrl[TEMP].rc.rocker_l1 * RC_OFFSET + key_x_fast - key_x_slow; // 前后输入
+  chassis.Vy = rc_ctrl[TEMP].rc.rocker_l_ * RC_OFFSET + key_y_fast - key_y_slow; // 左右输入
+  chassis.Wz = rc_ctrl[TEMP].rc.dial * RC_OFFSET + key_Wz;                       // 旋转输入
 
   if (chassis.Wz > WZ_MAX / 10) // 旋转速度限制
   {
@@ -248,8 +242,8 @@ static void chassis_follow_gimbal()
     chassis.Wz = -WZ_MAX;
 
   // 从遥控器获取控制输入
-  chassis.Vx = rc_data[TEMP].rc.rocker_l1 * RC_OFFSET; // 前后输入
-  chassis.Vy = rc_data[TEMP].rc.rocker_l_ * RC_OFFSET; // 左右输入
+  chassis.Vx = rc_ctrl[TEMP].rc.rocker_l1 * RC_OFFSET; // 前后输入
+  chassis.Vy = rc_ctrl[TEMP].rc.rocker_l_ * RC_OFFSET; // 左右输入
 }
 
 /**
@@ -259,7 +253,7 @@ static void chassis_follow_gimbal()
  */
 static void get_UpDown_Err()
 {
-  if (switch_is_up(rc_data[TEMP].rc.switch_right) || rc_data[TEMP].key[KEY_PRESS].x) // 修正IMU误差
+  if (switch_is_up(rc_ctrl[TEMP].rc.switch_right) || rc_ctrl[TEMP].key[KEY_PRESS].x) // 修正IMU误差
     chassis.imu_err = chassis_IMU_data->Yaw - UP_C_angle.yaw;
   else
     chassis.err_angle = chassis_IMU_data->Yaw - UP_C_angle.yaw - chassis.imu_err; // 获取上下C板角度差
@@ -299,23 +293,23 @@ static void rotate()
  */
 static void key_control(void)
 {
-  if (rc_data[TEMP].key[KEY_PRESS].d)
+  if (rc_ctrl[TEMP].key[KEY_PRESS].a)
     key_y_fast += KEY_START_OFFSET;
   else
     key_y_fast -= KEY_STOP_OFFSET;
-  if (rc_data[TEMP].key[KEY_PRESS].a)
+  if (rc_ctrl[TEMP].key[KEY_PRESS].d)
     key_y_slow += KEY_START_OFFSET;
   else
     key_y_slow -= KEY_STOP_OFFSET;
-  if (rc_data[TEMP].key[KEY_PRESS].w)
+  if (rc_ctrl[TEMP].key[KEY_PRESS].w)
     key_x_fast += KEY_START_OFFSET;
   else
     key_x_fast -= KEY_STOP_OFFSET;
-  if (rc_data[TEMP].key[KEY_PRESS].s)
+  if (rc_ctrl[TEMP].key[KEY_PRESS].s)
     key_x_slow += KEY_START_OFFSET;
   else
     key_x_slow -= KEY_STOP_OFFSET;
-  if (rc_data[TEMP].key[KEY_PRESS].shift)
+  if (rc_ctrl[TEMP].key[KEY_PRESS].shift)
     key_Wz += KEY_START_OFFSET;
   else
     key_Wz -= KEY_STOP_OFFSET;
@@ -421,36 +415,55 @@ static void Chassis_Power_Limit(double Chassis_pidout_target_limit)
 static void GetRoboState(void)
 {
   // 判断摩擦轮以及弹舱盖
-  if (rc_data[TEMP].key[KEY_PRESS].q) // 摩擦轮电机动
+  if (rc_ctrl[TEMP].key[KEY_PRESS].q) // 摩擦轮电机动
   {
     ui_data.friction_mode = FRICTION_ON;
     ui_data.lid_mode = LID_CLOSE;
   }
-  else if (rc_data[TEMP].key[KEY_PRESS].e) // 摩擦轮电机停
+  else if (rc_ctrl[TEMP].key[KEY_PRESS].e) // 摩擦轮电机停
   {
     ui_data.friction_mode = FRICTION_OFF;
     ui_data.lid_mode = LID_OPEN;
   }
   // 判断是否发弹
-  if (rc_data[TEMP].mouse.press_l &&
+  if (rc_ctrl[TEMP].mouse.press_l &&
       ui_data.friction_mode == FRICTION_ON)
     ui_data.shoot_mode = SHOOT_ON;
   else
     ui_data.shoot_mode = SHOOT_OFF;
   // 判断底盘以及云台的模式
-  if (switch_is_up(rc_data[TEMP].rc.switch_right)) // 右侧拨杆向上
+  if (switch_is_up(rc_ctrl[TEMP].rc.switch_right)) // 右侧拨杆向上
   {
     ui_data.chassis_mode = CHASSIS_ZERO_FORCE;
     ui_data.gimbal_mode = GIMBAL_ZERO_FORCE;
   }
-  if (switch_is_down(rc_data[TEMP].rc.switch_right)) // 右侧拨杆向下
+  if (switch_is_down(rc_ctrl[TEMP].rc.switch_right)) // 右侧拨杆向下
   {
     ui_data.chassis_mode = CHASSIS_FOLLOW_GIMBAL_YAW;
     ui_data.gimbal_mode = GIMBAL_GYRO_MODE;
   }
-  if (switch_is_mid(rc_data[TEMP].rc.switch_right)) // 右侧拨杆中间
+  if (switch_is_mid(rc_ctrl[TEMP].rc.switch_right)) // 右侧拨杆中间
   {
     ui_data.chassis_mode = CHASSIS_NO_FOLLOW;
     ui_data.gimbal_mode = GIMBAL_GYRO_MODE;
   }
+
+  switch (rc_ctrl[TEMP].key_count[KEY_PRESS][Key_B] % 3)
+  {
+  case 0:
+    ui_data.loader_mode = LOAD_MEDIUM; // 默认正转速度
+    break;
+  case 1:
+    ui_data.loader_mode = LOAD_SLOW; // 一档速度
+    break;
+  case 2:
+    ui_data.loader_mode = LOAD_FAST; // 二档速度
+    break;
+  default:
+    ui_data.loader_mode = LOAD_MEDIUM; // 默认正转速度
+    break;
+  }
+
+  if (rc_ctrl[TEMP].key[KEY_PRESS].f)
+    ui_data.loader_mode = LOAD_REVERSE;
 }

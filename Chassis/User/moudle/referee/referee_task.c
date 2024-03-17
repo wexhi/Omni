@@ -18,9 +18,9 @@
 
 static Referee_Interactive_info_t *Interactive_data; // UI绘制需要的机器人状态数据
 static referee_info_t *referee_recv_info;            // 接收到的裁判系统数据
-static RC_ctrl_t *rc_data;
-uint8_t UI_Seq;                                      // 包序号，供整个referee文件使用
-extern uint8_t is_track;                             // 是否自瞄
+extern RC_ctrl_t rc_ctrl[2];
+uint8_t UI_Seq;          // 包序号，供整个referee文件使用
+extern uint8_t is_track; // 是否自瞄
 // @todo 不应该使用全局变量
 
 /**
@@ -39,21 +39,20 @@ static void DeterminRobotID()
 }
 
 static void MyUIRefresh(referee_info_t *referee_recv_info, Referee_Interactive_info_t *_Interactive_data);
-static void UIChangeCheck(Referee_Interactive_info_t *_Interactive_data); // 模式切换检测
+static void UIChangeCheck(Referee_Interactive_info_t *_Interactive_data);                       // 模式切换检测
 static void RobotModeTest(Referee_Interactive_info_t *_Interactive_data) __attribute__((used)); // 测试用函数，实现模式自动变化
 
 referee_info_t *UITaskInit(UART_HandleTypeDef *referee_usart_handle, Referee_Interactive_info_t *UI_data)
 {
     referee_recv_info = RefereeInit(referee_usart_handle); // 初始化裁判系统的串口,并返回裁判系统反馈数据指针
     Interactive_data = UI_data;                            // 获取UI绘制需要的机器人状态数据
-    rc_data = RemoteControlInit(&huart3);
     referee_recv_info->init_flag = 1;
     return referee_recv_info;
 }
 
 void UITask()
 {
-    if (rc_data[TEMP].key[KEY_PRESS].v)
+    if (rc_ctrl[TEMP].key[KEY_PRESS].v)
         MyUIInit();
     MyUIRefresh(referee_recv_info, Interactive_data);
 }
@@ -97,6 +96,8 @@ void MyUIInit()
     UICharRefresh(&referee_recv_info->referee_id, UI_State_sta[4]);
     UICharDraw(&UI_State_sta[5], "ss5", UI_Graph_ADD, 8, UI_Color_Pink, 15, 2, 150, 550, "lid:");
     UICharRefresh(&referee_recv_info->referee_id, UI_State_sta[5]);
+    UICharDraw(&UI_State_sta[6], "ss6", UI_Graph_ADD, 8, UI_Color_Purplish_red, 15, 2, 150, 550, "Bounce:");
+    UICharRefresh(&referee_recv_info->referee_id, UI_State_sta[6]);
     // 绘制车辆状态标志，动态
     // 由于初始化时xxx_last_mode默认为0，所以此处对应UI也应该设为0时对应的UI，防止模式不变的情况下无法置位flag，导致UI无法刷新
     // 等级显示，动态
@@ -112,6 +113,8 @@ void MyUIInit()
     UICharRefresh(&referee_recv_info->referee_id, UI_State_dyn[4]);
     UICharDraw(&UI_State_dyn[5], "sd5", UI_Graph_ADD, 8, UI_Color_Pink, 15, 2, 270, 550, "open ");
     UICharRefresh(&referee_recv_info->referee_id, UI_State_dyn[5]);
+    UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_ADD, 8, UI_Color_Purplish_red, 15, 2, 270, 500, "medium ");
+    UICharRefresh(&referee_recv_info->referee_id, UI_State_dyn[6]);
 
     // 底盘功率显示，静态
     UICharDraw(&UI_State_sta[5], "ss5", UI_Graph_ADD, 7, UI_Color_Green, 18, 2, 620, 230, "Power:");
@@ -121,9 +124,9 @@ void MyUIInit()
     UIGraphRefresh(&referee_recv_info->referee_id, 1, UI_Energy[0]);
 
     // 底盘功率显示,动态
-    UIFloatDraw(&UI_Energy[1], "sd6", UI_Graph_ADD, 8, UI_Color_Green, 18, 2, 2, 750, 230, 24000);
+    UIFloatDraw(&UI_Energy[1], "sd7", UI_Graph_ADD, 8, UI_Color_Green, 18, 2, 2, 750, 230, 24000);
     // 能量条初始状态
-    UILineDraw(&UI_Energy[2], "sd7", UI_Graph_ADD, 8, UI_Color_Pink, 30, 720, 160, 1020, 160);
+    UILineDraw(&UI_Energy[2], "sd8", UI_Graph_ADD, 8, UI_Color_Pink, 30, 720, 160, 1020, 160);
     UIGraphRefresh(&referee_recv_info->referee_id, 2, UI_Energy[1], UI_Energy[2]);
 }
 
@@ -289,11 +292,34 @@ static void MyUIRefresh(referee_info_t *referee_recv_info, Referee_Interactive_i
         UICharRefresh(&referee_recv_info->referee_id, UI_State_dyn[5]);
         _Interactive_data->Referee_Interactive_Flag.lid_flag = 0;
     }
+    // loader
+    if (_Interactive_data->Referee_Interactive_Flag.loader_flag == 1)
+    {
+        switch (_Interactive_data->loader_mode)
+        {
+        case LOAD_REVERSE:
+            UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_ADD, 8, UI_Color_Purplish_red, 15, 2, 270, 500, "reverse");
+            break;
+        case LOAD_SLOW:
+            UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_ADD, 8, UI_Color_Purplish_red, 15, 2, 270, 500, "slow   ");
+            break;
+        case LOAD_MEDIUM:
+            UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_ADD, 8, UI_Color_Purplish_red, 15, 2, 270, 500, "medium ");
+            break;
+        case LOAD_FAST:
+            UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_ADD, 8, UI_Color_Purplish_red, 15, 2, 270, 500, "fast   ");
+            break;
+        default:
+            break;
+        }
+        UICharRefresh(&referee_recv_info->referee_id, UI_State_dyn[6]);
+        _Interactive_data->Referee_Interactive_Flag.loader_flag = 0;
+    }
     // power
     if (_Interactive_data->Referee_Interactive_Flag.Power_flag == 1)
     {
-        UIFloatDraw(&UI_Energy[1], "sd6", UI_Graph_Change, 8, UI_Color_Green, 18, 2, 2, 750, 230, _Interactive_data->Chassis_Power_Data.chassis_power_mx * 1000);
-        UILineDraw(&UI_Energy[2], "sd7", UI_Graph_Change, 8, UI_Color_Pink, 30, 720, 160, (uint32_t)750 + _Interactive_data->Chassis_Power_Data.chassis_power_mx * 30, 160);
+        UIFloatDraw(&UI_Energy[1], "sd7", UI_Graph_Change, 8, UI_Color_Green, 18, 2, 2, 750, 230, _Interactive_data->Chassis_Power_Data.chassis_power_mx * 1000);
+        UILineDraw(&UI_Energy[2], "sd8", UI_Graph_Change, 8, UI_Color_Pink, 30, 720, 160, (uint32_t)750 + _Interactive_data->Chassis_Power_Data.chassis_power_mx * 30, 160);
         UIGraphRefresh(&referee_recv_info->referee_id, 2, UI_Energy[1], UI_Energy[2]);
         _Interactive_data->Referee_Interactive_Flag.Power_flag = 0;
     }
@@ -343,6 +369,12 @@ static void UIChangeCheck(Referee_Interactive_info_t *_Interactive_data)
     {
         _Interactive_data->Referee_Interactive_Flag.lid_flag = 1;
         _Interactive_data->lid_last_mode = _Interactive_data->lid_mode;
+    }
+
+    if (_Interactive_data->loader_mode != _Interactive_data->loader_mode_last)
+    {
+        _Interactive_data->Referee_Interactive_Flag.loader_flag = 1;
+        _Interactive_data->loader_mode_last = _Interactive_data->loader_mode;
     }
 
     if (_Interactive_data->Chassis_Power_Data.chassis_power_mx != _Interactive_data->Chassis_last_Power_Data.chassis_power_mx)

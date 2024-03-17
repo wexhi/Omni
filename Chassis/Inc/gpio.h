@@ -42,13 +42,13 @@ extern "C" {
 #define LEDB_OFF() HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_RESET)
 #define LEDB_ON() HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_SET)
 #define LEDB_TOGGLE() HAL_GPIO_TogglePin(GPIOH, GPIO_PIN_10)
-  /* USER CODE END Private defines */
+/* USER CODE END Private defines */
 
-  void MX_GPIO_Init(void);
+void MX_GPIO_Init(void);
 
-  /* USER CODE BEGIN Prototypes */
+/* USER CODE BEGIN Prototypes */
 
-  /* USER CODE END Prototypes */
+/* USER CODE END Prototypes */
 
 #ifdef __cplusplus
 }

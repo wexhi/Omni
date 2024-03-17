@@ -159,7 +159,11 @@
       },
       {
         "name": "Middlewares",
-        "files": [],
+        "files": [
+          {
+            "path": "../User/robot_def.c"
+          }
+        ],
         "folders": [
           {
             "name": "FreeRTOS",
@@ -241,7 +245,8 @@
         "<virtual_root>/USER/CRC.c",
         "../User/moudle/judge",
         "<virtual_root>/RTOS TASK/UI_task.c",
-        "../User/moudle/remote/rc_potocal.c"
+        "../User/moudle/remote/rc_potocal.c",
+        "<virtual_root>/RTOS TASK/robot_cmd.c"
       ],
       "toolchain": "AC5",
       "compileConfig": {

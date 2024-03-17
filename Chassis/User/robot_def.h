@@ -55,7 +55,7 @@ typedef enum
     LOAD_STOP = 0, // 停止发射
     LOAD_REVERSE,  // 反转
     LOAD_SLOW,     // 慢速
-    LOAD_MIDLE,    // 中速
+    LOAD_MEDIUM,    // 中速
     LOAD_FAST,     // 快速
 } loader_mode_e;
 

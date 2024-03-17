@@ -57,6 +57,7 @@ typedef struct
 	uint32_t shoot_flag : 1;
 	uint32_t lid_flag : 1;
 	uint32_t friction_flag : 1;
+	uint32_t loader_flag : 1;
 	uint32_t Power_flag : 1;
 	uint32_t level_flag : 1;
 	uint32_t tracking_flag : 1;
@@ -72,6 +73,7 @@ typedef struct
 	shoot_mode_e shoot_mode;				 // 发射模式设置
 	friction_mode_e friction_mode;			 // 摩擦轮关闭
 	lid_mode_e lid_mode;					 // 弹舱盖打开
+	loader_mode_e loader_mode;				 // 射频选择
 	Chassis_Power_Data_s Chassis_Power_Data; // 功率控制
 	uint8_t level;							 // 等级显示
 	uint8_t is_tracking;					 // 视觉是否识别
@@ -82,6 +84,7 @@ typedef struct
 	shoot_mode_e shoot_last_mode;
 	friction_mode_e friction_last_mode;
 	lid_mode_e lid_last_mode;
+	loader_mode_e loader_mode_last;
 	Chassis_Power_Data_s Chassis_last_Power_Data;
 	uint8_t level_last;
 	uint8_t is_tracking_last;
