@@ -13,6 +13,7 @@
 #include "crc_ref.h"
 #include "stdio.h"
 #include "rm_referee.h"
+#include "stdarg.h"
 
 // 包序号
 /********************************************删除操作*************************************

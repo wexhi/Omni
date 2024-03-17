@@ -40,7 +40,7 @@ static void DeterminRobotID()
 
 static void MyUIRefresh(referee_info_t *referee_recv_info, Referee_Interactive_info_t *_Interactive_data);
 static void UIChangeCheck(Referee_Interactive_info_t *_Interactive_data); // 模式切换检测
-static void RobotModeTest(Referee_Interactive_info_t *_Interactive_data); // 测试用函数，实现模式自动变化
+static void RobotModeTest(Referee_Interactive_info_t *_Interactive_data) __attribute__((used)); // 测试用函数，实现模式自动变化
 
 referee_info_t *UITaskInit(UART_HandleTypeDef *referee_usart_handle, Referee_Interactive_info_t *UI_data)
 {
