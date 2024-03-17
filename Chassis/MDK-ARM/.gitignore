@@ -9,6 +9,7 @@
 /bin
 /obj
 /out
+/C_Board_Standard_Robot
 
 # eide template
 *.ept
