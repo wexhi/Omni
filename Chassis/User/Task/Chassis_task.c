@@ -293,11 +293,11 @@ static void rotate()
  */
 static void key_control(void)
 {
-  if (rc_ctrl[TEMP].key[KEY_PRESS].a)
+  if (rc_ctrl[TEMP].key[KEY_PRESS].d)
     key_y_fast += KEY_START_OFFSET;
   else
     key_y_fast -= KEY_STOP_OFFSET;
-  if (rc_ctrl[TEMP].key[KEY_PRESS].d)
+  if (rc_ctrl[TEMP].key[KEY_PRESS].a)
     key_y_slow += KEY_START_OFFSET;
   else
     key_y_slow -= KEY_STOP_OFFSET;

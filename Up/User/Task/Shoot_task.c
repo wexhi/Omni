@@ -157,7 +157,7 @@ static void GetKeyBoard()
         key_dial_directed_speed = -MAX_DIAL_SPEED / 2; // 一档速度
         break;
     case 2:
-        key_dial_directed_speed = -MAX_DIAL_SPEED * 4; // 二档速度
+        key_dial_directed_speed = -MAX_DIAL_SPEED * 1.5; // 二档速度
         break;
     default:
         key_dial_directed_speed = -MAX_DIAL_SPEED; // 默认正转速度
