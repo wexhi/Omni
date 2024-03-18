@@ -298,16 +298,16 @@ static void MyUIRefresh(referee_info_t *referee_recv_info, Referee_Interactive_i
         switch (_Interactive_data->loader_mode)
         {
         case LOAD_REVERSE:
-            UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_ADD, 8, UI_Color_Purplish_red, 15, 2, 270, 500, "reverse");
+            UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_Change, 8, UI_Color_Purplish_red, 15, 2, 270, 500, "reverse");
             break;
         case LOAD_SLOW:
-            UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_ADD, 8, UI_Color_Purplish_red, 15, 2, 270, 500, "slow   ");
+            UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_Change, 8, UI_Color_Purplish_red, 15, 2, 270, 500, "slow   ");
             break;
         case LOAD_MEDIUM:
-            UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_ADD, 8, UI_Color_Purplish_red, 15, 2, 270, 500, "medium ");
+            UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_Change, 8, UI_Color_Purplish_red, 15, 2, 270, 500, "medium ");
             break;
         case LOAD_FAST:
-            UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_ADD, 8, UI_Color_Purplish_red, 15, 2, 270, 500, "fast   ");
+            UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_Change, 8, UI_Color_Purplish_red, 15, 2, 270, 500, "fast   ");
             break;
         default:
             break;
