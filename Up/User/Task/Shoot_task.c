@@ -120,7 +120,7 @@ static void friction_control(void)
 static void bay_control(void)
 {
     if (!friction_flag && switch_is_down(rc_ctrl[TEMP].rc.switch_left)) // 摩擦轮电机停转或者发射
-        __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 500); // 500 关
+        __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 500);               // 500 关
     else
         __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 2100); // 2100 开
 }
@@ -154,7 +154,7 @@ static void GetKeyBoard()
         key_dial_directed_speed = -MAX_DIAL_SPEED; // 默认正转速度
         break;
     case 1:
-        key_dial_directed_speed = -MAX_DIAL_SPEED / 2; // 一档速度
+        key_dial_directed_speed = -MAX_DIAL_SPEED / 4; // 一档速度
         break;
     case 2:
         key_dial_directed_speed = -MAX_DIAL_SPEED * 1.5; // 二档速度

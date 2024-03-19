@@ -96,7 +96,7 @@ void MyUIInit()
     UICharRefresh(&referee_recv_info->referee_id, UI_State_sta[4]);
     UICharDraw(&UI_State_sta[5], "ss5", UI_Graph_ADD, 8, UI_Color_Pink, 15, 2, 150, 550, "lid:");
     UICharRefresh(&referee_recv_info->referee_id, UI_State_sta[5]);
-    UICharDraw(&UI_State_sta[6], "ss6", UI_Graph_ADD, 8, UI_Color_Purplish_red, 15, 2, 150, 550, "Bounce:");
+    UICharDraw(&UI_State_sta[6], "ss6", UI_Graph_ADD, 8, UI_Color_Purplish_red, 15, 2, 150, 850, "Bounce:");
     UICharRefresh(&referee_recv_info->referee_id, UI_State_sta[6]);
     // 绘制车辆状态标志，动态
     // 由于初始化时xxx_last_mode默认为0，所以此处对应UI也应该设为0时对应的UI，防止模式不变的情况下无法置位flag，导致UI无法刷新
@@ -113,7 +113,7 @@ void MyUIInit()
     UICharRefresh(&referee_recv_info->referee_id, UI_State_dyn[4]);
     UICharDraw(&UI_State_dyn[5], "sd5", UI_Graph_ADD, 8, UI_Color_Pink, 15, 2, 270, 550, "open ");
     UICharRefresh(&referee_recv_info->referee_id, UI_State_dyn[5]);
-    UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_ADD, 8, UI_Color_Purplish_red, 15, 2, 270, 500, "medium ");
+    UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_ADD, 8, UI_Color_Purplish_red, 15, 2, 270, 850, "medium ");
     UICharRefresh(&referee_recv_info->referee_id, UI_State_dyn[6]);
 
     // 底盘功率显示，静态
@@ -298,16 +298,16 @@ static void MyUIRefresh(referee_info_t *referee_recv_info, Referee_Interactive_i
         switch (_Interactive_data->loader_mode)
         {
         case LOAD_REVERSE:
-            UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_Change, 8, UI_Color_Purplish_red, 15, 2, 270, 500, "reverse");
+            UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_Change, 8, UI_Color_Purplish_red, 15, 2, 270, 850, "reverse");
             break;
         case LOAD_SLOW:
-            UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_Change, 8, UI_Color_Purplish_red, 15, 2, 270, 500, "slow   ");
+            UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_Change, 8, UI_Color_Purplish_red, 15, 2, 270, 850, "slow   ");
             break;
         case LOAD_MEDIUM:
-            UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_Change, 8, UI_Color_Purplish_red, 15, 2, 270, 500, "medium ");
+            UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_Change, 8, UI_Color_Purplish_red, 15, 2, 270, 850, "medium ");
             break;
         case LOAD_FAST:
-            UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_Change, 8, UI_Color_Purplish_red, 15, 2, 270, 500, "fast   ");
+            UICharDraw(&UI_State_dyn[6], "sd6", UI_Graph_Change, 8, UI_Color_Purplish_red, 15, 2, 270, 850, "fast   ");
             break;
         default:
             break;
