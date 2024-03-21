@@ -28,16 +28,16 @@ static referee_info_t *referee_data;       // 用于获取裁判系统的数据
 /******裁判系统自定义UI数据*****/
 
 // 功率限制算法的变量定义
-float Watch_Power_Max;                                                 // 限制值
-float Watch_Power;                                                     // 实时功率
-uint16_t Watch_Buffer;                                                 // 缓冲能量值
-double Chassis_pidout;                                                 // 输出值
-double Chassis_pidout_target;                                          // 目标值
-static double Scaling1 = 0, Scaling2 = 0, Scaling3 = 0, Scaling4 = 0;  // 比例
-float Klimit = 1;                                                      // 限制值
-float Plimit = 0;                                                      // 约束比例
-float Chassis_pidout_max;                                              // 输出值限制
-static int16_t key_x_fast, key_y_fast, key_x_slow, key_y_slow, key_Wz; // 键盘控制变量
+float Watch_Power_Max;                                                             // 限制值
+float Watch_Power;                                                                 // 实时功率
+uint16_t Watch_Buffer;                                                             // 缓冲能量值
+double Chassis_pidout;                                                             // 输出值
+double Chassis_pidout_target;                                                      // 目标值
+static double Scaling1 = 0, Scaling2 = 0, Scaling3 = 0, Scaling4 = 0;              // 比例
+float Klimit = 1;                                                                  // 限制值
+float Plimit = 0;                                                                  // 约束比例
+float Chassis_pidout_max;                                                          // 输出值限制
+static int16_t key_x_fast, key_y_fast, key_x_slow, key_y_slow, key_Wz, key_WZ_max; // 键盘控制变量
 
 extern RC_ctrl_t rc_ctrl[2];         // 遥控器数据
 extern float powerdata[4];           // 电源数据
@@ -314,6 +314,22 @@ static void key_control(void)
   else
     key_Wz -= KEY_STOP_OFFSET;
 
+  switch (rc_ctrl[TEMP].key_count[KEY_PRESS_WITH_SHIFT][Key_C] % 2)
+  {
+  case 0:
+    key_WZ_max = KEY_MAX;
+    ui_data.chassis_mode = CHASSIS_FAST;
+    break;
+  case 1:
+    key_WZ_max = KEY_MAX / 2;
+    ui_data.chassis_mode = CHASSIS_SLOW;
+    break;
+  default:
+    key_WZ_max = KEY_MAX;
+    ui_data.chassis_mode = CHASSIS_FAST;
+    break;
+  }
+
   if (key_x_fast > KEY_MAX)
     key_x_fast = KEY_MAX;
   if (key_x_fast < 0)
@@ -330,8 +346,8 @@ static void key_control(void)
     key_y_slow = KEY_MAX;
   if (key_y_slow < 0)
     key_y_slow = 0;
-  if (key_Wz > KEY_MAX)
-    key_Wz = KEY_MAX;
+  if (key_Wz > key_WZ_max)
+    key_Wz = key_WZ_max;
   if (key_Wz < 0)
     key_Wz = 0;
 }
@@ -434,17 +450,17 @@ static void GetRoboState(void)
   // 判断底盘以及云台的模式
   if (switch_is_up(rc_ctrl[TEMP].rc.switch_right)) // 右侧拨杆向上
   {
-    ui_data.chassis_mode = CHASSIS_ZERO_FORCE;
+    // ui_data.chassis_mode = CHASSIS_ZERO_FORCE;
     ui_data.gimbal_mode = GIMBAL_ZERO_FORCE;
   }
   if (switch_is_down(rc_ctrl[TEMP].rc.switch_right)) // 右侧拨杆向下
   {
-    ui_data.chassis_mode = CHASSIS_FOLLOW_GIMBAL_YAW;
+    // ui_data.chassis_mode = CHASSIS_FOLLOW_GIMBAL_YAW;
     ui_data.gimbal_mode = GIMBAL_GYRO_MODE;
   }
   if (switch_is_mid(rc_ctrl[TEMP].rc.switch_right)) // 右侧拨杆中间
   {
-    ui_data.chassis_mode = CHASSIS_NO_FOLLOW;
+    // ui_data.chassis_mode = CHASSIS_NO_FOLLOW;
     ui_data.gimbal_mode = GIMBAL_GYRO_MODE;
   }
 

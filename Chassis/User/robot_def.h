@@ -18,10 +18,9 @@
  */
 typedef enum
 {
-    CHASSIS_ZERO_FORCE = 0,    // 电流零输入
-    CHASSIS_ROTATE,            // 小陀螺模式
-    CHASSIS_NO_FOLLOW,         // 不跟随，允许全向平移
-    CHASSIS_FOLLOW_GIMBAL_YAW, // 跟随模式，底盘叠加角度环控制
+    CHASSIS_FAST = 0,          // 底盘转速快
+    CHASSIS_MEDIUM,            // 底盘转速中等
+    CHASSIS_SLOW,              // 底盘转速慢
 } chassis_mode_e;
 
 // 云台模式设置
@@ -55,7 +54,7 @@ typedef enum
     LOAD_STOP = 0, // 停止发射
     LOAD_REVERSE,  // 反转
     LOAD_SLOW,     // 慢速
-    LOAD_MEDIUM,    // 中速
+    LOAD_MEDIUM,   // 中速
     LOAD_FAST,     // 快速
 } loader_mode_e;
 

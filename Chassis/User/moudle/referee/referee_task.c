@@ -103,7 +103,7 @@ void MyUIInit()
     // 等级显示，动态
     UICharDraw(&UI_State_dyn[0], "sd0", UI_Graph_ADD, 8, UI_Color_Main, 21, 2, 270, 800, "1");
     UICharRefresh(&referee_recv_info->referee_id, UI_State_dyn[0]);
-    UICharDraw(&UI_State_dyn[1], "sd1", UI_Graph_ADD, 8, UI_Color_Main, 15, 2, 270, 750, "zeroforce");
+    UICharDraw(&UI_State_dyn[1], "sd1", UI_Graph_ADD, 8, UI_Color_Main, 15, 2, 270, 750, "fast     ");
     UICharRefresh(&referee_recv_info->referee_id, UI_State_dyn[1]);
     UICharDraw(&UI_State_dyn[2], "sd2", UI_Graph_ADD, 8, UI_Color_Yellow, 15, 2, 270, 700, "zeroforce");
     UICharRefresh(&referee_recv_info->referee_id, UI_State_dyn[2]);
@@ -145,7 +145,7 @@ static void RobotModeTest(Referee_Interactive_info_t *_Interactive_data) // 测�
     {
     case 0:
     {
-        _Interactive_data->chassis_mode = CHASSIS_ZERO_FORCE;
+        // _Interactive_data->chassis_mode = CHASSIS_ZERO_FORCE;
         _Interactive_data->gimbal_mode = GIMBAL_ZERO_FORCE;
         _Interactive_data->shoot_mode = SHOOT_ON;
         _Interactive_data->friction_mode = FRICTION_ON;
@@ -157,7 +157,7 @@ static void RobotModeTest(Referee_Interactive_info_t *_Interactive_data) // 测�
     }
     case 1:
     {
-        _Interactive_data->chassis_mode = CHASSIS_ROTATE;
+        // _Interactive_data->chassis_mode = CHASSIS_ROTATE;
         _Interactive_data->gimbal_mode = GIMBAL_FREE_MODE;
         _Interactive_data->shoot_mode = SHOOT_OFF;
         _Interactive_data->friction_mode = FRICTION_OFF;
@@ -166,7 +166,7 @@ static void RobotModeTest(Referee_Interactive_info_t *_Interactive_data) // 测�
     }
     case 2:
     {
-        _Interactive_data->chassis_mode = CHASSIS_NO_FOLLOW;
+        // _Interactive_data->chassis_mode = CHASSIS_NO_FOLLOW;
         _Interactive_data->gimbal_mode = GIMBAL_GYRO_MODE;
         _Interactive_data->shoot_mode = SHOOT_ON;
         _Interactive_data->friction_mode = FRICTION_ON;
@@ -175,7 +175,7 @@ static void RobotModeTest(Referee_Interactive_info_t *_Interactive_data) // 测�
     }
     case 3:
     {
-        _Interactive_data->chassis_mode = CHASSIS_FOLLOW_GIMBAL_YAW;
+        // _Interactive_data->chassis_mode = CHASSIS_FOLLOW_GIMBAL_YAW;
         _Interactive_data->gimbal_mode = GIMBAL_ZERO_FORCE;
         _Interactive_data->shoot_mode = SHOOT_OFF;
         _Interactive_data->friction_mode = FRICTION_OFF;
@@ -230,18 +230,15 @@ static void MyUIRefresh(referee_info_t *referee_recv_info, Referee_Interactive_i
     {
         switch (_Interactive_data->chassis_mode)
         {
-        case CHASSIS_ZERO_FORCE:
-            UICharDraw(&UI_State_dyn[1], "sd1", UI_Graph_Change, 8, UI_Color_Main, 15, 2, 270, 750, "zeroforce");
+        case CHASSIS_FAST:
+            UICharDraw(&UI_State_dyn[1], "sd1", UI_Graph_Change, 8, UI_Color_Main, 15, 2, 270, 750, "fast     ");
             break;
-        case CHASSIS_ROTATE:
-            UICharDraw(&UI_State_dyn[1], "sd1", UI_Graph_Change, 8, UI_Color_Main, 15, 2, 270, 750, "rotate   ");
+        case CHASSIS_MEDIUM:
+            UICharDraw(&UI_State_dyn[1], "sd1", UI_Graph_Change, 8, UI_Color_Main, 15, 2, 270, 750, "medium   ");
             // 此处注意字数对齐问题，字数相同才能覆盖掉
             break;
-        case CHASSIS_NO_FOLLOW:
-            UICharDraw(&UI_State_dyn[1], "sd1", UI_Graph_Change, 8, UI_Color_Main, 15, 2, 270, 750, "nofollow ");
-            break;
-        case CHASSIS_FOLLOW_GIMBAL_YAW:
-            UICharDraw(&UI_State_dyn[1], "sd1", UI_Graph_Change, 8, UI_Color_Main, 15, 2, 270, 750, "follow   ");
+        case CHASSIS_SLOW:
+            UICharDraw(&UI_State_dyn[1], "sd1", UI_Graph_Change, 8, UI_Color_Main, 15, 2, 270, 750, "slow     ");
             break;
         }
         UICharRefresh(&referee_recv_info->referee_id, UI_State_dyn[1]);

@@ -28,7 +28,6 @@ static void GetKeyBoard();           // 获取键盘信息
 
 void Shoot_task(void const *pvParameters)
 {
-    Shooter_Inint();
     for (;;)
     {
         model_choice();
