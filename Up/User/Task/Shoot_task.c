@@ -7,7 +7,7 @@
 #include "drv_can.h"
 
 #define MAX_DIAL_SPEED 2000
-#define MAX_FRICTION_SPEED 7550
+#define MAX_FRICTION_SPEED 7000 // 7200
 #define KEY_ENTER_OFFSET 10
 #define KEY_SLOW_OFFSET 100
 
@@ -16,6 +16,7 @@ shooter_t shooter; // 发射机构信息结构体
 
 extern RC_ctrl_t rc_ctrl[2];            // 遥控器信息结构体
 static uint8_t friction_flag;           // 摩擦轮电机开关
+static int16_t friction_speed;          // 摩擦轮速度
 static int16_t key_dial_reverse_speed;  // 键盘控制拨盘反转电机的速度
 static int16_t key_dial_directed_speed; // 键盘控制拨盘正转电机的速度
 
@@ -44,7 +45,7 @@ void Shooter_Inint(void)
 
     // 初始化pid参数
     shooter.pid_dial_para[0] = 20, shooter.pid_dial_para[1] = 0.1, shooter.pid_dial_para[2] = 0;
-    shooter.pid_friction_para[0] = 30, shooter.pid_friction_para[1] = 0.1, shooter.pid_friction_para[2] = 0;
+    shooter.pid_friction_para[0] = 30, shooter.pid_friction_para[1] = 0, shooter.pid_friction_para[2] = 0;
     shooter.pid_bay_para[0] = 10, shooter.pid_bay_para[1] = 0, shooter.pid_bay_para[2] = 0;
 
     // 初始化pid结构体

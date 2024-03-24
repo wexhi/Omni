@@ -26,7 +26,7 @@ void exchange_task()
 		VisionAngleProcess();
 		VisionSetAltitude(attitude_data->Yaw, pitch_angle, attitude_data->Roll);
 		VisionSend();
-		osDelay(1);
+		osDelay(5);
 	}
 }
 
