@@ -112,8 +112,8 @@ static void dial_control(void)
 // 摩擦轮电机控制
 static void friction_control(void)
 {
-    shooter.friction_speed_target[0] = -MAX_FRICTION_SPEED;
-    shooter.friction_speed_target[1] = MAX_FRICTION_SPEED;
+    shooter.friction_speed_target[0] = -friction_speed;
+    shooter.friction_speed_target[1] = friction_speed;
 }
 
 // 弹舱电机控制
@@ -163,4 +163,9 @@ static void GetKeyBoard()
         key_dial_directed_speed = -MAX_DIAL_SPEED; // 默认正转速度
         break;
     }
+    friction_speed = MAX_FRICTION_SPEED + 100 * (-rc_ctrl[TEMP].key_count[KEY_PRESS_WITH_CTRL][Key_B] + rc_ctrl[TEMP].key_count[KEY_PRESS_WITH_CTRL][Key_G]);
+    if (friction_speed > MAX_FRICTION_SPEED)
+        friction_speed = MAX_FRICTION_SPEED;
+    if (friction_speed < 1000)
+        friction_speed = 1000;
 }
