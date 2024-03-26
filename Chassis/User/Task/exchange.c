@@ -19,7 +19,7 @@ void exchange_task()
 		UP_C_angle.yaw_gyro = up_angle[1] / 2000.0f;
 		// 接收并解算上C的云台YAW轴目标，用于自瞄
 		yaw_aim = aim_target / 100.0f;
-		osDelay(1);
+		osDelay(5);
 	}
 }
 

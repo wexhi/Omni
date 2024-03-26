@@ -34,13 +34,13 @@ void Gimbal_task(void const *pvParameters)
 void Gimbal_Init()
 {
     // 初始化pid参数
-    gimbal_Yaw.pid_parameter[0] = 100, gimbal_Yaw.pid_parameter[1] = 0.1, gimbal_Yaw.pid_parameter[2] = 0;
-    gimbal_Yaw.pid_angle_parameter[0] = 11.6, gimbal_Yaw.pid_angle_parameter[1] = 0, gimbal_Yaw.pid_angle_parameter[2] = 30;
+    gimbal_Yaw.pid_parameter[0] = 105, gimbal_Yaw.pid_parameter[1] = 0.12, gimbal_Yaw.pid_parameter[2] = 0;
+    gimbal_Yaw.pid_angle_parameter[0] = 11, gimbal_Yaw.pid_angle_parameter[1] = 0, gimbal_Yaw.pid_angle_parameter[2] = 60;
     gimbal_Yaw.angle_target = 0;
 
     // 初始化pid结构体
-    pid_init(&gimbal_Yaw.pid, gimbal_Yaw.pid_parameter, 20000, 10000);
-    pid_init(&gimbal_Yaw.pid_angle, gimbal_Yaw.pid_angle_parameter, 20000, 10000);
+    pid_init(&gimbal_Yaw.pid, gimbal_Yaw.pid_parameter, 30000, 10000);
+    pid_init(&gimbal_Yaw.pid_angle, gimbal_Yaw.pid_angle_parameter, 30000, 8000);
 }
 
 /**
@@ -87,11 +87,13 @@ static void RC_Yaw_control()
 {
     if (rc_ctrl[TEMP].rc.rocker_r_ >= -660 && rc_ctrl[TEMP].rc.rocker_r_ <= 660) // 遥控器YAW轴控制
     {
-        if (is_track && (switch_is_mid(rc_ctrl[TEMP].rc.switch_left) || rc_ctrl[TEMP].mouse.press_r)) // if (rc_ctrl.mouse.press_r && is_track)鼠标右键按下且识别到敌方装甲时，云台YAW轴目标为自瞄目标
+        if (is_track &&
+            (switch_is_up(rc_ctrl[TEMP].rc.switch_left) ||
+             switch_is_mid(rc_ctrl[TEMP].rc.switch_left) || rc_ctrl[TEMP].mouse.press_r)) // if (rc_ctrl.mouse.press_r && is_track)鼠标右键按下且识别到敌方装甲时，云台YAW轴目标为自瞄目标
             gimbal_Yaw.angle_target = yaw_aim;
         else
             gimbal_Yaw.angle_target += rc_ctrl[TEMP].rc.rocker_r_ / 660.0 * (-0.6) - // 遥控器控制
-                                       (rc_ctrl[TEMP].mouse.x / 16384.00 * 50);        // 鼠标控制
+                                       (rc_ctrl[TEMP].mouse.x / 16384.00 * 50);      // 鼠标控制
 
         detel_calc(&gimbal_Yaw.angle_target);                                                                          // 防止角度突变
         gimbal_Yaw.err_angle = gimbal_Yaw.angle_target - UP_C_angle.yaw;                                               // 计算角度误差
