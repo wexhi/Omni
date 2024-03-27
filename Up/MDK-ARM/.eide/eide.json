@@ -507,7 +507,9 @@
           "../User/moudle/judge",
           "../User/moudle/remote",
           "../User/BSP/CAN",
-          "../User/moudle/daemon"
+          "../User/moudle/daemon",
+          "../User/moudle/referee",
+          "../User/moudle/VideoTransmitter"
         ],
         "libList": [],
         "sourceDirList": [],

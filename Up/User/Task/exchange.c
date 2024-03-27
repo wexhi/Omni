@@ -4,6 +4,7 @@
 #include "drv_can.h"
 #include <string.h>
 #include "miniPC_process.h"
+#include "VideoTransmitter.h"
 
 Vision_Recv_s *recv;
 static attitude_t *attitude_data; // 姿态数据指针
@@ -56,6 +57,12 @@ void ExchangInit()
 
 	};
 	recv = VisionInit(&vision_init_config);
+
+	// 图传链路注册，当前为了省时间，视觉采用VCP通信，
+	// 图传链路采用串口1通信，为避免冲突，使用预编译指令进行选择
+#ifndef VISION_USE_UART
+	VideoTransmitterControlInit(&huart1);
+#endif // ! VISION_USE_UART
 }
 
 /**
